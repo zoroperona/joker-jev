@@ -1,0 +1,1876 @@
+{
+  "protocol": "full_doudizhu_v1",
+  "status": "completed",
+  "manifest": {
+    "rules_version": "classic_scored_v1",
+    "settings": [
+      {
+        "seed": 20261016,
+        "focal": "p0"
+      },
+      {
+        "seed": 20261017,
+        "focal": "p1"
+      },
+      {
+        "seed": 20261018,
+        "focal": "p2"
+      },
+      {
+        "seed": 20261019,
+        "focal": "p0"
+      },
+      {
+        "seed": 20261020,
+        "focal": "p1"
+      },
+      {
+        "seed": 20261021,
+        "focal": "p2"
+      },
+      {
+        "seed": 20261022,
+        "focal": "p0"
+      },
+      {
+        "seed": 20261023,
+        "focal": "p1"
+      },
+      {
+        "seed": 20261024,
+        "focal": "p2"
+      },
+      {
+        "seed": 20261025,
+        "focal": "p0"
+      }
+    ],
+    "initial_deals": [
+      {
+        "hands": [
+          [
+            "3",
+            "4",
+            "4",
+            "4",
+            "5",
+            "6",
+            "7",
+            "7",
+            "8",
+            "9",
+            "10",
+            "Q",
+            "K",
+            "A",
+            "2",
+            "SJ",
+            "BJ"
+          ],
+          [
+            "3",
+            "3",
+            "6",
+            "6",
+            "8",
+            "8",
+            "8",
+            "9",
+            "9",
+            "10",
+            "10",
+            "J",
+            "Q",
+            "A",
+            "A",
+            "2",
+            "2"
+          ],
+          [
+            "3",
+            "4",
+            "5",
+            "5",
+            "6",
+            "7",
+            "7",
+            "9",
+            "10",
+            "J",
+            "J",
+            "Q",
+            "Q",
+            "K",
+            "K",
+            "K",
+            "2"
+          ]
+        ],
+        "bottom": [
+          "5",
+          "J",
+          "A"
+        ],
+        "first_bidder": "p0"
+      },
+      {
+        "hands": [
+          [
+            "3",
+            "4",
+            "5",
+            "6",
+            "6",
+            "6",
+            "7",
+            "7",
+            "8",
+            "9",
+            "9",
+            "Q",
+            "Q",
+            "K",
+            "K",
+            "2",
+            "SJ"
+          ],
+          [
+            "3",
+            "3",
+            "4",
+            "5",
+            "5",
+            "6",
+            "7",
+            "8",
+            "8",
+            "9",
+            "10",
+            "J",
+            "Q",
+            "A",
+            "A",
+            "2",
+            "BJ"
+          ],
+          [
+            "4",
+            "4",
+            "5",
+            "8",
+            "9",
+            "10",
+            "10",
+            "J",
+            "J",
+            "J",
+            "Q",
+            "K",
+            "K",
+            "A",
+            "A",
+            "2",
+            "2"
+          ]
+        ],
+        "bottom": [
+          "3",
+          "7",
+          "10"
+        ],
+        "first_bidder": "p1"
+      },
+      {
+        "hands": [
+          [
+            "3",
+            "4",
+            "5",
+            "5",
+            "6",
+            "8",
+            "8",
+            "9",
+            "10",
+            "10",
+            "10",
+            "J",
+            "Q",
+            "A",
+            "2",
+            "2",
+            "SJ"
+          ],
+          [
+            "3",
+            "3",
+            "4",
+            "5",
+            "7",
+            "7",
+            "8",
+            "9",
+            "9",
+            "9",
+            "J",
+            "Q",
+            "K",
+            "K",
+            "K",
+            "A",
+            "BJ"
+          ],
+          [
+            "3",
+            "4",
+            "4",
+            "5",
+            "6",
+            "6",
+            "7",
+            "7",
+            "10",
+            "J",
+            "J",
+            "Q",
+            "Q",
+            "K",
+            "A",
+            "A",
+            "2"
+          ]
+        ],
+        "bottom": [
+          "6",
+          "8",
+          "2"
+        ],
+        "first_bidder": "p2"
+      },
+      {
+        "hands": [
+          [
+            "4",
+            "5",
+            "5",
+            "6",
+            "7",
+            "8",
+            "9",
+            "10",
+            "10",
+            "J",
+            "Q",
+            "Q",
+            "K",
+            "K",
+            "A",
+            "2",
+            "2"
+          ],
+          [
+            "3",
+            "3",
+            "4",
+            "5",
+            "6",
+            "6",
+            "7",
+            "8",
+            "9",
+            "9",
+            "9",
+            "J",
+            "Q",
+            "K",
+            "K",
+            "2",
+            "BJ"
+          ],
+          [
+            "3",
+            "3",
+            "4",
+            "4",
+            "5",
+            "6",
+            "7",
+            "7",
+            "8",
+            "10",
+            "10",
+            "J",
+            "J",
+            "A",
+            "A",
+            "2",
+            "SJ"
+          ]
+        ],
+        "bottom": [
+          "8",
+          "Q",
+          "A"
+        ],
+        "first_bidder": "p0"
+      },
+      {
+        "hands": [
+          [
+            "3",
+            "4",
+            "5",
+            "6",
+            "7",
+            "7",
+            "7",
+            "7",
+            "8",
+            "8",
+            "10",
+            "J",
+            "Q",
+            "Q",
+            "K",
+            "A",
+            "SJ"
+          ],
+          [
+            "3",
+            "4",
+            "5",
+            "5",
+            "6",
+            "8",
+            "9",
+            "9",
+            "9",
+            "J",
+            "J",
+            "Q",
+            "Q",
+            "K",
+            "A",
+            "A",
+            "2"
+          ],
+          [
+            "3",
+            "3",
+            "4",
+            "4",
+            "5",
+            "6",
+            "6",
+            "8",
+            "9",
+            "10",
+            "10",
+            "J",
+            "K",
+            "K",
+            "2",
+            "2",
+            "BJ"
+          ]
+        ],
+        "bottom": [
+          "10",
+          "A",
+          "2"
+        ],
+        "first_bidder": "p1"
+      },
+      {
+        "hands": [
+          [
+            "3",
+            "5",
+            "5",
+            "6",
+            "6",
+            "6",
+            "7",
+            "7",
+            "7",
+            "8",
+            "10",
+            "J",
+            "J",
+            "Q",
+            "K",
+            "A",
+            "BJ"
+          ],
+          [
+            "4",
+            "4",
+            "4",
+            "5",
+            "5",
+            "7",
+            "8",
+            "8",
+            "9",
+            "9",
+            "10",
+            "J",
+            "Q",
+            "Q",
+            "A",
+            "A",
+            "2"
+          ],
+          [
+            "3",
+            "3",
+            "3",
+            "4",
+            "6",
+            "8",
+            "9",
+            "10",
+            "10",
+            "K",
+            "K",
+            "K",
+            "A",
+            "2",
+            "2",
+            "2",
+            "SJ"
+          ]
+        ],
+        "bottom": [
+          "9",
+          "J",
+          "Q"
+        ],
+        "first_bidder": "p2"
+      },
+      {
+        "hands": [
+          [
+            "4",
+            "5",
+            "7",
+            "7",
+            "8",
+            "8",
+            "9",
+            "9",
+            "10",
+            "10",
+            "J",
+            "J",
+            "Q",
+            "Q",
+            "K",
+            "2",
+            "BJ"
+          ],
+          [
+            "3",
+            "3",
+            "4",
+            "4",
+            "6",
+            "8",
+            "9",
+            "9",
+            "10",
+            "10",
+            "K",
+            "A",
+            "A",
+            "A",
+            "2",
+            "2",
+            "SJ"
+          ],
+          [
+            "3",
+            "3",
+            "4",
+            "5",
+            "5",
+            "5",
+            "6",
+            "6",
+            "6",
+            "7",
+            "7",
+            "J",
+            "J",
+            "Q",
+            "K",
+            "A",
+            "2"
+          ]
+        ],
+        "bottom": [
+          "8",
+          "Q",
+          "K"
+        ],
+        "first_bidder": "p0"
+      },
+      {
+        "hands": [
+          [
+            "3",
+            "3",
+            "4",
+            "4",
+            "5",
+            "5",
+            "7",
+            "8",
+            "8",
+            "9",
+            "10",
+            "10",
+            "J",
+            "J",
+            "A",
+            "A",
+            "2"
+          ],
+          [
+            "4",
+            "5",
+            "5",
+            "6",
+            "9",
+            "10",
+            "10",
+            "J",
+            "Q",
+            "Q",
+            "K",
+            "K",
+            "K",
+            "K",
+            "A",
+            "A",
+            "2"
+          ],
+          [
+            "3",
+            "3",
+            "4",
+            "6",
+            "6",
+            "6",
+            "7",
+            "7",
+            "8",
+            "8",
+            "9",
+            "9",
+            "J",
+            "Q",
+            "Q",
+            "2",
+            "SJ"
+          ]
+        ],
+        "bottom": [
+          "7",
+          "2",
+          "BJ"
+        ],
+        "first_bidder": "p1"
+      },
+      {
+        "hands": [
+          [
+            "3",
+            "4",
+            "4",
+            "6",
+            "7",
+            "7",
+            "8",
+            "9",
+            "10",
+            "Q",
+            "K",
+            "K",
+            "K",
+            "A",
+            "2",
+            "2",
+            "BJ"
+          ],
+          [
+            "3",
+            "5",
+            "5",
+            "6",
+            "6",
+            "7",
+            "8",
+            "9",
+            "9",
+            "10",
+            "10",
+            "10",
+            "J",
+            "A",
+            "A",
+            "2",
+            "SJ"
+          ],
+          [
+            "3",
+            "3",
+            "4",
+            "4",
+            "5",
+            "6",
+            "7",
+            "8",
+            "8",
+            "9",
+            "J",
+            "J",
+            "J",
+            "Q",
+            "Q",
+            "K",
+            "2"
+          ]
+        ],
+        "bottom": [
+          "5",
+          "Q",
+          "A"
+        ],
+        "first_bidder": "p2"
+      },
+      {
+        "hands": [
+          [
+            "5",
+            "7",
+            "7",
+            "7",
+            "9",
+            "10",
+            "10",
+            "J",
+            "J",
+            "J",
+            "J",
+            "Q",
+            "K",
+            "A",
+            "2",
+            "2",
+            "BJ"
+          ],
+          [
+            "3",
+            "3",
+            "3",
+            "4",
+            "4",
+            "4",
+            "5",
+            "6",
+            "6",
+            "7",
+            "8",
+            "10",
+            "Q",
+            "Q",
+            "K",
+            "K",
+            "2"
+          ],
+          [
+            "3",
+            "4",
+            "5",
+            "5",
+            "6",
+            "6",
+            "8",
+            "8",
+            "8",
+            "9",
+            "10",
+            "Q",
+            "K",
+            "A",
+            "A",
+            "A",
+            "SJ"
+          ]
+        ],
+        "bottom": [
+          "9",
+          "9",
+          "2"
+        ],
+        "first_bidder": "p0"
+      }
+    ]
+  },
+  "sha256": "e2466f10da6c6024f0dcc333b22ff287a30cb4637eb84e39c57f09624b9b4dce",
+  "strategy": "jev",
+  "started_at": "2026-10-12T16:47:19.019738+00:00",
+  "episodes": [
+    {
+      "seed": 20261016,
+      "focal": "p0",
+      "strategy": "jev",
+      "status": "completed",
+      "team_reward": -1,
+      "rewards": {
+        "p0": -12.0,
+        "p1": 6.0,
+        "p2": 6.0
+      },
+      "api_ledger": [
+        {
+          "questions": [
+            "action"
+          ],
+          "status": "completed",
+          "model": "jev-1.13.0",
+          "usage": {
+            "input_tokens": 2286,
+            "output_tokens": 55
+          },
+          "seconds": 0.577581
+        },
+        {
+          "questions": [
+            "action"
+          ],
+          "status": "completed",
+          "model": "jev-1.13.0",
+          "usage": {
+            "input_tokens": 8438,
+            "output_tokens": 1599
+          },
+          "seconds": 0.6822525
+        },
+        {
+          "questions": [
+            "action"
+          ],
+          "status": "completed",
+          "model": "jev-1.13.0",
+          "usage": {
+            "input_tokens": 2664,
+            "output_tokens": 150
+          },
+          "seconds": 0.5887092920000001
+        },
+        {
+          "questions": [
+            "action"
+          ],
+          "status": "completed",
+          "model": "jev-1.13.0",
+          "usage": {
+            "input_tokens": 2557,
+            "output_tokens": 49
+          },
+          "seconds": 0.6280407920000002
+        },
+        {
+          "questions": [
+            "action"
+          ],
+          "status": "completed",
+          "model": "jev-1.13.0",
+          "usage": {
+            "input_tokens": 2839,
+            "output_tokens": 77
+          },
+          "seconds": 0.5752570000000001
+        },
+        {
+          "questions": [
+            "action"
+          ],
+          "status": "completed",
+          "model": "jev-1.13.0",
+          "usage": {
+            "input_tokens": 2965,
+            "output_tokens": 62
+          },
+          "seconds": 0.5424192090000002
+        },
+        {
+          "questions": [
+            "action"
+          ],
+          "status": "completed",
+          "model": "jev-1.13.0",
+          "usage": {
+            "input_tokens": 3957,
+            "output_tokens": 37
+          },
+          "seconds": 0.5949765419999995
+        }
+      ],
+      "turns": 42,
+      "focal_role": "landlord",
+      "finish": {
+        "winner": "p1",
+        "landlord": "p0",
+        "spring": false,
+        "multiplier": 2,
+        "rewards": {
+          "p0": -12.0,
+          "p1": 6.0,
+          "p2": 6.0
+        }
+      },
+      "elapsed_seconds": 4.887736,
+      "trace_path": "doudizhu-full-deal-live-v1-episodes/game_000.json"
+    },
+    {
+      "seed": 20261017,
+      "focal": "p1",
+      "strategy": "jev",
+      "status": "completed",
+      "team_reward": -1,
+      "rewards": {
+        "p0": 1.0,
+        "p1": -2.0,
+        "p2": 1.0
+      },
+      "api_ledger": [
+        {
+          "questions": [
+            "action"
+          ],
+          "status": "completed",
+          "model": "jev-1.13.0",
+          "usage": {
+            "input_tokens": 2332,
+            "output_tokens": 55
+          },
+          "seconds": 0.5520952500000007
+        },
+        {
+          "questions": [
+            "action"
+          ],
+          "status": "completed",
+          "model": "jev-1.13.0",
+          "usage": {
+            "input_tokens": 6827,
+            "output_tokens": 1196
+          },
+          "seconds": 0.6036375830000003
+        },
+        {
+          "questions": [
+            "action"
+          ],
+          "status": "completed",
+          "model": "jev-1.13.0",
+          "usage": {
+            "input_tokens": 2809,
+            "output_tokens": 159
+          },
+          "seconds": 0.5732981669999999
+        },
+        {
+          "questions": [
+            "action"
+          ],
+          "status": "completed",
+          "model": "jev-1.13.0",
+          "usage": {
+            "input_tokens": 3228,
+            "output_tokens": 112
+          },
+          "seconds": 0.6613265000000004
+        },
+        {
+          "questions": [
+            "action"
+          ],
+          "status": "completed",
+          "model": "jev-1.13.0",
+          "usage": {
+            "input_tokens": 2670,
+            "output_tokens": 45
+          },
+          "seconds": 0.5646989170000003
+        },
+        {
+          "questions": [
+            "action"
+          ],
+          "status": "completed",
+          "model": "jev-1.13.0",
+          "usage": {
+            "input_tokens": 3130,
+            "output_tokens": 116
+          },
+          "seconds": 0.5626097080000001
+        },
+        {
+          "questions": [
+            "action"
+          ],
+          "status": "completed",
+          "model": "jev-1.13.0",
+          "usage": {
+            "input_tokens": 4139,
+            "output_tokens": 37
+          },
+          "seconds": 0.5869483749999986
+        },
+        {
+          "questions": [
+            "action"
+          ],
+          "status": "completed",
+          "model": "jev-1.13.0",
+          "usage": {
+            "input_tokens": 4322,
+            "output_tokens": 37
+          },
+          "seconds": 0.6250854579999992
+        }
+      ],
+      "turns": 38,
+      "focal_role": "landlord",
+      "finish": {
+        "winner": "p2",
+        "landlord": "p1",
+        "spring": false,
+        "multiplier": 1,
+        "rewards": {
+          "p0": 1.0,
+          "p1": -2.0,
+          "p2": 1.0
+        }
+      },
+      "elapsed_seconds": 5.320356709000001,
+      "trace_path": "doudizhu-full-deal-live-v1-episodes/game_001.json"
+    },
+    {
+      "seed": 20261018,
+      "focal": "p2",
+      "strategy": "jev",
+      "status": "completed",
+      "team_reward": 1,
+      "rewards": {
+        "p0": -2.0,
+        "p1": 1.0,
+        "p2": 1.0
+      },
+      "api_ledger": [
+        {
+          "questions": [
+            "action"
+          ],
+          "status": "completed",
+          "model": "jev-1.13.0",
+          "usage": {
+            "input_tokens": 2378,
+            "output_tokens": 55
+          },
+          "seconds": 0.5734074160000002
+        },
+        {
+          "questions": [
+            "action"
+          ],
+          "status": "completed",
+          "model": "jev-1.13.0",
+          "usage": {
+            "input_tokens": 3155,
+            "output_tokens": 150
+          },
+          "seconds": 0.6044337080000002
+        },
+        {
+          "questions": [
+            "action"
+          ],
+          "status": "completed",
+          "model": "jev-1.13.0",
+          "usage": {
+            "input_tokens": 3584,
+            "output_tokens": 116
+          },
+          "seconds": 0.6029228329999992
+        },
+        {
+          "questions": [
+            "action"
+          ],
+          "status": "completed",
+          "model": "jev-1.13.0",
+          "usage": {
+            "input_tokens": 3270,
+            "output_tokens": 64
+          },
+          "seconds": 0.5658990420000016
+        },
+        {
+          "questions": [
+            "action"
+          ],
+          "status": "completed",
+          "model": "jev-1.13.0",
+          "usage": {
+            "input_tokens": 4052,
+            "output_tokens": 90
+          },
+          "seconds": 0.5552647079999993
+        }
+      ],
+      "turns": 38,
+      "focal_role": "farmer",
+      "finish": {
+        "winner": "p1",
+        "landlord": "p0",
+        "spring": false,
+        "multiplier": 1,
+        "rewards": {
+          "p0": -2.0,
+          "p1": 1.0,
+          "p2": 1.0
+        }
+      },
+      "elapsed_seconds": 3.440134125,
+      "trace_path": "doudizhu-full-deal-live-v1-episodes/game_002.json"
+    },
+    {
+      "seed": 20261019,
+      "focal": "p0",
+      "strategy": "jev",
+      "status": "completed",
+      "team_reward": 1,
+      "rewards": {
+        "p0": 1.0,
+        "p1": -2.0,
+        "p2": 1.0
+      },
+      "api_ledger": [
+        {
+          "questions": [
+            "action"
+          ],
+          "status": "completed",
+          "model": "jev-1.13.0",
+          "usage": {
+            "input_tokens": 2383,
+            "output_tokens": 55
+          },
+          "seconds": 0.5490379169999997
+        },
+        {
+          "questions": [
+            "action"
+          ],
+          "status": "completed",
+          "model": "jev-1.13.0",
+          "usage": {
+            "input_tokens": 3289,
+            "output_tokens": 159
+          },
+          "seconds": 0.5590981250000002
+        },
+        {
+          "questions": [
+            "action"
+          ],
+          "status": "completed",
+          "model": "jev-1.13.0",
+          "usage": {
+            "input_tokens": 3004,
+            "output_tokens": 49
+          },
+          "seconds": 0.5646714579999994
+        },
+        {
+          "questions": [
+            "action"
+          ],
+          "status": "completed",
+          "model": "jev-1.13.0",
+          "usage": {
+            "input_tokens": 6829,
+            "output_tokens": 928
+          },
+          "seconds": 0.5973951249999985
+        },
+        {
+          "questions": [
+            "action"
+          ],
+          "status": "completed",
+          "model": "jev-1.13.0",
+          "usage": {
+            "input_tokens": 3524,
+            "output_tokens": 77
+          },
+          "seconds": 0.5724388329999996
+        },
+        {
+          "questions": [
+            "action"
+          ],
+          "status": "completed",
+          "model": "jev-1.13.0",
+          "usage": {
+            "input_tokens": 3717,
+            "output_tokens": 65
+          },
+          "seconds": 0.5743834999999997
+        },
+        {
+          "questions": [
+            "action"
+          ],
+          "status": "completed",
+          "model": "jev-1.13.0",
+          "usage": {
+            "input_tokens": 4210,
+            "output_tokens": 65
+          },
+          "seconds": 0.5743849159999996
+        }
+      ],
+      "turns": 44,
+      "focal_role": "farmer",
+      "finish": {
+        "winner": "p2",
+        "landlord": "p1",
+        "spring": false,
+        "multiplier": 1,
+        "rewards": {
+          "p0": 1.0,
+          "p1": -2.0,
+          "p2": 1.0
+        }
+      },
+      "elapsed_seconds": 4.726657041000001,
+      "trace_path": "doudizhu-full-deal-live-v1-episodes/game_003.json"
+    },
+    {
+      "seed": 20261020,
+      "focal": "p1",
+      "strategy": "jev",
+      "status": "completed",
+      "team_reward": 1,
+      "rewards": {
+        "p0": -8.0,
+        "p1": 4.0,
+        "p2": 4.0
+      },
+      "api_ledger": [
+        {
+          "questions": [
+            "action"
+          ],
+          "status": "completed",
+          "model": "jev-1.13.0",
+          "usage": {
+            "input_tokens": 2381,
+            "output_tokens": 55
+          },
+          "seconds": 0.5906234159999997
+        },
+        {
+          "questions": [
+            "action"
+          ],
+          "status": "completed",
+          "model": "jev-1.13.0",
+          "usage": {
+            "input_tokens": 3081,
+            "output_tokens": 87
+          },
+          "seconds": 0.5911200000000001
+        },
+        {
+          "questions": [
+            "action"
+          ],
+          "status": "completed",
+          "model": "jev-1.13.0",
+          "usage": {
+            "input_tokens": 3587,
+            "output_tokens": 149
+          },
+          "seconds": 0.5737416250000003
+        },
+        {
+          "questions": [
+            "action"
+          ],
+          "status": "completed",
+          "model": "jev-1.13.0",
+          "usage": {
+            "input_tokens": 3456,
+            "output_tokens": 81
+          },
+          "seconds": 0.6623104159999968
+        },
+        {
+          "questions": [
+            "action"
+          ],
+          "status": "completed",
+          "model": "jev-1.13.0",
+          "usage": {
+            "input_tokens": 3923,
+            "output_tokens": 81
+          },
+          "seconds": 0.5759740419999986
+        },
+        {
+          "questions": [
+            "action"
+          ],
+          "status": "completed",
+          "model": "jev-1.13.0",
+          "usage": {
+            "input_tokens": 3824,
+            "output_tokens": 66
+          },
+          "seconds": 0.6024137080000003
+        },
+        {
+          "questions": [
+            "action"
+          ],
+          "status": "completed",
+          "model": "jev-1.13.0",
+          "usage": {
+            "input_tokens": 4264,
+            "output_tokens": 51
+          },
+          "seconds": 0.5560456659999993
+        },
+        {
+          "questions": [
+            "action"
+          ],
+          "status": "completed",
+          "model": "jev-1.13.0",
+          "usage": {
+            "input_tokens": 4650,
+            "output_tokens": 89
+          },
+          "seconds": 0.6154922089999992
+        },
+        {
+          "questions": [
+            "action"
+          ],
+          "status": "completed",
+          "model": "jev-1.13.0",
+          "usage": {
+            "input_tokens": 4816,
+            "output_tokens": 63
+          },
+          "seconds": 0.6480413339999984
+        },
+        {
+          "questions": [
+            "action"
+          ],
+          "status": "completed",
+          "model": "jev-1.13.0",
+          "usage": {
+            "input_tokens": 5167,
+            "output_tokens": 115
+          },
+          "seconds": 0.6322545000000019
+        }
+      ],
+      "turns": 51,
+      "focal_role": "farmer",
+      "finish": {
+        "winner": "p2",
+        "landlord": "p0",
+        "spring": false,
+        "multiplier": 2,
+        "rewards": {
+          "p0": -8.0,
+          "p1": 4.0,
+          "p2": 4.0
+        }
+      },
+      "elapsed_seconds": 7.172067458000001,
+      "trace_path": "doudizhu-full-deal-live-v1-episodes/game_004.json"
+    },
+    {
+      "seed": 20261021,
+      "focal": "p2",
+      "strategy": "jev",
+      "status": "completed",
+      "team_reward": -1,
+      "rewards": {
+        "p0": 2.0,
+        "p1": -1.0,
+        "p2": -1.0
+      },
+      "api_ledger": [
+        {
+          "questions": [
+            "action"
+          ],
+          "status": "completed",
+          "model": "jev-1.13.0",
+          "usage": {
+            "input_tokens": 2333,
+            "output_tokens": 55
+          },
+          "seconds": 0.5561236249999979
+        },
+        {
+          "questions": [
+            "action"
+          ],
+          "status": "completed",
+          "model": "jev-1.13.0",
+          "usage": {
+            "input_tokens": 3303,
+            "output_tokens": 106
+          },
+          "seconds": 0.6046010000000024
+        },
+        {
+          "questions": [
+            "action"
+          ],
+          "status": "completed",
+          "model": "jev-1.13.0",
+          "usage": {
+            "input_tokens": 2892,
+            "output_tokens": 45
+          },
+          "seconds": 0.6700882919999991
+        }
+      ],
+      "turns": 16,
+      "focal_role": "farmer",
+      "finish": {
+        "winner": "p0",
+        "landlord": "p0",
+        "spring": false,
+        "multiplier": 1,
+        "rewards": {
+          "p0": 2.0,
+          "p1": -1.0,
+          "p2": -1.0
+        }
+      },
+      "elapsed_seconds": 1.9542502499999976,
+      "trace_path": "doudizhu-full-deal-live-v1-episodes/game_005.json"
+    },
+    {
+      "seed": 20261022,
+      "focal": "p0",
+      "strategy": "jev",
+      "status": "completed",
+      "team_reward": -1,
+      "rewards": {
+        "p0": -1.0,
+        "p1": 2.0,
+        "p2": -1.0
+      },
+      "api_ledger": [
+        {
+          "questions": [
+            "action"
+          ],
+          "status": "completed",
+          "model": "jev-1.13.0",
+          "usage": {
+            "input_tokens": 2325,
+            "output_tokens": 55
+          },
+          "seconds": 0.6730220419999995
+        },
+        {
+          "questions": [
+            "action"
+          ],
+          "status": "completed",
+          "model": "jev-1.13.0",
+          "usage": {
+            "input_tokens": 2728,
+            "output_tokens": 91
+          },
+          "seconds": 0.5848206660000024
+        },
+        {
+          "questions": [
+            "action"
+          ],
+          "status": "completed",
+          "model": "jev-1.13.0",
+          "usage": {
+            "input_tokens": 3393,
+            "output_tokens": 214
+          },
+          "seconds": 0.551404999999999
+        },
+        {
+          "questions": [
+            "action"
+          ],
+          "status": "completed",
+          "model": "jev-1.13.0",
+          "usage": {
+            "input_tokens": 3147,
+            "output_tokens": 91
+          },
+          "seconds": 0.5761894999999981
+        },
+        {
+          "questions": [
+            "action"
+          ],
+          "status": "completed",
+          "model": "jev-1.13.0",
+          "usage": {
+            "input_tokens": 3242,
+            "output_tokens": 73
+          },
+          "seconds": 0.5907337079999984
+        },
+        {
+          "questions": [
+            "action"
+          ],
+          "status": "completed",
+          "model": "jev-1.13.0",
+          "usage": {
+            "input_tokens": 3358,
+            "output_tokens": 65
+          },
+          "seconds": 0.6110245419999991
+        }
+      ],
+      "turns": 34,
+      "focal_role": "farmer",
+      "finish": {
+        "winner": "p1",
+        "landlord": "p1",
+        "spring": false,
+        "multiplier": 1,
+        "rewards": {
+          "p0": -1.0,
+          "p1": 2.0,
+          "p2": -1.0
+        }
+      },
+      "elapsed_seconds": 4.0134875,
+      "trace_path": "doudizhu-full-deal-live-v1-episodes/game_006.json"
+    },
+    {
+      "seed": 20261023,
+      "focal": "p1",
+      "strategy": "jev",
+      "status": "completed",
+      "team_reward": -1,
+      "rewards": {
+        "p0": 2.0,
+        "p1": -4.0,
+        "p2": 2.0
+      },
+      "api_ledger": [
+        {
+          "questions": [
+            "action"
+          ],
+          "status": "completed",
+          "model": "jev-1.13.0",
+          "usage": {
+            "input_tokens": 2329,
+            "output_tokens": 55
+          },
+          "seconds": 0.6327820829999986
+        },
+        {
+          "questions": [
+            "action"
+          ],
+          "status": "completed",
+          "model": "jev-1.13.0",
+          "usage": {
+            "input_tokens": 11733,
+            "output_tokens": 2272
+          },
+          "seconds": 0.7231634170000021
+        },
+        {
+          "questions": [
+            "action"
+          ],
+          "status": "completed",
+          "model": "jev-1.13.0",
+          "usage": {
+            "input_tokens": 3108,
+            "output_tokens": 244
+          },
+          "seconds": 0.6409882499999995
+        },
+        {
+          "questions": [
+            "action"
+          ],
+          "status": "completed",
+          "model": "jev-1.13.0",
+          "usage": {
+            "input_tokens": 3243,
+            "output_tokens": 137
+          },
+          "seconds": 0.5631392920000025
+        },
+        {
+          "questions": [
+            "action"
+          ],
+          "status": "completed",
+          "model": "jev-1.13.0",
+          "usage": {
+            "input_tokens": 3739,
+            "output_tokens": 220
+          },
+          "seconds": 0.607811500000004
+        },
+        {
+          "questions": [
+            "action"
+          ],
+          "status": "completed",
+          "model": "jev-1.13.0",
+          "usage": {
+            "input_tokens": 3805,
+            "output_tokens": 187
+          },
+          "seconds": 0.591006458999999
+        },
+        {
+          "questions": [
+            "action"
+          ],
+          "status": "completed",
+          "model": "jev-1.13.0",
+          "usage": {
+            "input_tokens": 3952,
+            "output_tokens": 70
+          },
+          "seconds": 0.5764572080000008
+        },
+        {
+          "questions": [
+            "action"
+          ],
+          "status": "completed",
+          "model": "jev-1.13.0",
+          "usage": {
+            "input_tokens": 4532,
+            "output_tokens": 128
+          },
+          "seconds": 0.6678543330000011
+        },
+        {
+          "questions": [
+            "action"
+          ],
+          "status": "completed",
+          "model": "jev-1.13.0",
+          "usage": {
+            "input_tokens": 4375,
+            "output_tokens": 50
+          },
+          "seconds": 0.6050955420000008
+        }
+      ],
+      "turns": 35,
+      "focal_role": "landlord",
+      "finish": {
+        "winner": "p2",
+        "landlord": "p1",
+        "spring": false,
+        "multiplier": 2,
+        "rewards": {
+          "p0": 2.0,
+          "p1": -4.0,
+          "p2": 2.0
+        }
+      },
+      "elapsed_seconds": 6.142688875000001,
+      "trace_path": "doudizhu-full-deal-live-v1-episodes/game_007.json"
+    },
+    {
+      "seed": 20261024,
+      "focal": "p2",
+      "strategy": "jev",
+      "status": "completed",
+      "team_reward": -1,
+      "rewards": {
+        "p0": 2.0,
+        "p1": -1.0,
+        "p2": -1.0
+      },
+      "api_ledger": [
+        {
+          "questions": [
+            "action"
+          ],
+          "status": "completed",
+          "model": "jev-1.13.0",
+          "usage": {
+            "input_tokens": 2381,
+            "output_tokens": 55
+          },
+          "seconds": 0.5813282500000057
+        },
+        {
+          "questions": [
+            "action"
+          ],
+          "status": "completed",
+          "model": "jev-1.13.0",
+          "usage": {
+            "input_tokens": 3689,
+            "output_tokens": 129
+          },
+          "seconds": 0.6545037499999964
+        },
+        {
+          "questions": [
+            "action"
+          ],
+          "status": "completed",
+          "model": "jev-1.13.0",
+          "usage": {
+            "input_tokens": 3643,
+            "output_tokens": 77
+          },
+          "seconds": 0.6808286250000037
+        }
+      ],
+      "turns": 22,
+      "focal_role": "farmer",
+      "finish": {
+        "winner": "p0",
+        "landlord": "p0",
+        "spring": false,
+        "multiplier": 1,
+        "rewards": {
+          "p0": 2.0,
+          "p1": -1.0,
+          "p2": -1.0
+        }
+      },
+      "elapsed_seconds": 2.0941138330000015,
+      "trace_path": "doudizhu-full-deal-live-v1-episodes/game_008.json"
+    },
+    {
+      "seed": 20261025,
+      "focal": "p0",
+      "strategy": "jev",
+      "status": "completed",
+      "team_reward": -1,
+      "rewards": {
+        "p0": -4.0,
+        "p1": 2.0,
+        "p2": 2.0
+      },
+      "api_ledger": [
+        {
+          "questions": [
+            "action"
+          ],
+          "status": "completed",
+          "model": "jev-1.13.0",
+          "usage": {
+            "input_tokens": 2279,
+            "output_tokens": 55
+          },
+          "seconds": 0.5510531669999992
+        },
+        {
+          "questions": [
+            "action"
+          ],
+          "status": "completed",
+          "model": "jev-1.13.0",
+          "usage": {
+            "input_tokens": 12548,
+            "output_tokens": 2478
+          },
+          "seconds": 0.6892357919999981
+        },
+        {
+          "questions": [
+            "action"
+          ],
+          "status": "completed",
+          "model": "jev-1.13.0",
+          "usage": {
+            "input_tokens": 6105,
+            "output_tokens": 987
+          },
+          "seconds": 0.5848244170000001
+        },
+        {
+          "questions": [
+            "action"
+          ],
+          "status": "completed",
+          "model": "jev-1.13.0",
+          "usage": {
+            "input_tokens": 5975,
+            "output_tokens": 908
+          },
+          "seconds": 0.5710710419999998
+        },
+        {
+          "questions": [
+            "action"
+          ],
+          "status": "completed",
+          "model": "jev-1.13.0",
+          "usage": {
+            "input_tokens": 3266,
+            "output_tokens": 112
+          },
+          "seconds": 0.5807435410000039
+        },
+        {
+          "questions": [
+            "action"
+          ],
+          "status": "completed",
+          "model": "jev-1.13.0",
+          "usage": {
+            "input_tokens": 3577,
+            "output_tokens": 95
+          },
+          "seconds": 0.5762969159999969
+        },
+        {
+          "questions": [
+            "action"
+          ],
+          "status": "completed",
+          "model": "jev-1.13.0",
+          "usage": {
+            "input_tokens": 4037,
+            "output_tokens": 118
+          },
+          "seconds": 0.5435210410000053
+        },
+        {
+          "questions": [
+            "action"
+          ],
+          "status": "completed",
+          "model": "jev-1.13.0",
+          "usage": {
+            "input_tokens": 3918,
+            "output_tokens": 118
+          },
+          "seconds": 0.6366486670000029
+        },
+        {
+          "questions": [
+            "action"
+          ],
+          "status": "completed",
+          "model": "jev-1.13.0",
+          "usage": {
+            "input_tokens": 4244,
+            "output_tokens": 92
+          },
+          "seconds": 0.5668665000000033
+        },
+        {
+          "questions": [
+            "action"
+          ],
+          "status": "completed",
+          "model": "jev-1.13.0",
+          "usage": {
+            "input_tokens": 4373,
+            "output_tokens": 78
+          },
+          "seconds": 0.5689150830000003
+        },
+        {
+          "questions": [
+            "action"
+          ],
+          "status": "completed",
+          "model": "jev-1.13.0",
+          "usage": {
+            "input_tokens": 4514,
+            "output_tokens": 65
+          },
+          "seconds": 0.5789071660000005
+        }
+      ],
+      "turns": 39,
+      "focal_role": "landlord",
+      "finish": {
+        "winner": "p2",
+        "landlord": "p0",
+        "spring": false,
+        "multiplier": 2,
+        "rewards": {
+          "p0": -4.0,
+          "p1": 2.0,
+          "p2": 2.0
+        }
+      },
+      "elapsed_seconds": 7.121436625000001,
+      "trace_path": "doudizhu-full-deal-live-v1-episodes/game_009.json"
+    }
+  ],
+  "summary": {
+    "attempted": 10,
+    "completed": 10,
+    "team_wins": 3,
+    "team_losses": 7,
+    "completed_win_rate": 0.3,
+    "status_counts": {
+      "completed": 10
+    },
+    "mean_completed_score": -1.9,
+    "api_attempts": 69,
+    "api_errors": 0,
+    "known_usage": {
+      "input_tokens": 269793,
+      "output_tokens": 16021
+    },
+    "unknown_usage_calls": 0,
+    "model_versions": [
+      "jev-1.13.0"
+    ],
+    "by_role": {
+      "landlord": {
+        "completed": 4,
+        "wins": 0
+      },
+      "farmer": {
+        "completed": 6,
+        "wins": 3
+      }
+    }
+  },
+  "completed_at": "2026-10-12T16:48:06.000510+00:00"
+}

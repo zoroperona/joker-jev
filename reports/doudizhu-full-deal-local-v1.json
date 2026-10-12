@@ -1,0 +1,1033 @@
+{
+  "protocol": "full_doudizhu_v1",
+  "status": "completed",
+  "manifest": {
+    "rules_version": "classic_scored_v1",
+    "settings": [
+      {
+        "seed": 20261016,
+        "focal": "p0"
+      },
+      {
+        "seed": 20261017,
+        "focal": "p1"
+      },
+      {
+        "seed": 20261018,
+        "focal": "p2"
+      },
+      {
+        "seed": 20261019,
+        "focal": "p0"
+      },
+      {
+        "seed": 20261020,
+        "focal": "p1"
+      },
+      {
+        "seed": 20261021,
+        "focal": "p2"
+      },
+      {
+        "seed": 20261022,
+        "focal": "p0"
+      },
+      {
+        "seed": 20261023,
+        "focal": "p1"
+      },
+      {
+        "seed": 20261024,
+        "focal": "p2"
+      },
+      {
+        "seed": 20261025,
+        "focal": "p0"
+      }
+    ],
+    "initial_deals": [
+      {
+        "hands": [
+          [
+            "3",
+            "4",
+            "4",
+            "4",
+            "5",
+            "6",
+            "7",
+            "7",
+            "8",
+            "9",
+            "10",
+            "Q",
+            "K",
+            "A",
+            "2",
+            "SJ",
+            "BJ"
+          ],
+          [
+            "3",
+            "3",
+            "6",
+            "6",
+            "8",
+            "8",
+            "8",
+            "9",
+            "9",
+            "10",
+            "10",
+            "J",
+            "Q",
+            "A",
+            "A",
+            "2",
+            "2"
+          ],
+          [
+            "3",
+            "4",
+            "5",
+            "5",
+            "6",
+            "7",
+            "7",
+            "9",
+            "10",
+            "J",
+            "J",
+            "Q",
+            "Q",
+            "K",
+            "K",
+            "K",
+            "2"
+          ]
+        ],
+        "bottom": [
+          "5",
+          "J",
+          "A"
+        ],
+        "first_bidder": "p0"
+      },
+      {
+        "hands": [
+          [
+            "3",
+            "4",
+            "5",
+            "6",
+            "6",
+            "6",
+            "7",
+            "7",
+            "8",
+            "9",
+            "9",
+            "Q",
+            "Q",
+            "K",
+            "K",
+            "2",
+            "SJ"
+          ],
+          [
+            "3",
+            "3",
+            "4",
+            "5",
+            "5",
+            "6",
+            "7",
+            "8",
+            "8",
+            "9",
+            "10",
+            "J",
+            "Q",
+            "A",
+            "A",
+            "2",
+            "BJ"
+          ],
+          [
+            "4",
+            "4",
+            "5",
+            "8",
+            "9",
+            "10",
+            "10",
+            "J",
+            "J",
+            "J",
+            "Q",
+            "K",
+            "K",
+            "A",
+            "A",
+            "2",
+            "2"
+          ]
+        ],
+        "bottom": [
+          "3",
+          "7",
+          "10"
+        ],
+        "first_bidder": "p1"
+      },
+      {
+        "hands": [
+          [
+            "3",
+            "4",
+            "5",
+            "5",
+            "6",
+            "8",
+            "8",
+            "9",
+            "10",
+            "10",
+            "10",
+            "J",
+            "Q",
+            "A",
+            "2",
+            "2",
+            "SJ"
+          ],
+          [
+            "3",
+            "3",
+            "4",
+            "5",
+            "7",
+            "7",
+            "8",
+            "9",
+            "9",
+            "9",
+            "J",
+            "Q",
+            "K",
+            "K",
+            "K",
+            "A",
+            "BJ"
+          ],
+          [
+            "3",
+            "4",
+            "4",
+            "5",
+            "6",
+            "6",
+            "7",
+            "7",
+            "10",
+            "J",
+            "J",
+            "Q",
+            "Q",
+            "K",
+            "A",
+            "A",
+            "2"
+          ]
+        ],
+        "bottom": [
+          "6",
+          "8",
+          "2"
+        ],
+        "first_bidder": "p2"
+      },
+      {
+        "hands": [
+          [
+            "4",
+            "5",
+            "5",
+            "6",
+            "7",
+            "8",
+            "9",
+            "10",
+            "10",
+            "J",
+            "Q",
+            "Q",
+            "K",
+            "K",
+            "A",
+            "2",
+            "2"
+          ],
+          [
+            "3",
+            "3",
+            "4",
+            "5",
+            "6",
+            "6",
+            "7",
+            "8",
+            "9",
+            "9",
+            "9",
+            "J",
+            "Q",
+            "K",
+            "K",
+            "2",
+            "BJ"
+          ],
+          [
+            "3",
+            "3",
+            "4",
+            "4",
+            "5",
+            "6",
+            "7",
+            "7",
+            "8",
+            "10",
+            "10",
+            "J",
+            "J",
+            "A",
+            "A",
+            "2",
+            "SJ"
+          ]
+        ],
+        "bottom": [
+          "8",
+          "Q",
+          "A"
+        ],
+        "first_bidder": "p0"
+      },
+      {
+        "hands": [
+          [
+            "3",
+            "4",
+            "5",
+            "6",
+            "7",
+            "7",
+            "7",
+            "7",
+            "8",
+            "8",
+            "10",
+            "J",
+            "Q",
+            "Q",
+            "K",
+            "A",
+            "SJ"
+          ],
+          [
+            "3",
+            "4",
+            "5",
+            "5",
+            "6",
+            "8",
+            "9",
+            "9",
+            "9",
+            "J",
+            "J",
+            "Q",
+            "Q",
+            "K",
+            "A",
+            "A",
+            "2"
+          ],
+          [
+            "3",
+            "3",
+            "4",
+            "4",
+            "5",
+            "6",
+            "6",
+            "8",
+            "9",
+            "10",
+            "10",
+            "J",
+            "K",
+            "K",
+            "2",
+            "2",
+            "BJ"
+          ]
+        ],
+        "bottom": [
+          "10",
+          "A",
+          "2"
+        ],
+        "first_bidder": "p1"
+      },
+      {
+        "hands": [
+          [
+            "3",
+            "5",
+            "5",
+            "6",
+            "6",
+            "6",
+            "7",
+            "7",
+            "7",
+            "8",
+            "10",
+            "J",
+            "J",
+            "Q",
+            "K",
+            "A",
+            "BJ"
+          ],
+          [
+            "4",
+            "4",
+            "4",
+            "5",
+            "5",
+            "7",
+            "8",
+            "8",
+            "9",
+            "9",
+            "10",
+            "J",
+            "Q",
+            "Q",
+            "A",
+            "A",
+            "2"
+          ],
+          [
+            "3",
+            "3",
+            "3",
+            "4",
+            "6",
+            "8",
+            "9",
+            "10",
+            "10",
+            "K",
+            "K",
+            "K",
+            "A",
+            "2",
+            "2",
+            "2",
+            "SJ"
+          ]
+        ],
+        "bottom": [
+          "9",
+          "J",
+          "Q"
+        ],
+        "first_bidder": "p2"
+      },
+      {
+        "hands": [
+          [
+            "4",
+            "5",
+            "7",
+            "7",
+            "8",
+            "8",
+            "9",
+            "9",
+            "10",
+            "10",
+            "J",
+            "J",
+            "Q",
+            "Q",
+            "K",
+            "2",
+            "BJ"
+          ],
+          [
+            "3",
+            "3",
+            "4",
+            "4",
+            "6",
+            "8",
+            "9",
+            "9",
+            "10",
+            "10",
+            "K",
+            "A",
+            "A",
+            "A",
+            "2",
+            "2",
+            "SJ"
+          ],
+          [
+            "3",
+            "3",
+            "4",
+            "5",
+            "5",
+            "5",
+            "6",
+            "6",
+            "6",
+            "7",
+            "7",
+            "J",
+            "J",
+            "Q",
+            "K",
+            "A",
+            "2"
+          ]
+        ],
+        "bottom": [
+          "8",
+          "Q",
+          "K"
+        ],
+        "first_bidder": "p0"
+      },
+      {
+        "hands": [
+          [
+            "3",
+            "3",
+            "4",
+            "4",
+            "5",
+            "5",
+            "7",
+            "8",
+            "8",
+            "9",
+            "10",
+            "10",
+            "J",
+            "J",
+            "A",
+            "A",
+            "2"
+          ],
+          [
+            "4",
+            "5",
+            "5",
+            "6",
+            "9",
+            "10",
+            "10",
+            "J",
+            "Q",
+            "Q",
+            "K",
+            "K",
+            "K",
+            "K",
+            "A",
+            "A",
+            "2"
+          ],
+          [
+            "3",
+            "3",
+            "4",
+            "6",
+            "6",
+            "6",
+            "7",
+            "7",
+            "8",
+            "8",
+            "9",
+            "9",
+            "J",
+            "Q",
+            "Q",
+            "2",
+            "SJ"
+          ]
+        ],
+        "bottom": [
+          "7",
+          "2",
+          "BJ"
+        ],
+        "first_bidder": "p1"
+      },
+      {
+        "hands": [
+          [
+            "3",
+            "4",
+            "4",
+            "6",
+            "7",
+            "7",
+            "8",
+            "9",
+            "10",
+            "Q",
+            "K",
+            "K",
+            "K",
+            "A",
+            "2",
+            "2",
+            "BJ"
+          ],
+          [
+            "3",
+            "5",
+            "5",
+            "6",
+            "6",
+            "7",
+            "8",
+            "9",
+            "9",
+            "10",
+            "10",
+            "10",
+            "J",
+            "A",
+            "A",
+            "2",
+            "SJ"
+          ],
+          [
+            "3",
+            "3",
+            "4",
+            "4",
+            "5",
+            "6",
+            "7",
+            "8",
+            "8",
+            "9",
+            "J",
+            "J",
+            "J",
+            "Q",
+            "Q",
+            "K",
+            "2"
+          ]
+        ],
+        "bottom": [
+          "5",
+          "Q",
+          "A"
+        ],
+        "first_bidder": "p2"
+      },
+      {
+        "hands": [
+          [
+            "5",
+            "7",
+            "7",
+            "7",
+            "9",
+            "10",
+            "10",
+            "J",
+            "J",
+            "J",
+            "J",
+            "Q",
+            "K",
+            "A",
+            "2",
+            "2",
+            "BJ"
+          ],
+          [
+            "3",
+            "3",
+            "3",
+            "4",
+            "4",
+            "4",
+            "5",
+            "6",
+            "6",
+            "7",
+            "8",
+            "10",
+            "Q",
+            "Q",
+            "K",
+            "K",
+            "2"
+          ],
+          [
+            "3",
+            "4",
+            "5",
+            "5",
+            "6",
+            "6",
+            "8",
+            "8",
+            "8",
+            "9",
+            "10",
+            "Q",
+            "K",
+            "A",
+            "A",
+            "A",
+            "SJ"
+          ]
+        ],
+        "bottom": [
+          "9",
+          "9",
+          "2"
+        ],
+        "first_bidder": "p0"
+      }
+    ]
+  },
+  "sha256": "e2466f10da6c6024f0dcc333b22ff287a30cb4637eb84e39c57f09624b9b4dce",
+  "strategy": "simple_selfplay",
+  "started_at": "2026-10-12T16:46:16.951230+00:00",
+  "episodes": [
+    {
+      "seed": 20261016,
+      "focal": "p0",
+      "strategy": "simple_selfplay",
+      "status": "completed",
+      "team_reward": 1,
+      "rewards": {
+        "p0": 8.0,
+        "p1": -4.0,
+        "p2": -4.0
+      },
+      "api_ledger": [],
+      "turns": 43,
+      "focal_role": "landlord",
+      "finish": {
+        "winner": "p0",
+        "landlord": "p0",
+        "spring": false,
+        "multiplier": 2,
+        "rewards": {
+          "p0": 8.0,
+          "p1": -4.0,
+          "p2": -4.0
+        }
+      },
+      "elapsed_seconds": 0.654568125,
+      "trace_path": "doudizhu-full-deal-local-v1-episodes/game_000.json"
+    },
+    {
+      "seed": 20261017,
+      "focal": "p1",
+      "strategy": "simple_selfplay",
+      "status": "completed",
+      "team_reward": -1,
+      "rewards": {
+        "p0": 1.0,
+        "p1": -2.0,
+        "p2": 1.0
+      },
+      "api_ledger": [],
+      "turns": 56,
+      "focal_role": "landlord",
+      "finish": {
+        "winner": "p2",
+        "landlord": "p1",
+        "spring": false,
+        "multiplier": 1,
+        "rewards": {
+          "p0": 1.0,
+          "p1": -2.0,
+          "p2": 1.0
+        }
+      },
+      "elapsed_seconds": 1.241317125,
+      "trace_path": "doudizhu-full-deal-local-v1-episodes/game_001.json"
+    },
+    {
+      "seed": 20261018,
+      "focal": "p2",
+      "strategy": "simple_selfplay",
+      "status": "completed",
+      "team_reward": 1,
+      "rewards": {
+        "p0": -2.0,
+        "p1": 1.0,
+        "p2": 1.0
+      },
+      "api_ledger": [],
+      "turns": 35,
+      "focal_role": "farmer",
+      "finish": {
+        "winner": "p1",
+        "landlord": "p0",
+        "spring": false,
+        "multiplier": 1,
+        "rewards": {
+          "p0": -2.0,
+          "p1": 1.0,
+          "p2": 1.0
+        }
+      },
+      "elapsed_seconds": 0.41193566599999976,
+      "trace_path": "doudizhu-full-deal-local-v1-episodes/game_002.json"
+    },
+    {
+      "seed": 20261019,
+      "focal": "p0",
+      "strategy": "simple_selfplay",
+      "status": "completed",
+      "team_reward": 1,
+      "rewards": {
+        "p0": 2.0,
+        "p1": -1.0,
+        "p2": -1.0
+      },
+      "api_ledger": [],
+      "turns": 43,
+      "focal_role": "landlord",
+      "finish": {
+        "winner": "p0",
+        "landlord": "p0",
+        "spring": false,
+        "multiplier": 1,
+        "rewards": {
+          "p0": 2.0,
+          "p1": -1.0,
+          "p2": -1.0
+        }
+      },
+      "elapsed_seconds": 0.6566519999999998,
+      "trace_path": "doudizhu-full-deal-local-v1-episodes/game_003.json"
+    },
+    {
+      "seed": 20261020,
+      "focal": "p1",
+      "strategy": "simple_selfplay",
+      "status": "completed",
+      "team_reward": -1,
+      "rewards": {
+        "p0": 8.0,
+        "p1": -4.0,
+        "p2": -4.0
+      },
+      "api_ledger": [],
+      "turns": 58,
+      "focal_role": "farmer",
+      "finish": {
+        "winner": "p0",
+        "landlord": "p0",
+        "spring": false,
+        "multiplier": 2,
+        "rewards": {
+          "p0": 8.0,
+          "p1": -4.0,
+          "p2": -4.0
+        }
+      },
+      "elapsed_seconds": 1.31099525,
+      "trace_path": "doudizhu-full-deal-local-v1-episodes/game_004.json"
+    },
+    {
+      "seed": 20261021,
+      "focal": "p2",
+      "strategy": "simple_selfplay",
+      "status": "completed",
+      "team_reward": -1,
+      "rewards": {
+        "p0": 1.0,
+        "p1": 1.0,
+        "p2": -2.0
+      },
+      "api_ledger": [],
+      "turns": 26,
+      "focal_role": "landlord",
+      "finish": {
+        "winner": "p0",
+        "landlord": "p2",
+        "spring": false,
+        "multiplier": 1,
+        "rewards": {
+          "p0": 1.0,
+          "p1": 1.0,
+          "p2": -2.0
+        }
+      },
+      "elapsed_seconds": 0.21326520800000015,
+      "trace_path": "doudizhu-full-deal-local-v1-episodes/game_005.json"
+    },
+    {
+      "seed": 20261022,
+      "focal": "p0",
+      "strategy": "simple_selfplay",
+      "status": "completed",
+      "team_reward": -1,
+      "rewards": {
+        "p0": -2.0,
+        "p1": 1.0,
+        "p2": 1.0
+      },
+      "api_ledger": [],
+      "turns": 44,
+      "focal_role": "landlord",
+      "finish": {
+        "winner": "p1",
+        "landlord": "p0",
+        "spring": false,
+        "multiplier": 1,
+        "rewards": {
+          "p0": -2.0,
+          "p1": 1.0,
+          "p2": 1.0
+        }
+      },
+      "elapsed_seconds": 0.6688627919999997,
+      "trace_path": "doudizhu-full-deal-local-v1-episodes/game_006.json"
+    },
+    {
+      "seed": 20261023,
+      "focal": "p1",
+      "strategy": "simple_selfplay",
+      "status": "completed",
+      "team_reward": -1,
+      "rewards": {
+        "p0": 1.0,
+        "p1": -2.0,
+        "p2": 1.0
+      },
+      "api_ledger": [],
+      "turns": 47,
+      "focal_role": "landlord",
+      "finish": {
+        "winner": "p2",
+        "landlord": "p1",
+        "spring": false,
+        "multiplier": 1,
+        "rewards": {
+          "p0": 1.0,
+          "p1": -2.0,
+          "p2": 1.0
+        }
+      },
+      "elapsed_seconds": 0.7777406670000007,
+      "trace_path": "doudizhu-full-deal-local-v1-episodes/game_007.json"
+    },
+    {
+      "seed": 20261024,
+      "focal": "p2",
+      "strategy": "simple_selfplay",
+      "status": "completed",
+      "team_reward": -1,
+      "rewards": {
+        "p0": 2.0,
+        "p1": -1.0,
+        "p2": -1.0
+      },
+      "api_ledger": [],
+      "turns": 22,
+      "focal_role": "farmer",
+      "finish": {
+        "winner": "p0",
+        "landlord": "p0",
+        "spring": false,
+        "multiplier": 1,
+        "rewards": {
+          "p0": 2.0,
+          "p1": -1.0,
+          "p2": -1.0
+        }
+      },
+      "elapsed_seconds": 0.16376462499999977,
+      "trace_path": "doudizhu-full-deal-local-v1-episodes/game_008.json"
+    },
+    {
+      "seed": 20261025,
+      "focal": "p0",
+      "strategy": "simple_selfplay",
+      "status": "completed",
+      "team_reward": 1,
+      "rewards": {
+        "p0": 6.0,
+        "p1": -3.0,
+        "p2": -3.0
+      },
+      "api_ledger": [],
+      "turns": 26,
+      "focal_role": "landlord",
+      "finish": {
+        "winner": "p0",
+        "landlord": "p0",
+        "spring": false,
+        "multiplier": 1,
+        "rewards": {
+          "p0": 6.0,
+          "p1": -3.0,
+          "p2": -3.0
+        }
+      },
+      "elapsed_seconds": 0.2397304999999994,
+      "trace_path": "doudizhu-full-deal-local-v1-episodes/game_009.json"
+    }
+  ],
+  "summary": {
+    "attempted": 10,
+    "completed": 10,
+    "team_wins": 4,
+    "team_losses": 6,
+    "completed_win_rate": 0.4,
+    "status_counts": {
+      "completed": 10
+    },
+    "mean_completed_score": 0.4,
+    "api_attempts": 0,
+    "api_errors": 0,
+    "known_usage": {},
+    "unknown_usage_calls": 0,
+    "model_versions": [],
+    "by_role": {
+      "landlord": {
+        "completed": 7,
+        "wins": 3
+      },
+      "farmer": {
+        "completed": 3,
+        "wins": 1
+      }
+    }
+  },
+  "completed_at": "2026-10-12T16:46:23.402186+00:00"
+}

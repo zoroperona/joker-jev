@@ -1,6 +1,17 @@
-# 斗地主策略状态与残局回归集
+# 斗地主
 
-这一步先验证身份协作、座位、牌权和出牌路线，不提供完整斗地主对局。模块暂不注册到 `GAME_REGISTRY`，不假装已经支持发牌、叫地主和所有牌型。
+主游戏现已支持完整经典斗地主，入口为 `full/`，通过 `create_game("doudizhu")` 注册。包含 54 张发牌、叫地主、全套经典牌型、底牌公开、炸弹/春天倍数和终局积分。
+
+```bash
+python3 -m joker_jev --game doudizhu --agent simple --seed 42
+python3 -m joker_jev.games.doudizhu.full.match --live --episodes 10 --output reports/my-full-games.json
+```
+
+[完整规则和实现](../../../docs/full-doudizhu.md) · [完整对局实测](../../../reports/doudizhu-full-deal-live-v1.md)。
+
+## 保留的策略状态与残局回归集
+
+以下文档仅说明历史受限残局模块，用于单独验证身份协作、座位、牌权和出牌路线；它与完整玩法并存。
 
 ```bash
 # 本地规则检查与参考诊断，无网络调用，无策略通过门槛

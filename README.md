@@ -1,156 +1,91 @@
 # Joker + JEV
 
-用于测试不同卡牌游戏与决策策略的统一环境。每款游戏独立实现规则、信息可见性、合法动作、奖励和记牌推断；共享引擎负责推进对局。Python 3.9+，运行和测试仅使用标准库。
+用于测试卡牌游戏与 JEV 决策的可扩展 Python 框架。**当前主游戏支持完整的三人经典斗地主**：从 54 张发牌、叫地主、公开底牌到完整牌型出牌和终局计分。Python 3.9+，仅依赖标准库。
 
-## 当前支持：斗地主
-
-主游戏是**斗地主受限残局**：三人身份、农民团队胜负、记牌和未知牌推断、合法动作、逐轮 JEV 决策及可复盘日志。当前每人剩余 1–4 张，剩余牌池每个普通点数最多两张，支持单牌、对子、王炸。包含手牌数量不均、跟单牌/对子、地主剩一张/两张、一次过牌后的牌权处理。
-
-**尚不支持完整 54 张发牌、叫地主、三带、顺子、连对、飞机、普通炸弹和倍数规则。** `high_card` 仅作为演示如何接入另一款游戏的最小示例。
+## 快速开始
 
 ```bash
-# 斗地主：50 副混合残局，轮换三个身份；本地模拟，无需 API key
-python3 -m joker_jev.games.doudizhu.fullgame --scenario-set mixed --balanced --cases 50 --seed 20261014 --output reports/my-mixed-local.json
-# 加 --live 则在相同设置对比当前 JEV、纯模拟、模拟＋JEV
-python3 -m joker_jev.games.doudizhu.fullgame --scenario-set mixed --balanced --cases 50 --seed 20261014 --live --output reports/my-mixed-live.json
-```
-
-报告输出路径必须不存在，避免覆盖历史实验。JEV 需要本地 `.env` 配置；模型默认固定为 `jev-1.13.0`。策略选择与人工建议不同，不算测试失败。
-
-## 简单 AI 与 10 场真实对局
-
-已实现原创 `SimpleDoudizhuAgent`：出完优先、让牌协作、单张守门、对子控制和保留手牌结构。它只使用自身手牌及公开信息，不调用 JEV，也不读取对手真实底牌。设计与协议见 [简单 AI 文档](docs/simple-doudizhu-ai.md)。
-
-```bash
-# 无网络：简单 AI 自对弈（不是 JEV 胜率）
-python3 -m joker_jev.games.doudizhu.match --local --output reports/my-simple-selfplay.json
-# 真实 JEV 对简单 AI，固定 10 场，需配置 .env
-python3 -m joker_jev.games.doudizhu.match --seed 20261015 --model jev-1.13.0 --output reports/my-jev-vs-simple.json
-```
-
-首次真实实验：**JEV 所在团队 5 胜 5 负，胜率 50%（10/10 场完成，0 接口错误）**。对方团队也为 5 胜 5 负。JEV 使用战术判断＋Choice，没有模拟评分；其余两个座位均由简单 AI 控制，包含 JEV 为农民时的队友。
-
-| JEV 身份 | 场数 | 团队胜/负 |
-|---|---:|---:|
-| 地主 | 4 | 3/1 |
-| 地主下家农民 | 3 | 1/2 |
-| 地主上家农民 | 3 | 1/2 |
-
-固定种子 `20261015`，五类混合残局各两副；模型实际返回 `jev-1.13.0`。共 **22 次 API 调用**，已知输入 34754 / 输出 1246 token。所有牌局与设置在首次调用前保存，未筛选胜负、未自动补跑。只有 10 场且为受限残局，不能当作完整斗地主的稳定实力结论。
-
-[10 场结果及逐局回放](reports/jev-vs-simple-10-v1.md) · [原始数据](reports/jev-vs-simple-10-v1.json) · [测试代码](tests/test_simple_ai.py)。当前 62 项正确性测试通过；不设胜率通过门槛。
-
-## 安装与基础验证
-
-克隆仓库并进入目录即可运行，无额外依赖。以下 `high_card` 命令用于验证通用引擎：
-
-```bash
-python3 -m joker_jev --game high_card --seed 42
-python3 -m joker_jev --game high_card --seed 42 --episodes 10
-python3 -m joker_jev --agent jev --seed 42
+git clone https://github.com/zoroperona/joker-jev.git
+cd joker-jev
+# 完整斗地主，三位简单 AI 自对弈，无需密钥
+python3 -m joker_jev --game doudizhu --agent simple --seed 42
+# 完整对局 10 场，保存汇总、逐步回放和 Markdown 报告
+python3 -m joker_jev.games.doudizhu.full.match --episodes 10 --output reports/my-full-local.json
+# 正确性测试
 python3 -m unittest discover -s tests -v
 ```
 
-每行输出一局的 JSON，包含动作步数、累计奖励和公开事件。默认使用随机策略。随机基线在相同游戏种子和策略种子下可复现；远程 JEV 的回答不保证可复现。
+使用 JEV 时，将 `.env.example` 复制为本地 `.env` 并填写 `TYPESAFE_API_KEY`。默认 endpoint 为 `https://api.typesafe.ai/v1/systemone`；实验模型固定为 `jev-1.13.0`。`.env` 被 Git 忽略，不要把密钥写进报告或提交。
 
-使用 `--agent jev` 时，首位玩家通过 TypeSafe API 决策，对手使用随机策略。从 `.env.example` 创建本地 `.env`，填写 `TYPESAFE_API_KEY`；endpoint 默认为 `https://api.typesafe.ai/v1/systemone`，模型默认为 `jev-latest`。程序自动读取 `.env`，环境变量优先；`.env` 已被 Git 忽略。运行默认随机对局和测试不需要凭据或网络。
+```bash
+# 10 场真实完整对局：JEV 控制一个轮换座位，其余两位为简单 AI
+python3 -m joker_jev.games.doudizhu.full.match --live --episodes 10 --seed 20261016 --output reports/my-full-live.json
+```
 
-## 分层
+输出路径必须不存在，避免覆盖历史结果。JEV 身份由每局叫分决定；当它是农民时，队友也是简单 AI。远程输出不保证重跑完全一致；不因输赢重抽牌局，接口错误单列且不算输局。
+
+## 完整玩法
+
+- 54 张牌，17/17/17 张加 3 张底牌；1–3 分叫地主，全不叫重发，地主先出。
+- 单张、对子、三张、三带一/对、顺子、连对、飞机及单/对翅、四带二单/二对、炸弹、王炸。
+- 两家过牌归还牌权；地主对两位农民，农民共享胜负。
+- 炸弹/王炸翻倍，春天/反春天翻倍；地主与农民按 2:1:1 积分，零和结算。
+- 自身手牌隔离、公开记牌、底牌约束与未知牌估计、逐轮重新决策和日志。
+
+采用经典叫分制，不启用额外抢地主、加倍、癞子或四人变体；飞机单翅、四带二等地区差异已明确约定。详见 [完整规则和实现](docs/full-doudizhu.md)。
+
+## AI 与 JEV
+
+完整玩法的 `FullSimpleAgent` 是原创启发式 AI：评估手牌叫分，出完优先、队友让牌、报单守门、保留炸弹，并用近似剩余组合数选牌。不使用模型、训练权重或真实对手底牌。
+
+JEV 接收规则、奖惩、自己手牌、公开状态、推断与合法选项，返回 Choice。超过 API 的 255 候选限制时，采用“牌型 → 主体 → 具体出法”的分层选择，保留全部合法候选，不截断出牌集合。不手工指定动作推荐权重，返回概率也不是实际获胜概率。
+
+**策略不要求最优。** 合法性、规则、信息隔离和协议属于正确性测试；胜率、积分、耗时、调用用量是表现指标。与人工建议不同不等于测试失败。
+
+## 完整对局实测
+
+首轮 **10 场真实 JEV 对简单 AI** 全部正常结束：JEV 团队 **3 胜 7 负，胜率 30%**，平均积分 -1.9，0 接口错误。固定种子 20261016–20261025，实际模型 `jev-1.13.0`，共 69 次 API 调用，已知输入 269,793 / 输出 16,021 token。
+
+| JEV 最终身份 | 场数 | 胜/负 |
+|---|---:|---:|
+| 地主 | 4 | 0/4 |
+| 农民 | 6 | 3/3 |
+
+身份由叫分产生；10 场和一种简单对手不足以推断稳定实力。原先残局实验的 50% 不是完整对局胜率。
+
+[完整对局报告与逐场回放](reports/doudizhu-full-deal-live-v1.md) · [原始数据](reports/doudizhu-full-deal-live-v1.json) · [本地完整自对弈](reports/doudizhu-full-deal-local-v1.md)。
+
+正确性测试包括完整玩法与原有残局回归，当前 **76 项通过**。完整玩法测试见 [test_full_doudizhu.py](tests/test_full_doudizhu.py)。
+
+## 架构与扩展
 
 ```text
 joker_jev/
-  core/
-    models.py          规则、奖励、观察、推断和决策的数据协议
-    game.py            CardGame / CardInference 抽象基类
-    engine.py          通用对局循环、动作校验、奖励累计
-  agents/
-    base.py            Agent 抽象基类、随机策略
-    jev.py             JEV 的 JSON 输入输出适配器
-    typesafe.py        System One HTTP 后端、Choice 和本地配置
+  core/                    CardGame、Agent 上下文、共享对局引擎和奖励协议
+  agents/                  通用随机/JEV 策略、TypeSafe HTTP 后端
   games/
-    __init__.py        游戏注册表
-    high_card/         双人三轮比牌示例
-      game.py          状态、规则、发牌、出牌和结算
-      inference.py     已出牌统计、未知牌和对手持牌概率
-      agent.py         该游戏专用的启发式基线
-      README.md        规则说明与能力边界
-docs/
-  adding-a-game.md      新游戏必须提供的内容和开发步骤
-  jev-protocol.md       JEV 接入约定
+    doudizhu/
+      full/                完整牌型、发牌/叫分/出牌状态机、AI 和完整对局评测
+      environment.py       保留的受限残局环境
+      strategy.py          保留的残局推断与离线诊断
+    high_card/             最小比牌示例，演示第二款游戏接入
 ```
 
-引擎每一步执行：构造当前玩家观察 → 记牌和推断 → 向 Agent 提供规则与奖励目标 → 验证动作 ID → 执行游戏规则 → 累计奖励与公开历史。
+每个游戏独立提供规则、状态、合法动作、观察、奖励和推断；共享引擎检查合法性、推进状态并累计奖励。完整斗地主通过 `create_game("doudizhu")` 注册；小残局用固定快照构造 `EndgameGame`。
 
-真实完整状态保留在游戏环境内，Agent 和推断器只拿到当前玩家可见信息的副本。推断中的事实、估计和假设分别表达。新增游戏不需要修改引擎。
+[游戏接入规范](docs/adding-a-game.md) · [JEV 协议](docs/jev-protocol.md) · [策略评测原则](docs/strategy-evaluation.md)。进程内视角隔离用于可信插件，不是运行恶意插件的安全沙箱。
 
-## 接入决策策略
+## 保留的残局实验
 
-```python
-from joker_jev.agents.base import RandomAgent
-from joker_jev.core.engine import play
-from joker_jev.games import create_game
-from joker_jev.games.high_card.agent import HighCardHeuristicAgent
-
-game = create_game("high_card")
-result = play(game, {"p0": HighCardHeuristicAgent(), "p1": RandomAgent(7)}, seed=42)
-print(result.rewards)
-```
-
-已接入 TypeSafe 的 Jev：`JEVAgent(TypeSafeBackend.from_env())` 将规则、奖惩、可见状态、合法动作、公开历史、推断及自身累计奖励作为 `state`，以合法动作为 `Choice` 候选项。模型返回的选择经校验后交给游戏引擎执行。详见 [接入协议](docs/jev-protocol.md)。
-
-提供规则和奖励能让决策后端据此选择动作，但本框架本身不训练模型，也不保证策略最优。当前支持轮流行动、离散合法动作、合作式本地插件；同时行动需要由游戏先保存私有选择、待结算时再公开。进程内信息隔离不构成不可信代码的安全沙箱。
-
-开发新游戏请遵循 [游戏接入规范](docs/adding-a-game.md)。
-
-## 斗地主策略实验
-
-已加入 10 个小残局，用于测试身份协作、守门、让牌、牌权接管和单双牌控制。JEV 先回答独立战术问题，再选择动作；参考标注与全知底牌不进入模型输入。
+原有受限残局、模拟评分与三策略对照均保留，可单独复现：
 
 ```bash
-python3 -m joker_jev.games.doudizhu.evaluate
-python3 -m joker_jev.games.doudizhu.evaluate --agent jev --output reports/doudizhu-run.json
+python3 -m joker_jev.games.doudizhu.fullgame --scenario-set mixed --balanced --cases 50 --seed 20261014 --output reports/my-endgames.json
+python3 -m joker_jev.games.doudizhu.match --seed 20261015 --output reports/my-endgame-jev.json
 ```
 
-这部分是受限残局评测，还不是完整斗地主。范围、假设和运行方式见 [斗地主策略实验](joker_jev/games/doudizhu/README.md)。
+这些旧实验每人只剩 1–4 张，不能当作完整对局结果：
 
-围绕首次“抢队友牌权”的策略差异，另有八例协作对照集，可在不改问题文本的情况下比较显式公开控制事实的作用：
-
-```bash
-python3 -m joker_jev.games.doudizhu.compare --repeats 3 --output reports/cooperation-new-run.json
-```
-
-还可比较三种首步决策：当前 JEV、纯模拟、模拟加 JEV。模拟只使用玩家视角，枚举兼容隐藏牌并运行有限续局；团队收益、调用成本和诊断参考分别记录。
-
-```bash
-# 本地模拟，无 API 调用
-python3 -m joker_jev.games.doudizhu.benchmark --output reports/simulation-new-run.json
-# 三组真实对照
-python3 -m joker_jev.games.doudizhu.benchmark --live --repeats 2 --output reports/three-arm-new-run.json
-```
-
-**策略评测没有“必须最优”的通过条件。** 合法性、规则、信息隔离和协议属于正确性测试；人工建议一致性、全知求解和实验团队收益属于诊断与观测指标。
-
-首次三组真实实验已完成，收益、执行超时与成本见 [三组对照报告](reports/doudizhu-three-arm-v1.md)。
-
-每步重新决策的完整残局已接入同一 `CardGame` 引擎，可固定新快照、轮换目标座位，并改变农民搭档风格：
-
-```bash
-python3 -m joker_jev.games.doudizhu.fullgame --output reports/full-local-new.json
-python3 -m joker_jev.games.doudizhu.fullgame --live --cases 2 --workers 3 --output reports/full-live-new.json
-```
-
-每局保存独立逐步记录，网络错误不会伪装成输局；仍限定于小残局，不包含完整发牌和叫地主。详见 [完整残局协议](docs/full-endgame-evaluation.md)。
-
-首轮 36 局全部完成，按身份的结果与一局控制牌路线复盘见 [完整残局报告](reports/doudizhu-fullgame-v1.md)。
-
-扩展评测支持预先均衡分配随机、强压、保守和协作风格。50 副牌 × 三个目标座位 × 三种策略，共 450 局：
-
-```bash
-python3 -m joker_jev.games.doudizhu.fullgame --balanced --cases 50 --seed 20261013 --output reports/expanded-local-new.json
-python3 -m joker_jev.games.doudizhu.fullgame --balanced --cases 50 --seed 20261013 --live --output reports/expanded-live-new.json
-python3 -m joker_jev.games.doudizhu.report reports/expanded-live-new.json --local reports/expanded-local-new.json
-```
-
-报告生成器核对本地与线上案例、设置和纯模拟收益一致，汇总收益、成本及实际局面的行为统计。
-
-本轮 50 副牌、450 局已完成：[扩展对照报告](reports/doudizhu-expanded-live-v2.md)。所有局正常结束；本地与线上纯模拟逐设置收益一致。报告同时保留当前 JEV 优于纯模拟的局面，不以最优策略作为通过条件。
+- [50 副固定残局、450 局三策略对照](reports/doudizhu-expanded-live-v2.md)：当前 JEV 80/150 胜，纯模拟和模拟＋JEV 各 94/150 胜。
+- [10 场受限残局 JEV 对简单 AI](reports/jev-vs-simple-10-v1.md)：5 胜 5 负，胜率 50%。
+- [残局协议](docs/full-endgame-evaluation.md) · [残局 AI 设计](docs/simple-doudizhu-ai.md)。

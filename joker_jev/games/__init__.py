@@ -1,8 +1,9 @@
 """每款游戏使用独立子目录；显式注册，方便审查加载范围。"""
 
 from .high_card.game import HighCardGame
+from .doudizhu.full.game import FullDoudizhuGame
 
-GAME_REGISTRY = {"high_card": HighCardGame}
+GAME_REGISTRY = {"high_card": HighCardGame, "doudizhu": FullDoudizhuGame}
 
 
 def create_game(game_id: str):
