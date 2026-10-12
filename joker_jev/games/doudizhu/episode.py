@@ -15,6 +15,7 @@ from .environment import EndgameGame, strategy_state
 from .rollout import choose_hybrid, choose_simulation, policy_action, score_actions
 from .strategy import SEATS, control_facts
 from .tactics import decide
+from .simple_ai import choose_simple
 
 ARMS = ("current_jev", "simulation", "simulation_jev")
 
@@ -62,6 +63,8 @@ class ReplanningAgent(Agent):
         self.save()
         if len(state["legal_actions"]) == 1:
             choice = {"action_id": state["legal_actions"][0]["id"], "forced": True, "calls": []}
+        elif self.mode == "simple":
+            choice = {"action_id": choose_simple(state), "calls": [], "policy_version": "simple_doudizhu_v1"}
         elif self.mode == "current_jev":
             choice = decide(state, self.backend)
         elif self.mode in ("simulation", "simulation_jev"):
@@ -80,10 +83,10 @@ class ReplanningAgent(Agent):
 
 def run_episode(initial, arm, focal_seat, farmer_style="cooperative", seed=0,
                 backend=None, max_turns=36, output=None, landlord_style="pressure"):
-    styles = ("cooperative", "greedy", "random", "pressure", "conservative")
-    if arm not in ARMS or focal_seat not in SEATS or farmer_style not in styles or landlord_style not in styles:
+    styles = ("cooperative", "greedy", "random", "pressure", "conservative", "simple")
+    if arm not in (*ARMS, "simple") or focal_seat not in SEATS or farmer_style not in styles or landlord_style not in styles:
         raise ValueError("无效的策略、目标座位或农民搭档风格")
-    if arm != "simulation" and backend is None:
+    if arm in ("current_jev", "simulation_jev") and backend is None:
         raise ValueError("JEV 策略需要后端")
     if max_turns <= 0:
         raise ValueError("max_turns 必须为正")

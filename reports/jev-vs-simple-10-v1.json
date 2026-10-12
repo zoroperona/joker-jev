@@ -1,0 +1,1041 @@
+{
+  "protocol": "jev_vs_simple_endgame_v1",
+  "status": "completed",
+  "started_at": "2026-10-12T16:36:35.997866+00:00",
+  "manifest": {
+    "generator": "doudizhu_mixed_v1",
+    "seed": 20261015,
+    "cases": [
+      {
+        "id": "mixed_000",
+        "position": {
+          "hands": [
+            [
+              "K",
+              "K"
+            ],
+            [
+              "5",
+              "8",
+              "2"
+            ],
+            [
+              "5",
+              "7",
+              "J",
+              "BJ"
+            ]
+          ],
+          "actor": 0,
+          "target": [],
+          "owner": null,
+          "passes": 0
+        },
+        "scenario_kind": "uneven_lead"
+      },
+      {
+        "id": "mixed_001",
+        "position": {
+          "hands": [
+            [
+              "5",
+              "K"
+            ],
+            [
+              "4",
+              "6",
+              "K"
+            ],
+            [
+              "7",
+              "8",
+              "9",
+              "Q"
+            ]
+          ],
+          "actor": 0,
+          "target": [
+            "A"
+          ],
+          "owner": 2,
+          "passes": 0
+        },
+        "scenario_kind": "respond_single"
+      },
+      {
+        "id": "mixed_002",
+        "position": {
+          "hands": [
+            [
+              "6",
+              "10",
+              "A"
+            ],
+            [
+              "5",
+              "7",
+              "8",
+              "K"
+            ],
+            [
+              "4",
+              "Q"
+            ]
+          ],
+          "actor": 0,
+          "target": [
+            "A",
+            "A"
+          ],
+          "owner": 2,
+          "passes": 0
+        },
+        "scenario_kind": "respond_pair"
+      },
+      {
+        "id": "mixed_003",
+        "position": {
+          "hands": [
+            [
+              "BJ"
+            ],
+            [
+              "5",
+              "5",
+              "8",
+              "K"
+            ],
+            [
+              "6",
+              "9",
+              "K"
+            ]
+          ],
+          "actor": 0,
+          "target": [
+            "K"
+          ],
+          "owner": 1,
+          "passes": 1
+        },
+        "scenario_kind": "landlord_one"
+      },
+      {
+        "id": "mixed_004",
+        "position": {
+          "hands": [
+            [
+              "5",
+              "2"
+            ],
+            [
+              "4",
+              "J",
+              "A",
+              "BJ"
+            ],
+            [
+              "3",
+              "5",
+              "7",
+              "SJ"
+            ]
+          ],
+          "actor": 0,
+          "target": [
+            "8"
+          ],
+          "owner": 2,
+          "passes": 0
+        },
+        "scenario_kind": "landlord_two"
+      },
+      {
+        "id": "mixed_005",
+        "position": {
+          "hands": [
+            [
+              "J",
+              "BJ"
+            ],
+            [
+              "6",
+              "K",
+              "A"
+            ],
+            [
+              "4",
+              "6",
+              "10",
+              "Q"
+            ]
+          ],
+          "actor": 1,
+          "target": [],
+          "owner": null,
+          "passes": 0
+        },
+        "scenario_kind": "uneven_lead"
+      },
+      {
+        "id": "mixed_006",
+        "position": {
+          "hands": [
+            [
+              "9",
+              "A"
+            ],
+            [
+              "5",
+              "8",
+              "8"
+            ],
+            [
+              "9",
+              "10",
+              "A",
+              "BJ"
+            ]
+          ],
+          "actor": 1,
+          "target": [
+            "3"
+          ],
+          "owner": 2,
+          "passes": 1
+        },
+        "scenario_kind": "respond_single"
+      },
+      {
+        "id": "mixed_007",
+        "position": {
+          "hands": [
+            [
+              "3",
+              "6",
+              "8"
+            ],
+            [
+              "4",
+              "A"
+            ],
+            [
+              "9",
+              "10",
+              "Q",
+              "A"
+            ]
+          ],
+          "actor": 1,
+          "target": [
+            "A",
+            "A"
+          ],
+          "owner": 2,
+          "passes": 1
+        },
+        "scenario_kind": "respond_pair"
+      },
+      {
+        "id": "mixed_008",
+        "position": {
+          "hands": [
+            [
+              "A"
+            ],
+            [
+              "6",
+              "7"
+            ],
+            [
+              "10",
+              "Q",
+              "K"
+            ]
+          ],
+          "actor": 1,
+          "target": [],
+          "owner": null,
+          "passes": 0
+        },
+        "scenario_kind": "landlord_one"
+      },
+      {
+        "id": "mixed_009",
+        "position": {
+          "hands": [
+            [
+              "K",
+              "A"
+            ],
+            [
+              "3",
+              "6",
+              "9",
+              "A"
+            ],
+            [
+              "8",
+              "8",
+              "J"
+            ]
+          ],
+          "actor": 1,
+          "target": [],
+          "owner": null,
+          "passes": 0
+        },
+        "scenario_kind": "landlord_two"
+      }
+    ],
+    "sha256": "7d0a1a5b47336cce68857f70723b6c25904497b2c7c3dd837ce81575c7555f50",
+    "scope": "Synthetic unseen snapshots fixed before this run; not histories from full deals. No filtering by solver or JEV. Once examined these become development data, not permanently held-out data."
+  },
+  "settings": [
+    {
+      "case_id": "mixed_000",
+      "focal_seat": "landlord",
+      "scenario_kind": "uneven_lead",
+      "seed": 20261015,
+      "focal_policy": "current_jev",
+      "other_seats_policy": "simple_doudizhu_v1"
+    },
+    {
+      "case_id": "mixed_001",
+      "focal_seat": "farmer_after",
+      "scenario_kind": "respond_single",
+      "seed": 20261016,
+      "focal_policy": "current_jev",
+      "other_seats_policy": "simple_doudizhu_v1"
+    },
+    {
+      "case_id": "mixed_002",
+      "focal_seat": "farmer_before",
+      "scenario_kind": "respond_pair",
+      "seed": 20261017,
+      "focal_policy": "current_jev",
+      "other_seats_policy": "simple_doudizhu_v1"
+    },
+    {
+      "case_id": "mixed_003",
+      "focal_seat": "landlord",
+      "scenario_kind": "landlord_one",
+      "seed": 20261018,
+      "focal_policy": "current_jev",
+      "other_seats_policy": "simple_doudizhu_v1"
+    },
+    {
+      "case_id": "mixed_004",
+      "focal_seat": "farmer_after",
+      "scenario_kind": "landlord_two",
+      "seed": 20261019,
+      "focal_policy": "current_jev",
+      "other_seats_policy": "simple_doudizhu_v1"
+    },
+    {
+      "case_id": "mixed_005",
+      "focal_seat": "farmer_before",
+      "scenario_kind": "uneven_lead",
+      "seed": 20261020,
+      "focal_policy": "current_jev",
+      "other_seats_policy": "simple_doudizhu_v1"
+    },
+    {
+      "case_id": "mixed_006",
+      "focal_seat": "landlord",
+      "scenario_kind": "respond_single",
+      "seed": 20261021,
+      "focal_policy": "current_jev",
+      "other_seats_policy": "simple_doudizhu_v1"
+    },
+    {
+      "case_id": "mixed_007",
+      "focal_seat": "farmer_after",
+      "scenario_kind": "respond_pair",
+      "seed": 20261022,
+      "focal_policy": "current_jev",
+      "other_seats_policy": "simple_doudizhu_v1"
+    },
+    {
+      "case_id": "mixed_008",
+      "focal_seat": "farmer_before",
+      "scenario_kind": "landlord_one",
+      "seed": 20261023,
+      "focal_policy": "current_jev",
+      "other_seats_policy": "simple_doudizhu_v1"
+    },
+    {
+      "case_id": "mixed_009",
+      "focal_seat": "landlord",
+      "scenario_kind": "landlord_two",
+      "seed": 20261024,
+      "focal_policy": "current_jev",
+      "other_seats_policy": "simple_doudizhu_v1"
+    }
+  ],
+  "episodes": [
+    {
+      "arm": "current_jev",
+      "focal_seat": "landlord",
+      "farmer_style": "simple",
+      "seed": 20261015,
+      "landlord_style": "simple",
+      "policy_by_seat": {
+        "landlord": "current_jev",
+        "farmer_after": "simple",
+        "farmer_before": "simple"
+      },
+      "status": "completed",
+      "api_ledger": [
+        {
+          "questions": [
+            "must_block",
+            "yield_control",
+            "feed_teammate",
+            "pair_pressure"
+          ],
+          "status": "completed",
+          "model": "jev-1.13.0",
+          "usage": {
+            "input_tokens": 1291,
+            "output_tokens": 74
+          },
+          "seconds": 0.61367875
+        },
+        {
+          "questions": [
+            "action"
+          ],
+          "status": "completed",
+          "model": "jev-1.13.0",
+          "usage": {
+            "input_tokens": 1451,
+            "output_tokens": 39
+          },
+          "seconds": 0.5770182910000001
+        }
+      ],
+      "team_reward": 1.0,
+      "rewards": {
+        "landlord": 1.0,
+        "farmer_after": -1.0,
+        "farmer_before": -1.0
+      },
+      "turns": 1,
+      "elapsed_seconds": 1.198983625,
+      "applied_turns": 1,
+      "case_id": "mixed_000",
+      "scenario_kind": "uneven_lead",
+      "trace_path": "jev-vs-simple-10-v1-episodes/mixed_000.json"
+    },
+    {
+      "arm": "current_jev",
+      "focal_seat": "farmer_after",
+      "farmer_style": "simple",
+      "seed": 20261016,
+      "landlord_style": "simple",
+      "policy_by_seat": {
+        "landlord": "simple",
+        "farmer_after": "current_jev",
+        "farmer_before": "simple"
+      },
+      "status": "completed",
+      "api_ledger": [],
+      "team_reward": -1.0,
+      "rewards": {
+        "landlord": 1.0,
+        "farmer_after": -1.0,
+        "farmer_before": -1.0
+      },
+      "turns": 7,
+      "elapsed_seconds": 0.0272302080000002,
+      "applied_turns": 7,
+      "case_id": "mixed_001",
+      "scenario_kind": "respond_single",
+      "trace_path": "jev-vs-simple-10-v1-episodes/mixed_001.json"
+    },
+    {
+      "arm": "current_jev",
+      "focal_seat": "farmer_before",
+      "farmer_style": "simple",
+      "seed": 20261017,
+      "landlord_style": "simple",
+      "policy_by_seat": {
+        "landlord": "simple",
+        "farmer_after": "simple",
+        "farmer_before": "current_jev"
+      },
+      "status": "completed",
+      "api_ledger": [
+        {
+          "questions": [
+            "must_block",
+            "yield_control",
+            "feed_teammate",
+            "pair_pressure"
+          ],
+          "status": "completed",
+          "model": "jev-1.13.0",
+          "usage": {
+            "input_tokens": 1415,
+            "output_tokens": 74
+          },
+          "seconds": 0.5773071670000001
+        },
+        {
+          "questions": [
+            "action"
+          ],
+          "status": "completed",
+          "model": "jev-1.13.0",
+          "usage": {
+            "input_tokens": 1572,
+            "output_tokens": 37
+          },
+          "seconds": 0.598962583
+        },
+        {
+          "questions": [
+            "must_block",
+            "yield_control",
+            "feed_teammate",
+            "pair_pressure"
+          ],
+          "status": "completed",
+          "model": "jev-1.13.0",
+          "usage": {
+            "input_tokens": 1865,
+            "output_tokens": 74
+          },
+          "seconds": 0.5594687080000003
+        },
+        {
+          "questions": [
+            "action"
+          ],
+          "status": "completed",
+          "model": "jev-1.13.0",
+          "usage": {
+            "input_tokens": 2014,
+            "output_tokens": 35
+          },
+          "seconds": 0.6196185829999998
+        }
+      ],
+      "team_reward": 1.0,
+      "rewards": {
+        "landlord": -1.0,
+        "farmer_after": 1.0,
+        "farmer_before": 1.0
+      },
+      "turns": 12,
+      "elapsed_seconds": 2.417690292,
+      "applied_turns": 12,
+      "case_id": "mixed_002",
+      "scenario_kind": "respond_pair",
+      "trace_path": "jev-vs-simple-10-v1-episodes/mixed_002.json"
+    },
+    {
+      "arm": "current_jev",
+      "focal_seat": "landlord",
+      "farmer_style": "simple",
+      "seed": 20261018,
+      "landlord_style": "simple",
+      "policy_by_seat": {
+        "landlord": "current_jev",
+        "farmer_after": "simple",
+        "farmer_before": "simple"
+      },
+      "status": "completed",
+      "api_ledger": [
+        {
+          "questions": [
+            "must_block",
+            "yield_control",
+            "feed_teammate",
+            "pair_pressure"
+          ],
+          "status": "completed",
+          "model": "jev-1.13.0",
+          "usage": {
+            "input_tokens": 1303,
+            "output_tokens": 74
+          },
+          "seconds": 0.5518029159999998
+        },
+        {
+          "questions": [
+            "action"
+          ],
+          "status": "completed",
+          "model": "jev-1.13.0",
+          "usage": {
+            "input_tokens": 1451,
+            "output_tokens": 35
+          },
+          "seconds": 0.5659310419999999
+        }
+      ],
+      "team_reward": 1.0,
+      "rewards": {
+        "landlord": 1.0,
+        "farmer_after": -1.0,
+        "farmer_before": -1.0
+      },
+      "turns": 1,
+      "elapsed_seconds": 1.1257637909999998,
+      "applied_turns": 1,
+      "case_id": "mixed_003",
+      "scenario_kind": "landlord_one",
+      "trace_path": "jev-vs-simple-10-v1-episodes/mixed_003.json"
+    },
+    {
+      "arm": "current_jev",
+      "focal_seat": "farmer_after",
+      "farmer_style": "simple",
+      "seed": 20261019,
+      "landlord_style": "simple",
+      "policy_by_seat": {
+        "landlord": "simple",
+        "farmer_after": "current_jev",
+        "farmer_before": "simple"
+      },
+      "status": "completed",
+      "api_ledger": [
+        {
+          "questions": [
+            "must_block",
+            "yield_control",
+            "feed_teammate",
+            "pair_pressure"
+          ],
+          "status": "completed",
+          "model": "jev-1.13.0",
+          "usage": {
+            "input_tokens": 1374,
+            "output_tokens": 74
+          },
+          "seconds": 0.5625923750000004
+        },
+        {
+          "questions": [
+            "action"
+          ],
+          "status": "completed",
+          "model": "jev-1.13.0",
+          "usage": {
+            "input_tokens": 1544,
+            "output_tokens": 35
+          },
+          "seconds": 0.5828348339999998
+        },
+        {
+          "questions": [
+            "must_block",
+            "yield_control",
+            "feed_teammate",
+            "pair_pressure"
+          ],
+          "status": "completed",
+          "model": "jev-1.13.0",
+          "usage": {
+            "input_tokens": 1585,
+            "output_tokens": 74
+          },
+          "seconds": 0.5580672920000005
+        },
+        {
+          "questions": [
+            "action"
+          ],
+          "status": "completed",
+          "model": "jev-1.13.0",
+          "usage": {
+            "input_tokens": 1834,
+            "output_tokens": 44
+          },
+          "seconds": 0.5927439579999998
+        }
+      ],
+      "team_reward": -1.0,
+      "rewards": {
+        "landlord": 1.0,
+        "farmer_after": -1.0,
+        "farmer_before": -1.0
+      },
+      "turns": 10,
+      "elapsed_seconds": 2.3513702919999995,
+      "applied_turns": 10,
+      "case_id": "mixed_004",
+      "scenario_kind": "landlord_two",
+      "trace_path": "jev-vs-simple-10-v1-episodes/mixed_004.json"
+    },
+    {
+      "arm": "current_jev",
+      "focal_seat": "farmer_before",
+      "farmer_style": "simple",
+      "seed": 20261020,
+      "landlord_style": "simple",
+      "policy_by_seat": {
+        "landlord": "simple",
+        "farmer_after": "simple",
+        "farmer_before": "current_jev"
+      },
+      "status": "completed",
+      "api_ledger": [
+        {
+          "questions": [
+            "must_block",
+            "yield_control",
+            "feed_teammate",
+            "pair_pressure"
+          ],
+          "status": "completed",
+          "model": "jev-1.13.0",
+          "usage": {
+            "input_tokens": 1483,
+            "output_tokens": 74
+          },
+          "seconds": 0.5586077920000001
+        },
+        {
+          "questions": [
+            "action"
+          ],
+          "status": "completed",
+          "model": "jev-1.13.0",
+          "usage": {
+            "input_tokens": 1750,
+            "output_tokens": 45
+          },
+          "seconds": 0.5630062499999999
+        }
+      ],
+      "team_reward": -1.0,
+      "rewards": {
+        "landlord": 1.0,
+        "farmer_after": -1.0,
+        "farmer_before": -1.0
+      },
+      "turns": 6,
+      "elapsed_seconds": 1.1496630839999993,
+      "applied_turns": 6,
+      "case_id": "mixed_005",
+      "scenario_kind": "uneven_lead",
+      "trace_path": "jev-vs-simple-10-v1-episodes/mixed_005.json"
+    },
+    {
+      "arm": "current_jev",
+      "focal_seat": "landlord",
+      "farmer_style": "simple",
+      "seed": 20261021,
+      "landlord_style": "simple",
+      "policy_by_seat": {
+        "landlord": "current_jev",
+        "farmer_after": "simple",
+        "farmer_before": "simple"
+      },
+      "status": "completed",
+      "api_ledger": [
+        {
+          "questions": [
+            "must_block",
+            "yield_control",
+            "feed_teammate",
+            "pair_pressure"
+          ],
+          "status": "completed",
+          "model": "jev-1.13.0",
+          "usage": {
+            "input_tokens": 1432,
+            "output_tokens": 74
+          },
+          "seconds": 0.6911617079999992
+        },
+        {
+          "questions": [
+            "action"
+          ],
+          "status": "completed",
+          "model": "jev-1.13.0",
+          "usage": {
+            "input_tokens": 1586,
+            "output_tokens": 33
+          },
+          "seconds": 0.5817591670000013
+        }
+      ],
+      "team_reward": -1.0,
+      "rewards": {
+        "landlord": -1.0,
+        "farmer_after": 1.0,
+        "farmer_before": 1.0
+      },
+      "turns": 11,
+      "elapsed_seconds": 1.3277615000000011,
+      "applied_turns": 11,
+      "case_id": "mixed_006",
+      "scenario_kind": "respond_single",
+      "trace_path": "jev-vs-simple-10-v1-episodes/mixed_006.json"
+    },
+    {
+      "arm": "current_jev",
+      "focal_seat": "farmer_after",
+      "farmer_style": "simple",
+      "seed": 20261022,
+      "landlord_style": "simple",
+      "policy_by_seat": {
+        "landlord": "simple",
+        "farmer_after": "current_jev",
+        "farmer_before": "simple"
+      },
+      "status": "completed",
+      "api_ledger": [
+        {
+          "questions": [
+            "must_block",
+            "yield_control",
+            "feed_teammate",
+            "pair_pressure"
+          ],
+          "status": "completed",
+          "model": "jev-1.13.0",
+          "usage": {
+            "input_tokens": 1489,
+            "output_tokens": 74
+          },
+          "seconds": 0.6816772919999998
+        },
+        {
+          "questions": [
+            "action"
+          ],
+          "status": "completed",
+          "model": "jev-1.13.0",
+          "usage": {
+            "input_tokens": 1644,
+            "output_tokens": 33
+          },
+          "seconds": 0.549018791
+        }
+      ],
+      "team_reward": 1.0,
+      "rewards": {
+        "landlord": -1.0,
+        "farmer_after": 1.0,
+        "farmer_before": 1.0
+      },
+      "turns": 7,
+      "elapsed_seconds": 1.2647594999999985,
+      "applied_turns": 7,
+      "case_id": "mixed_007",
+      "scenario_kind": "respond_pair",
+      "trace_path": "jev-vs-simple-10-v1-episodes/mixed_007.json"
+    },
+    {
+      "arm": "current_jev",
+      "focal_seat": "farmer_before",
+      "farmer_style": "simple",
+      "seed": 20261023,
+      "landlord_style": "simple",
+      "policy_by_seat": {
+        "landlord": "simple",
+        "farmer_after": "simple",
+        "farmer_before": "current_jev"
+      },
+      "status": "completed",
+      "api_ledger": [
+        {
+          "questions": [
+            "must_block",
+            "yield_control",
+            "feed_teammate",
+            "pair_pressure"
+          ],
+          "status": "completed",
+          "model": "jev-1.13.0",
+          "usage": {
+            "input_tokens": 1553,
+            "output_tokens": 74
+          },
+          "seconds": 0.5896888340000004
+        },
+        {
+          "questions": [
+            "action"
+          ],
+          "status": "completed",
+          "model": "jev-1.13.0",
+          "usage": {
+            "input_tokens": 1894,
+            "output_tokens": 54
+          },
+          "seconds": 0.6016839580000006
+        }
+      ],
+      "team_reward": -1.0,
+      "rewards": {
+        "landlord": 1.0,
+        "farmer_after": -1.0,
+        "farmer_before": -1.0
+      },
+      "turns": 3,
+      "elapsed_seconds": 1.2051758750000001,
+      "applied_turns": 3,
+      "case_id": "mixed_008",
+      "scenario_kind": "landlord_one",
+      "trace_path": "jev-vs-simple-10-v1-episodes/mixed_008.json"
+    },
+    {
+      "arm": "current_jev",
+      "focal_seat": "landlord",
+      "farmer_style": "simple",
+      "seed": 20261024,
+      "landlord_style": "simple",
+      "policy_by_seat": {
+        "landlord": "current_jev",
+        "farmer_after": "simple",
+        "farmer_before": "simple"
+      },
+      "status": "completed",
+      "api_ledger": [
+        {
+          "questions": [
+            "must_block",
+            "yield_control",
+            "feed_teammate",
+            "pair_pressure"
+          ],
+          "status": "completed",
+          "model": "jev-1.13.0",
+          "usage": {
+            "input_tokens": 1494,
+            "output_tokens": 74
+          },
+          "seconds": 0.5538413749999993
+        },
+        {
+          "questions": [
+            "action"
+          ],
+          "status": "completed",
+          "model": "jev-1.13.0",
+          "usage": {
+            "input_tokens": 1730,
+            "output_tokens": 42
+          },
+          "seconds": 0.830571333
+        }
+      ],
+      "team_reward": 1.0,
+      "rewards": {
+        "landlord": 1.0,
+        "farmer_after": -1.0,
+        "farmer_before": -1.0
+      },
+      "turns": 6,
+      "elapsed_seconds": 1.410719833,
+      "applied_turns": 6,
+      "case_id": "mixed_009",
+      "scenario_kind": "landlord_two",
+      "trace_path": "jev-vs-simple-10-v1-episodes/mixed_009.json"
+    }
+  ],
+  "scope": "Exactly 10 synthetic restricted endgames. Focal seat rotates 4 landlord / 3 farmer_after / 3 farmer_before. Both other seats use simple AI, including focal farmer teammate. Team win rate, not full-deal strength. No outcome filtering or automatic retries.",
+  "metrics": {
+    "attempted": 10,
+    "completed": 10,
+    "status_counts": {
+      "completed": 10
+    },
+    "team_wins": 5,
+    "team_losses": 5,
+    "mean_completed_team_reward": 0.0,
+    "mean_episode_seconds": 1.3479117999999999,
+    "focal_decisions_attempted": 22,
+    "focal_nonforced_decisions": 11,
+    "api_attempts": 22,
+    "api_errors": 0,
+    "known_usage": {
+      "input_tokens": 34754,
+      "output_tokens": 1246
+    },
+    "usage_unknown_calls": 0,
+    "model_versions": [
+      "jev-1.13.0"
+    ],
+    "completed_team_win_rate": 0.5
+  },
+  "by_seat": {
+    "landlord": {
+      "attempted": 4,
+      "completed": 4,
+      "status_counts": {
+        "completed": 4
+      },
+      "team_wins": 3,
+      "team_losses": 1,
+      "mean_completed_team_reward": 0.5,
+      "mean_episode_seconds": 1.2658071872500003,
+      "focal_decisions_attempted": 7,
+      "focal_nonforced_decisions": 4,
+      "api_attempts": 8,
+      "api_errors": 0,
+      "known_usage": {
+        "input_tokens": 11738,
+        "output_tokens": 445
+      },
+      "usage_unknown_calls": 0,
+      "model_versions": [
+        "jev-1.13.0"
+      ]
+    },
+    "farmer_after": {
+      "attempted": 3,
+      "completed": 3,
+      "status_counts": {
+        "completed": 3
+      },
+      "team_wins": 1,
+      "team_losses": 2,
+      "mean_completed_team_reward": -0.3333333333333333,
+      "mean_episode_seconds": 1.2144533333333327,
+      "focal_decisions_attempted": 8,
+      "focal_nonforced_decisions": 3,
+      "api_attempts": 6,
+      "api_errors": 0,
+      "known_usage": {
+        "input_tokens": 9470,
+        "output_tokens": 334
+      },
+      "usage_unknown_calls": 0,
+      "model_versions": [
+        "jev-1.13.0"
+      ]
+    },
+    "farmer_before": {
+      "attempted": 3,
+      "completed": 3,
+      "status_counts": {
+        "completed": 3
+      },
+      "team_wins": 1,
+      "team_losses": 2,
+      "mean_completed_team_reward": -0.3333333333333333,
+      "mean_episode_seconds": 1.5908430836666667,
+      "focal_decisions_attempted": 7,
+      "focal_nonforced_decisions": 4,
+      "api_attempts": 8,
+      "api_errors": 0,
+      "known_usage": {
+        "input_tokens": 13546,
+        "output_tokens": 467
+      },
+      "usage_unknown_calls": 0,
+      "model_versions": [
+        "jev-1.13.0"
+      ]
+    }
+  },
+  "completed_at": "2026-10-12T16:36:49.520292+00:00"
+}

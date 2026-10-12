@@ -17,6 +17,29 @@ python3 -m joker_jev.games.doudizhu.fullgame --scenario-set mixed --balanced --c
 
 报告输出路径必须不存在，避免覆盖历史实验。JEV 需要本地 `.env` 配置；模型默认固定为 `jev-1.13.0`。策略选择与人工建议不同，不算测试失败。
 
+## 简单 AI 与 10 场真实对局
+
+已实现原创 `SimpleDoudizhuAgent`：出完优先、让牌协作、单张守门、对子控制和保留手牌结构。它只使用自身手牌及公开信息，不调用 JEV，也不读取对手真实底牌。设计与协议见 [简单 AI 文档](docs/simple-doudizhu-ai.md)。
+
+```bash
+# 无网络：简单 AI 自对弈（不是 JEV 胜率）
+python3 -m joker_jev.games.doudizhu.match --local --output reports/my-simple-selfplay.json
+# 真实 JEV 对简单 AI，固定 10 场，需配置 .env
+python3 -m joker_jev.games.doudizhu.match --seed 20261015 --model jev-1.13.0 --output reports/my-jev-vs-simple.json
+```
+
+首次真实实验：**JEV 所在团队 5 胜 5 负，胜率 50%（10/10 场完成，0 接口错误）**。对方团队也为 5 胜 5 负。JEV 使用战术判断＋Choice，没有模拟评分；其余两个座位均由简单 AI 控制，包含 JEV 为农民时的队友。
+
+| JEV 身份 | 场数 | 团队胜/负 |
+|---|---:|---:|
+| 地主 | 4 | 3/1 |
+| 地主下家农民 | 3 | 1/2 |
+| 地主上家农民 | 3 | 1/2 |
+
+固定种子 `20261015`，五类混合残局各两副；模型实际返回 `jev-1.13.0`。共 **22 次 API 调用**，已知输入 34754 / 输出 1246 token。所有牌局与设置在首次调用前保存，未筛选胜负、未自动补跑。只有 10 场且为受限残局，不能当作完整斗地主的稳定实力结论。
+
+[10 场结果及逐局回放](reports/jev-vs-simple-10-v1.md) · [原始数据](reports/jev-vs-simple-10-v1.json) · [测试代码](tests/test_simple_ai.py)。当前 62 项正确性测试通过；不设胜率通过门槛。
+
 ## 安装与基础验证
 
 克隆仓库并进入目录即可运行，无额外依赖。以下 `high_card` 命令用于验证通用引擎：
