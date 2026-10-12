@@ -38,9 +38,44 @@ python3 -m joker_jev.games.doudizhu.full.match --live --episodes 10 --seed 20261
 
 完整玩法的 `FullSimpleAgent` 是原创启发式 AI：评估手牌叫分，出完优先、队友让牌、报单守门、保留炸弹，并用近似剩余组合数选牌。不使用模型、训练权重或真实对手底牌。
 
-JEV 接收规则、奖惩、自己手牌、公开状态、推断与合法选项，返回 Choice。超过 API 的 255 候选限制时，采用“牌型 → 主体 → 具体出法”的分层选择，保留全部合法候选，不截断出牌集合。不手工指定动作推荐权重，返回概率也不是实际获胜概率。
+JEV 接收规则、奖惩、自己手牌、公开状态、推断与合法选项，返回 Choice。命令行当前默认使用 `v2_compact`：补充自己的拆牌方案、每个动作后的剩余组合数、控制牌消耗与过牌后果。最终动作选择每组最多 24 项；候选较多时分层选择牌型、主体及附件分组，保留全部合法候选。JEV 仍决定最终动作，不手工覆盖其合法选择；拆牌组数不是胜率，返回概率也不是实际获胜概率。
 
 **策略不要求最优。** 合法性、规则、信息隔离和协议属于正确性测试；胜率、积分、耗时、调用用量是表现指标。与人工建议不同不等于测试失败。
+
+## 策略调整与最新对照
+
+复盘原版发现开局领炸弹、提前用完控制牌、拆散后续组合、对手报单时仍过牌等需要评估的行为。新版增加可见后果和出牌顺序提示；这些是条件性考虑，不是强制“正确答案”。详见 [原因分析与调整说明](docs/strategy-adjustment.md)。
+
+两版在同一模型、同一初始牌局和目标座位上重新运行。**只比较双方均完成的配对**：
+
+| 数据集 | 完整配对 | 原版 v1 胜率 | 新版 v2_compact 胜率 |
+|---|---:|---:|---:|
+| 原 10 副牌（开发回归） | 10 | 4/10，40% | 5/10，50% |
+| 另一批新牌 | 8 | 0/8，0% | 3/8，37.5% |
+
+最新共尝试 40 局，38 局完成。新牌中两版各有 1 局 Choice 响应校验失败，发生在不同设置，保留为未完成，不计输局、不自动补跑。修订版未再发生请求超长。早期较大的特征请求曾触发 `max_tokens_exceeded`，失败结果也保留在报告中。
+
+[最新配对报告与逐局记录](reports/doudizhu-strategy-ab-v2.md) · [行为统计](reports/doudizhu-strategy-ab-v2-behavior.json) · [早期含失败请求的报告](reports/doudizhu-strategy-ab-v1.md)。这是一组小样本观察，不能证明稳定实力提升；叫分会改变地主身份，收益变化也不能全归因于出牌。
+
+```bash
+# 新版（也是命令行默认版本）
+python3 -m joker_jev.games.doudizhu.full.match --live --strategy v2_compact --episodes 10 --output reports/my-improved.json
+# 保留原版，用于对照
+python3 -m joker_jev.games.doudizhu.full.match --live --strategy v1 --episodes 10 --output reports/my-original.json
+# 复现已发布的配对设置；这批牌已被观察，重跑不再是新的留出验证
+python3 -m joker_jev.games.doudizhu.full.compare_strategies --candidate v2_compact --fresh-seed 20261201 --output reports/my-comparison.json
+```
+
+### 策略仍可完善
+
+当前没有达到最优打法，也没有完成大规模实力验证。后续重点：
+
+- 分开评测叫地主与出牌策略，确认收益来自选身份还是实际出牌能力。
+- 在信息隔离前提下，增加有限步的隐藏牌采样和后续对局模拟，评估牌权与协作收益。
+- 将守门、送牌、接管牌权与身份、位置、队友牌数结合，避免固定套路。
+- 改进基于公开行为的猜牌，保留不确定性，不把过牌认定为没有大牌。
+- 使用更多未见牌局、多种对手及重复运行，联合统计胜率、积分、完成率和调用成本。
+- 继续完善响应校验诊断、请求大小控制；不把失败请求隐藏成随机代打。
 
 ## 完整对局实测
 
@@ -55,7 +90,7 @@ JEV 接收规则、奖惩、自己手牌、公开状态、推断与合法选项�
 
 [完整对局报告与逐场回放](reports/doudizhu-full-deal-live-v1.md) · [原始数据](reports/doudizhu-full-deal-live-v1.json) · [本地完整自对弈](reports/doudizhu-full-deal-local-v1.md)。
 
-正确性测试包括完整玩法与原有残局回归，当前 **76 项通过**。完整玩法测试见 [test_full_doudizhu.py](tests/test_full_doudizhu.py)。
+正确性测试包括完整玩法与原有残局回归，当前 **84 项通过**。完整玩法测试见 [test_full_doudizhu.py](tests/test_full_doudizhu.py)。
 
 ## 架构与扩展
 
@@ -89,3 +124,7 @@ python3 -m joker_jev.games.doudizhu.match --seed 20261015 --output reports/my-en
 - [50 副固定残局、450 局三策略对照](reports/doudizhu-expanded-live-v2.md)：当前 JEV 80/150 胜，纯模拟和模拟＋JEV 各 94/150 胜。
 - [10 场受限残局 JEV 对简单 AI](reports/jev-vs-simple-10-v1.md)：5 胜 5 负，胜率 50%。
 - [残局协议](docs/full-endgame-evaluation.md) · [残局 AI 设计](docs/simple-doudizhu-ai.md)。
+
+## 配置与公开数据
+
+仓库只提供不含密钥的 `.env.example`；真实 `.env` 留在本地并被忽略。已发布回放来自合成发牌，不包含真实玩家身份或账户信息；研究日志包含各座位在各自回合的手牌，以便复盘，不会传给其他 Agent。不要将自己的 API key、请求鉴权头或真实用户资料写入日志、Issue 或提交。

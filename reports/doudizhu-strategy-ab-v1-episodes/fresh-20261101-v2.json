@@ -1,0 +1,1171 @@
+{
+  "seed": 20261101,
+  "focal": "p0",
+  "strategy": "jev",
+  "strategy_version": "v2",
+  "status": "api_error",
+  "team_reward": null,
+  "rewards": null,
+  "trace": [
+    {
+      "player": "p1",
+      "turn": 0,
+      "visible_state": {
+        "rules": {
+          "game_id": "doudizhu",
+          "name": "三人经典斗地主",
+          "version": "1",
+          "players": [
+            "p0",
+            "p1",
+            "p2"
+          ],
+          "objective": "叫分争取地主；出牌阶段最大化本方胜利及终局积分。任一农民出完即农民团队获胜。",
+          "rules": [
+            "54 张牌，每家 17 张，3 张底牌；按座位叫 0/1/2/3 分，必须高于已有叫分，3 分立即确定地主。",
+            "三家都不叫则重发；地主取得并公开底牌，先出牌；农民共享胜负。",
+            "单、对、三张、三带一/对、顺子、连对、飞机及单/对翅、四带二单/二对、炸弹、王炸。",
+            "顺子至少 5、连对至少 3 对、飞机至少 2 组；连续主体不含 2 或王。",
+            "单翅可成对，但每点最多两张且不能同时带双王；翅膀不得使用主体点数；对翅必须不同点数。",
+            "四带二单允许一对，但不能带双王；四带二对必须两个不同对子。四带二不按炸弹翻倍。",
+            "同类型、同张数、同连续长度按主体点数比大小；炸弹压普通牌型，王炸最大。",
+            "自由领出不能过；两家过牌后上次出牌者自由领出；任一家出完立即结算。",
+            "炸弹/王炸各翻倍；地主胜且农民均未出牌为春天；农民胜且地主只出过一次为反春天，各再翻倍。",
+            "采用无额外加倍/抢地主选项的叫分制；底分为最高叫分。"
+          ],
+          "information": [
+            "仅自己手牌、公开叫分、公开底牌、出牌记录、各家剩余张数可见。"
+          ],
+          "rewards": [
+            {
+              "trigger": "终局",
+              "recipient": "地主",
+              "value": 2,
+              "description": "正负 2 × 叫分 × 倍数"
+            },
+            {
+              "trigger": "终局",
+              "recipient": "每个农民",
+              "value": 1,
+              "description": "与地主相反的正负 1 × 叫分 × 倍数"
+            }
+          ],
+          "termination": "出完即结束。运行步数上限和接口错误不是输局。"
+        },
+        "player_id": "p1",
+        "private": {
+          "hand": [
+            "3",
+            "5",
+            "6",
+            "6",
+            "8",
+            "8",
+            "9",
+            "9",
+            "10",
+            "J",
+            "J",
+            "Q",
+            "Q",
+            "K",
+            "K",
+            "A",
+            "2"
+          ],
+          "role": "unassigned",
+          "teammate": null
+        },
+        "public": {
+          "phase": "bidding",
+          "actor": "p1",
+          "landlord": null,
+          "next_player": "p2",
+          "bids": {
+            "p0": -1,
+            "p1": -1,
+            "p2": -1
+          },
+          "bid_score": 0,
+          "deal_number": 0,
+          "bottom_cards": [],
+          "remaining_counts": {
+            "p0": 17,
+            "p1": 17,
+            "p2": 17
+          },
+          "target": null,
+          "owner": null,
+          "passes": 0,
+          "played": {
+            "p0": [],
+            "p1": [],
+            "p2": []
+          },
+          "play_counts": {
+            "p0": 0,
+            "p1": 0,
+            "p2": 0
+          },
+          "bombs": 0,
+          "multiplier": 1
+        },
+        "belief": {
+          "facts": {
+            "unseen_card_counts": {
+              "3": 3,
+              "4": 4,
+              "5": 3,
+              "6": 2,
+              "7": 4,
+              "8": 2,
+              "9": 2,
+              "10": 3,
+              "J": 2,
+              "Q": 2,
+              "K": 2,
+              "A": 3,
+              "2": 3,
+              "SJ": 1,
+              "BJ": 1
+            },
+            "known_landlord_minimum": {}
+          },
+          "estimates": {
+            "expected_rank_counts": {
+              "p0": {
+                "3": 1.3783783783783783,
+                "4": 1.837837837837838,
+                "5": 1.3783783783783783,
+                "6": 0.918918918918919,
+                "7": 1.837837837837838,
+                "8": 0.918918918918919,
+                "9": 0.918918918918919,
+                "10": 1.3783783783783783,
+                "J": 0.918918918918919,
+                "Q": 0.918918918918919,
+                "K": 0.918918918918919,
+                "A": 1.3783783783783783,
+                "2": 1.3783783783783783,
+                "SJ": 0.4594594594594595,
+                "BJ": 0.4594594594594595
+              },
+              "p2": {
+                "3": 1.3783783783783783,
+                "4": 1.837837837837838,
+                "5": 1.3783783783783783,
+                "6": 0.918918918918919,
+                "7": 1.837837837837838,
+                "8": 0.918918918918919,
+                "9": 0.918918918918919,
+                "10": 1.3783783783783783,
+                "J": 0.918918918918919,
+                "Q": 0.918918918918919,
+                "K": 0.918918918918919,
+                "A": 1.3783783783783783,
+                "2": 1.3783783783783783,
+                "SJ": 0.4594594594594595,
+                "BJ": 0.4594594594594595
+              }
+            }
+          },
+          "assumptions": [
+            "Uniform remaining unknown card instances conditional on public counts and revealed bottom cards.",
+            "Passes do not prove absence of a higher card; no behavioral posterior."
+          ]
+        },
+        "history": [],
+        "turn": 0
+      },
+      "status": "applied",
+      "legal_action_ids": [
+        "bid:0",
+        "bid:1",
+        "bid:2",
+        "bid:3"
+      ],
+      "decision": {
+        "action_id": "bid:0",
+        "reason": ""
+      },
+      "action": {
+        "id": "bid:0",
+        "label": "不叫",
+        "payload": {
+          "bid": 0
+        }
+      },
+      "selection": [],
+      "public_events": [
+        {
+          "kind": "bid",
+          "data": {
+            "player": "p1",
+            "bid": 0,
+            "deal_number": 0
+          }
+        }
+      ],
+      "decision_seconds": 0.003204124999999891,
+      "rewards": {
+        "p0": 0.0,
+        "p1": 0.0,
+        "p2": 0.0
+      }
+    },
+    {
+      "player": "p2",
+      "turn": 1,
+      "visible_state": {
+        "rules": {
+          "game_id": "doudizhu",
+          "name": "三人经典斗地主",
+          "version": "1",
+          "players": [
+            "p0",
+            "p1",
+            "p2"
+          ],
+          "objective": "叫分争取地主；出牌阶段最大化本方胜利及终局积分。任一农民出完即农民团队获胜。",
+          "rules": [
+            "54 张牌，每家 17 张，3 张底牌；按座位叫 0/1/2/3 分，必须高于已有叫分，3 分立即确定地主。",
+            "三家都不叫则重发；地主取得并公开底牌，先出牌；农民共享胜负。",
+            "单、对、三张、三带一/对、顺子、连对、飞机及单/对翅、四带二单/二对、炸弹、王炸。",
+            "顺子至少 5、连对至少 3 对、飞机至少 2 组；连续主体不含 2 或王。",
+            "单翅可成对，但每点最多两张且不能同时带双王；翅膀不得使用主体点数；对翅必须不同点数。",
+            "四带二单允许一对，但不能带双王；四带二对必须两个不同对子。四带二不按炸弹翻倍。",
+            "同类型、同张数、同连续长度按主体点数比大小；炸弹压普通牌型，王炸最大。",
+            "自由领出不能过；两家过牌后上次出牌者自由领出；任一家出完立即结算。",
+            "炸弹/王炸各翻倍；地主胜且农民均未出牌为春天；农民胜且地主只出过一次为反春天，各再翻倍。",
+            "采用无额外加倍/抢地主选项的叫分制；底分为最高叫分。"
+          ],
+          "information": [
+            "仅自己手牌、公开叫分、公开底牌、出牌记录、各家剩余张数可见。"
+          ],
+          "rewards": [
+            {
+              "trigger": "终局",
+              "recipient": "地主",
+              "value": 2,
+              "description": "正负 2 × 叫分 × 倍数"
+            },
+            {
+              "trigger": "终局",
+              "recipient": "每个农民",
+              "value": 1,
+              "description": "与地主相反的正负 1 × 叫分 × 倍数"
+            }
+          ],
+          "termination": "出完即结束。运行步数上限和接口错误不是输局。"
+        },
+        "player_id": "p2",
+        "private": {
+          "hand": [
+            "3",
+            "3",
+            "3",
+            "5",
+            "5",
+            "6",
+            "7",
+            "8",
+            "9",
+            "10",
+            "10",
+            "J",
+            "K",
+            "A",
+            "A",
+            "2",
+            "SJ"
+          ],
+          "role": "unassigned",
+          "teammate": null
+        },
+        "public": {
+          "phase": "bidding",
+          "actor": "p2",
+          "landlord": null,
+          "next_player": "p0",
+          "bids": {
+            "p0": -1,
+            "p1": 0,
+            "p2": -1
+          },
+          "bid_score": 0,
+          "deal_number": 0,
+          "bottom_cards": [],
+          "remaining_counts": {
+            "p0": 17,
+            "p1": 17,
+            "p2": 17
+          },
+          "target": null,
+          "owner": null,
+          "passes": 0,
+          "played": {
+            "p0": [],
+            "p1": [],
+            "p2": []
+          },
+          "play_counts": {
+            "p0": 0,
+            "p1": 0,
+            "p2": 0
+          },
+          "bombs": 0,
+          "multiplier": 1
+        },
+        "belief": {
+          "facts": {
+            "unseen_card_counts": {
+              "3": 1,
+              "4": 4,
+              "5": 2,
+              "6": 3,
+              "7": 3,
+              "8": 3,
+              "9": 3,
+              "10": 2,
+              "J": 3,
+              "Q": 4,
+              "K": 3,
+              "A": 2,
+              "2": 3,
+              "BJ": 1
+            },
+            "known_landlord_minimum": {}
+          },
+          "estimates": {
+            "expected_rank_counts": {
+              "p0": {
+                "3": 0.4594594594594595,
+                "4": 1.837837837837838,
+                "5": 0.918918918918919,
+                "6": 1.3783783783783783,
+                "7": 1.3783783783783783,
+                "8": 1.3783783783783783,
+                "9": 1.3783783783783783,
+                "10": 0.918918918918919,
+                "J": 1.3783783783783783,
+                "Q": 1.837837837837838,
+                "K": 1.3783783783783783,
+                "A": 0.918918918918919,
+                "2": 1.3783783783783783,
+                "BJ": 0.4594594594594595
+              },
+              "p1": {
+                "3": 0.4594594594594595,
+                "4": 1.837837837837838,
+                "5": 0.918918918918919,
+                "6": 1.3783783783783783,
+                "7": 1.3783783783783783,
+                "8": 1.3783783783783783,
+                "9": 1.3783783783783783,
+                "10": 0.918918918918919,
+                "J": 1.3783783783783783,
+                "Q": 1.837837837837838,
+                "K": 1.3783783783783783,
+                "A": 0.918918918918919,
+                "2": 1.3783783783783783,
+                "BJ": 0.4594594594594595
+              }
+            }
+          },
+          "assumptions": [
+            "Uniform remaining unknown card instances conditional on public counts and revealed bottom cards.",
+            "Passes do not prove absence of a higher card; no behavioral posterior."
+          ]
+        },
+        "history": [
+          {
+            "kind": "bid",
+            "data": {
+              "player": "p1",
+              "bid": 0,
+              "deal_number": 0
+            }
+          }
+        ],
+        "turn": 1
+      },
+      "status": "applied",
+      "legal_action_ids": [
+        "bid:0",
+        "bid:1",
+        "bid:2",
+        "bid:3"
+      ],
+      "decision": {
+        "action_id": "bid:1",
+        "reason": ""
+      },
+      "action": {
+        "id": "bid:1",
+        "label": "叫 1 分",
+        "payload": {
+          "bid": 1
+        }
+      },
+      "selection": [],
+      "public_events": [
+        {
+          "kind": "bid",
+          "data": {
+            "player": "p2",
+            "bid": 1,
+            "deal_number": 0
+          }
+        }
+      ],
+      "decision_seconds": 0.0012979590000004038,
+      "rewards": {
+        "p0": 0.0,
+        "p1": 0.0,
+        "p2": 0.0
+      }
+    },
+    {
+      "player": "p0",
+      "turn": 2,
+      "visible_state": {
+        "rules": {
+          "game_id": "doudizhu",
+          "name": "三人经典斗地主",
+          "version": "1",
+          "players": [
+            "p0",
+            "p1",
+            "p2"
+          ],
+          "objective": "叫分争取地主；出牌阶段最大化本方胜利及终局积分。任一农民出完即农民团队获胜。",
+          "rules": [
+            "54 张牌，每家 17 张，3 张底牌；按座位叫 0/1/2/3 分，必须高于已有叫分，3 分立即确定地主。",
+            "三家都不叫则重发；地主取得并公开底牌，先出牌；农民共享胜负。",
+            "单、对、三张、三带一/对、顺子、连对、飞机及单/对翅、四带二单/二对、炸弹、王炸。",
+            "顺子至少 5、连对至少 3 对、飞机至少 2 组；连续主体不含 2 或王。",
+            "单翅可成对，但每点最多两张且不能同时带双王；翅膀不得使用主体点数；对翅必须不同点数。",
+            "四带二单允许一对，但不能带双王；四带二对必须两个不同对子。四带二不按炸弹翻倍。",
+            "同类型、同张数、同连续长度按主体点数比大小；炸弹压普通牌型，王炸最大。",
+            "自由领出不能过；两家过牌后上次出牌者自由领出；任一家出完立即结算。",
+            "炸弹/王炸各翻倍；地主胜且农民均未出牌为春天；农民胜且地主只出过一次为反春天，各再翻倍。",
+            "采用无额外加倍/抢地主选项的叫分制；底分为最高叫分。"
+          ],
+          "information": [
+            "仅自己手牌、公开叫分、公开底牌、出牌记录、各家剩余张数可见。"
+          ],
+          "rewards": [
+            {
+              "trigger": "终局",
+              "recipient": "地主",
+              "value": 2,
+              "description": "正负 2 × 叫分 × 倍数"
+            },
+            {
+              "trigger": "终局",
+              "recipient": "每个农民",
+              "value": 1,
+              "description": "与地主相反的正负 1 × 叫分 × 倍数"
+            }
+          ],
+          "termination": "出完即结束。运行步数上限和接口错误不是输局。"
+        },
+        "player_id": "p0",
+        "private": {
+          "hand": [
+            "4",
+            "4",
+            "5",
+            "6",
+            "7",
+            "7",
+            "7",
+            "8",
+            "9",
+            "10",
+            "J",
+            "Q",
+            "Q",
+            "K",
+            "2",
+            "2",
+            "BJ"
+          ],
+          "role": "unassigned",
+          "teammate": null
+        },
+        "public": {
+          "phase": "bidding",
+          "actor": "p0",
+          "landlord": null,
+          "next_player": "p1",
+          "bids": {
+            "p0": -1,
+            "p1": 0,
+            "p2": 1
+          },
+          "bid_score": 1,
+          "deal_number": 0,
+          "bottom_cards": [],
+          "remaining_counts": {
+            "p0": 17,
+            "p1": 17,
+            "p2": 17
+          },
+          "target": null,
+          "owner": null,
+          "passes": 0,
+          "played": {
+            "p0": [],
+            "p1": [],
+            "p2": []
+          },
+          "play_counts": {
+            "p0": 0,
+            "p1": 0,
+            "p2": 0
+          },
+          "bombs": 0,
+          "multiplier": 1
+        },
+        "belief": {
+          "facts": {
+            "unseen_card_counts": {
+              "3": 4,
+              "4": 2,
+              "5": 3,
+              "6": 3,
+              "7": 1,
+              "8": 3,
+              "9": 3,
+              "10": 3,
+              "J": 3,
+              "Q": 2,
+              "K": 3,
+              "A": 4,
+              "2": 2,
+              "SJ": 1
+            },
+            "known_landlord_minimum": {}
+          },
+          "estimates": {
+            "expected_rank_counts": {
+              "p1": {
+                "3": 1.837837837837838,
+                "4": 0.918918918918919,
+                "5": 1.3783783783783783,
+                "6": 1.3783783783783783,
+                "7": 0.4594594594594595,
+                "8": 1.3783783783783783,
+                "9": 1.3783783783783783,
+                "10": 1.3783783783783783,
+                "J": 1.3783783783783783,
+                "Q": 0.918918918918919,
+                "K": 1.3783783783783783,
+                "A": 1.837837837837838,
+                "2": 0.918918918918919,
+                "SJ": 0.4594594594594595
+              },
+              "p2": {
+                "3": 1.837837837837838,
+                "4": 0.918918918918919,
+                "5": 1.3783783783783783,
+                "6": 1.3783783783783783,
+                "7": 0.4594594594594595,
+                "8": 1.3783783783783783,
+                "9": 1.3783783783783783,
+                "10": 1.3783783783783783,
+                "J": 1.3783783783783783,
+                "Q": 0.918918918918919,
+                "K": 1.3783783783783783,
+                "A": 1.837837837837838,
+                "2": 0.918918918918919,
+                "SJ": 0.4594594594594595
+              }
+            }
+          },
+          "assumptions": [
+            "Uniform remaining unknown card instances conditional on public counts and revealed bottom cards.",
+            "Passes do not prove absence of a higher card; no behavioral posterior."
+          ]
+        },
+        "history": [
+          {
+            "kind": "bid",
+            "data": {
+              "player": "p1",
+              "bid": 0,
+              "deal_number": 0
+            }
+          },
+          {
+            "kind": "bid",
+            "data": {
+              "player": "p2",
+              "bid": 1,
+              "deal_number": 0
+            }
+          }
+        ],
+        "turn": 2
+      },
+      "status": "applied",
+      "legal_action_ids": [
+        "bid:0",
+        "bid:2",
+        "bid:3"
+      ],
+      "decision": {
+        "action_id": "bid:2",
+        "reason": ""
+      },
+      "action": {
+        "id": "bid:2",
+        "label": "叫 2 分",
+        "payload": {
+          "bid": 2
+        }
+      },
+      "selection": [
+        {
+          "choice": "bid:2",
+          "confidence": 0.22,
+          "probabilities": {
+            "bid:0": 0.3,
+            "bid:2": 0.48,
+            "bid:3": 0.22
+          },
+          "candidate_count": 3
+        }
+      ],
+      "strategy_features": {
+        "decision_facts": {
+          "rank_order": [
+            "3",
+            "4",
+            "5",
+            "6",
+            "7",
+            "8",
+            "9",
+            "10",
+            "J",
+            "Q",
+            "K",
+            "A",
+            "2",
+            "SJ",
+            "BJ"
+          ],
+          "self_role": "unassigned",
+          "teammate": null,
+          "enemy_players": [],
+          "enemy_remaining_counts": {},
+          "urgent_enemies": [],
+          "responders_after_pass_before_owner_returns": [],
+          "hand_partition": {
+            "remaining_plays_upper_bound": 6,
+            "feasible_partition": [
+              {
+                "kind": "straight",
+                "cards": [
+                  "4",
+                  "5",
+                  "6",
+                  "7",
+                  "8",
+                  "9",
+                  "10",
+                  "J",
+                  "Q",
+                  "K"
+                ]
+              },
+              {
+                "kind": "pair",
+                "cards": [
+                  "7",
+                  "7"
+                ]
+              },
+              {
+                "kind": "pair",
+                "cards": [
+                  "2",
+                  "2"
+                ]
+              },
+              {
+                "kind": "single",
+                "cards": [
+                  "4"
+                ]
+              },
+              {
+                "kind": "single",
+                "cards": [
+                  "Q"
+                ]
+              },
+              {
+                "kind": "single",
+                "cards": [
+                  "BJ"
+                ]
+              }
+            ]
+          },
+          "hand_controls": {
+            "jokers": 1,
+            "twos": 2,
+            "bomb_ranks": []
+          },
+          "semantics": "Partitions are feasible ways to empty your own hand ONLY if nobody interferes, not win forecasts. Hidden-card response flags mean possible, not certain. No actual opponent hands are used.",
+          "partition_search": {
+            "nodes": 83,
+            "budget": 4000,
+            "budget_exhausted": false,
+            "guarantee": "Every partition is legal for the original hand. Counts are upper bounds; no optimality claim if budget exhausted."
+          }
+        },
+        "candidate_consequences": {
+          "bid:0": {
+            "bid": 0,
+            "landlord_loss_base_before_multipliers": 0,
+            "unknown_bottom_cards": 3,
+            "does_not_guarantee_landlord": true
+          },
+          "bid:2": {
+            "bid": 2,
+            "landlord_loss_base_before_multipliers": 4,
+            "unknown_bottom_cards": 3,
+            "does_not_guarantee_landlord": true
+          },
+          "bid:3": {
+            "bid": 3,
+            "landlord_loss_base_before_multipliers": 6,
+            "unknown_bottom_cards": 3,
+            "does_not_guarantee_landlord": false
+          }
+        }
+      },
+      "public_events": [
+        {
+          "kind": "bid",
+          "data": {
+            "player": "p0",
+            "bid": 2,
+            "deal_number": 0
+          }
+        },
+        {
+          "kind": "landlord_selected",
+          "data": {
+            "landlord": "p0",
+            "bottom_cards": [
+              "4",
+              "4",
+              "A"
+            ],
+            "bid_score": 2
+          }
+        }
+      ],
+      "decision_seconds": 0.7056847909999995,
+      "rewards": {
+        "p0": 0.0,
+        "p1": 0.0,
+        "p2": 0.0
+      }
+    },
+    {
+      "player": "p0",
+      "turn": 3,
+      "visible_state": {
+        "rules": {
+          "game_id": "doudizhu",
+          "name": "三人经典斗地主",
+          "version": "1",
+          "players": [
+            "p0",
+            "p1",
+            "p2"
+          ],
+          "objective": "叫分争取地主；出牌阶段最大化本方胜利及终局积分。任一农民出完即农民团队获胜。",
+          "rules": [
+            "54 张牌，每家 17 张，3 张底牌；按座位叫 0/1/2/3 分，必须高于已有叫分，3 分立即确定地主。",
+            "三家都不叫则重发；地主取得并公开底牌，先出牌；农民共享胜负。",
+            "单、对、三张、三带一/对、顺子、连对、飞机及单/对翅、四带二单/二对、炸弹、王炸。",
+            "顺子至少 5、连对至少 3 对、飞机至少 2 组；连续主体不含 2 或王。",
+            "单翅可成对，但每点最多两张且不能同时带双王；翅膀不得使用主体点数；对翅必须不同点数。",
+            "四带二单允许一对，但不能带双王；四带二对必须两个不同对子。四带二不按炸弹翻倍。",
+            "同类型、同张数、同连续长度按主体点数比大小；炸弹压普通牌型，王炸最大。",
+            "自由领出不能过；两家过牌后上次出牌者自由领出；任一家出完立即结算。",
+            "炸弹/王炸各翻倍；地主胜且农民均未出牌为春天；农民胜且地主只出过一次为反春天，各再翻倍。",
+            "采用无额外加倍/抢地主选项的叫分制；底分为最高叫分。"
+          ],
+          "information": [
+            "仅自己手牌、公开叫分、公开底牌、出牌记录、各家剩余张数可见。"
+          ],
+          "rewards": [
+            {
+              "trigger": "终局",
+              "recipient": "地主",
+              "value": 2,
+              "description": "正负 2 × 叫分 × 倍数"
+            },
+            {
+              "trigger": "终局",
+              "recipient": "每个农民",
+              "value": 1,
+              "description": "与地主相反的正负 1 × 叫分 × 倍数"
+            }
+          ],
+          "termination": "出完即结束。运行步数上限和接口错误不是输局。"
+        },
+        "player_id": "p0",
+        "private": {
+          "hand": [
+            "4",
+            "4",
+            "4",
+            "4",
+            "5",
+            "6",
+            "7",
+            "7",
+            "7",
+            "8",
+            "9",
+            "10",
+            "J",
+            "Q",
+            "Q",
+            "K",
+            "A",
+            "2",
+            "2",
+            "BJ"
+          ],
+          "role": "landlord",
+          "teammate": null
+        },
+        "public": {
+          "phase": "playing",
+          "actor": "p0",
+          "landlord": "p0",
+          "next_player": "p1",
+          "bids": {
+            "p0": 2,
+            "p1": 0,
+            "p2": 1
+          },
+          "bid_score": 2,
+          "deal_number": 0,
+          "bottom_cards": [
+            "4",
+            "4",
+            "A"
+          ],
+          "remaining_counts": {
+            "p0": 20,
+            "p1": 17,
+            "p2": 17
+          },
+          "target": null,
+          "owner": null,
+          "passes": 0,
+          "played": {
+            "p0": [],
+            "p1": [],
+            "p2": []
+          },
+          "play_counts": {
+            "p0": 0,
+            "p1": 0,
+            "p2": 0
+          },
+          "bombs": 0,
+          "multiplier": 1
+        },
+        "belief": {
+          "facts": {
+            "unseen_card_counts": {
+              "3": 4,
+              "5": 3,
+              "6": 3,
+              "7": 1,
+              "8": 3,
+              "9": 3,
+              "10": 3,
+              "J": 3,
+              "Q": 2,
+              "K": 3,
+              "A": 3,
+              "2": 2,
+              "SJ": 1
+            },
+            "known_landlord_minimum": {}
+          },
+          "estimates": {
+            "expected_rank_counts": {
+              "p1": {
+                "3": 2.0,
+                "5": 1.5,
+                "6": 1.5,
+                "7": 0.5,
+                "8": 1.5,
+                "9": 1.5,
+                "10": 1.5,
+                "J": 1.5,
+                "Q": 1.0,
+                "K": 1.5,
+                "A": 1.5,
+                "2": 1.0,
+                "SJ": 0.5
+              },
+              "p2": {
+                "3": 2.0,
+                "5": 1.5,
+                "6": 1.5,
+                "7": 0.5,
+                "8": 1.5,
+                "9": 1.5,
+                "10": 1.5,
+                "J": 1.5,
+                "Q": 1.0,
+                "K": 1.5,
+                "A": 1.5,
+                "2": 1.0,
+                "SJ": 0.5
+              }
+            }
+          },
+          "assumptions": [
+            "Uniform remaining unknown card instances conditional on public counts and revealed bottom cards.",
+            "Passes do not prove absence of a higher card; no behavioral posterior."
+          ]
+        },
+        "history": [
+          {
+            "kind": "bid",
+            "data": {
+              "player": "p1",
+              "bid": 0,
+              "deal_number": 0
+            }
+          },
+          {
+            "kind": "bid",
+            "data": {
+              "player": "p2",
+              "bid": 1,
+              "deal_number": 0
+            }
+          },
+          {
+            "kind": "bid",
+            "data": {
+              "player": "p0",
+              "bid": 2,
+              "deal_number": 0
+            }
+          },
+          {
+            "kind": "landlord_selected",
+            "data": {
+              "landlord": "p0",
+              "bottom_cards": [
+                "4",
+                "4",
+                "A"
+              ],
+              "bid_score": 2
+            }
+          }
+        ],
+        "turn": 3
+      },
+      "status": "deciding",
+      "legal_action_ids": [
+        "single:1:1:4",
+        "single:2:1:5",
+        "single:3:1:6",
+        "single:4:1:7",
+        "single:5:1:8",
+        "single:6:1:9",
+        "single:7:1:10",
+        "single:8:1:J",
+        "single:9:1:Q",
+        "single:10:1:K",
+        "single:11:1:A",
+        "single:12:1:2",
+        "single:14:1:BJ",
+        "pair:1:1:4,4",
+        "pair:4:1:7,7",
+        "pair:9:1:Q,Q",
+        "pair:12:1:2,2",
+        "triple:1:1:4,4,4",
+        "triple:4:1:7,7,7",
+        "triple_single:1:1:4,4,4,10",
+        "triple_single:1:1:4,4,4,2",
+        "triple_single:1:1:4,4,4,5",
+        "triple_single:1:1:4,4,4,6",
+        "triple_single:1:1:4,4,4,7",
+        "triple_single:1:1:4,4,4,8",
+        "triple_single:1:1:4,4,4,9",
+        "triple_single:1:1:4,4,4,A",
+        "triple_single:1:1:4,4,4,BJ",
+        "triple_single:1:1:4,4,4,J",
+        "triple_single:1:1:4,4,4,K",
+        "triple_single:1:1:4,4,4,Q",
+        "triple_single:4:1:4,7,7,7",
+        "triple_single:4:1:5,7,7,7",
+        "triple_single:4:1:6,7,7,7",
+        "triple_single:4:1:7,7,7,10",
+        "triple_single:4:1:7,7,7,2",
+        "triple_single:4:1:7,7,7,8",
+        "triple_single:4:1:7,7,7,9",
+        "triple_single:4:1:7,7,7,A",
+        "triple_single:4:1:7,7,7,BJ",
+        "triple_single:4:1:7,7,7,J",
+        "triple_single:4:1:7,7,7,K",
+        "triple_single:4:1:7,7,7,Q",
+        "triple_pair:1:1:4,4,4,2,2",
+        "triple_pair:1:1:4,4,4,7,7",
+        "triple_pair:1:1:4,4,4,Q,Q",
+        "triple_pair:4:1:4,4,7,7,7",
+        "triple_pair:4:1:7,7,7,2,2",
+        "triple_pair:4:1:7,7,7,Q,Q",
+        "straight:5:5:4,5,6,7,8",
+        "straight:6:5:5,6,7,8,9",
+        "straight:7:5:6,7,8,9,10",
+        "straight:8:5:7,8,9,10,J",
+        "straight:9:5:8,9,10,J,Q",
+        "straight:10:5:9,10,J,Q,K",
+        "straight:11:5:10,J,Q,K,A",
+        "straight:6:6:4,5,6,7,8,9",
+        "straight:7:6:5,6,7,8,9,10",
+        "straight:8:6:6,7,8,9,10,J",
+        "straight:9:6:7,8,9,10,J,Q",
+        "straight:10:6:8,9,10,J,Q,K",
+        "straight:11:6:9,10,J,Q,K,A",
+        "straight:7:7:4,5,6,7,8,9,10",
+        "straight:8:7:5,6,7,8,9,10,J",
+        "straight:9:7:6,7,8,9,10,J,Q",
+        "straight:10:7:7,8,9,10,J,Q,K",
+        "straight:11:7:8,9,10,J,Q,K,A",
+        "straight:8:8:4,5,6,7,8,9,10,J",
+        "straight:9:8:5,6,7,8,9,10,J,Q",
+        "straight:10:8:6,7,8,9,10,J,Q,K",
+        "straight:11:8:7,8,9,10,J,Q,K,A",
+        "straight:9:9:4,5,6,7,8,9,10,J,Q",
+        "straight:10:9:5,6,7,8,9,10,J,Q,K",
+        "straight:11:9:6,7,8,9,10,J,Q,K,A",
+        "straight:10:10:4,5,6,7,8,9,10,J,Q,K",
+        "straight:11:10:5,6,7,8,9,10,J,Q,K,A",
+        "straight:11:11:4,5,6,7,8,9,10,J,Q,K,A",
+        "four_two_single:1:1:4,4,4,4,10,2",
+        "four_two_single:1:1:4,4,4,4,10,A",
+        "four_two_single:1:1:4,4,4,4,10,BJ",
+        "four_two_single:1:1:4,4,4,4,10,J",
+        "four_two_single:1:1:4,4,4,4,10,K",
+        "four_two_single:1:1:4,4,4,4,10,Q",
+        "four_two_single:1:1:4,4,4,4,2,2",
+        "four_two_single:1:1:4,4,4,4,2,BJ",
+        "four_two_single:1:1:4,4,4,4,5,10",
+        "four_two_single:1:1:4,4,4,4,5,2",
+        "four_two_single:1:1:4,4,4,4,5,6",
+        "four_two_single:1:1:4,4,4,4,5,7",
+        "four_two_single:1:1:4,4,4,4,5,8",
+        "four_two_single:1:1:4,4,4,4,5,9",
+        "four_two_single:1:1:4,4,4,4,5,A",
+        "four_two_single:1:1:4,4,4,4,5,BJ",
+        "four_two_single:1:1:4,4,4,4,5,J",
+        "four_two_single:1:1:4,4,4,4,5,K",
+        "four_two_single:1:1:4,4,4,4,5,Q",
+        "four_two_single:1:1:4,4,4,4,6,10",
+        "four_two_single:1:1:4,4,4,4,6,2",
+        "four_two_single:1:1:4,4,4,4,6,7",
+        "four_two_single:1:1:4,4,4,4,6,8",
+        "four_two_single:1:1:4,4,4,4,6,9",
+        "four_two_single:1:1:4,4,4,4,6,A",
+        "four_two_single:1:1:4,4,4,4,6,BJ",
+        "four_two_single:1:1:4,4,4,4,6,J",
+        "four_two_single:1:1:4,4,4,4,6,K",
+        "four_two_single:1:1:4,4,4,4,6,Q",
+        "four_two_single:1:1:4,4,4,4,7,10",
+        "four_two_single:1:1:4,4,4,4,7,2",
+        "four_two_single:1:1:4,4,4,4,7,7",
+        "four_two_single:1:1:4,4,4,4,7,8",
+        "four_two_single:1:1:4,4,4,4,7,9",
+        "four_two_single:1:1:4,4,4,4,7,A",
+        "four_two_single:1:1:4,4,4,4,7,BJ",
+        "four_two_single:1:1:4,4,4,4,7,J",
+        "four_two_single:1:1:4,4,4,4,7,K",
+        "four_two_single:1:1:4,4,4,4,7,Q",
+        "four_two_single:1:1:4,4,4,4,8,10",
+        "four_two_single:1:1:4,4,4,4,8,2",
+        "four_two_single:1:1:4,4,4,4,8,9",
+        "four_two_single:1:1:4,4,4,4,8,A",
+        "four_two_single:1:1:4,4,4,4,8,BJ",
+        "four_two_single:1:1:4,4,4,4,8,J",
+        "four_two_single:1:1:4,4,4,4,8,K",
+        "four_two_single:1:1:4,4,4,4,8,Q",
+        "four_two_single:1:1:4,4,4,4,9,10",
+        "four_two_single:1:1:4,4,4,4,9,2",
+        "four_two_single:1:1:4,4,4,4,9,A",
+        "four_two_single:1:1:4,4,4,4,9,BJ",
+        "four_two_single:1:1:4,4,4,4,9,J",
+        "four_two_single:1:1:4,4,4,4,9,K",
+        "four_two_single:1:1:4,4,4,4,9,Q",
+        "four_two_single:1:1:4,4,4,4,A,2",
+        "four_two_single:1:1:4,4,4,4,A,BJ",
+        "four_two_single:1:1:4,4,4,4,J,2",
+        "four_two_single:1:1:4,4,4,4,J,A",
+        "four_two_single:1:1:4,4,4,4,J,BJ",
+        "four_two_single:1:1:4,4,4,4,J,K",
+        "four_two_single:1:1:4,4,4,4,J,Q",
+        "four_two_single:1:1:4,4,4,4,K,2",
+        "four_two_single:1:1:4,4,4,4,K,A",
+        "four_two_single:1:1:4,4,4,4,K,BJ",
+        "four_two_single:1:1:4,4,4,4,Q,2",
+        "four_two_single:1:1:4,4,4,4,Q,A",
+        "four_two_single:1:1:4,4,4,4,Q,BJ",
+        "four_two_single:1:1:4,4,4,4,Q,K",
+        "four_two_single:1:1:4,4,4,4,Q,Q",
+        "four_two_pair:1:1:4,4,4,4,7,7,2,2",
+        "four_two_pair:1:1:4,4,4,4,7,7,Q,Q",
+        "four_two_pair:1:1:4,4,4,4,Q,Q,2,2",
+        "bomb:1:1:4,4,4,4"
+      ]
+    }
+  ],
+  "api_ledger": [
+    {
+      "questions": [
+        "action"
+      ],
+      "status": "completed",
+      "model": "jev-1.13.0",
+      "usage": {
+        "input_tokens": 3131,
+        "output_tokens": 46
+      },
+      "seconds": 0.5981202080000001
+    },
+    {
+      "questions": [
+        "action"
+      ],
+      "status": "api_error",
+      "error": "TypeSafe 请求失败，HTTP 400",
+      "usage_unknown": true,
+      "seconds": 0.8468922909999996
+    }
+  ],
+  "error": "TypeSafe 请求失败，HTTP 400",
+  "elapsed_seconds": 2.810540584,
+  "split": "fresh",
+  "trace_path": "doudizhu-strategy-ab-v1-episodes/fresh-20261101-v2.json"
+}

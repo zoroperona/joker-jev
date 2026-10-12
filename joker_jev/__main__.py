@@ -3,7 +3,7 @@ from dataclasses import asdict
 import json
 
 from joker_jev.agents.base import RandomAgent
-from joker_jev.games.doudizhu.full.agents import FullSimpleAgent, FullJEVAgent
+from joker_jev.games.doudizhu.full.agents import FullSimpleAgent, FullJEVAgent, StrategicJEVAgent, CompactStrategicJEVAgent
 from joker_jev.agents.jev import JEVAgent
 from joker_jev.agents.typesafe import TypeSafeBackend
 from joker_jev.core.engine import play
@@ -17,6 +17,7 @@ def main():
     parser.add_argument("--episodes", type=int, default=1)
     parser.add_argument("--agent", choices=("random", "simple", "jev"), default="random",
                         help="random：各方随机；simple：斗地主各方简单 AI；jev：首位 JEV，斗地主其余为简单 AI、其他游戏其余随机")
+    parser.add_argument("--strategy", choices=("v1", "v2", "v2_compact"), default="v2_compact", help="完整斗地主 JEV 策略版本")
     parser.add_argument("--env-file", default=".env", help="JEV 的本地配置路径")
     args = parser.parse_args()
     if args.episodes <= 0:
@@ -31,7 +32,7 @@ def main():
         if args.game == "doudizhu" and args.agent in ("simple", "jev"):
             agents = {p: FullSimpleAgent() for p in game.rules.players}
         if backend is not None:
-            agents[game.rules.players[0]] = FullJEVAgent(backend) if args.game == "doudizhu" else JEVAgent(backend)
+            agents[game.rules.players[0]] = {"v1": FullJEVAgent, "v2": StrategicJEVAgent, "v2_compact": CompactStrategicJEVAgent}[args.strategy](backend) if args.game == "doudizhu" else JEVAgent(backend)
         result = play(game, agents, seed=args.seed + episode)
         print(json.dumps(asdict(result), ensure_ascii=False, allow_nan=False))
 

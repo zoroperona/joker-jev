@@ -1,0 +1,154 @@
+{
+  "development": {
+    "v1": {
+      "source": "reports/doudizhu-strategy-ab-v2.json",
+      "split": "development",
+      "strategy": "v1",
+      "counts": {
+        "nonforced_play_decisions": 61,
+        "hierarchical_decisions": 0,
+        "teammate_control_opportunities": 17,
+        "teammate_overtakes": 4,
+        "free_leads": 18,
+        "bomb_free_leads": 2,
+        "pass_to_one_card_enemy_with_legal_response": 3
+      },
+      "examples": [
+        {
+          "file": "doudizhu-strategy-ab-v2-episodes/development-20261023-v1.json",
+          "turn": 3,
+          "signal": "bomb_free_lead",
+          "action": "bomb:10:1:K,K,K,K"
+        },
+        {
+          "file": "doudizhu-strategy-ab-v2-episodes/development-20261023-v1.json",
+          "turn": 33,
+          "signal": "pass_to_one_card_enemy",
+          "action": "pass"
+        },
+        {
+          "file": "doudizhu-strategy-ab-v2-episodes/development-20261016-v1.json",
+          "turn": 54,
+          "signal": "pass_to_one_card_enemy",
+          "action": "pass"
+        },
+        {
+          "file": "doudizhu-strategy-ab-v2-episodes/development-20261025-v1.json",
+          "turn": 1,
+          "signal": "bomb_free_lead",
+          "action": "bomb:8:1:J,J,J,J"
+        },
+        {
+          "file": "doudizhu-strategy-ab-v2-episodes/development-20261025-v1.json",
+          "turn": 28,
+          "signal": "pass_to_one_card_enemy",
+          "action": "pass"
+        }
+      ],
+      "interpretation": "Descriptive decision contexts, not optimality labels. A legal response does not guarantee blocking all opponents or eventual victory."
+    },
+    "v2_compact": {
+      "source": "reports/doudizhu-strategy-ab-v2.json",
+      "split": "development",
+      "strategy": "v2_compact",
+      "counts": {
+        "nonforced_play_decisions": 63,
+        "hierarchical_decisions": 5,
+        "teammate_control_opportunities": 26,
+        "teammate_overtakes": 7,
+        "free_leads": 15
+      },
+      "examples": [],
+      "interpretation": "Descriptive decision contexts, not optimality labels. A legal response does not guarantee blocking all opponents or eventual victory."
+    }
+  },
+  "fresh": {
+    "v1": {
+      "source": "reports/doudizhu-strategy-ab-v2.json",
+      "split": "fresh",
+      "strategy": "v1",
+      "counts": {
+        "nonforced_play_decisions": 70,
+        "hierarchical_decisions": 0,
+        "free_leads": 26,
+        "bomb_free_leads": 2,
+        "pass_to_one_card_enemy_with_legal_response": 4,
+        "teammate_control_opportunities": 5,
+        "teammate_overtakes": 1
+      },
+      "examples": [
+        {
+          "file": "doudizhu-strategy-ab-v2-episodes/fresh-20261201-v1.json",
+          "turn": 3,
+          "signal": "bomb_free_lead",
+          "action": "rocket:14:1:SJ,BJ"
+        },
+        {
+          "file": "doudizhu-strategy-ab-v2-episodes/fresh-20261204-v1.json",
+          "turn": 36,
+          "signal": "pass_to_one_card_enemy",
+          "action": "pass"
+        },
+        {
+          "file": "doudizhu-strategy-ab-v2-episodes/fresh-20261209-v1.json",
+          "turn": 36,
+          "signal": "pass_to_one_card_enemy",
+          "action": "pass"
+        },
+        {
+          "file": "doudizhu-strategy-ab-v2-episodes/fresh-20261207-v1.json",
+          "turn": 37,
+          "signal": "pass_to_one_card_enemy",
+          "action": "pass"
+        },
+        {
+          "file": "doudizhu-strategy-ab-v2-episodes/fresh-20261203-v1.json",
+          "turn": 3,
+          "signal": "bomb_free_lead",
+          "action": "bomb:12:1:2,2,2,2"
+        },
+        {
+          "file": "doudizhu-strategy-ab-v2-episodes/fresh-20261203-v1.json",
+          "turn": 24,
+          "signal": "pass_to_one_card_enemy",
+          "action": "pass"
+        }
+      ],
+      "interpretation": "Descriptive decision contexts, not optimality labels. A legal response does not guarantee blocking all opponents or eventual victory."
+    },
+    "v2_compact": {
+      "source": "reports/doudizhu-strategy-ab-v2.json",
+      "split": "fresh",
+      "strategy": "v2_compact",
+      "counts": {
+        "nonforced_play_decisions": 73,
+        "hierarchical_decisions": 9,
+        "free_leads": 25,
+        "teammate_control_opportunities": 4,
+        "teammate_overtakes": 2,
+        "pass_to_one_card_enemy_with_legal_response": 3
+      },
+      "examples": [
+        {
+          "file": "doudizhu-strategy-ab-v2-episodes/fresh-20261202-v2_compact.json",
+          "turn": 20,
+          "signal": "pass_to_one_card_enemy",
+          "action": "pass"
+        },
+        {
+          "file": "doudizhu-strategy-ab-v2-episodes/fresh-20261207-v2_compact.json",
+          "turn": 40,
+          "signal": "pass_to_one_card_enemy",
+          "action": "pass"
+        },
+        {
+          "file": "doudizhu-strategy-ab-v2-episodes/fresh-20261204-v2_compact.json",
+          "turn": 36,
+          "signal": "pass_to_one_card_enemy",
+          "action": "pass"
+        }
+      ],
+      "interpretation": "Descriptive decision contexts, not optimality labels. A legal response does not guarantee blocking all opponents or eventual victory."
+    }
+  }
+}

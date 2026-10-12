@@ -5,6 +5,7 @@ from dataclasses import asdict
 from functools import lru_cache
 
 from joker_jev.agents.base import Agent
+from joker_jev.agents.typesafe import TypeSafeError
 from joker_jev.core.models import Decision
 from joker_jev.games.doudizhu.tactics import validate_choice
 from .cards import RANKS, ordered, runs
@@ -101,7 +102,12 @@ class FullJEVAgent(Agent):
         response = self.backend.evaluate(state, {'action': {
             'type': 'choice', 'instructions': instruction, 'criteria': criteria}})
         answer = response['answers']['action']
-        validate_choice(answer, criteria)
+        try:
+            validate_choice(answer, criteria)
+        except TypeSafeError:
+            self.last_selection.append({'status': 'invalid_response', 'answer': answer,
+                                        'candidate_ids': list(criteria), 'candidate_count': len(criteria)})
+            raise
         self.last_selection.append({'choice': answer['choice'], 'confidence': answer['confidence'],
                                     'probabilities': answer['probabilities'], 'candidate_count': len(criteria)})
         return answer['choice']
@@ -137,3 +143,75 @@ class FullJEVAgent(Agent):
         # 20 张以内手牌、固定主体的合法翅膀组合不超过 C(11,3)=165。
         criteria = {a.id: {'label': a.label, **a.payload} for a in actions}
         return Decision(self._choose(state, criteria, instruction))
+
+
+STRATEGIC_INSTRUCTIONS = (
+    "Choose the legal action for your team's eventual win and score, not simply the largest current play. "
+    "During bidding balance controls, feasible hand structure and unknown bottom cards against doubled landlord liability; no bid is mandated. "
+    "During play read decision_facts and each action's consequences. A partition is only a feasible plan if nobody beats you, NOT a win probability. "
+    "Plan the order: get low cards out while retaining cards that can regain the lead; spending all jokers/twos first can strand low singles. "
+    "A longer combination may leave a worse hand structure. Leading a bomb merely to keep a lead you already own spends future control and doubles stakes. "
+    "A farmer may yield to a teammate, but check actual responder order and urgent enemies before passing. "
+    "If an opponent has one card, inspect blocking plays before giving that opponent a free lead or a chance to finish. "
+    "Do not take a teammate's lead without a concrete team benefit. Prefer immediate team victory. "
+    "These are conditional considerations, not mandatory actions. Any offered legal action may be selected."
+)
+
+
+class StrategicJEVAgent(FullJEVAgent):
+    """v2：提供可见动作后果与拆牌方案，最终合法动作仍由 JEV 选择。"""
+    choice_limit = 255
+    compact = False
+
+    def decide(self, context):
+        from .strategy import features
+        self.last_selection = []
+        self.last_features = None
+        actions = list(context.observation.legal_actions)
+        if len(actions) == 1:
+            return Decision(actions[0].id, '唯一合法动作')
+        common, consequences = features(context)
+        self.last_features = {'decision_facts': common, 'candidate_consequences': consequences}
+        state = visible_payload(context)
+        state['decision_facts'] = common
+        if len(actions) > self.choice_limit:
+            families = {}
+            for a in actions:
+                families.setdefault(a.payload['kind'], []).append(a)
+            def summarize_group(group):
+                return {'legal_action_count': len(group),
+                        'best_remaining_plays_upper_bound': min(consequences[a.id]['remaining_plays_upper_bound'] for a in group),
+                        'has_immediate_finish': any(consequences[a.id]['finishes_own_hand'] for a in group),
+                        'body_options': sorted({(a.payload.get('main', -1), a.payload.get('chain', 1), len(a.payload['cards'])) for a in group})}
+            key = self._choose(state, {k: summarize_group(v) for k, v in families.items()},
+                               STRATEGIC_INSTRUCTIONS + ' First choose a play family; all actions remain reachable.')
+            actions = families[key]
+            if len(actions) > self.choice_limit:
+                bodies = {}
+                for a in actions:
+                    key = '%s:%s:%s' % (a.payload['kind'], a.payload['main'], a.payload['chain'])
+                    bodies.setdefault(key, []).append(a)
+                key = self._choose(state, {k: summarize_group(v) for k, v in bodies.items()},
+                                   STRATEGIC_INSTRUCTIONS + ' Choose body rank and chain length, then attachments.')
+                actions = bodies[key]
+        while len(actions) > self.choice_limit:
+            pages = {str(i // self.choice_limit): actions[i:i + self.choice_limit]
+                     for i in range(0, len(actions), self.choice_limit)}
+            options = {key: {**summarize_group(group),
+                             'first_action': group[0].label, 'last_action': group[-1].label}
+                       for key, group in pages.items()}
+            key = self._choose(state, options, STRATEGIC_INSTRUCTIONS + ' Choose a bounded attachment group; no legal action has been removed.')
+            actions = pages[key]
+        def consequence(action):
+            if not self.compact:
+                return consequences[action.id]
+            return {k: v for k, v in consequences[action.id].items()
+                    if k not in ('feasible_partition', 'remaining_cards') and v is not False and v != []}
+        criteria = {a.id: {'label': a.label, **a.payload, 'consequences': consequence(a)} for a in actions}
+        return Decision(self._choose(state, criteria, STRATEGIC_INSTRUCTIONS))
+
+
+class CompactStrategicJEVAgent(StrategicJEVAgent):
+    """v2_compact：每次最终动作 Choice 至多 24 项，省略重复残余牌列表。"""
+    choice_limit = 24
+    compact = True

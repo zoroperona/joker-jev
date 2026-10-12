@@ -1,0 +1,39 @@
+{
+  "source": "reports/doudizhu-full-deal-live-v1.json",
+  "counts": {
+    "nonforced_play_decisions": 59,
+    "hierarchical_decisions": 0,
+    "free_leads": 19,
+    "teammate_control_opportunities": 16,
+    "teammate_overtakes": 4,
+    "bomb_free_leads": 2,
+    "pass_to_one_card_enemy_with_legal_response": 2
+  },
+  "examples": [
+    {
+      "file": "doudizhu-full-deal-live-v1-episodes/game_007.json",
+      "turn": 3,
+      "signal": "bomb_free_lead",
+      "action": "bomb:10:1:K,K,K,K"
+    },
+    {
+      "file": "doudizhu-full-deal-live-v1-episodes/game_007.json",
+      "turn": 33,
+      "signal": "pass_to_one_card_enemy",
+      "action": "pass"
+    },
+    {
+      "file": "doudizhu-full-deal-live-v1-episodes/game_009.json",
+      "turn": 3,
+      "signal": "bomb_free_lead",
+      "action": "bomb:8:1:J,J,J,J"
+    },
+    {
+      "file": "doudizhu-full-deal-live-v1-episodes/game_009.json",
+      "turn": 36,
+      "signal": "pass_to_one_card_enemy",
+      "action": "pass"
+    }
+  ],
+  "interpretation": "Descriptive decision contexts, not optimality labels. A legal response does not guarantee blocking all opponents or eventual victory."
+}
