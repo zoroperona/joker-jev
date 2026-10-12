@@ -1,0 +1,3059 @@
+{
+  "arm": "current_jev",
+  "focal_seat": "farmer_before",
+  "farmer_style": "pressure",
+  "seed": 244074006379234,
+  "landlord_style": "pressure",
+  "policy_by_seat": {
+    "landlord": "pressure",
+    "farmer_after": "pressure",
+    "farmer_before": "current_jev"
+  },
+  "status": "completed",
+  "trace": [
+    {
+      "turn": 0,
+      "player": "farmer_after",
+      "policy": "pressure",
+      "visible_state": {
+        "rules": {
+          "game": "doudizhu_endgame_v1",
+          "rank_order": [
+            "3",
+            "4",
+            "5",
+            "6",
+            "7",
+            "8",
+            "9",
+            "10",
+            "J",
+            "Q",
+            "K",
+            "A",
+            "2",
+            "SJ",
+            "BJ"
+          ],
+          "turn_order": [
+            "landlord",
+            "farmer_after",
+            "farmer_before"
+          ],
+          "team": {
+            "landlord": "landlord",
+            "farmer_after": "farmers",
+            "farmer_before": "farmers"
+          },
+          "reward": "Landlord wins: landlord +1, each farmer -1; either farmer finishes: both farmers +1, landlord -1. No tactical bonus.",
+          "play": "Beat the active play with the same type and a higher rank, or rocket. Passing allowed only when responding. After two passes the owner leads freely. The first empty hand ends the game immediately.",
+          "scope": "Each remaining hand has at most 4 cards; the remaining pool has at most 2 cards per ordinary rank. Only singles, pairs and rocket can occur. No bidding, multipliers or spring bonuses."
+        },
+        "self": {
+          "seat": "farmer_after",
+          "role": "farmer",
+          "hand": [
+            "3",
+            "8",
+            "9"
+          ],
+          "teammate": "farmer_before",
+          "next_seat": "farmer_before"
+        },
+        "public": {
+          "remaining_counts": {
+            "landlord": 3,
+            "farmer_after": 3,
+            "farmer_before": 3
+          },
+          "active_play": {
+            "cards": [],
+            "owner": null,
+            "consecutive_passes": 0
+          },
+          "played_counts": {
+            "3": 2,
+            "4": 4,
+            "5": 3,
+            "6": 4,
+            "7": 4,
+            "8": 3,
+            "9": 2,
+            "10": 2,
+            "J": 4,
+            "Q": 4,
+            "K": 3,
+            "A": 4,
+            "2": 4,
+            "SJ": 1,
+            "BJ": 1
+          },
+          "history_quality": "Public ordered history since this endgame snapshot; earlier play is aggregate counts only.",
+          "history": []
+        },
+        "belief": {
+          "facts": {
+            "unseen_card_counts": {
+              "3": 1,
+              "5": 1,
+              "9": 1,
+              "10": 2,
+              "K": 1
+            },
+            "control": {
+              "active_play_exists": false
+            }
+          },
+          "estimates": {
+            "landlord": {
+              "pair_hand_probability": 0.0
+            },
+            "farmer_before": {
+              "pair_hand_probability": 0.0
+            }
+          },
+          "assumptions": [
+            "Uniform unseen-card instances conditional on public counts, not a behavioral posterior.",
+            "Past public moves update remaining card counts; passes do not prove absence of a higher card.",
+            "History starts at the supplied endgame snapshot, not at the original deal."
+          ]
+        },
+        "legal_actions": [
+          {
+            "id": "play:3",
+            "label": "出 3",
+            "payload": {
+              "cards": [
+                "3"
+              ],
+              "kind": "single",
+              "finishes_own_hand": false,
+              "breaks_pair": false,
+              "remaining_hand": [
+                "8",
+                "9"
+              ],
+              "minimum_uncontested_plays": 2
+            }
+          },
+          {
+            "id": "play:8",
+            "label": "出 8",
+            "payload": {
+              "cards": [
+                "8"
+              ],
+              "kind": "single",
+              "finishes_own_hand": false,
+              "breaks_pair": false,
+              "remaining_hand": [
+                "3",
+                "9"
+              ],
+              "minimum_uncontested_plays": 2
+            }
+          },
+          {
+            "id": "play:9",
+            "label": "出 9",
+            "payload": {
+              "cards": [
+                "9"
+              ],
+              "kind": "single",
+              "finishes_own_hand": false,
+              "breaks_pair": false,
+              "remaining_hand": [
+                "3",
+                "8"
+              ],
+              "minimum_uncontested_plays": 2
+            }
+          }
+        ]
+      },
+      "status": "applied",
+      "decision": {
+        "action_id": "play:3",
+        "calls": []
+      },
+      "decision_seconds": 0.0009505419999982223,
+      "public_events": [
+        {
+          "kind": "move",
+          "data": {
+            "player": "farmer_after",
+            "action_id": "play:3",
+            "cards": [
+              "3"
+            ]
+          }
+        }
+      ],
+      "rewards": {
+        "landlord": 0.0,
+        "farmer_after": 0.0,
+        "farmer_before": 0.0
+      },
+      "cumulative_rewards": {
+        "landlord": 0.0,
+        "farmer_after": 0.0,
+        "farmer_before": 0.0
+      }
+    },
+    {
+      "turn": 1,
+      "player": "farmer_before",
+      "policy": "current_jev",
+      "visible_state": {
+        "rules": {
+          "game": "doudizhu_endgame_v1",
+          "rank_order": [
+            "3",
+            "4",
+            "5",
+            "6",
+            "7",
+            "8",
+            "9",
+            "10",
+            "J",
+            "Q",
+            "K",
+            "A",
+            "2",
+            "SJ",
+            "BJ"
+          ],
+          "turn_order": [
+            "landlord",
+            "farmer_after",
+            "farmer_before"
+          ],
+          "team": {
+            "landlord": "landlord",
+            "farmer_after": "farmers",
+            "farmer_before": "farmers"
+          },
+          "reward": "Landlord wins: landlord +1, each farmer -1; either farmer finishes: both farmers +1, landlord -1. No tactical bonus.",
+          "play": "Beat the active play with the same type and a higher rank, or rocket. Passing allowed only when responding. After two passes the owner leads freely. The first empty hand ends the game immediately.",
+          "scope": "Each remaining hand has at most 4 cards; the remaining pool has at most 2 cards per ordinary rank. Only singles, pairs and rocket can occur. No bidding, multipliers or spring bonuses."
+        },
+        "self": {
+          "seat": "farmer_before",
+          "role": "farmer",
+          "hand": [
+            "5",
+            "9",
+            "K"
+          ],
+          "teammate": "farmer_after",
+          "next_seat": "landlord"
+        },
+        "public": {
+          "remaining_counts": {
+            "landlord": 3,
+            "farmer_after": 2,
+            "farmer_before": 3
+          },
+          "active_play": {
+            "cards": [
+              "3"
+            ],
+            "owner": "farmer_after",
+            "consecutive_passes": 0
+          },
+          "played_counts": {
+            "3": 3,
+            "4": 4,
+            "5": 3,
+            "6": 4,
+            "7": 4,
+            "8": 3,
+            "9": 2,
+            "10": 2,
+            "J": 4,
+            "Q": 4,
+            "K": 3,
+            "A": 4,
+            "2": 4,
+            "SJ": 1,
+            "BJ": 1
+          },
+          "history_quality": "Public ordered history since this endgame snapshot; earlier play is aggregate counts only.",
+          "history": [
+            {
+              "kind": "move",
+              "data": {
+                "player": "farmer_after",
+                "action_id": "play:3",
+                "cards": [
+                  "3"
+                ]
+              }
+            }
+          ]
+        },
+        "belief": {
+          "facts": {
+            "unseen_card_counts": {
+              "3": 1,
+              "8": 1,
+              "9": 1,
+              "10": 2
+            }
+          },
+          "estimates": {
+            "landlord": {
+              "pair_hand_probability": 0.0,
+              "can_beat_active_play_probability": 1.0
+            },
+            "farmer_after": {
+              "pair_hand_probability": 0.1,
+              "can_beat_active_play_probability": 1.0
+            }
+          },
+          "assumptions": [
+            "Uniform unseen-card instances conditional on public counts, not a behavioral posterior.",
+            "Past public moves update remaining card counts; passes do not prove absence of a higher card.",
+            "History starts at the supplied endgame snapshot, not at the original deal."
+          ]
+        },
+        "legal_actions": [
+          {
+            "id": "play:5",
+            "label": "出 5",
+            "payload": {
+              "cards": [
+                "5"
+              ],
+              "kind": "single",
+              "finishes_own_hand": false,
+              "breaks_pair": false,
+              "remaining_hand": [
+                "9",
+                "K"
+              ],
+              "minimum_uncontested_plays": 2
+            }
+          },
+          {
+            "id": "play:9",
+            "label": "出 9",
+            "payload": {
+              "cards": [
+                "9"
+              ],
+              "kind": "single",
+              "finishes_own_hand": false,
+              "breaks_pair": false,
+              "remaining_hand": [
+                "5",
+                "K"
+              ],
+              "minimum_uncontested_plays": 2
+            }
+          },
+          {
+            "id": "play:K",
+            "label": "出 K",
+            "payload": {
+              "cards": [
+                "K"
+              ],
+              "kind": "single",
+              "finishes_own_hand": false,
+              "breaks_pair": false,
+              "remaining_hand": [
+                "5",
+                "9"
+              ],
+              "minimum_uncontested_plays": 2
+            }
+          },
+          {
+            "id": "pass",
+            "label": "过牌",
+            "payload": {
+              "cards": [],
+              "kind": "pass",
+              "finishes_own_hand": false,
+              "breaks_pair": false,
+              "remaining_hand": [
+                "5",
+                "9",
+                "K"
+              ],
+              "minimum_uncontested_plays": 3
+            }
+          }
+        ]
+      },
+      "status": "applied",
+      "decision": {
+        "action_id": "play:K",
+        "tactics": {
+          "must_block": 0.47,
+          "yield_control": 0.36,
+          "feed_teammate": 0.4,
+          "pair_pressure": 0.22
+        },
+        "confidence": 0.33,
+        "probabilities": {
+          "play:5": 0.23,
+          "play:9": 0.08,
+          "play:K": 0.5,
+          "pass": 0.19
+        },
+        "calls": [
+          {
+            "model": "jev-1.13.0",
+            "usage": {
+              "input_tokens": 1560,
+              "output_tokens": 74
+            }
+          },
+          {
+            "model": "jev-1.13.0",
+            "usage": {
+              "input_tokens": 1895,
+              "output_tokens": 53
+            }
+          }
+        ],
+        "forced": false
+      },
+      "decision_seconds": 1.258525958,
+      "public_events": [
+        {
+          "kind": "move",
+          "data": {
+            "player": "farmer_before",
+            "action_id": "play:K",
+            "cards": [
+              "K"
+            ]
+          }
+        }
+      ],
+      "rewards": {
+        "landlord": 0.0,
+        "farmer_after": 0.0,
+        "farmer_before": 0.0
+      },
+      "cumulative_rewards": {
+        "landlord": 0.0,
+        "farmer_after": 0.0,
+        "farmer_before": 0.0
+      }
+    },
+    {
+      "turn": 2,
+      "player": "landlord",
+      "policy": "pressure",
+      "visible_state": {
+        "rules": {
+          "game": "doudizhu_endgame_v1",
+          "rank_order": [
+            "3",
+            "4",
+            "5",
+            "6",
+            "7",
+            "8",
+            "9",
+            "10",
+            "J",
+            "Q",
+            "K",
+            "A",
+            "2",
+            "SJ",
+            "BJ"
+          ],
+          "turn_order": [
+            "landlord",
+            "farmer_after",
+            "farmer_before"
+          ],
+          "team": {
+            "landlord": "landlord",
+            "farmer_after": "farmers",
+            "farmer_before": "farmers"
+          },
+          "reward": "Landlord wins: landlord +1, each farmer -1; either farmer finishes: both farmers +1, landlord -1. No tactical bonus.",
+          "play": "Beat the active play with the same type and a higher rank, or rocket. Passing allowed only when responding. After two passes the owner leads freely. The first empty hand ends the game immediately.",
+          "scope": "Each remaining hand has at most 4 cards; the remaining pool has at most 2 cards per ordinary rank. Only singles, pairs and rocket can occur. No bidding, multipliers or spring bonuses."
+        },
+        "self": {
+          "seat": "landlord",
+          "role": "landlord",
+          "hand": [
+            "3",
+            "10",
+            "10"
+          ],
+          "teammate": null,
+          "next_seat": "farmer_after"
+        },
+        "public": {
+          "remaining_counts": {
+            "landlord": 3,
+            "farmer_after": 2,
+            "farmer_before": 2
+          },
+          "active_play": {
+            "cards": [
+              "K"
+            ],
+            "owner": "farmer_before",
+            "consecutive_passes": 0
+          },
+          "played_counts": {
+            "3": 3,
+            "4": 4,
+            "5": 3,
+            "6": 4,
+            "7": 4,
+            "8": 3,
+            "9": 2,
+            "10": 2,
+            "J": 4,
+            "Q": 4,
+            "K": 4,
+            "A": 4,
+            "2": 4,
+            "SJ": 1,
+            "BJ": 1
+          },
+          "history_quality": "Public ordered history since this endgame snapshot; earlier play is aggregate counts only.",
+          "history": [
+            {
+              "kind": "move",
+              "data": {
+                "player": "farmer_after",
+                "action_id": "play:3",
+                "cards": [
+                  "3"
+                ]
+              }
+            },
+            {
+              "kind": "move",
+              "data": {
+                "player": "farmer_before",
+                "action_id": "play:K",
+                "cards": [
+                  "K"
+                ]
+              }
+            }
+          ]
+        },
+        "belief": {
+          "facts": {
+            "unseen_card_counts": {
+              "5": 1,
+              "8": 1,
+              "9": 2
+            }
+          },
+          "estimates": {
+            "farmer_after": {
+              "pair_hand_probability": 0.16666666666666666,
+              "can_beat_active_play_probability": 0.0
+            },
+            "farmer_before": {
+              "pair_hand_probability": 0.16666666666666666,
+              "can_beat_active_play_probability": 0.0
+            }
+          },
+          "assumptions": [
+            "Uniform unseen-card instances conditional on public counts, not a behavioral posterior.",
+            "Past public moves update remaining card counts; passes do not prove absence of a higher card.",
+            "History starts at the supplied endgame snapshot, not at the original deal."
+          ]
+        },
+        "legal_actions": [
+          {
+            "id": "pass",
+            "label": "过牌",
+            "payload": {
+              "cards": [],
+              "kind": "pass",
+              "finishes_own_hand": false,
+              "breaks_pair": false,
+              "remaining_hand": [
+                "3",
+                "10",
+                "10"
+              ],
+              "minimum_uncontested_plays": 2
+            }
+          }
+        ]
+      },
+      "status": "applied",
+      "decision": {
+        "action_id": "pass",
+        "forced": true,
+        "calls": []
+      },
+      "decision_seconds": 0.0018675840000028643,
+      "public_events": [
+        {
+          "kind": "move",
+          "data": {
+            "player": "landlord",
+            "action_id": "pass",
+            "cards": []
+          }
+        }
+      ],
+      "rewards": {
+        "landlord": 0.0,
+        "farmer_after": 0.0,
+        "farmer_before": 0.0
+      },
+      "cumulative_rewards": {
+        "landlord": 0.0,
+        "farmer_after": 0.0,
+        "farmer_before": 0.0
+      }
+    },
+    {
+      "turn": 3,
+      "player": "farmer_after",
+      "policy": "pressure",
+      "visible_state": {
+        "rules": {
+          "game": "doudizhu_endgame_v1",
+          "rank_order": [
+            "3",
+            "4",
+            "5",
+            "6",
+            "7",
+            "8",
+            "9",
+            "10",
+            "J",
+            "Q",
+            "K",
+            "A",
+            "2",
+            "SJ",
+            "BJ"
+          ],
+          "turn_order": [
+            "landlord",
+            "farmer_after",
+            "farmer_before"
+          ],
+          "team": {
+            "landlord": "landlord",
+            "farmer_after": "farmers",
+            "farmer_before": "farmers"
+          },
+          "reward": "Landlord wins: landlord +1, each farmer -1; either farmer finishes: both farmers +1, landlord -1. No tactical bonus.",
+          "play": "Beat the active play with the same type and a higher rank, or rocket. Passing allowed only when responding. After two passes the owner leads freely. The first empty hand ends the game immediately.",
+          "scope": "Each remaining hand has at most 4 cards; the remaining pool has at most 2 cards per ordinary rank. Only singles, pairs and rocket can occur. No bidding, multipliers or spring bonuses."
+        },
+        "self": {
+          "seat": "farmer_after",
+          "role": "farmer",
+          "hand": [
+            "8",
+            "9"
+          ],
+          "teammate": "farmer_before",
+          "next_seat": "farmer_before"
+        },
+        "public": {
+          "remaining_counts": {
+            "landlord": 3,
+            "farmer_after": 2,
+            "farmer_before": 2
+          },
+          "active_play": {
+            "cards": [
+              "K"
+            ],
+            "owner": "farmer_before",
+            "consecutive_passes": 1
+          },
+          "played_counts": {
+            "3": 3,
+            "4": 4,
+            "5": 3,
+            "6": 4,
+            "7": 4,
+            "8": 3,
+            "9": 2,
+            "10": 2,
+            "J": 4,
+            "Q": 4,
+            "K": 4,
+            "A": 4,
+            "2": 4,
+            "SJ": 1,
+            "BJ": 1
+          },
+          "history_quality": "Public ordered history since this endgame snapshot; earlier play is aggregate counts only.",
+          "history": [
+            {
+              "kind": "move",
+              "data": {
+                "player": "farmer_after",
+                "action_id": "play:3",
+                "cards": [
+                  "3"
+                ]
+              }
+            },
+            {
+              "kind": "move",
+              "data": {
+                "player": "farmer_before",
+                "action_id": "play:K",
+                "cards": [
+                  "K"
+                ]
+              }
+            },
+            {
+              "kind": "move",
+              "data": {
+                "player": "landlord",
+                "action_id": "pass",
+                "cards": []
+              }
+            }
+          ]
+        },
+        "belief": {
+          "facts": {
+            "unseen_card_counts": {
+              "3": 1,
+              "5": 1,
+              "9": 1,
+              "10": 2
+            }
+          },
+          "estimates": {
+            "landlord": {
+              "pair_hand_probability": 0.0,
+              "can_beat_active_play_probability": 0.0
+            },
+            "farmer_before": {
+              "pair_hand_probability": 0.1,
+              "can_beat_active_play_probability": 0.0
+            }
+          },
+          "assumptions": [
+            "Uniform unseen-card instances conditional on public counts, not a behavioral posterior.",
+            "Past public moves update remaining card counts; passes do not prove absence of a higher card.",
+            "History starts at the supplied endgame snapshot, not at the original deal."
+          ]
+        },
+        "legal_actions": [
+          {
+            "id": "pass",
+            "label": "过牌",
+            "payload": {
+              "cards": [],
+              "kind": "pass",
+              "finishes_own_hand": false,
+              "breaks_pair": false,
+              "remaining_hand": [
+                "8",
+                "9"
+              ],
+              "minimum_uncontested_plays": 2
+            }
+          }
+        ]
+      },
+      "status": "applied",
+      "decision": {
+        "action_id": "pass",
+        "forced": true,
+        "calls": []
+      },
+      "decision_seconds": 0.0019234580000002666,
+      "public_events": [
+        {
+          "kind": "move",
+          "data": {
+            "player": "farmer_after",
+            "action_id": "pass",
+            "cards": []
+          }
+        },
+        {
+          "kind": "free_lead",
+          "data": {
+            "player": "farmer_before"
+          }
+        }
+      ],
+      "rewards": {
+        "landlord": 0.0,
+        "farmer_after": 0.0,
+        "farmer_before": 0.0
+      },
+      "cumulative_rewards": {
+        "landlord": 0.0,
+        "farmer_after": 0.0,
+        "farmer_before": 0.0
+      }
+    },
+    {
+      "turn": 4,
+      "player": "farmer_before",
+      "policy": "current_jev",
+      "visible_state": {
+        "rules": {
+          "game": "doudizhu_endgame_v1",
+          "rank_order": [
+            "3",
+            "4",
+            "5",
+            "6",
+            "7",
+            "8",
+            "9",
+            "10",
+            "J",
+            "Q",
+            "K",
+            "A",
+            "2",
+            "SJ",
+            "BJ"
+          ],
+          "turn_order": [
+            "landlord",
+            "farmer_after",
+            "farmer_before"
+          ],
+          "team": {
+            "landlord": "landlord",
+            "farmer_after": "farmers",
+            "farmer_before": "farmers"
+          },
+          "reward": "Landlord wins: landlord +1, each farmer -1; either farmer finishes: both farmers +1, landlord -1. No tactical bonus.",
+          "play": "Beat the active play with the same type and a higher rank, or rocket. Passing allowed only when responding. After two passes the owner leads freely. The first empty hand ends the game immediately.",
+          "scope": "Each remaining hand has at most 4 cards; the remaining pool has at most 2 cards per ordinary rank. Only singles, pairs and rocket can occur. No bidding, multipliers or spring bonuses."
+        },
+        "self": {
+          "seat": "farmer_before",
+          "role": "farmer",
+          "hand": [
+            "5",
+            "9"
+          ],
+          "teammate": "farmer_after",
+          "next_seat": "landlord"
+        },
+        "public": {
+          "remaining_counts": {
+            "landlord": 3,
+            "farmer_after": 2,
+            "farmer_before": 2
+          },
+          "active_play": {
+            "cards": [],
+            "owner": null,
+            "consecutive_passes": 0
+          },
+          "played_counts": {
+            "3": 3,
+            "4": 4,
+            "5": 3,
+            "6": 4,
+            "7": 4,
+            "8": 3,
+            "9": 2,
+            "10": 2,
+            "J": 4,
+            "Q": 4,
+            "K": 4,
+            "A": 4,
+            "2": 4,
+            "SJ": 1,
+            "BJ": 1
+          },
+          "history_quality": "Public ordered history since this endgame snapshot; earlier play is aggregate counts only.",
+          "history": [
+            {
+              "kind": "move",
+              "data": {
+                "player": "farmer_after",
+                "action_id": "play:3",
+                "cards": [
+                  "3"
+                ]
+              }
+            },
+            {
+              "kind": "move",
+              "data": {
+                "player": "farmer_before",
+                "action_id": "play:K",
+                "cards": [
+                  "K"
+                ]
+              }
+            },
+            {
+              "kind": "move",
+              "data": {
+                "player": "landlord",
+                "action_id": "pass",
+                "cards": []
+              }
+            },
+            {
+              "kind": "move",
+              "data": {
+                "player": "farmer_after",
+                "action_id": "pass",
+                "cards": []
+              }
+            },
+            {
+              "kind": "free_lead",
+              "data": {
+                "player": "farmer_before"
+              }
+            }
+          ]
+        },
+        "belief": {
+          "facts": {
+            "unseen_card_counts": {
+              "3": 1,
+              "8": 1,
+              "9": 1,
+              "10": 2
+            }
+          },
+          "estimates": {
+            "landlord": {
+              "pair_hand_probability": 0.0
+            },
+            "farmer_after": {
+              "pair_hand_probability": 0.1
+            }
+          },
+          "assumptions": [
+            "Uniform unseen-card instances conditional on public counts, not a behavioral posterior.",
+            "Past public moves update remaining card counts; passes do not prove absence of a higher card.",
+            "History starts at the supplied endgame snapshot, not at the original deal."
+          ]
+        },
+        "legal_actions": [
+          {
+            "id": "play:5",
+            "label": "出 5",
+            "payload": {
+              "cards": [
+                "5"
+              ],
+              "kind": "single",
+              "finishes_own_hand": false,
+              "breaks_pair": false,
+              "remaining_hand": [
+                "9"
+              ],
+              "minimum_uncontested_plays": 1
+            }
+          },
+          {
+            "id": "play:9",
+            "label": "出 9",
+            "payload": {
+              "cards": [
+                "9"
+              ],
+              "kind": "single",
+              "finishes_own_hand": false,
+              "breaks_pair": false,
+              "remaining_hand": [
+                "5"
+              ],
+              "minimum_uncontested_plays": 1
+            }
+          }
+        ]
+      },
+      "status": "applied",
+      "decision": {
+        "action_id": "play:5",
+        "tactics": {
+          "must_block": 0.39,
+          "yield_control": 0.2,
+          "feed_teammate": 0.46,
+          "pair_pressure": 0.23
+        },
+        "confidence": 0.04,
+        "probabilities": {
+          "play:5": 0.52,
+          "play:9": 0.48
+        },
+        "calls": [
+          {
+            "model": "jev-1.13.0",
+            "usage": {
+              "input_tokens": 1492,
+              "output_tokens": 74
+            }
+          },
+          {
+            "model": "jev-1.13.0",
+            "usage": {
+              "input_tokens": 1650,
+              "output_tokens": 37
+            }
+          }
+        ],
+        "forced": false
+      },
+      "decision_seconds": 1.229847166000006,
+      "public_events": [
+        {
+          "kind": "move",
+          "data": {
+            "player": "farmer_before",
+            "action_id": "play:5",
+            "cards": [
+              "5"
+            ]
+          }
+        }
+      ],
+      "rewards": {
+        "landlord": 0.0,
+        "farmer_after": 0.0,
+        "farmer_before": 0.0
+      },
+      "cumulative_rewards": {
+        "landlord": 0.0,
+        "farmer_after": 0.0,
+        "farmer_before": 0.0
+      }
+    },
+    {
+      "turn": 5,
+      "player": "landlord",
+      "policy": "pressure",
+      "visible_state": {
+        "rules": {
+          "game": "doudizhu_endgame_v1",
+          "rank_order": [
+            "3",
+            "4",
+            "5",
+            "6",
+            "7",
+            "8",
+            "9",
+            "10",
+            "J",
+            "Q",
+            "K",
+            "A",
+            "2",
+            "SJ",
+            "BJ"
+          ],
+          "turn_order": [
+            "landlord",
+            "farmer_after",
+            "farmer_before"
+          ],
+          "team": {
+            "landlord": "landlord",
+            "farmer_after": "farmers",
+            "farmer_before": "farmers"
+          },
+          "reward": "Landlord wins: landlord +1, each farmer -1; either farmer finishes: both farmers +1, landlord -1. No tactical bonus.",
+          "play": "Beat the active play with the same type and a higher rank, or rocket. Passing allowed only when responding. After two passes the owner leads freely. The first empty hand ends the game immediately.",
+          "scope": "Each remaining hand has at most 4 cards; the remaining pool has at most 2 cards per ordinary rank. Only singles, pairs and rocket can occur. No bidding, multipliers or spring bonuses."
+        },
+        "self": {
+          "seat": "landlord",
+          "role": "landlord",
+          "hand": [
+            "3",
+            "10",
+            "10"
+          ],
+          "teammate": null,
+          "next_seat": "farmer_after"
+        },
+        "public": {
+          "remaining_counts": {
+            "landlord": 3,
+            "farmer_after": 2,
+            "farmer_before": 1
+          },
+          "active_play": {
+            "cards": [
+              "5"
+            ],
+            "owner": "farmer_before",
+            "consecutive_passes": 0
+          },
+          "played_counts": {
+            "3": 3,
+            "4": 4,
+            "5": 4,
+            "6": 4,
+            "7": 4,
+            "8": 3,
+            "9": 2,
+            "10": 2,
+            "J": 4,
+            "Q": 4,
+            "K": 4,
+            "A": 4,
+            "2": 4,
+            "SJ": 1,
+            "BJ": 1
+          },
+          "history_quality": "Public ordered history since this endgame snapshot; earlier play is aggregate counts only.",
+          "history": [
+            {
+              "kind": "move",
+              "data": {
+                "player": "farmer_after",
+                "action_id": "play:3",
+                "cards": [
+                  "3"
+                ]
+              }
+            },
+            {
+              "kind": "move",
+              "data": {
+                "player": "farmer_before",
+                "action_id": "play:K",
+                "cards": [
+                  "K"
+                ]
+              }
+            },
+            {
+              "kind": "move",
+              "data": {
+                "player": "landlord",
+                "action_id": "pass",
+                "cards": []
+              }
+            },
+            {
+              "kind": "move",
+              "data": {
+                "player": "farmer_after",
+                "action_id": "pass",
+                "cards": []
+              }
+            },
+            {
+              "kind": "free_lead",
+              "data": {
+                "player": "farmer_before"
+              }
+            },
+            {
+              "kind": "move",
+              "data": {
+                "player": "farmer_before",
+                "action_id": "play:5",
+                "cards": [
+                  "5"
+                ]
+              }
+            }
+          ]
+        },
+        "belief": {
+          "facts": {
+            "unseen_card_counts": {
+              "8": 1,
+              "9": 2
+            },
+            "control": {
+              "active_play_exists": true,
+              "active_owner_is_teammate": false,
+              "responders_after_self_pass_before_owner_returns": [
+                "farmer_after"
+              ],
+              "passing_ends_trick": false,
+              "response_possibilities": {
+                "landlord": {
+                  "can_possibly_beat_active_play": true,
+                  "can_possibly_finish_by_beating_active_play": false
+                },
+                "farmer_after": {
+                  "can_possibly_beat_active_play": true,
+                  "can_possibly_finish_by_beating_active_play": false
+                },
+                "farmer_before": {
+                  "can_possibly_beat_active_play": true,
+                  "can_possibly_finish_by_beating_active_play": true
+                }
+              },
+              "opponent_can_possibly_beat_current_play_after_self_pass": true,
+              "opponent_can_possibly_finish_on_current_play_after_self_pass": false,
+              "semantics": "Possibility over all unseen-card assignments consistent with public counts, not actual holdings or probabilities. False rules out the event; true does not guarantee it. Responders are for the unchanged active play after self passes. A previously passing player may respond again after a new higher play. No field mandates a tactical action."
+            }
+          },
+          "estimates": {
+            "farmer_after": {
+              "pair_hand_probability": 0.3333333333333333,
+              "can_beat_active_play_probability": 1.0
+            },
+            "farmer_before": {
+              "pair_hand_probability": 0.0,
+              "can_beat_active_play_probability": 1.0
+            }
+          },
+          "assumptions": [
+            "Uniform unseen-card instances conditional on public counts, not a behavioral posterior.",
+            "Past public moves update remaining card counts; passes do not prove absence of a higher card.",
+            "History starts at the supplied endgame snapshot, not at the original deal."
+          ]
+        },
+        "legal_actions": [
+          {
+            "id": "play:10",
+            "label": "出 10",
+            "payload": {
+              "cards": [
+                "10"
+              ],
+              "kind": "single",
+              "finishes_own_hand": false,
+              "breaks_pair": true,
+              "remaining_hand": [
+                "3",
+                "10"
+              ],
+              "minimum_uncontested_plays": 2
+            }
+          },
+          {
+            "id": "pass",
+            "label": "过牌",
+            "payload": {
+              "cards": [],
+              "kind": "pass",
+              "finishes_own_hand": false,
+              "breaks_pair": false,
+              "remaining_hand": [
+                "3",
+                "10",
+                "10"
+              ],
+              "minimum_uncontested_plays": 2
+            }
+          }
+        ]
+      },
+      "status": "applied",
+      "decision": {
+        "action_id": "play:10",
+        "calls": []
+      },
+      "decision_seconds": 0.0026111250000013797,
+      "public_events": [
+        {
+          "kind": "move",
+          "data": {
+            "player": "landlord",
+            "action_id": "play:10",
+            "cards": [
+              "10"
+            ]
+          }
+        }
+      ],
+      "rewards": {
+        "landlord": 0.0,
+        "farmer_after": 0.0,
+        "farmer_before": 0.0
+      },
+      "cumulative_rewards": {
+        "landlord": 0.0,
+        "farmer_after": 0.0,
+        "farmer_before": 0.0
+      }
+    },
+    {
+      "turn": 6,
+      "player": "farmer_after",
+      "policy": "pressure",
+      "visible_state": {
+        "rules": {
+          "game": "doudizhu_endgame_v1",
+          "rank_order": [
+            "3",
+            "4",
+            "5",
+            "6",
+            "7",
+            "8",
+            "9",
+            "10",
+            "J",
+            "Q",
+            "K",
+            "A",
+            "2",
+            "SJ",
+            "BJ"
+          ],
+          "turn_order": [
+            "landlord",
+            "farmer_after",
+            "farmer_before"
+          ],
+          "team": {
+            "landlord": "landlord",
+            "farmer_after": "farmers",
+            "farmer_before": "farmers"
+          },
+          "reward": "Landlord wins: landlord +1, each farmer -1; either farmer finishes: both farmers +1, landlord -1. No tactical bonus.",
+          "play": "Beat the active play with the same type and a higher rank, or rocket. Passing allowed only when responding. After two passes the owner leads freely. The first empty hand ends the game immediately.",
+          "scope": "Each remaining hand has at most 4 cards; the remaining pool has at most 2 cards per ordinary rank. Only singles, pairs and rocket can occur. No bidding, multipliers or spring bonuses."
+        },
+        "self": {
+          "seat": "farmer_after",
+          "role": "farmer",
+          "hand": [
+            "8",
+            "9"
+          ],
+          "teammate": "farmer_before",
+          "next_seat": "farmer_before"
+        },
+        "public": {
+          "remaining_counts": {
+            "landlord": 2,
+            "farmer_after": 2,
+            "farmer_before": 1
+          },
+          "active_play": {
+            "cards": [
+              "10"
+            ],
+            "owner": "landlord",
+            "consecutive_passes": 0
+          },
+          "played_counts": {
+            "3": 3,
+            "4": 4,
+            "5": 4,
+            "6": 4,
+            "7": 4,
+            "8": 3,
+            "9": 2,
+            "10": 3,
+            "J": 4,
+            "Q": 4,
+            "K": 4,
+            "A": 4,
+            "2": 4,
+            "SJ": 1,
+            "BJ": 1
+          },
+          "history_quality": "Public ordered history since this endgame snapshot; earlier play is aggregate counts only.",
+          "history": [
+            {
+              "kind": "move",
+              "data": {
+                "player": "farmer_after",
+                "action_id": "play:3",
+                "cards": [
+                  "3"
+                ]
+              }
+            },
+            {
+              "kind": "move",
+              "data": {
+                "player": "farmer_before",
+                "action_id": "play:K",
+                "cards": [
+                  "K"
+                ]
+              }
+            },
+            {
+              "kind": "move",
+              "data": {
+                "player": "landlord",
+                "action_id": "pass",
+                "cards": []
+              }
+            },
+            {
+              "kind": "move",
+              "data": {
+                "player": "farmer_after",
+                "action_id": "pass",
+                "cards": []
+              }
+            },
+            {
+              "kind": "free_lead",
+              "data": {
+                "player": "farmer_before"
+              }
+            },
+            {
+              "kind": "move",
+              "data": {
+                "player": "farmer_before",
+                "action_id": "play:5",
+                "cards": [
+                  "5"
+                ]
+              }
+            },
+            {
+              "kind": "move",
+              "data": {
+                "player": "landlord",
+                "action_id": "play:10",
+                "cards": [
+                  "10"
+                ]
+              }
+            }
+          ]
+        },
+        "belief": {
+          "facts": {
+            "unseen_card_counts": {
+              "3": 1,
+              "9": 1,
+              "10": 1
+            }
+          },
+          "estimates": {
+            "landlord": {
+              "pair_hand_probability": 0.0,
+              "can_beat_active_play_probability": 0.0
+            },
+            "farmer_before": {
+              "pair_hand_probability": 0.0,
+              "can_beat_active_play_probability": 0.0
+            }
+          },
+          "assumptions": [
+            "Uniform unseen-card instances conditional on public counts, not a behavioral posterior.",
+            "Past public moves update remaining card counts; passes do not prove absence of a higher card.",
+            "History starts at the supplied endgame snapshot, not at the original deal."
+          ]
+        },
+        "legal_actions": [
+          {
+            "id": "pass",
+            "label": "过牌",
+            "payload": {
+              "cards": [],
+              "kind": "pass",
+              "finishes_own_hand": false,
+              "breaks_pair": false,
+              "remaining_hand": [
+                "8",
+                "9"
+              ],
+              "minimum_uncontested_plays": 2
+            }
+          }
+        ]
+      },
+      "status": "applied",
+      "decision": {
+        "action_id": "pass",
+        "forced": true,
+        "calls": []
+      },
+      "decision_seconds": 0.002583416999996757,
+      "public_events": [
+        {
+          "kind": "move",
+          "data": {
+            "player": "farmer_after",
+            "action_id": "pass",
+            "cards": []
+          }
+        }
+      ],
+      "rewards": {
+        "landlord": 0.0,
+        "farmer_after": 0.0,
+        "farmer_before": 0.0
+      },
+      "cumulative_rewards": {
+        "landlord": 0.0,
+        "farmer_after": 0.0,
+        "farmer_before": 0.0
+      }
+    },
+    {
+      "turn": 7,
+      "player": "farmer_before",
+      "policy": "current_jev",
+      "visible_state": {
+        "rules": {
+          "game": "doudizhu_endgame_v1",
+          "rank_order": [
+            "3",
+            "4",
+            "5",
+            "6",
+            "7",
+            "8",
+            "9",
+            "10",
+            "J",
+            "Q",
+            "K",
+            "A",
+            "2",
+            "SJ",
+            "BJ"
+          ],
+          "turn_order": [
+            "landlord",
+            "farmer_after",
+            "farmer_before"
+          ],
+          "team": {
+            "landlord": "landlord",
+            "farmer_after": "farmers",
+            "farmer_before": "farmers"
+          },
+          "reward": "Landlord wins: landlord +1, each farmer -1; either farmer finishes: both farmers +1, landlord -1. No tactical bonus.",
+          "play": "Beat the active play with the same type and a higher rank, or rocket. Passing allowed only when responding. After two passes the owner leads freely. The first empty hand ends the game immediately.",
+          "scope": "Each remaining hand has at most 4 cards; the remaining pool has at most 2 cards per ordinary rank. Only singles, pairs and rocket can occur. No bidding, multipliers or spring bonuses."
+        },
+        "self": {
+          "seat": "farmer_before",
+          "role": "farmer",
+          "hand": [
+            "9"
+          ],
+          "teammate": "farmer_after",
+          "next_seat": "landlord"
+        },
+        "public": {
+          "remaining_counts": {
+            "landlord": 2,
+            "farmer_after": 2,
+            "farmer_before": 1
+          },
+          "active_play": {
+            "cards": [
+              "10"
+            ],
+            "owner": "landlord",
+            "consecutive_passes": 1
+          },
+          "played_counts": {
+            "3": 3,
+            "4": 4,
+            "5": 4,
+            "6": 4,
+            "7": 4,
+            "8": 3,
+            "9": 2,
+            "10": 3,
+            "J": 4,
+            "Q": 4,
+            "K": 4,
+            "A": 4,
+            "2": 4,
+            "SJ": 1,
+            "BJ": 1
+          },
+          "history_quality": "Public ordered history since this endgame snapshot; earlier play is aggregate counts only.",
+          "history": [
+            {
+              "kind": "move",
+              "data": {
+                "player": "farmer_after",
+                "action_id": "play:3",
+                "cards": [
+                  "3"
+                ]
+              }
+            },
+            {
+              "kind": "move",
+              "data": {
+                "player": "farmer_before",
+                "action_id": "play:K",
+                "cards": [
+                  "K"
+                ]
+              }
+            },
+            {
+              "kind": "move",
+              "data": {
+                "player": "landlord",
+                "action_id": "pass",
+                "cards": []
+              }
+            },
+            {
+              "kind": "move",
+              "data": {
+                "player": "farmer_after",
+                "action_id": "pass",
+                "cards": []
+              }
+            },
+            {
+              "kind": "free_lead",
+              "data": {
+                "player": "farmer_before"
+              }
+            },
+            {
+              "kind": "move",
+              "data": {
+                "player": "farmer_before",
+                "action_id": "play:5",
+                "cards": [
+                  "5"
+                ]
+              }
+            },
+            {
+              "kind": "move",
+              "data": {
+                "player": "landlord",
+                "action_id": "play:10",
+                "cards": [
+                  "10"
+                ]
+              }
+            },
+            {
+              "kind": "move",
+              "data": {
+                "player": "farmer_after",
+                "action_id": "pass",
+                "cards": []
+              }
+            }
+          ]
+        },
+        "belief": {
+          "facts": {
+            "unseen_card_counts": {
+              "3": 1,
+              "8": 1,
+              "9": 1,
+              "10": 1
+            }
+          },
+          "estimates": {
+            "landlord": {
+              "pair_hand_probability": 0.0,
+              "can_beat_active_play_probability": 0.0
+            },
+            "farmer_after": {
+              "pair_hand_probability": 0.0,
+              "can_beat_active_play_probability": 0.0
+            }
+          },
+          "assumptions": [
+            "Uniform unseen-card instances conditional on public counts, not a behavioral posterior.",
+            "Past public moves update remaining card counts; passes do not prove absence of a higher card.",
+            "History starts at the supplied endgame snapshot, not at the original deal."
+          ]
+        },
+        "legal_actions": [
+          {
+            "id": "pass",
+            "label": "过牌",
+            "payload": {
+              "cards": [],
+              "kind": "pass",
+              "finishes_own_hand": false,
+              "breaks_pair": false,
+              "remaining_hand": [
+                "9"
+              ],
+              "minimum_uncontested_plays": 1
+            }
+          }
+        ]
+      },
+      "status": "applied",
+      "decision": {
+        "action_id": "pass",
+        "forced": true,
+        "calls": []
+      },
+      "decision_seconds": 0.0028645840000010026,
+      "public_events": [
+        {
+          "kind": "move",
+          "data": {
+            "player": "farmer_before",
+            "action_id": "pass",
+            "cards": []
+          }
+        },
+        {
+          "kind": "free_lead",
+          "data": {
+            "player": "landlord"
+          }
+        }
+      ],
+      "rewards": {
+        "landlord": 0.0,
+        "farmer_after": 0.0,
+        "farmer_before": 0.0
+      },
+      "cumulative_rewards": {
+        "landlord": 0.0,
+        "farmer_after": 0.0,
+        "farmer_before": 0.0
+      }
+    },
+    {
+      "turn": 8,
+      "player": "landlord",
+      "policy": "pressure",
+      "visible_state": {
+        "rules": {
+          "game": "doudizhu_endgame_v1",
+          "rank_order": [
+            "3",
+            "4",
+            "5",
+            "6",
+            "7",
+            "8",
+            "9",
+            "10",
+            "J",
+            "Q",
+            "K",
+            "A",
+            "2",
+            "SJ",
+            "BJ"
+          ],
+          "turn_order": [
+            "landlord",
+            "farmer_after",
+            "farmer_before"
+          ],
+          "team": {
+            "landlord": "landlord",
+            "farmer_after": "farmers",
+            "farmer_before": "farmers"
+          },
+          "reward": "Landlord wins: landlord +1, each farmer -1; either farmer finishes: both farmers +1, landlord -1. No tactical bonus.",
+          "play": "Beat the active play with the same type and a higher rank, or rocket. Passing allowed only when responding. After two passes the owner leads freely. The first empty hand ends the game immediately.",
+          "scope": "Each remaining hand has at most 4 cards; the remaining pool has at most 2 cards per ordinary rank. Only singles, pairs and rocket can occur. No bidding, multipliers or spring bonuses."
+        },
+        "self": {
+          "seat": "landlord",
+          "role": "landlord",
+          "hand": [
+            "3",
+            "10"
+          ],
+          "teammate": null,
+          "next_seat": "farmer_after"
+        },
+        "public": {
+          "remaining_counts": {
+            "landlord": 2,
+            "farmer_after": 2,
+            "farmer_before": 1
+          },
+          "active_play": {
+            "cards": [],
+            "owner": null,
+            "consecutive_passes": 0
+          },
+          "played_counts": {
+            "3": 3,
+            "4": 4,
+            "5": 4,
+            "6": 4,
+            "7": 4,
+            "8": 3,
+            "9": 2,
+            "10": 3,
+            "J": 4,
+            "Q": 4,
+            "K": 4,
+            "A": 4,
+            "2": 4,
+            "SJ": 1,
+            "BJ": 1
+          },
+          "history_quality": "Public ordered history since this endgame snapshot; earlier play is aggregate counts only.",
+          "history": [
+            {
+              "kind": "move",
+              "data": {
+                "player": "farmer_after",
+                "action_id": "play:3",
+                "cards": [
+                  "3"
+                ]
+              }
+            },
+            {
+              "kind": "move",
+              "data": {
+                "player": "farmer_before",
+                "action_id": "play:K",
+                "cards": [
+                  "K"
+                ]
+              }
+            },
+            {
+              "kind": "move",
+              "data": {
+                "player": "landlord",
+                "action_id": "pass",
+                "cards": []
+              }
+            },
+            {
+              "kind": "move",
+              "data": {
+                "player": "farmer_after",
+                "action_id": "pass",
+                "cards": []
+              }
+            },
+            {
+              "kind": "free_lead",
+              "data": {
+                "player": "farmer_before"
+              }
+            },
+            {
+              "kind": "move",
+              "data": {
+                "player": "farmer_before",
+                "action_id": "play:5",
+                "cards": [
+                  "5"
+                ]
+              }
+            },
+            {
+              "kind": "move",
+              "data": {
+                "player": "landlord",
+                "action_id": "play:10",
+                "cards": [
+                  "10"
+                ]
+              }
+            },
+            {
+              "kind": "move",
+              "data": {
+                "player": "farmer_after",
+                "action_id": "pass",
+                "cards": []
+              }
+            },
+            {
+              "kind": "move",
+              "data": {
+                "player": "farmer_before",
+                "action_id": "pass",
+                "cards": []
+              }
+            },
+            {
+              "kind": "free_lead",
+              "data": {
+                "player": "landlord"
+              }
+            }
+          ]
+        },
+        "belief": {
+          "facts": {
+            "unseen_card_counts": {
+              "8": 1,
+              "9": 2
+            },
+            "control": {
+              "active_play_exists": false
+            }
+          },
+          "estimates": {
+            "farmer_after": {
+              "pair_hand_probability": 0.3333333333333333
+            },
+            "farmer_before": {
+              "pair_hand_probability": 0.0
+            }
+          },
+          "assumptions": [
+            "Uniform unseen-card instances conditional on public counts, not a behavioral posterior.",
+            "Past public moves update remaining card counts; passes do not prove absence of a higher card.",
+            "History starts at the supplied endgame snapshot, not at the original deal."
+          ]
+        },
+        "legal_actions": [
+          {
+            "id": "play:3",
+            "label": "出 3",
+            "payload": {
+              "cards": [
+                "3"
+              ],
+              "kind": "single",
+              "finishes_own_hand": false,
+              "breaks_pair": false,
+              "remaining_hand": [
+                "10"
+              ],
+              "minimum_uncontested_plays": 1
+            }
+          },
+          {
+            "id": "play:10",
+            "label": "出 10",
+            "payload": {
+              "cards": [
+                "10"
+              ],
+              "kind": "single",
+              "finishes_own_hand": false,
+              "breaks_pair": false,
+              "remaining_hand": [
+                "3"
+              ],
+              "minimum_uncontested_plays": 1
+            }
+          }
+        ]
+      },
+      "status": "applied",
+      "decision": {
+        "action_id": "play:3",
+        "calls": []
+      },
+      "decision_seconds": 0.003250666999996099,
+      "public_events": [
+        {
+          "kind": "move",
+          "data": {
+            "player": "landlord",
+            "action_id": "play:3",
+            "cards": [
+              "3"
+            ]
+          }
+        }
+      ],
+      "rewards": {
+        "landlord": 0.0,
+        "farmer_after": 0.0,
+        "farmer_before": 0.0
+      },
+      "cumulative_rewards": {
+        "landlord": 0.0,
+        "farmer_after": 0.0,
+        "farmer_before": 0.0
+      }
+    },
+    {
+      "turn": 9,
+      "player": "farmer_after",
+      "policy": "pressure",
+      "visible_state": {
+        "rules": {
+          "game": "doudizhu_endgame_v1",
+          "rank_order": [
+            "3",
+            "4",
+            "5",
+            "6",
+            "7",
+            "8",
+            "9",
+            "10",
+            "J",
+            "Q",
+            "K",
+            "A",
+            "2",
+            "SJ",
+            "BJ"
+          ],
+          "turn_order": [
+            "landlord",
+            "farmer_after",
+            "farmer_before"
+          ],
+          "team": {
+            "landlord": "landlord",
+            "farmer_after": "farmers",
+            "farmer_before": "farmers"
+          },
+          "reward": "Landlord wins: landlord +1, each farmer -1; either farmer finishes: both farmers +1, landlord -1. No tactical bonus.",
+          "play": "Beat the active play with the same type and a higher rank, or rocket. Passing allowed only when responding. After two passes the owner leads freely. The first empty hand ends the game immediately.",
+          "scope": "Each remaining hand has at most 4 cards; the remaining pool has at most 2 cards per ordinary rank. Only singles, pairs and rocket can occur. No bidding, multipliers or spring bonuses."
+        },
+        "self": {
+          "seat": "farmer_after",
+          "role": "farmer",
+          "hand": [
+            "8",
+            "9"
+          ],
+          "teammate": "farmer_before",
+          "next_seat": "farmer_before"
+        },
+        "public": {
+          "remaining_counts": {
+            "landlord": 1,
+            "farmer_after": 2,
+            "farmer_before": 1
+          },
+          "active_play": {
+            "cards": [
+              "3"
+            ],
+            "owner": "landlord",
+            "consecutive_passes": 0
+          },
+          "played_counts": {
+            "3": 4,
+            "4": 4,
+            "5": 4,
+            "6": 4,
+            "7": 4,
+            "8": 3,
+            "9": 2,
+            "10": 3,
+            "J": 4,
+            "Q": 4,
+            "K": 4,
+            "A": 4,
+            "2": 4,
+            "SJ": 1,
+            "BJ": 1
+          },
+          "history_quality": "Public ordered history since this endgame snapshot; earlier play is aggregate counts only.",
+          "history": [
+            {
+              "kind": "move",
+              "data": {
+                "player": "farmer_after",
+                "action_id": "play:3",
+                "cards": [
+                  "3"
+                ]
+              }
+            },
+            {
+              "kind": "move",
+              "data": {
+                "player": "farmer_before",
+                "action_id": "play:K",
+                "cards": [
+                  "K"
+                ]
+              }
+            },
+            {
+              "kind": "move",
+              "data": {
+                "player": "landlord",
+                "action_id": "pass",
+                "cards": []
+              }
+            },
+            {
+              "kind": "move",
+              "data": {
+                "player": "farmer_after",
+                "action_id": "pass",
+                "cards": []
+              }
+            },
+            {
+              "kind": "free_lead",
+              "data": {
+                "player": "farmer_before"
+              }
+            },
+            {
+              "kind": "move",
+              "data": {
+                "player": "farmer_before",
+                "action_id": "play:5",
+                "cards": [
+                  "5"
+                ]
+              }
+            },
+            {
+              "kind": "move",
+              "data": {
+                "player": "landlord",
+                "action_id": "play:10",
+                "cards": [
+                  "10"
+                ]
+              }
+            },
+            {
+              "kind": "move",
+              "data": {
+                "player": "farmer_after",
+                "action_id": "pass",
+                "cards": []
+              }
+            },
+            {
+              "kind": "move",
+              "data": {
+                "player": "farmer_before",
+                "action_id": "pass",
+                "cards": []
+              }
+            },
+            {
+              "kind": "free_lead",
+              "data": {
+                "player": "landlord"
+              }
+            },
+            {
+              "kind": "move",
+              "data": {
+                "player": "landlord",
+                "action_id": "play:3",
+                "cards": [
+                  "3"
+                ]
+              }
+            }
+          ]
+        },
+        "belief": {
+          "facts": {
+            "unseen_card_counts": {
+              "9": 1,
+              "10": 1
+            },
+            "control": {
+              "active_play_exists": true,
+              "active_owner_is_teammate": false,
+              "responders_after_self_pass_before_owner_returns": [
+                "farmer_before"
+              ],
+              "passing_ends_trick": false,
+              "response_possibilities": {
+                "landlord": {
+                  "can_possibly_beat_active_play": true,
+                  "can_possibly_finish_by_beating_active_play": true
+                },
+                "farmer_after": {
+                  "can_possibly_beat_active_play": true,
+                  "can_possibly_finish_by_beating_active_play": false
+                },
+                "farmer_before": {
+                  "can_possibly_beat_active_play": true,
+                  "can_possibly_finish_by_beating_active_play": true
+                }
+              },
+              "opponent_can_possibly_beat_current_play_after_self_pass": false,
+              "opponent_can_possibly_finish_on_current_play_after_self_pass": false,
+              "semantics": "Possibility over all unseen-card assignments consistent with public counts, not actual holdings or probabilities. False rules out the event; true does not guarantee it. Responders are for the unchanged active play after self passes. A previously passing player may respond again after a new higher play. No field mandates a tactical action."
+            }
+          },
+          "estimates": {
+            "landlord": {
+              "pair_hand_probability": 0.0,
+              "can_beat_active_play_probability": 1.0
+            },
+            "farmer_before": {
+              "pair_hand_probability": 0.0,
+              "can_beat_active_play_probability": 1.0
+            }
+          },
+          "assumptions": [
+            "Uniform unseen-card instances conditional on public counts, not a behavioral posterior.",
+            "Past public moves update remaining card counts; passes do not prove absence of a higher card.",
+            "History starts at the supplied endgame snapshot, not at the original deal."
+          ]
+        },
+        "legal_actions": [
+          {
+            "id": "play:8",
+            "label": "出 8",
+            "payload": {
+              "cards": [
+                "8"
+              ],
+              "kind": "single",
+              "finishes_own_hand": false,
+              "breaks_pair": false,
+              "remaining_hand": [
+                "9"
+              ],
+              "minimum_uncontested_plays": 1
+            }
+          },
+          {
+            "id": "play:9",
+            "label": "出 9",
+            "payload": {
+              "cards": [
+                "9"
+              ],
+              "kind": "single",
+              "finishes_own_hand": false,
+              "breaks_pair": false,
+              "remaining_hand": [
+                "8"
+              ],
+              "minimum_uncontested_plays": 1
+            }
+          },
+          {
+            "id": "pass",
+            "label": "过牌",
+            "payload": {
+              "cards": [],
+              "kind": "pass",
+              "finishes_own_hand": false,
+              "breaks_pair": false,
+              "remaining_hand": [
+                "8",
+                "9"
+              ],
+              "minimum_uncontested_plays": 2
+            }
+          }
+        ]
+      },
+      "status": "applied",
+      "decision": {
+        "action_id": "play:9",
+        "calls": []
+      },
+      "decision_seconds": 0.003542834000000994,
+      "public_events": [
+        {
+          "kind": "move",
+          "data": {
+            "player": "farmer_after",
+            "action_id": "play:9",
+            "cards": [
+              "9"
+            ]
+          }
+        }
+      ],
+      "rewards": {
+        "landlord": 0.0,
+        "farmer_after": 0.0,
+        "farmer_before": 0.0
+      },
+      "cumulative_rewards": {
+        "landlord": 0.0,
+        "farmer_after": 0.0,
+        "farmer_before": 0.0
+      }
+    },
+    {
+      "turn": 10,
+      "player": "farmer_before",
+      "policy": "current_jev",
+      "visible_state": {
+        "rules": {
+          "game": "doudizhu_endgame_v1",
+          "rank_order": [
+            "3",
+            "4",
+            "5",
+            "6",
+            "7",
+            "8",
+            "9",
+            "10",
+            "J",
+            "Q",
+            "K",
+            "A",
+            "2",
+            "SJ",
+            "BJ"
+          ],
+          "turn_order": [
+            "landlord",
+            "farmer_after",
+            "farmer_before"
+          ],
+          "team": {
+            "landlord": "landlord",
+            "farmer_after": "farmers",
+            "farmer_before": "farmers"
+          },
+          "reward": "Landlord wins: landlord +1, each farmer -1; either farmer finishes: both farmers +1, landlord -1. No tactical bonus.",
+          "play": "Beat the active play with the same type and a higher rank, or rocket. Passing allowed only when responding. After two passes the owner leads freely. The first empty hand ends the game immediately.",
+          "scope": "Each remaining hand has at most 4 cards; the remaining pool has at most 2 cards per ordinary rank. Only singles, pairs and rocket can occur. No bidding, multipliers or spring bonuses."
+        },
+        "self": {
+          "seat": "farmer_before",
+          "role": "farmer",
+          "hand": [
+            "9"
+          ],
+          "teammate": "farmer_after",
+          "next_seat": "landlord"
+        },
+        "public": {
+          "remaining_counts": {
+            "landlord": 1,
+            "farmer_after": 1,
+            "farmer_before": 1
+          },
+          "active_play": {
+            "cards": [
+              "9"
+            ],
+            "owner": "farmer_after",
+            "consecutive_passes": 0
+          },
+          "played_counts": {
+            "3": 4,
+            "4": 4,
+            "5": 4,
+            "6": 4,
+            "7": 4,
+            "8": 3,
+            "9": 3,
+            "10": 3,
+            "J": 4,
+            "Q": 4,
+            "K": 4,
+            "A": 4,
+            "2": 4,
+            "SJ": 1,
+            "BJ": 1
+          },
+          "history_quality": "Public ordered history since this endgame snapshot; earlier play is aggregate counts only.",
+          "history": [
+            {
+              "kind": "move",
+              "data": {
+                "player": "farmer_after",
+                "action_id": "play:3",
+                "cards": [
+                  "3"
+                ]
+              }
+            },
+            {
+              "kind": "move",
+              "data": {
+                "player": "farmer_before",
+                "action_id": "play:K",
+                "cards": [
+                  "K"
+                ]
+              }
+            },
+            {
+              "kind": "move",
+              "data": {
+                "player": "landlord",
+                "action_id": "pass",
+                "cards": []
+              }
+            },
+            {
+              "kind": "move",
+              "data": {
+                "player": "farmer_after",
+                "action_id": "pass",
+                "cards": []
+              }
+            },
+            {
+              "kind": "free_lead",
+              "data": {
+                "player": "farmer_before"
+              }
+            },
+            {
+              "kind": "move",
+              "data": {
+                "player": "farmer_before",
+                "action_id": "play:5",
+                "cards": [
+                  "5"
+                ]
+              }
+            },
+            {
+              "kind": "move",
+              "data": {
+                "player": "landlord",
+                "action_id": "play:10",
+                "cards": [
+                  "10"
+                ]
+              }
+            },
+            {
+              "kind": "move",
+              "data": {
+                "player": "farmer_after",
+                "action_id": "pass",
+                "cards": []
+              }
+            },
+            {
+              "kind": "move",
+              "data": {
+                "player": "farmer_before",
+                "action_id": "pass",
+                "cards": []
+              }
+            },
+            {
+              "kind": "free_lead",
+              "data": {
+                "player": "landlord"
+              }
+            },
+            {
+              "kind": "move",
+              "data": {
+                "player": "landlord",
+                "action_id": "play:3",
+                "cards": [
+                  "3"
+                ]
+              }
+            },
+            {
+              "kind": "move",
+              "data": {
+                "player": "farmer_after",
+                "action_id": "play:9",
+                "cards": [
+                  "9"
+                ]
+              }
+            }
+          ]
+        },
+        "belief": {
+          "facts": {
+            "unseen_card_counts": {
+              "8": 1,
+              "10": 1
+            }
+          },
+          "estimates": {
+            "landlord": {
+              "pair_hand_probability": 0.0,
+              "can_beat_active_play_probability": 0.5
+            },
+            "farmer_after": {
+              "pair_hand_probability": 0.0,
+              "can_beat_active_play_probability": 0.5
+            }
+          },
+          "assumptions": [
+            "Uniform unseen-card instances conditional on public counts, not a behavioral posterior.",
+            "Past public moves update remaining card counts; passes do not prove absence of a higher card.",
+            "History starts at the supplied endgame snapshot, not at the original deal."
+          ]
+        },
+        "legal_actions": [
+          {
+            "id": "pass",
+            "label": "过牌",
+            "payload": {
+              "cards": [],
+              "kind": "pass",
+              "finishes_own_hand": false,
+              "breaks_pair": false,
+              "remaining_hand": [
+                "9"
+              ],
+              "minimum_uncontested_plays": 1
+            }
+          }
+        ]
+      },
+      "status": "applied",
+      "decision": {
+        "action_id": "pass",
+        "forced": true,
+        "calls": []
+      },
+      "decision_seconds": 0.0036372499999970387,
+      "public_events": [
+        {
+          "kind": "move",
+          "data": {
+            "player": "farmer_before",
+            "action_id": "pass",
+            "cards": []
+          }
+        }
+      ],
+      "rewards": {
+        "landlord": 0.0,
+        "farmer_after": 0.0,
+        "farmer_before": 0.0
+      },
+      "cumulative_rewards": {
+        "landlord": 0.0,
+        "farmer_after": 0.0,
+        "farmer_before": 0.0
+      }
+    },
+    {
+      "turn": 11,
+      "player": "landlord",
+      "policy": "pressure",
+      "visible_state": {
+        "rules": {
+          "game": "doudizhu_endgame_v1",
+          "rank_order": [
+            "3",
+            "4",
+            "5",
+            "6",
+            "7",
+            "8",
+            "9",
+            "10",
+            "J",
+            "Q",
+            "K",
+            "A",
+            "2",
+            "SJ",
+            "BJ"
+          ],
+          "turn_order": [
+            "landlord",
+            "farmer_after",
+            "farmer_before"
+          ],
+          "team": {
+            "landlord": "landlord",
+            "farmer_after": "farmers",
+            "farmer_before": "farmers"
+          },
+          "reward": "Landlord wins: landlord +1, each farmer -1; either farmer finishes: both farmers +1, landlord -1. No tactical bonus.",
+          "play": "Beat the active play with the same type and a higher rank, or rocket. Passing allowed only when responding. After two passes the owner leads freely. The first empty hand ends the game immediately.",
+          "scope": "Each remaining hand has at most 4 cards; the remaining pool has at most 2 cards per ordinary rank. Only singles, pairs and rocket can occur. No bidding, multipliers or spring bonuses."
+        },
+        "self": {
+          "seat": "landlord",
+          "role": "landlord",
+          "hand": [
+            "10"
+          ],
+          "teammate": null,
+          "next_seat": "farmer_after"
+        },
+        "public": {
+          "remaining_counts": {
+            "landlord": 1,
+            "farmer_after": 1,
+            "farmer_before": 1
+          },
+          "active_play": {
+            "cards": [
+              "9"
+            ],
+            "owner": "farmer_after",
+            "consecutive_passes": 1
+          },
+          "played_counts": {
+            "3": 4,
+            "4": 4,
+            "5": 4,
+            "6": 4,
+            "7": 4,
+            "8": 3,
+            "9": 3,
+            "10": 3,
+            "J": 4,
+            "Q": 4,
+            "K": 4,
+            "A": 4,
+            "2": 4,
+            "SJ": 1,
+            "BJ": 1
+          },
+          "history_quality": "Public ordered history since this endgame snapshot; earlier play is aggregate counts only.",
+          "history": [
+            {
+              "kind": "move",
+              "data": {
+                "player": "farmer_after",
+                "action_id": "play:3",
+                "cards": [
+                  "3"
+                ]
+              }
+            },
+            {
+              "kind": "move",
+              "data": {
+                "player": "farmer_before",
+                "action_id": "play:K",
+                "cards": [
+                  "K"
+                ]
+              }
+            },
+            {
+              "kind": "move",
+              "data": {
+                "player": "landlord",
+                "action_id": "pass",
+                "cards": []
+              }
+            },
+            {
+              "kind": "move",
+              "data": {
+                "player": "farmer_after",
+                "action_id": "pass",
+                "cards": []
+              }
+            },
+            {
+              "kind": "free_lead",
+              "data": {
+                "player": "farmer_before"
+              }
+            },
+            {
+              "kind": "move",
+              "data": {
+                "player": "farmer_before",
+                "action_id": "play:5",
+                "cards": [
+                  "5"
+                ]
+              }
+            },
+            {
+              "kind": "move",
+              "data": {
+                "player": "landlord",
+                "action_id": "play:10",
+                "cards": [
+                  "10"
+                ]
+              }
+            },
+            {
+              "kind": "move",
+              "data": {
+                "player": "farmer_after",
+                "action_id": "pass",
+                "cards": []
+              }
+            },
+            {
+              "kind": "move",
+              "data": {
+                "player": "farmer_before",
+                "action_id": "pass",
+                "cards": []
+              }
+            },
+            {
+              "kind": "free_lead",
+              "data": {
+                "player": "landlord"
+              }
+            },
+            {
+              "kind": "move",
+              "data": {
+                "player": "landlord",
+                "action_id": "play:3",
+                "cards": [
+                  "3"
+                ]
+              }
+            },
+            {
+              "kind": "move",
+              "data": {
+                "player": "farmer_after",
+                "action_id": "play:9",
+                "cards": [
+                  "9"
+                ]
+              }
+            },
+            {
+              "kind": "move",
+              "data": {
+                "player": "farmer_before",
+                "action_id": "pass",
+                "cards": []
+              }
+            }
+          ]
+        },
+        "belief": {
+          "facts": {
+            "unseen_card_counts": {
+              "8": 1,
+              "9": 1
+            },
+            "control": {
+              "active_play_exists": true,
+              "active_owner_is_teammate": false,
+              "responders_after_self_pass_before_owner_returns": [],
+              "passing_ends_trick": true,
+              "response_possibilities": {
+                "landlord": {
+                  "can_possibly_beat_active_play": true,
+                  "can_possibly_finish_by_beating_active_play": true
+                },
+                "farmer_after": {
+                  "can_possibly_beat_active_play": false,
+                  "can_possibly_finish_by_beating_active_play": false
+                },
+                "farmer_before": {
+                  "can_possibly_beat_active_play": false,
+                  "can_possibly_finish_by_beating_active_play": false
+                }
+              },
+              "opponent_can_possibly_beat_current_play_after_self_pass": false,
+              "opponent_can_possibly_finish_on_current_play_after_self_pass": false,
+              "semantics": "Possibility over all unseen-card assignments consistent with public counts, not actual holdings or probabilities. False rules out the event; true does not guarantee it. Responders are for the unchanged active play after self passes. A previously passing player may respond again after a new higher play. No field mandates a tactical action."
+            }
+          },
+          "estimates": {
+            "farmer_after": {
+              "pair_hand_probability": 0.0,
+              "can_beat_active_play_probability": 0.0
+            },
+            "farmer_before": {
+              "pair_hand_probability": 0.0,
+              "can_beat_active_play_probability": 0.0
+            }
+          },
+          "assumptions": [
+            "Uniform unseen-card instances conditional on public counts, not a behavioral posterior.",
+            "Past public moves update remaining card counts; passes do not prove absence of a higher card.",
+            "History starts at the supplied endgame snapshot, not at the original deal."
+          ]
+        },
+        "legal_actions": [
+          {
+            "id": "play:10",
+            "label": "出 10",
+            "payload": {
+              "cards": [
+                "10"
+              ],
+              "kind": "single",
+              "finishes_own_hand": true,
+              "breaks_pair": false,
+              "remaining_hand": [],
+              "minimum_uncontested_plays": 0
+            }
+          },
+          {
+            "id": "pass",
+            "label": "过牌",
+            "payload": {
+              "cards": [],
+              "kind": "pass",
+              "finishes_own_hand": false,
+              "breaks_pair": false,
+              "remaining_hand": [
+                "10"
+              ],
+              "minimum_uncontested_plays": 1
+            }
+          }
+        ]
+      },
+      "status": "applied",
+      "decision": {
+        "action_id": "play:10",
+        "calls": []
+      },
+      "decision_seconds": 0.0037512079999970638,
+      "public_events": [
+        {
+          "kind": "move",
+          "data": {
+            "player": "landlord",
+            "action_id": "play:10",
+            "cards": [
+              "10"
+            ]
+          }
+        },
+        {
+          "kind": "game_finished",
+          "data": {
+            "winner": "landlord",
+            "rewards": {
+              "landlord": 1.0,
+              "farmer_after": -1.0,
+              "farmer_before": -1.0
+            }
+          }
+        }
+      ],
+      "rewards": {
+        "landlord": 1.0,
+        "farmer_after": -1.0,
+        "farmer_before": -1.0
+      },
+      "cumulative_rewards": {
+        "landlord": 1.0,
+        "farmer_after": -1.0,
+        "farmer_before": -1.0
+      }
+    }
+  ],
+  "api_ledger": [
+    {
+      "questions": [
+        "must_block",
+        "yield_control",
+        "feed_teammate",
+        "pair_pressure"
+      ],
+      "status": "completed",
+      "model": "jev-1.13.0",
+      "usage": {
+        "input_tokens": 1560,
+        "output_tokens": 74
+      },
+      "seconds": 0.5640677919999959
+    },
+    {
+      "questions": [
+        "action"
+      ],
+      "status": "completed",
+      "model": "jev-1.13.0",
+      "usage": {
+        "input_tokens": 1895,
+        "output_tokens": 53
+      },
+      "seconds": 0.6898917920000045
+    },
+    {
+      "questions": [
+        "must_block",
+        "yield_control",
+        "feed_teammate",
+        "pair_pressure"
+      ],
+      "status": "completed",
+      "model": "jev-1.13.0",
+      "usage": {
+        "input_tokens": 1492,
+        "output_tokens": 74
+      },
+      "seconds": 0.6570965000000015
+    },
+    {
+      "questions": [
+        "action"
+      ],
+      "status": "completed",
+      "model": "jev-1.13.0",
+      "usage": {
+        "input_tokens": 1650,
+        "output_tokens": 37
+      },
+      "seconds": 0.5657397499999988
+    }
+  ],
+  "team_reward": -1.0,
+  "rewards": {
+    "landlord": 1.0,
+    "farmer_after": -1.0,
+    "farmer_before": -1.0
+  },
+  "turns": 12,
+  "public_history": [
+    {
+      "kind": "move",
+      "data": {
+        "player": "farmer_after",
+        "action_id": "play:3",
+        "cards": [
+          "3"
+        ]
+      }
+    },
+    {
+      "kind": "move",
+      "data": {
+        "player": "farmer_before",
+        "action_id": "play:K",
+        "cards": [
+          "K"
+        ]
+      }
+    },
+    {
+      "kind": "move",
+      "data": {
+        "player": "landlord",
+        "action_id": "pass",
+        "cards": []
+      }
+    },
+    {
+      "kind": "move",
+      "data": {
+        "player": "farmer_after",
+        "action_id": "pass",
+        "cards": []
+      }
+    },
+    {
+      "kind": "free_lead",
+      "data": {
+        "player": "farmer_before"
+      }
+    },
+    {
+      "kind": "move",
+      "data": {
+        "player": "farmer_before",
+        "action_id": "play:5",
+        "cards": [
+          "5"
+        ]
+      }
+    },
+    {
+      "kind": "move",
+      "data": {
+        "player": "landlord",
+        "action_id": "play:10",
+        "cards": [
+          "10"
+        ]
+      }
+    },
+    {
+      "kind": "move",
+      "data": {
+        "player": "farmer_after",
+        "action_id": "pass",
+        "cards": []
+      }
+    },
+    {
+      "kind": "move",
+      "data": {
+        "player": "farmer_before",
+        "action_id": "pass",
+        "cards": []
+      }
+    },
+    {
+      "kind": "free_lead",
+      "data": {
+        "player": "landlord"
+      }
+    },
+    {
+      "kind": "move",
+      "data": {
+        "player": "landlord",
+        "action_id": "play:3",
+        "cards": [
+          "3"
+        ]
+      }
+    },
+    {
+      "kind": "move",
+      "data": {
+        "player": "farmer_after",
+        "action_id": "play:9",
+        "cards": [
+          "9"
+        ]
+      }
+    },
+    {
+      "kind": "move",
+      "data": {
+        "player": "farmer_before",
+        "action_id": "pass",
+        "cards": []
+      }
+    },
+    {
+      "kind": "move",
+      "data": {
+        "player": "landlord",
+        "action_id": "play:10",
+        "cards": [
+          "10"
+        ]
+      }
+    },
+    {
+      "kind": "game_finished",
+      "data": {
+        "winner": "landlord",
+        "rewards": {
+          "landlord": 1.0,
+          "farmer_after": -1.0,
+          "farmer_before": -1.0
+        }
+      }
+    }
+  ],
+  "elapsed_seconds": 2.5374327500000007,
+  "applied_turns": 12,
+  "profile": "pressure",
+  "case_id": "generated_049",
+  "repetition": 0,
+  "episode_id": "generated_049-farmer_before-pressure-0-current_jev"
+}

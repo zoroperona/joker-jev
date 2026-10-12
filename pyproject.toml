@@ -1,0 +1,16 @@
+[build-system]
+requires = ["setuptools>=61"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "joker-jev"
+version = "0.1.0"
+description = "可扩展的卡牌游戏环境与 JEV 决策接口"
+requires-python = ">=3.9"
+dependencies = []
+
+[project.scripts]
+joker-jev = "joker_jev.__main__:main"
+
+[tool.setuptools.packages.find]
+include = ["joker_jev*"]

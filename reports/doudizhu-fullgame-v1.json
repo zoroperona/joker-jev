@@ -1,0 +1,1929 @@
+{
+  "protocol": "doudizhu_full_endgame_v1",
+  "started_at": "2026-10-12T11:52:40.320004+00:00",
+  "status": "completed",
+  "manifest": {
+    "generator": "doudizhu_snapshot_v1",
+    "seed": 20261012,
+    "cases": [
+      {
+        "id": "generated_000",
+        "position": {
+          "hands": [
+            [
+              "6",
+              "Q",
+              "Q"
+            ],
+            [
+              "5",
+              "8",
+              "A"
+            ],
+            [
+              "8",
+              "10",
+              "K"
+            ]
+          ],
+          "actor": 0,
+          "target": [],
+          "owner": null,
+          "passes": 0
+        }
+      },
+      {
+        "id": "generated_001",
+        "position": {
+          "hands": [
+            [
+              "6",
+              "K",
+              "2"
+            ],
+            [
+              "8",
+              "8",
+              "J"
+            ],
+            [
+              "3",
+              "10",
+              "J"
+            ]
+          ],
+          "actor": 1,
+          "target": [],
+          "owner": null,
+          "passes": 0
+        }
+      }
+    ],
+    "sha256": "d29639b7521db75908678166dc0f3b2498bee445f9b631ebd5a489da0f233991",
+    "scope": "Synthetic unseen snapshots fixed before this run; not histories from full deals. No filtering by solver or JEV. Once examined these become development data, not permanently held-out data."
+  },
+  "arms": [
+    "current_jev",
+    "simulation",
+    "simulation_jev"
+  ],
+  "repeats": 1,
+  "workers": 3,
+  "scope": [
+    "Each designated strategy acts on every turn of its focal seat, until natural terminal or execution error.",
+    "The same fixed card assignment is used for all arms; the focal strategy occupies each seat in turn.",
+    "Nonfocal landlord uses pressure; nonfocal farmers use the named cooperative/greedy style.",
+    "When focal is landlord the style describes both opponents; when focal is farmer it describes the teammate.",
+    "Views carry public history since the snapshot; beliefs update card counts but do not model behavioral evidence from passes.",
+    "No human action labels or omniscient solver are used. API errors and turn caps are not losses.",
+    "Small synthetic endgames, not complete 54-card games or a population-strength estimate."
+  ],
+  "episodes": [
+    {
+      "arm": "simulation_jev",
+      "focal_seat": "landlord",
+      "farmer_style": "greedy",
+      "seed": 20261222,
+      "policy_by_seat": {
+        "landlord": "simulation_jev",
+        "farmer_after": "greedy",
+        "farmer_before": "greedy"
+      },
+      "status": "completed",
+      "api_ledger": [],
+      "team_reward": -1.0,
+      "rewards": {
+        "landlord": -1.0,
+        "farmer_after": 1.0,
+        "farmer_before": 1.0
+      },
+      "turns": 4,
+      "elapsed_seconds": 0.022659541999999998,
+      "applied_turns": 4,
+      "case_id": "generated_001",
+      "repetition": 0,
+      "episode_id": "generated_001-landlord-greedy-0-simulation_jev",
+      "trace_path": "doudizhu-fullgame-v1-episodes/generated_001-landlord-greedy-0-simulation_jev.json"
+    },
+    {
+      "arm": "simulation_jev",
+      "focal_seat": "farmer_before",
+      "farmer_style": "cooperative",
+      "seed": 20261312,
+      "policy_by_seat": {
+        "landlord": "pressure",
+        "farmer_after": "cooperative",
+        "farmer_before": "simulation_jev"
+      },
+      "status": "completed",
+      "api_ledger": [],
+      "team_reward": 1.0,
+      "rewards": {
+        "landlord": -1.0,
+        "farmer_after": 1.0,
+        "farmer_before": 1.0
+      },
+      "turns": 4,
+      "elapsed_seconds": 0.008285874999999998,
+      "applied_turns": 4,
+      "case_id": "generated_001",
+      "repetition": 0,
+      "episode_id": "generated_001-farmer_before-cooperative-0-simulation_jev",
+      "trace_path": "doudizhu-fullgame-v1-episodes/generated_001-farmer_before-cooperative-0-simulation_jev.json"
+    },
+    {
+      "arm": "current_jev",
+      "focal_seat": "farmer_before",
+      "farmer_style": "greedy",
+      "seed": 20261342,
+      "policy_by_seat": {
+        "landlord": "pressure",
+        "farmer_after": "greedy",
+        "farmer_before": "current_jev"
+      },
+      "status": "completed",
+      "api_ledger": [],
+      "team_reward": 1.0,
+      "rewards": {
+        "landlord": -1.0,
+        "farmer_after": 1.0,
+        "farmer_before": 1.0
+      },
+      "turns": 4,
+      "elapsed_seconds": 0.008253207999999998,
+      "applied_turns": 4,
+      "case_id": "generated_001",
+      "repetition": 0,
+      "episode_id": "generated_001-farmer_before-greedy-0-current_jev",
+      "trace_path": "doudizhu-fullgame-v1-episodes/generated_001-farmer_before-greedy-0-current_jev.json"
+    },
+    {
+      "arm": "simulation_jev",
+      "focal_seat": "farmer_before",
+      "farmer_style": "cooperative",
+      "seed": 20261132,
+      "policy_by_seat": {
+        "landlord": "pressure",
+        "farmer_after": "cooperative",
+        "farmer_before": "simulation_jev"
+      },
+      "status": "completed",
+      "api_ledger": [
+        {
+          "questions": [
+            "action"
+          ],
+          "status": "completed",
+          "model": "jev-1.13.0",
+          "usage": {
+            "input_tokens": 2775,
+            "output_tokens": 46
+          },
+          "seconds": 30.661503291000002
+        }
+      ],
+      "team_reward": 1.0,
+      "rewards": {
+        "landlord": -1.0,
+        "farmer_after": 1.0,
+        "farmer_before": 1.0
+      },
+      "turns": 8,
+      "elapsed_seconds": 30.703391125,
+      "applied_turns": 8,
+      "case_id": "generated_000",
+      "repetition": 0,
+      "episode_id": "generated_000-farmer_before-cooperative-0-simulation_jev",
+      "trace_path": "doudizhu-fullgame-v1-episodes/generated_000-farmer_before-cooperative-0-simulation_jev.json"
+    },
+    {
+      "arm": "current_jev",
+      "focal_seat": "landlord",
+      "farmer_style": "cooperative",
+      "seed": 20261192,
+      "policy_by_seat": {
+        "landlord": "current_jev",
+        "farmer_after": "cooperative",
+        "farmer_before": "cooperative"
+      },
+      "status": "completed",
+      "api_ledger": [],
+      "team_reward": -1.0,
+      "rewards": {
+        "landlord": -1.0,
+        "farmer_after": 1.0,
+        "farmer_before": 1.0
+      },
+      "turns": 4,
+      "elapsed_seconds": 0.008751290999999384,
+      "applied_turns": 4,
+      "case_id": "generated_001",
+      "repetition": 0,
+      "episode_id": "generated_001-landlord-cooperative-0-current_jev",
+      "trace_path": "doudizhu-fullgame-v1-episodes/generated_001-landlord-cooperative-0-current_jev.json"
+    },
+    {
+      "arm": "simulation",
+      "focal_seat": "landlord",
+      "farmer_style": "greedy",
+      "seed": 20261042,
+      "policy_by_seat": {
+        "landlord": "simulation",
+        "farmer_after": "greedy",
+        "farmer_before": "greedy"
+      },
+      "status": "completed",
+      "api_ledger": [],
+      "team_reward": 1.0,
+      "rewards": {
+        "landlord": 1.0,
+        "farmer_after": -1.0,
+        "farmer_before": -1.0
+      },
+      "turns": 4,
+      "elapsed_seconds": 0.06620916700000024,
+      "applied_turns": 4,
+      "case_id": "generated_000",
+      "repetition": 0,
+      "episode_id": "generated_000-landlord-greedy-0-simulation",
+      "trace_path": "doudizhu-fullgame-v1-episodes/generated_000-landlord-greedy-0-simulation.json"
+    },
+    {
+      "arm": "current_jev",
+      "focal_seat": "farmer_before",
+      "farmer_style": "greedy",
+      "seed": 20261162,
+      "policy_by_seat": {
+        "landlord": "pressure",
+        "farmer_after": "greedy",
+        "farmer_before": "current_jev"
+      },
+      "status": "completed",
+      "api_ledger": [
+        {
+          "questions": [
+            "must_block",
+            "yield_control",
+            "feed_teammate",
+            "pair_pressure"
+          ],
+          "status": "completed",
+          "model": "jev-1.13.0",
+          "usage": {
+            "input_tokens": 1545,
+            "output_tokens": 74
+          },
+          "seconds": 30.684815542
+        },
+        {
+          "questions": [
+            "action"
+          ],
+          "status": "completed",
+          "model": "jev-1.13.0",
+          "usage": {
+            "input_tokens": 1799,
+            "output_tokens": 45
+          },
+          "seconds": 0.5866293330000012
+        }
+      ],
+      "team_reward": 1.0,
+      "rewards": {
+        "landlord": -1.0,
+        "farmer_after": 1.0,
+        "farmer_before": 1.0
+      },
+      "turns": 8,
+      "elapsed_seconds": 31.31265025,
+      "applied_turns": 8,
+      "case_id": "generated_000",
+      "repetition": 0,
+      "episode_id": "generated_000-farmer_before-greedy-0-current_jev",
+      "trace_path": "doudizhu-fullgame-v1-episodes/generated_000-farmer_before-greedy-0-current_jev.json"
+    },
+    {
+      "arm": "simulation",
+      "focal_seat": "farmer_before",
+      "farmer_style": "cooperative",
+      "seed": 20261132,
+      "policy_by_seat": {
+        "landlord": "pressure",
+        "farmer_after": "cooperative",
+        "farmer_before": "simulation"
+      },
+      "status": "completed",
+      "api_ledger": [],
+      "team_reward": 1.0,
+      "rewards": {
+        "landlord": -1.0,
+        "farmer_after": 1.0,
+        "farmer_before": 1.0
+      },
+      "turns": 8,
+      "elapsed_seconds": 0.03865300000000005,
+      "applied_turns": 8,
+      "case_id": "generated_000",
+      "repetition": 0,
+      "episode_id": "generated_000-farmer_before-cooperative-0-simulation",
+      "trace_path": "doudizhu-fullgame-v1-episodes/generated_000-farmer_before-cooperative-0-simulation.json"
+    },
+    {
+      "arm": "simulation_jev",
+      "focal_seat": "farmer_after",
+      "farmer_style": "greedy",
+      "seed": 20261282,
+      "policy_by_seat": {
+        "landlord": "pressure",
+        "farmer_after": "simulation_jev",
+        "farmer_before": "greedy"
+      },
+      "status": "completed",
+      "api_ledger": [
+        {
+          "questions": [
+            "action"
+          ],
+          "status": "completed",
+          "model": "jev-1.13.0",
+          "usage": {
+            "input_tokens": 3058,
+            "output_tokens": 49
+          },
+          "seconds": 0.7304175829999977
+        }
+      ],
+      "team_reward": 1.0,
+      "rewards": {
+        "landlord": -1.0,
+        "farmer_after": 1.0,
+        "farmer_before": 1.0
+      },
+      "turns": 4,
+      "elapsed_seconds": 0.8306102909999993,
+      "applied_turns": 4,
+      "case_id": "generated_001",
+      "repetition": 0,
+      "episode_id": "generated_001-farmer_after-greedy-0-simulation_jev",
+      "trace_path": "doudizhu-fullgame-v1-episodes/generated_001-farmer_after-greedy-0-simulation_jev.json"
+    },
+    {
+      "arm": "current_jev",
+      "focal_seat": "farmer_after",
+      "farmer_style": "greedy",
+      "seed": 20261282,
+      "policy_by_seat": {
+        "landlord": "pressure",
+        "farmer_after": "current_jev",
+        "farmer_before": "greedy"
+      },
+      "status": "completed",
+      "api_ledger": [
+        {
+          "questions": [
+            "must_block",
+            "yield_control",
+            "feed_teammate",
+            "pair_pressure"
+          ],
+          "status": "completed",
+          "model": "jev-1.13.0",
+          "usage": {
+            "input_tokens": 1407,
+            "output_tokens": 74
+          },
+          "seconds": 0.8137952089999985
+        },
+        {
+          "questions": [
+            "action"
+          ],
+          "status": "completed",
+          "model": "jev-1.13.0",
+          "usage": {
+            "input_tokens": 1661,
+            "output_tokens": 49
+          },
+          "seconds": 0.5473039580000005
+        }
+      ],
+      "team_reward": 1.0,
+      "rewards": {
+        "landlord": -1.0,
+        "farmer_after": 1.0,
+        "farmer_before": 1.0
+      },
+      "turns": 4,
+      "elapsed_seconds": 1.3725696250000006,
+      "applied_turns": 4,
+      "case_id": "generated_001",
+      "repetition": 0,
+      "episode_id": "generated_001-farmer_after-greedy-0-current_jev",
+      "trace_path": "doudizhu-fullgame-v1-episodes/generated_001-farmer_after-greedy-0-current_jev.json"
+    },
+    {
+      "arm": "current_jev",
+      "focal_seat": "farmer_after",
+      "farmer_style": "greedy",
+      "seed": 20261102,
+      "policy_by_seat": {
+        "landlord": "pressure",
+        "farmer_after": "current_jev",
+        "farmer_before": "greedy"
+      },
+      "status": "completed",
+      "api_ledger": [
+        {
+          "questions": [
+            "must_block",
+            "yield_control",
+            "feed_teammate",
+            "pair_pressure"
+          ],
+          "status": "completed",
+          "model": "jev-1.13.0",
+          "usage": {
+            "input_tokens": 1466,
+            "output_tokens": 74
+          },
+          "seconds": 0.786586875
+        },
+        {
+          "questions": [
+            "action"
+          ],
+          "status": "completed",
+          "model": "jev-1.13.0",
+          "usage": {
+            "input_tokens": 1715,
+            "output_tokens": 42
+          },
+          "seconds": 30.848210209
+        },
+        {
+          "questions": [
+            "must_block",
+            "yield_control",
+            "feed_teammate",
+            "pair_pressure"
+          ],
+          "status": "completed",
+          "model": "jev-1.13.0",
+          "usage": {
+            "input_tokens": 1491,
+            "output_tokens": 74
+          },
+          "seconds": 0.527610916999997
+        },
+        {
+          "questions": [
+            "action"
+          ],
+          "status": "completed",
+          "model": "jev-1.13.0",
+          "usage": {
+            "input_tokens": 1649,
+            "output_tokens": 37
+          },
+          "seconds": 0.5765816250000029
+        }
+      ],
+      "team_reward": 1.0,
+      "rewards": {
+        "landlord": -1.0,
+        "farmer_after": 1.0,
+        "farmer_before": 1.0
+      },
+      "turns": 12,
+      "elapsed_seconds": 32.806921416,
+      "applied_turns": 12,
+      "case_id": "generated_000",
+      "repetition": 0,
+      "episode_id": "generated_000-farmer_after-greedy-0-current_jev",
+      "trace_path": "doudizhu-fullgame-v1-episodes/generated_000-farmer_after-greedy-0-current_jev.json"
+    },
+    {
+      "arm": "simulation",
+      "focal_seat": "landlord",
+      "farmer_style": "greedy",
+      "seed": 20261222,
+      "policy_by_seat": {
+        "landlord": "simulation",
+        "farmer_after": "greedy",
+        "farmer_before": "greedy"
+      },
+      "status": "completed",
+      "api_ledger": [],
+      "team_reward": -1.0,
+      "rewards": {
+        "landlord": -1.0,
+        "farmer_after": 1.0,
+        "farmer_before": 1.0
+      },
+      "turns": 4,
+      "elapsed_seconds": 0.009006167000002563,
+      "applied_turns": 4,
+      "case_id": "generated_001",
+      "repetition": 0,
+      "episode_id": "generated_001-landlord-greedy-0-simulation",
+      "trace_path": "doudizhu-fullgame-v1-episodes/generated_001-landlord-greedy-0-simulation.json"
+    },
+    {
+      "arm": "simulation_jev",
+      "focal_seat": "farmer_after",
+      "farmer_style": "cooperative",
+      "seed": 20261072,
+      "policy_by_seat": {
+        "landlord": "pressure",
+        "farmer_after": "simulation_jev",
+        "farmer_before": "cooperative"
+      },
+      "status": "completed",
+      "api_ledger": [
+        {
+          "questions": [
+            "action"
+          ],
+          "status": "completed",
+          "model": "jev-1.13.0",
+          "usage": {
+            "input_tokens": 3046,
+            "output_tokens": 43
+          },
+          "seconds": 0.5365607919999995
+        },
+        {
+          "questions": [
+            "action"
+          ],
+          "status": "completed",
+          "model": "jev-1.13.0",
+          "usage": {
+            "input_tokens": 2332,
+            "output_tokens": 33
+          },
+          "seconds": 0.5806076660000059
+        }
+      ],
+      "team_reward": 1.0,
+      "rewards": {
+        "landlord": -1.0,
+        "farmer_after": 1.0,
+        "farmer_before": 1.0
+      },
+      "turns": 8,
+      "elapsed_seconds": 1.1892913330000034,
+      "applied_turns": 8,
+      "case_id": "generated_000",
+      "repetition": 0,
+      "episode_id": "generated_000-farmer_after-cooperative-0-simulation_jev",
+      "trace_path": "doudizhu-fullgame-v1-episodes/generated_000-farmer_after-cooperative-0-simulation_jev.json"
+    },
+    {
+      "arm": "simulation",
+      "focal_seat": "farmer_after",
+      "farmer_style": "greedy",
+      "seed": 20261102,
+      "policy_by_seat": {
+        "landlord": "pressure",
+        "farmer_after": "simulation",
+        "farmer_before": "greedy"
+      },
+      "status": "completed",
+      "api_ledger": [],
+      "team_reward": 1.0,
+      "rewards": {
+        "landlord": -1.0,
+        "farmer_after": 1.0,
+        "farmer_before": 1.0
+      },
+      "turns": 8,
+      "elapsed_seconds": 0.06501033400000011,
+      "applied_turns": 8,
+      "case_id": "generated_000",
+      "repetition": 0,
+      "episode_id": "generated_000-farmer_after-greedy-0-simulation",
+      "trace_path": "doudizhu-fullgame-v1-episodes/generated_000-farmer_after-greedy-0-simulation.json"
+    },
+    {
+      "arm": "simulation",
+      "focal_seat": "farmer_after",
+      "farmer_style": "cooperative",
+      "seed": 20261252,
+      "policy_by_seat": {
+        "landlord": "pressure",
+        "farmer_after": "simulation",
+        "farmer_before": "cooperative"
+      },
+      "status": "completed",
+      "api_ledger": [],
+      "team_reward": 1.0,
+      "rewards": {
+        "landlord": -1.0,
+        "farmer_after": 1.0,
+        "farmer_before": 1.0
+      },
+      "turns": 4,
+      "elapsed_seconds": 0.09279841699999736,
+      "applied_turns": 4,
+      "case_id": "generated_001",
+      "repetition": 0,
+      "episode_id": "generated_001-farmer_after-cooperative-0-simulation",
+      "trace_path": "doudizhu-fullgame-v1-episodes/generated_001-farmer_after-cooperative-0-simulation.json"
+    },
+    {
+      "arm": "simulation_jev",
+      "focal_seat": "landlord",
+      "farmer_style": "cooperative",
+      "seed": 20261192,
+      "policy_by_seat": {
+        "landlord": "simulation_jev",
+        "farmer_after": "cooperative",
+        "farmer_before": "cooperative"
+      },
+      "status": "completed",
+      "api_ledger": [],
+      "team_reward": -1.0,
+      "rewards": {
+        "landlord": -1.0,
+        "farmer_after": 1.0,
+        "farmer_before": 1.0
+      },
+      "turns": 4,
+      "elapsed_seconds": 0.008415708000001132,
+      "applied_turns": 4,
+      "case_id": "generated_001",
+      "repetition": 0,
+      "episode_id": "generated_001-landlord-cooperative-0-simulation_jev",
+      "trace_path": "doudizhu-fullgame-v1-episodes/generated_001-landlord-cooperative-0-simulation_jev.json"
+    },
+    {
+      "arm": "simulation",
+      "focal_seat": "landlord",
+      "farmer_style": "cooperative",
+      "seed": 20261192,
+      "policy_by_seat": {
+        "landlord": "simulation",
+        "farmer_after": "cooperative",
+        "farmer_before": "cooperative"
+      },
+      "status": "completed",
+      "api_ledger": [],
+      "team_reward": -1.0,
+      "rewards": {
+        "landlord": -1.0,
+        "farmer_after": 1.0,
+        "farmer_before": 1.0
+      },
+      "turns": 4,
+      "elapsed_seconds": 0.009398333000000036,
+      "applied_turns": 4,
+      "case_id": "generated_001",
+      "repetition": 0,
+      "episode_id": "generated_001-landlord-cooperative-0-simulation",
+      "trace_path": "doudizhu-fullgame-v1-episodes/generated_001-landlord-cooperative-0-simulation.json"
+    },
+    {
+      "arm": "current_jev",
+      "focal_seat": "farmer_before",
+      "farmer_style": "cooperative",
+      "seed": 20261312,
+      "policy_by_seat": {
+        "landlord": "pressure",
+        "farmer_after": "cooperative",
+        "farmer_before": "current_jev"
+      },
+      "status": "completed",
+      "api_ledger": [],
+      "team_reward": 1.0,
+      "rewards": {
+        "landlord": -1.0,
+        "farmer_after": 1.0,
+        "farmer_before": 1.0
+      },
+      "turns": 4,
+      "elapsed_seconds": 0.008285207999996658,
+      "applied_turns": 4,
+      "case_id": "generated_001",
+      "repetition": 0,
+      "episode_id": "generated_001-farmer_before-cooperative-0-current_jev",
+      "trace_path": "doudizhu-fullgame-v1-episodes/generated_001-farmer_before-cooperative-0-current_jev.json"
+    },
+    {
+      "arm": "simulation",
+      "focal_seat": "farmer_after",
+      "farmer_style": "greedy",
+      "seed": 20261282,
+      "policy_by_seat": {
+        "landlord": "pressure",
+        "farmer_after": "simulation",
+        "farmer_before": "greedy"
+      },
+      "status": "completed",
+      "api_ledger": [],
+      "team_reward": 1.0,
+      "rewards": {
+        "landlord": -1.0,
+        "farmer_after": 1.0,
+        "farmer_before": 1.0
+      },
+      "turns": 4,
+      "elapsed_seconds": 0.0924890830000038,
+      "applied_turns": 4,
+      "case_id": "generated_001",
+      "repetition": 0,
+      "episode_id": "generated_001-farmer_after-greedy-0-simulation",
+      "trace_path": "doudizhu-fullgame-v1-episodes/generated_001-farmer_after-greedy-0-simulation.json"
+    },
+    {
+      "arm": "simulation_jev",
+      "focal_seat": "landlord",
+      "farmer_style": "greedy",
+      "seed": 20261042,
+      "policy_by_seat": {
+        "landlord": "simulation_jev",
+        "farmer_after": "greedy",
+        "farmer_before": "greedy"
+      },
+      "status": "completed",
+      "api_ledger": [
+        {
+          "questions": [
+            "action"
+          ],
+          "status": "completed",
+          "model": "jev-1.13.0",
+          "usage": {
+            "input_tokens": 2904,
+            "output_tokens": 48
+          },
+          "seconds": 0.6217147500000024
+        }
+      ],
+      "team_reward": 1.0,
+      "rewards": {
+        "landlord": 1.0,
+        "farmer_after": -1.0,
+        "farmer_before": -1.0
+      },
+      "turns": 4,
+      "elapsed_seconds": 0.6858891250000028,
+      "applied_turns": 4,
+      "case_id": "generated_000",
+      "repetition": 0,
+      "episode_id": "generated_000-landlord-greedy-0-simulation_jev",
+      "trace_path": "doudizhu-fullgame-v1-episodes/generated_000-landlord-greedy-0-simulation_jev.json"
+    },
+    {
+      "arm": "simulation",
+      "focal_seat": "landlord",
+      "farmer_style": "cooperative",
+      "seed": 20261012,
+      "policy_by_seat": {
+        "landlord": "simulation",
+        "farmer_after": "cooperative",
+        "farmer_before": "cooperative"
+      },
+      "status": "completed",
+      "api_ledger": [],
+      "team_reward": 1.0,
+      "rewards": {
+        "landlord": 1.0,
+        "farmer_after": -1.0,
+        "farmer_before": -1.0
+      },
+      "turns": 4,
+      "elapsed_seconds": 0.06279850000000664,
+      "applied_turns": 4,
+      "case_id": "generated_000",
+      "repetition": 0,
+      "episode_id": "generated_000-landlord-cooperative-0-simulation",
+      "trace_path": "doudizhu-fullgame-v1-episodes/generated_000-landlord-cooperative-0-simulation.json"
+    },
+    {
+      "arm": "simulation_jev",
+      "focal_seat": "farmer_after",
+      "farmer_style": "greedy",
+      "seed": 20261102,
+      "policy_by_seat": {
+        "landlord": "pressure",
+        "farmer_after": "simulation_jev",
+        "farmer_before": "greedy"
+      },
+      "status": "completed",
+      "api_ledger": [
+        {
+          "questions": [
+            "action"
+          ],
+          "status": "completed",
+          "model": "jev-1.13.0",
+          "usage": {
+            "input_tokens": 3046,
+            "output_tokens": 43
+          },
+          "seconds": 0.821566500000003
+        },
+        {
+          "questions": [
+            "action"
+          ],
+          "status": "completed",
+          "model": "jev-1.13.0",
+          "usage": {
+            "input_tokens": 2559,
+            "output_tokens": 33
+          },
+          "seconds": 0.7349663330000027
+        }
+      ],
+      "team_reward": 1.0,
+      "rewards": {
+        "landlord": -1.0,
+        "farmer_after": 1.0,
+        "farmer_before": 1.0
+      },
+      "turns": 8,
+      "elapsed_seconds": 1.6400384169999995,
+      "applied_turns": 8,
+      "case_id": "generated_000",
+      "repetition": 0,
+      "episode_id": "generated_000-farmer_after-greedy-0-simulation_jev",
+      "trace_path": "doudizhu-fullgame-v1-episodes/generated_000-farmer_after-greedy-0-simulation_jev.json"
+    },
+    {
+      "arm": "simulation",
+      "focal_seat": "farmer_after",
+      "farmer_style": "cooperative",
+      "seed": 20261072,
+      "policy_by_seat": {
+        "landlord": "pressure",
+        "farmer_after": "simulation",
+        "farmer_before": "cooperative"
+      },
+      "status": "completed",
+      "api_ledger": [],
+      "team_reward": 1.0,
+      "rewards": {
+        "landlord": -1.0,
+        "farmer_after": 1.0,
+        "farmer_before": 1.0
+      },
+      "turns": 8,
+      "elapsed_seconds": 0.06707487499999587,
+      "applied_turns": 8,
+      "case_id": "generated_000",
+      "repetition": 0,
+      "episode_id": "generated_000-farmer_after-cooperative-0-simulation",
+      "trace_path": "doudizhu-fullgame-v1-episodes/generated_000-farmer_after-cooperative-0-simulation.json"
+    },
+    {
+      "arm": "simulation",
+      "focal_seat": "farmer_before",
+      "farmer_style": "cooperative",
+      "seed": 20261312,
+      "policy_by_seat": {
+        "landlord": "pressure",
+        "farmer_after": "cooperative",
+        "farmer_before": "simulation"
+      },
+      "status": "completed",
+      "api_ledger": [],
+      "team_reward": 1.0,
+      "rewards": {
+        "landlord": -1.0,
+        "farmer_after": 1.0,
+        "farmer_before": 1.0
+      },
+      "turns": 4,
+      "elapsed_seconds": 0.009261291999997923,
+      "applied_turns": 4,
+      "case_id": "generated_001",
+      "repetition": 0,
+      "episode_id": "generated_001-farmer_before-cooperative-0-simulation",
+      "trace_path": "doudizhu-fullgame-v1-episodes/generated_001-farmer_before-cooperative-0-simulation.json"
+    },
+    {
+      "arm": "current_jev",
+      "focal_seat": "landlord",
+      "farmer_style": "greedy",
+      "seed": 20261222,
+      "policy_by_seat": {
+        "landlord": "current_jev",
+        "farmer_after": "greedy",
+        "farmer_before": "greedy"
+      },
+      "status": "completed",
+      "api_ledger": [],
+      "team_reward": -1.0,
+      "rewards": {
+        "landlord": -1.0,
+        "farmer_after": 1.0,
+        "farmer_before": 1.0
+      },
+      "turns": 4,
+      "elapsed_seconds": 0.008034582999997042,
+      "applied_turns": 4,
+      "case_id": "generated_001",
+      "repetition": 0,
+      "episode_id": "generated_001-landlord-greedy-0-current_jev",
+      "trace_path": "doudizhu-fullgame-v1-episodes/generated_001-landlord-greedy-0-current_jev.json"
+    },
+    {
+      "arm": "simulation",
+      "focal_seat": "farmer_before",
+      "farmer_style": "greedy",
+      "seed": 20261162,
+      "policy_by_seat": {
+        "landlord": "pressure",
+        "farmer_after": "greedy",
+        "farmer_before": "simulation"
+      },
+      "status": "completed",
+      "api_ledger": [],
+      "team_reward": 1.0,
+      "rewards": {
+        "landlord": -1.0,
+        "farmer_after": 1.0,
+        "farmer_before": 1.0
+      },
+      "turns": 8,
+      "elapsed_seconds": 0.03716566699999646,
+      "applied_turns": 8,
+      "case_id": "generated_000",
+      "repetition": 0,
+      "episode_id": "generated_000-farmer_before-greedy-0-simulation",
+      "trace_path": "doudizhu-fullgame-v1-episodes/generated_000-farmer_before-greedy-0-simulation.json"
+    },
+    {
+      "arm": "current_jev",
+      "focal_seat": "farmer_after",
+      "farmer_style": "cooperative",
+      "seed": 20261072,
+      "policy_by_seat": {
+        "landlord": "pressure",
+        "farmer_after": "current_jev",
+        "farmer_before": "cooperative"
+      },
+      "status": "completed",
+      "api_ledger": [
+        {
+          "questions": [
+            "must_block",
+            "yield_control",
+            "feed_teammate",
+            "pair_pressure"
+          ],
+          "status": "completed",
+          "model": "jev-1.13.0",
+          "usage": {
+            "input_tokens": 1466,
+            "output_tokens": 74
+          },
+          "seconds": 0.7772622499999997
+        },
+        {
+          "questions": [
+            "action"
+          ],
+          "status": "completed",
+          "model": "jev-1.13.0",
+          "usage": {
+            "input_tokens": 1715,
+            "output_tokens": 42
+          },
+          "seconds": 0.7449487080000026
+        },
+        {
+          "questions": [
+            "must_block",
+            "yield_control",
+            "feed_teammate",
+            "pair_pressure"
+          ],
+          "status": "completed",
+          "model": "jev-1.13.0",
+          "usage": {
+            "input_tokens": 1491,
+            "output_tokens": 74
+          },
+          "seconds": 0.5856631250000035
+        },
+        {
+          "questions": [
+            "action"
+          ],
+          "status": "completed",
+          "model": "jev-1.13.0",
+          "usage": {
+            "input_tokens": 1647,
+            "output_tokens": 37
+          },
+          "seconds": 0.7235604170000016
+        }
+      ],
+      "team_reward": -1.0,
+      "rewards": {
+        "landlord": 1.0,
+        "farmer_after": -1.0,
+        "farmer_before": -1.0
+      },
+      "turns": 13,
+      "elapsed_seconds": 2.9015177500000036,
+      "applied_turns": 13,
+      "case_id": "generated_000",
+      "repetition": 0,
+      "episode_id": "generated_000-farmer_after-cooperative-0-current_jev",
+      "trace_path": "doudizhu-fullgame-v1-episodes/generated_000-farmer_after-cooperative-0-current_jev.json"
+    },
+    {
+      "arm": "simulation_jev",
+      "focal_seat": "farmer_before",
+      "farmer_style": "greedy",
+      "seed": 20261342,
+      "policy_by_seat": {
+        "landlord": "pressure",
+        "farmer_after": "greedy",
+        "farmer_before": "simulation_jev"
+      },
+      "status": "completed",
+      "api_ledger": [],
+      "team_reward": 1.0,
+      "rewards": {
+        "landlord": -1.0,
+        "farmer_after": 1.0,
+        "farmer_before": 1.0
+      },
+      "turns": 4,
+      "elapsed_seconds": 0.008720874999994521,
+      "applied_turns": 4,
+      "case_id": "generated_001",
+      "repetition": 0,
+      "episode_id": "generated_001-farmer_before-greedy-0-simulation_jev",
+      "trace_path": "doudizhu-fullgame-v1-episodes/generated_001-farmer_before-greedy-0-simulation_jev.json"
+    },
+    {
+      "arm": "current_jev",
+      "focal_seat": "farmer_after",
+      "farmer_style": "cooperative",
+      "seed": 20261252,
+      "policy_by_seat": {
+        "landlord": "pressure",
+        "farmer_after": "current_jev",
+        "farmer_before": "cooperative"
+      },
+      "status": "completed",
+      "api_ledger": [
+        {
+          "questions": [
+            "must_block",
+            "yield_control",
+            "feed_teammate",
+            "pair_pressure"
+          ],
+          "status": "completed",
+          "model": "jev-1.13.0",
+          "usage": {
+            "input_tokens": 1407,
+            "output_tokens": 74
+          },
+          "seconds": 0.6724515839999938
+        },
+        {
+          "questions": [
+            "action"
+          ],
+          "status": "completed",
+          "model": "jev-1.13.0",
+          "usage": {
+            "input_tokens": 1662,
+            "output_tokens": 49
+          },
+          "seconds": 0.735897125000001
+        }
+      ],
+      "team_reward": 1.0,
+      "rewards": {
+        "landlord": -1.0,
+        "farmer_after": 1.0,
+        "farmer_before": 1.0
+      },
+      "turns": 4,
+      "elapsed_seconds": 1.420542417,
+      "applied_turns": 4,
+      "case_id": "generated_001",
+      "repetition": 0,
+      "episode_id": "generated_001-farmer_after-cooperative-0-current_jev",
+      "trace_path": "doudizhu-fullgame-v1-episodes/generated_001-farmer_after-cooperative-0-current_jev.json"
+    },
+    {
+      "arm": "current_jev",
+      "focal_seat": "farmer_before",
+      "farmer_style": "cooperative",
+      "seed": 20261132,
+      "policy_by_seat": {
+        "landlord": "pressure",
+        "farmer_after": "cooperative",
+        "farmer_before": "current_jev"
+      },
+      "status": "completed",
+      "api_ledger": [
+        {
+          "questions": [
+            "must_block",
+            "yield_control",
+            "feed_teammate",
+            "pair_pressure"
+          ],
+          "status": "completed",
+          "model": "jev-1.13.0",
+          "usage": {
+            "input_tokens": 1545,
+            "output_tokens": 74
+          },
+          "seconds": 0.7452595420000065
+        },
+        {
+          "questions": [
+            "action"
+          ],
+          "status": "completed",
+          "model": "jev-1.13.0",
+          "usage": {
+            "input_tokens": 1799,
+            "output_tokens": 45
+          },
+          "seconds": 0.7435064999999952
+        },
+        {
+          "questions": [
+            "must_block",
+            "yield_control",
+            "feed_teammate",
+            "pair_pressure"
+          ],
+          "status": "completed",
+          "model": "jev-1.13.0",
+          "usage": {
+            "input_tokens": 1568,
+            "output_tokens": 74
+          },
+          "seconds": 0.5716475840000044
+        },
+        {
+          "questions": [
+            "action"
+          ],
+          "status": "completed",
+          "model": "jev-1.13.0",
+          "usage": {
+            "input_tokens": 1731,
+            "output_tokens": 39
+          },
+          "seconds": 0.5486851660000056
+        }
+      ],
+      "team_reward": 1.0,
+      "rewards": {
+        "landlord": -1.0,
+        "farmer_after": 1.0,
+        "farmer_before": 1.0
+      },
+      "turns": 11,
+      "elapsed_seconds": 2.667887125,
+      "applied_turns": 11,
+      "case_id": "generated_000",
+      "repetition": 0,
+      "episode_id": "generated_000-farmer_before-cooperative-0-current_jev",
+      "trace_path": "doudizhu-fullgame-v1-episodes/generated_000-farmer_before-cooperative-0-current_jev.json"
+    },
+    {
+      "arm": "simulation",
+      "focal_seat": "farmer_before",
+      "farmer_style": "greedy",
+      "seed": 20261342,
+      "policy_by_seat": {
+        "landlord": "pressure",
+        "farmer_after": "greedy",
+        "farmer_before": "simulation"
+      },
+      "status": "completed",
+      "api_ledger": [],
+      "team_reward": 1.0,
+      "rewards": {
+        "landlord": -1.0,
+        "farmer_after": 1.0,
+        "farmer_before": 1.0
+      },
+      "turns": 4,
+      "elapsed_seconds": 0.014364208000003487,
+      "applied_turns": 4,
+      "case_id": "generated_001",
+      "repetition": 0,
+      "episode_id": "generated_001-farmer_before-greedy-0-simulation",
+      "trace_path": "doudizhu-fullgame-v1-episodes/generated_001-farmer_before-greedy-0-simulation.json"
+    },
+    {
+      "arm": "simulation_jev",
+      "focal_seat": "landlord",
+      "farmer_style": "cooperative",
+      "seed": 20261012,
+      "policy_by_seat": {
+        "landlord": "simulation_jev",
+        "farmer_after": "cooperative",
+        "farmer_before": "cooperative"
+      },
+      "status": "completed",
+      "api_ledger": [
+        {
+          "questions": [
+            "action"
+          ],
+          "status": "completed",
+          "model": "jev-1.13.0",
+          "usage": {
+            "input_tokens": 2904,
+            "output_tokens": 48
+          },
+          "seconds": 0.5866194580000013
+        }
+      ],
+      "team_reward": 1.0,
+      "rewards": {
+        "landlord": 1.0,
+        "farmer_after": -1.0,
+        "farmer_before": -1.0
+      },
+      "turns": 4,
+      "elapsed_seconds": 0.6592186669999975,
+      "applied_turns": 4,
+      "case_id": "generated_000",
+      "repetition": 0,
+      "episode_id": "generated_000-landlord-cooperative-0-simulation_jev",
+      "trace_path": "doudizhu-fullgame-v1-episodes/generated_000-landlord-cooperative-0-simulation_jev.json"
+    },
+    {
+      "arm": "simulation_jev",
+      "focal_seat": "farmer_before",
+      "farmer_style": "greedy",
+      "seed": 20261162,
+      "policy_by_seat": {
+        "landlord": "pressure",
+        "farmer_after": "greedy",
+        "farmer_before": "simulation_jev"
+      },
+      "status": "completed",
+      "api_ledger": [
+        {
+          "questions": [
+            "action"
+          ],
+          "status": "completed",
+          "model": "jev-1.13.0",
+          "usage": {
+            "input_tokens": 2775,
+            "output_tokens": 46
+          },
+          "seconds": 0.8704765829999985
+        }
+      ],
+      "team_reward": 1.0,
+      "rewards": {
+        "landlord": -1.0,
+        "farmer_after": 1.0,
+        "farmer_before": 1.0
+      },
+      "turns": 8,
+      "elapsed_seconds": 0.9096498749999995,
+      "applied_turns": 8,
+      "case_id": "generated_000",
+      "repetition": 0,
+      "episode_id": "generated_000-farmer_before-greedy-0-simulation_jev",
+      "trace_path": "doudizhu-fullgame-v1-episodes/generated_000-farmer_before-greedy-0-simulation_jev.json"
+    },
+    {
+      "arm": "simulation_jev",
+      "focal_seat": "farmer_after",
+      "farmer_style": "cooperative",
+      "seed": 20261252,
+      "policy_by_seat": {
+        "landlord": "pressure",
+        "farmer_after": "simulation_jev",
+        "farmer_before": "cooperative"
+      },
+      "status": "completed",
+      "api_ledger": [
+        {
+          "questions": [
+            "action"
+          ],
+          "status": "completed",
+          "model": "jev-1.13.0",
+          "usage": {
+            "input_tokens": 3058,
+            "output_tokens": 49
+          },
+          "seconds": 0.7559880000000021
+        }
+      ],
+      "team_reward": 1.0,
+      "rewards": {
+        "landlord": -1.0,
+        "farmer_after": 1.0,
+        "farmer_before": 1.0
+      },
+      "turns": 4,
+      "elapsed_seconds": 0.852674915999998,
+      "applied_turns": 4,
+      "case_id": "generated_001",
+      "repetition": 0,
+      "episode_id": "generated_001-farmer_after-cooperative-0-simulation_jev",
+      "trace_path": "doudizhu-fullgame-v1-episodes/generated_001-farmer_after-cooperative-0-simulation_jev.json"
+    },
+    {
+      "arm": "current_jev",
+      "focal_seat": "landlord",
+      "farmer_style": "cooperative",
+      "seed": 20261012,
+      "policy_by_seat": {
+        "landlord": "current_jev",
+        "farmer_after": "cooperative",
+        "farmer_before": "cooperative"
+      },
+      "status": "completed",
+      "api_ledger": [
+        {
+          "questions": [
+            "must_block",
+            "yield_control",
+            "feed_teammate",
+            "pair_pressure"
+          ],
+          "status": "completed",
+          "model": "jev-1.13.0",
+          "usage": {
+            "input_tokens": 1395,
+            "output_tokens": 74
+          },
+          "seconds": 0.6871237920000013
+        },
+        {
+          "questions": [
+            "action"
+          ],
+          "status": "completed",
+          "model": "jev-1.13.0",
+          "usage": {
+            "input_tokens": 1647,
+            "output_tokens": 48
+          },
+          "seconds": 0.7369297090000018
+        }
+      ],
+      "team_reward": 1.0,
+      "rewards": {
+        "landlord": 1.0,
+        "farmer_after": -1.0,
+        "farmer_before": -1.0
+      },
+      "turns": 4,
+      "elapsed_seconds": 1.4450780829999985,
+      "applied_turns": 4,
+      "case_id": "generated_000",
+      "repetition": 0,
+      "episode_id": "generated_000-landlord-cooperative-0-current_jev",
+      "trace_path": "doudizhu-fullgame-v1-episodes/generated_000-landlord-cooperative-0-current_jev.json"
+    },
+    {
+      "arm": "current_jev",
+      "focal_seat": "landlord",
+      "farmer_style": "greedy",
+      "seed": 20261042,
+      "policy_by_seat": {
+        "landlord": "current_jev",
+        "farmer_after": "greedy",
+        "farmer_before": "greedy"
+      },
+      "status": "completed",
+      "api_ledger": [
+        {
+          "questions": [
+            "must_block",
+            "yield_control",
+            "feed_teammate",
+            "pair_pressure"
+          ],
+          "status": "completed",
+          "model": "jev-1.13.0",
+          "usage": {
+            "input_tokens": 1395,
+            "output_tokens": 74
+          },
+          "seconds": 0.8996190000000013
+        },
+        {
+          "questions": [
+            "action"
+          ],
+          "status": "completed",
+          "model": "jev-1.13.0",
+          "usage": {
+            "input_tokens": 1648,
+            "output_tokens": 48
+          },
+          "seconds": 0.5356563329999986
+        }
+      ],
+      "team_reward": 1.0,
+      "rewards": {
+        "landlord": 1.0,
+        "farmer_after": -1.0,
+        "farmer_before": -1.0
+      },
+      "turns": 4,
+      "elapsed_seconds": 1.4538445830000057,
+      "applied_turns": 4,
+      "case_id": "generated_000",
+      "repetition": 0,
+      "episode_id": "generated_000-landlord-greedy-0-current_jev",
+      "trace_path": "doudizhu-fullgame-v1-episodes/generated_000-landlord-greedy-0-current_jev.json"
+    }
+  ],
+  "summary": {
+    "all_attempts": {
+      "current_jev": {
+        "overall": {
+          "attempted": 12,
+          "completed": 12,
+          "status_counts": {
+            "completed": 12
+          },
+          "team_wins": 9,
+          "team_losses": 3,
+          "mean_completed_team_reward": 0.5,
+          "mean_episode_seconds": 6.284527961583332,
+          "focal_decisions_attempted": 25,
+          "focal_nonforced_decisions": 11,
+          "api_attempts": 22,
+          "api_errors": 0,
+          "known_usage": {
+            "input_tokens": 34849,
+            "output_tokens": 1295
+          },
+          "usage_unknown_calls": 0,
+          "model_versions": [
+            "jev-1.13.0"
+          ]
+        },
+        "by_seat": {
+          "landlord": {
+            "attempted": 4,
+            "completed": 4,
+            "status_counts": {
+              "completed": 4
+            },
+            "team_wins": 2,
+            "team_losses": 2,
+            "mean_completed_team_reward": 0.0,
+            "mean_episode_seconds": 0.7289271350000002,
+            "focal_decisions_attempted": 6,
+            "focal_nonforced_decisions": 2,
+            "api_attempts": 4,
+            "api_errors": 0,
+            "known_usage": {
+              "input_tokens": 6085,
+              "output_tokens": 244
+            },
+            "usage_unknown_calls": 0,
+            "model_versions": [
+              "jev-1.13.0"
+            ]
+          },
+          "farmer_after": {
+            "attempted": 4,
+            "completed": 4,
+            "status_counts": {
+              "completed": 4
+            },
+            "team_wins": 3,
+            "team_losses": 1,
+            "mean_completed_team_reward": 0.5,
+            "mean_episode_seconds": 9.625387802000002,
+            "focal_decisions_attempted": 12,
+            "focal_nonforced_decisions": 6,
+            "api_attempts": 12,
+            "api_errors": 0,
+            "known_usage": {
+              "input_tokens": 18777,
+              "output_tokens": 700
+            },
+            "usage_unknown_calls": 0,
+            "model_versions": [
+              "jev-1.13.0"
+            ]
+          },
+          "farmer_before": {
+            "attempted": 4,
+            "completed": 4,
+            "status_counts": {
+              "completed": 4
+            },
+            "team_wins": 4,
+            "team_losses": 0,
+            "mean_completed_team_reward": 1.0,
+            "mean_episode_seconds": 8.49926894775,
+            "focal_decisions_attempted": 7,
+            "focal_nonforced_decisions": 3,
+            "api_attempts": 6,
+            "api_errors": 0,
+            "known_usage": {
+              "input_tokens": 9987,
+              "output_tokens": 351
+            },
+            "usage_unknown_calls": 0,
+            "model_versions": [
+              "jev-1.13.0"
+            ]
+          }
+        },
+        "by_farmer_style": {
+          "cooperative": {
+            "attempted": 6,
+            "completed": 6,
+            "status_counts": {
+              "completed": 6
+            },
+            "team_wins": 4,
+            "team_losses": 2,
+            "mean_completed_team_reward": 0.3333333333333333,
+            "mean_episode_seconds": 1.4086769789999998,
+            "focal_decisions_attempted": 13,
+            "focal_nonforced_decisions": 6,
+            "api_attempts": 12,
+            "api_errors": 0,
+            "known_usage": {
+              "input_tokens": 19073,
+              "output_tokens": 704
+            },
+            "usage_unknown_calls": 0,
+            "model_versions": [
+              "jev-1.13.0"
+            ]
+          },
+          "greedy": {
+            "attempted": 6,
+            "completed": 6,
+            "status_counts": {
+              "completed": 6
+            },
+            "team_wins": 5,
+            "team_losses": 1,
+            "mean_completed_team_reward": 0.6666666666666666,
+            "mean_episode_seconds": 11.160378944166668,
+            "focal_decisions_attempted": 12,
+            "focal_nonforced_decisions": 5,
+            "api_attempts": 10,
+            "api_errors": 0,
+            "known_usage": {
+              "input_tokens": 15776,
+              "output_tokens": 591
+            },
+            "usage_unknown_calls": 0,
+            "model_versions": [
+              "jev-1.13.0"
+            ]
+          }
+        }
+      },
+      "simulation": {
+        "overall": {
+          "attempted": 12,
+          "completed": 12,
+          "status_counts": {
+            "completed": 12
+          },
+          "team_wins": 10,
+          "team_losses": 2,
+          "mean_completed_team_reward": 0.6666666666666666,
+          "mean_episode_seconds": 0.04701908691666704,
+          "focal_decisions_attempted": 22,
+          "focal_nonforced_decisions": 10,
+          "api_attempts": 0,
+          "api_errors": 0,
+          "known_usage": {},
+          "usage_unknown_calls": 0,
+          "model_versions": []
+        },
+        "by_seat": {
+          "landlord": {
+            "attempted": 4,
+            "completed": 4,
+            "status_counts": {
+              "completed": 4
+            },
+            "team_wins": 2,
+            "team_losses": 2,
+            "mean_completed_team_reward": 0.0,
+            "mean_episode_seconds": 0.03685304175000237,
+            "focal_decisions_attempted": 6,
+            "focal_nonforced_decisions": 2,
+            "api_attempts": 0,
+            "api_errors": 0,
+            "known_usage": {},
+            "usage_unknown_calls": 0,
+            "model_versions": []
+          },
+          "farmer_after": {
+            "attempted": 4,
+            "completed": 4,
+            "status_counts": {
+              "completed": 4
+            },
+            "team_wins": 4,
+            "team_losses": 0,
+            "mean_completed_team_reward": 1.0,
+            "mean_episode_seconds": 0.07934317724999929,
+            "focal_decisions_attempted": 10,
+            "focal_nonforced_decisions": 6,
+            "api_attempts": 0,
+            "api_errors": 0,
+            "known_usage": {},
+            "usage_unknown_calls": 0,
+            "model_versions": []
+          },
+          "farmer_before": {
+            "attempted": 4,
+            "completed": 4,
+            "status_counts": {
+              "completed": 4
+            },
+            "team_wins": 4,
+            "team_losses": 0,
+            "mean_completed_team_reward": 1.0,
+            "mean_episode_seconds": 0.02486104174999948,
+            "focal_decisions_attempted": 6,
+            "focal_nonforced_decisions": 2,
+            "api_attempts": 0,
+            "api_errors": 0,
+            "known_usage": {},
+            "usage_unknown_calls": 0,
+            "model_versions": []
+          }
+        },
+        "by_farmer_style": {
+          "cooperative": {
+            "attempted": 6,
+            "completed": 6,
+            "status_counts": {
+              "completed": 6
+            },
+            "team_wins": 5,
+            "team_losses": 1,
+            "mean_completed_team_reward": 0.6666666666666666,
+            "mean_episode_seconds": 0.04666406949999965,
+            "focal_decisions_attempted": 11,
+            "focal_nonforced_decisions": 5,
+            "api_attempts": 0,
+            "api_errors": 0,
+            "known_usage": {},
+            "usage_unknown_calls": 0,
+            "model_versions": []
+          },
+          "greedy": {
+            "attempted": 6,
+            "completed": 6,
+            "status_counts": {
+              "completed": 6
+            },
+            "team_wins": 5,
+            "team_losses": 1,
+            "mean_completed_team_reward": 0.6666666666666666,
+            "mean_episode_seconds": 0.047374104333334444,
+            "focal_decisions_attempted": 11,
+            "focal_nonforced_decisions": 5,
+            "api_attempts": 0,
+            "api_errors": 0,
+            "known_usage": {},
+            "usage_unknown_calls": 0,
+            "model_versions": []
+          }
+        }
+      },
+      "simulation_jev": {
+        "overall": {
+          "attempted": 12,
+          "completed": 12,
+          "status_counts": {
+            "completed": 12
+          },
+          "team_wins": 10,
+          "team_losses": 2,
+          "mean_completed_team_reward": 0.6666666666666666,
+          "mean_episode_seconds": 3.1265704790833335,
+          "focal_decisions_attempted": 22,
+          "focal_nonforced_decisions": 10,
+          "api_attempts": 10,
+          "api_errors": 0,
+          "known_usage": {
+            "input_tokens": 28457,
+            "output_tokens": 438
+          },
+          "usage_unknown_calls": 0,
+          "model_versions": [
+            "jev-1.13.0"
+          ]
+        },
+        "by_seat": {
+          "landlord": {
+            "attempted": 4,
+            "completed": 4,
+            "status_counts": {
+              "completed": 4
+            },
+            "team_wins": 2,
+            "team_losses": 2,
+            "mean_completed_team_reward": 0.0,
+            "mean_episode_seconds": 0.34404576050000035,
+            "focal_decisions_attempted": 6,
+            "focal_nonforced_decisions": 2,
+            "api_attempts": 2,
+            "api_errors": 0,
+            "known_usage": {
+              "input_tokens": 5808,
+              "output_tokens": 96
+            },
+            "usage_unknown_calls": 0,
+            "model_versions": [
+              "jev-1.13.0"
+            ]
+          },
+          "farmer_after": {
+            "attempted": 4,
+            "completed": 4,
+            "status_counts": {
+              "completed": 4
+            },
+            "team_wins": 4,
+            "team_losses": 0,
+            "mean_completed_team_reward": 1.0,
+            "mean_episode_seconds": 1.12815373925,
+            "focal_decisions_attempted": 10,
+            "focal_nonforced_decisions": 6,
+            "api_attempts": 6,
+            "api_errors": 0,
+            "known_usage": {
+              "input_tokens": 17099,
+              "output_tokens": 250
+            },
+            "usage_unknown_calls": 0,
+            "model_versions": [
+              "jev-1.13.0"
+            ]
+          },
+          "farmer_before": {
+            "attempted": 4,
+            "completed": 4,
+            "status_counts": {
+              "completed": 4
+            },
+            "team_wins": 4,
+            "team_losses": 0,
+            "mean_completed_team_reward": 1.0,
+            "mean_episode_seconds": 7.907511937499998,
+            "focal_decisions_attempted": 6,
+            "focal_nonforced_decisions": 2,
+            "api_attempts": 2,
+            "api_errors": 0,
+            "known_usage": {
+              "input_tokens": 5550,
+              "output_tokens": 92
+            },
+            "usage_unknown_calls": 0,
+            "model_versions": [
+              "jev-1.13.0"
+            ]
+          }
+        },
+        "by_farmer_style": {
+          "cooperative": {
+            "attempted": 6,
+            "completed": 6,
+            "status_counts": {
+              "completed": 6
+            },
+            "team_wins": 5,
+            "team_losses": 1,
+            "mean_completed_team_reward": 0.6666666666666666,
+            "mean_episode_seconds": 5.570212937333333,
+            "focal_decisions_attempted": 11,
+            "focal_nonforced_decisions": 5,
+            "api_attempts": 5,
+            "api_errors": 0,
+            "known_usage": {
+              "input_tokens": 14115,
+              "output_tokens": 219
+            },
+            "usage_unknown_calls": 0,
+            "model_versions": [
+              "jev-1.13.0"
+            ]
+          },
+          "greedy": {
+            "attempted": 6,
+            "completed": 6,
+            "status_counts": {
+              "completed": 6
+            },
+            "team_wins": 5,
+            "team_losses": 1,
+            "mean_completed_team_reward": 0.6666666666666666,
+            "mean_episode_seconds": 0.6829280208333325,
+            "focal_decisions_attempted": 11,
+            "focal_nonforced_decisions": 5,
+            "api_attempts": 5,
+            "api_errors": 0,
+            "known_usage": {
+              "input_tokens": 14342,
+              "output_tokens": 219
+            },
+            "usage_unknown_calls": 0,
+            "model_versions": [
+              "jev-1.13.0"
+            ]
+          }
+        }
+      }
+    },
+    "paired_complete": {
+      "setting_count": 12,
+      "arms": {
+        "current_jev": {
+          "attempted": 12,
+          "completed": 12,
+          "status_counts": {
+            "completed": 12
+          },
+          "team_wins": 9,
+          "team_losses": 3,
+          "mean_completed_team_reward": 0.5,
+          "mean_episode_seconds": 6.284527961583334,
+          "focal_decisions_attempted": 25,
+          "focal_nonforced_decisions": 11,
+          "api_attempts": 22,
+          "api_errors": 0,
+          "known_usage": {
+            "input_tokens": 34849,
+            "output_tokens": 1295
+          },
+          "usage_unknown_calls": 0,
+          "model_versions": [
+            "jev-1.13.0"
+          ]
+        },
+        "simulation": {
+          "attempted": 12,
+          "completed": 12,
+          "status_counts": {
+            "completed": 12
+          },
+          "team_wins": 10,
+          "team_losses": 2,
+          "mean_completed_team_reward": 0.6666666666666666,
+          "mean_episode_seconds": 0.04701908691666704,
+          "focal_decisions_attempted": 22,
+          "focal_nonforced_decisions": 10,
+          "api_attempts": 0,
+          "api_errors": 0,
+          "known_usage": {},
+          "usage_unknown_calls": 0,
+          "model_versions": []
+        },
+        "simulation_jev": {
+          "attempted": 12,
+          "completed": 12,
+          "status_counts": {
+            "completed": 12
+          },
+          "team_wins": 10,
+          "team_losses": 2,
+          "mean_completed_team_reward": 0.6666666666666666,
+          "mean_episode_seconds": 3.1265704790833335,
+          "focal_decisions_attempted": 22,
+          "focal_nonforced_decisions": 10,
+          "api_attempts": 10,
+          "api_errors": 0,
+          "known_usage": {
+            "input_tokens": 28457,
+            "output_tokens": 438
+          },
+          "usage_unknown_calls": 0,
+          "model_versions": [
+            "jev-1.13.0"
+          ]
+        }
+      }
+    }
+  },
+  "planned_episodes": 36,
+  "completed_at": "2026-10-12T11:53:18.374371+00:00"
+}

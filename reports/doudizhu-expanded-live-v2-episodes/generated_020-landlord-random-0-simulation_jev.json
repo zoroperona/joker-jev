@@ -1,0 +1,1499 @@
+{
+  "arm": "simulation_jev",
+  "focal_seat": "landlord",
+  "farmer_style": "random",
+  "seed": 36808729318912,
+  "landlord_style": "random",
+  "policy_by_seat": {
+    "landlord": "simulation_jev",
+    "farmer_after": "random",
+    "farmer_before": "random"
+  },
+  "status": "completed",
+  "trace": [
+    {
+      "turn": 0,
+      "player": "farmer_before",
+      "policy": "random",
+      "visible_state": {
+        "rules": {
+          "game": "doudizhu_endgame_v1",
+          "rank_order": [
+            "3",
+            "4",
+            "5",
+            "6",
+            "7",
+            "8",
+            "9",
+            "10",
+            "J",
+            "Q",
+            "K",
+            "A",
+            "2",
+            "SJ",
+            "BJ"
+          ],
+          "turn_order": [
+            "landlord",
+            "farmer_after",
+            "farmer_before"
+          ],
+          "team": {
+            "landlord": "landlord",
+            "farmer_after": "farmers",
+            "farmer_before": "farmers"
+          },
+          "reward": "Landlord wins: landlord +1, each farmer -1; either farmer finishes: both farmers +1, landlord -1. No tactical bonus.",
+          "play": "Beat the active play with the same type and a higher rank, or rocket. Passing allowed only when responding. After two passes the owner leads freely. The first empty hand ends the game immediately.",
+          "scope": "Each remaining hand has at most 4 cards; the remaining pool has at most 2 cards per ordinary rank. Only singles, pairs and rocket can occur. No bidding, multipliers or spring bonuses."
+        },
+        "self": {
+          "seat": "farmer_before",
+          "role": "farmer",
+          "hand": [
+            "7",
+            "10",
+            "J"
+          ],
+          "teammate": "farmer_after",
+          "next_seat": "landlord"
+        },
+        "public": {
+          "remaining_counts": {
+            "landlord": 3,
+            "farmer_after": 3,
+            "farmer_before": 3
+          },
+          "active_play": {
+            "cards": [],
+            "owner": null,
+            "consecutive_passes": 0
+          },
+          "played_counts": {
+            "3": 4,
+            "4": 4,
+            "5": 3,
+            "6": 4,
+            "7": 3,
+            "8": 4,
+            "9": 3,
+            "10": 3,
+            "J": 3,
+            "Q": 4,
+            "K": 3,
+            "A": 4,
+            "2": 3
+          },
+          "history_quality": "Public ordered history since this endgame snapshot; earlier play is aggregate counts only.",
+          "history": []
+        },
+        "belief": {
+          "facts": {
+            "unseen_card_counts": {
+              "5": 1,
+              "9": 1,
+              "K": 1,
+              "2": 1,
+              "SJ": 1,
+              "BJ": 1
+            },
+            "control": {
+              "active_play_exists": false
+            }
+          },
+          "estimates": {
+            "landlord": {
+              "pair_hand_probability": 0.0
+            },
+            "farmer_after": {
+              "pair_hand_probability": 0.0
+            }
+          },
+          "assumptions": [
+            "Uniform unseen-card instances conditional on public counts, not a behavioral posterior.",
+            "Past public moves update remaining card counts; passes do not prove absence of a higher card.",
+            "History starts at the supplied endgame snapshot, not at the original deal."
+          ]
+        },
+        "legal_actions": [
+          {
+            "id": "play:7",
+            "label": "出 7",
+            "payload": {
+              "cards": [
+                "7"
+              ],
+              "kind": "single",
+              "finishes_own_hand": false,
+              "breaks_pair": false,
+              "remaining_hand": [
+                "10",
+                "J"
+              ],
+              "minimum_uncontested_plays": 2
+            }
+          },
+          {
+            "id": "play:10",
+            "label": "出 10",
+            "payload": {
+              "cards": [
+                "10"
+              ],
+              "kind": "single",
+              "finishes_own_hand": false,
+              "breaks_pair": false,
+              "remaining_hand": [
+                "7",
+                "J"
+              ],
+              "minimum_uncontested_plays": 2
+            }
+          },
+          {
+            "id": "play:J",
+            "label": "出 J",
+            "payload": {
+              "cards": [
+                "J"
+              ],
+              "kind": "single",
+              "finishes_own_hand": false,
+              "breaks_pair": false,
+              "remaining_hand": [
+                "7",
+                "10"
+              ],
+              "minimum_uncontested_plays": 2
+            }
+          }
+        ]
+      },
+      "status": "applied",
+      "decision": {
+        "action_id": "play:7",
+        "calls": []
+      },
+      "decision_seconds": 0.0008716250000020409,
+      "public_events": [
+        {
+          "kind": "move",
+          "data": {
+            "player": "farmer_before",
+            "action_id": "play:7",
+            "cards": [
+              "7"
+            ]
+          }
+        }
+      ],
+      "rewards": {
+        "landlord": 0.0,
+        "farmer_after": 0.0,
+        "farmer_before": 0.0
+      },
+      "cumulative_rewards": {
+        "landlord": 0.0,
+        "farmer_after": 0.0,
+        "farmer_before": 0.0
+      }
+    },
+    {
+      "turn": 1,
+      "player": "landlord",
+      "policy": "simulation_jev",
+      "visible_state": {
+        "rules": {
+          "game": "doudizhu_endgame_v1",
+          "rank_order": [
+            "3",
+            "4",
+            "5",
+            "6",
+            "7",
+            "8",
+            "9",
+            "10",
+            "J",
+            "Q",
+            "K",
+            "A",
+            "2",
+            "SJ",
+            "BJ"
+          ],
+          "turn_order": [
+            "landlord",
+            "farmer_after",
+            "farmer_before"
+          ],
+          "team": {
+            "landlord": "landlord",
+            "farmer_after": "farmers",
+            "farmer_before": "farmers"
+          },
+          "reward": "Landlord wins: landlord +1, each farmer -1; either farmer finishes: both farmers +1, landlord -1. No tactical bonus.",
+          "play": "Beat the active play with the same type and a higher rank, or rocket. Passing allowed only when responding. After two passes the owner leads freely. The first empty hand ends the game immediately.",
+          "scope": "Each remaining hand has at most 4 cards; the remaining pool has at most 2 cards per ordinary rank. Only singles, pairs and rocket can occur. No bidding, multipliers or spring bonuses."
+        },
+        "self": {
+          "seat": "landlord",
+          "role": "landlord",
+          "hand": [
+            "2",
+            "SJ",
+            "BJ"
+          ],
+          "teammate": null,
+          "next_seat": "farmer_after"
+        },
+        "public": {
+          "remaining_counts": {
+            "landlord": 3,
+            "farmer_after": 3,
+            "farmer_before": 2
+          },
+          "active_play": {
+            "cards": [
+              "7"
+            ],
+            "owner": "farmer_before",
+            "consecutive_passes": 0
+          },
+          "played_counts": {
+            "3": 4,
+            "4": 4,
+            "5": 3,
+            "6": 4,
+            "7": 4,
+            "8": 4,
+            "9": 3,
+            "10": 3,
+            "J": 3,
+            "Q": 4,
+            "K": 3,
+            "A": 4,
+            "2": 3
+          },
+          "history_quality": "Public ordered history since this endgame snapshot; earlier play is aggregate counts only.",
+          "history": [
+            {
+              "kind": "move",
+              "data": {
+                "player": "farmer_before",
+                "action_id": "play:7",
+                "cards": [
+                  "7"
+                ]
+              }
+            }
+          ]
+        },
+        "belief": {
+          "facts": {
+            "unseen_card_counts": {
+              "5": 1,
+              "9": 1,
+              "10": 1,
+              "J": 1,
+              "K": 1
+            }
+          },
+          "estimates": {
+            "farmer_after": {
+              "pair_hand_probability": 0.0,
+              "can_beat_active_play_probability": 1.0
+            },
+            "farmer_before": {
+              "pair_hand_probability": 0.0,
+              "can_beat_active_play_probability": 1.0
+            }
+          },
+          "assumptions": [
+            "Uniform unseen-card instances conditional on public counts, not a behavioral posterior.",
+            "Past public moves update remaining card counts; passes do not prove absence of a higher card.",
+            "History starts at the supplied endgame snapshot, not at the original deal."
+          ]
+        },
+        "legal_actions": [
+          {
+            "id": "play:2",
+            "label": "出 2",
+            "payload": {
+              "cards": [
+                "2"
+              ],
+              "kind": "single",
+              "finishes_own_hand": false,
+              "breaks_pair": false,
+              "remaining_hand": [
+                "SJ",
+                "BJ"
+              ],
+              "minimum_uncontested_plays": 1
+            }
+          },
+          {
+            "id": "play:SJ",
+            "label": "出 SJ",
+            "payload": {
+              "cards": [
+                "SJ"
+              ],
+              "kind": "single",
+              "finishes_own_hand": false,
+              "breaks_pair": false,
+              "remaining_hand": [
+                "2",
+                "BJ"
+              ],
+              "minimum_uncontested_plays": 2
+            }
+          },
+          {
+            "id": "play:BJ",
+            "label": "出 BJ",
+            "payload": {
+              "cards": [
+                "BJ"
+              ],
+              "kind": "single",
+              "finishes_own_hand": false,
+              "breaks_pair": false,
+              "remaining_hand": [
+                "2",
+                "SJ"
+              ],
+              "minimum_uncontested_plays": 2
+            }
+          },
+          {
+            "id": "play:SJ,BJ",
+            "label": "出 SJ BJ",
+            "payload": {
+              "cards": [
+                "SJ",
+                "BJ"
+              ],
+              "kind": "rocket",
+              "finishes_own_hand": false,
+              "breaks_pair": false,
+              "remaining_hand": [
+                "2"
+              ],
+              "minimum_uncontested_plays": 1
+            }
+          },
+          {
+            "id": "pass",
+            "label": "过牌",
+            "payload": {
+              "cards": [],
+              "kind": "pass",
+              "finishes_own_hand": false,
+              "breaks_pair": false,
+              "remaining_hand": [
+                "2",
+                "SJ",
+                "BJ"
+              ],
+              "minimum_uncontested_plays": 2
+            }
+          }
+        ]
+      },
+      "status": "applied",
+      "planning_analysis": {
+        "unique_hidden_assignments": 10,
+        "policies": [
+          "cooperative",
+          "greedy"
+        ],
+        "seeds": [
+          0
+        ],
+        "max_turns": 36,
+        "simulated_trajectories": 100,
+        "assumptions": [
+          "Uniform unseen card instances conditional on public counts; no behavioral posterior.",
+          "All continuation players see only their own hands and public information.",
+          "Policy-dependent rollout values, not optimal values or calibrated real-world win probabilities.",
+          "Truncated trajectories retain reward interval [-1,1]; they are not counted as losses."
+        ],
+        "actions": [
+          {
+            "action_id": "play:2",
+            "immediate": {
+              "finishes_team_game": false,
+              "remaining_hand": [
+                "SJ",
+                "BJ"
+              ],
+              "minimum_uncontested_plays": 1,
+              "breaks_pair": false,
+              "next_seat": "farmer_after",
+              "active_owner_after_action": "landlord",
+              "returns_free_lead_to_owner": false
+            },
+            "by_continuation_policy": {
+              "cooperative": {
+                "team_win_mass": 0.9999999999999999,
+                "team_loss_mass": 0.0,
+                "truncated_mass": 0.0,
+                "expected_team_reward": 0.9999999999999999,
+                "reward_lower_bound": 0.9999999999999999,
+                "reward_upper_bound": 0.9999999999999999,
+                "mean_turns": 3.9999999999999996
+              },
+              "greedy": {
+                "team_win_mass": 0.9999999999999999,
+                "team_loss_mass": 0.0,
+                "truncated_mass": 0.0,
+                "expected_team_reward": 0.9999999999999999,
+                "reward_lower_bound": 0.9999999999999999,
+                "reward_upper_bound": 0.9999999999999999,
+                "mean_turns": 3.9999999999999996
+              }
+            },
+            "worst_policy_reward_lower_bound": 0.9999999999999999,
+            "mean_policy_reward_lower_bound": 0.9999999999999999
+          },
+          {
+            "action_id": "play:SJ",
+            "immediate": {
+              "finishes_team_game": false,
+              "remaining_hand": [
+                "2",
+                "BJ"
+              ],
+              "minimum_uncontested_plays": 2,
+              "breaks_pair": false,
+              "next_seat": "farmer_after",
+              "active_owner_after_action": "landlord",
+              "returns_free_lead_to_owner": false
+            },
+            "by_continuation_policy": {
+              "cooperative": {
+                "team_win_mass": 0.9999999999999999,
+                "team_loss_mass": 0.0,
+                "truncated_mass": 0.0,
+                "expected_team_reward": 0.9999999999999999,
+                "reward_lower_bound": 0.9999999999999999,
+                "reward_upper_bound": 0.9999999999999999,
+                "mean_turns": 7.000000000000001
+              },
+              "greedy": {
+                "team_win_mass": 0.9999999999999999,
+                "team_loss_mass": 0.0,
+                "truncated_mass": 0.0,
+                "expected_team_reward": 0.9999999999999999,
+                "reward_lower_bound": 0.9999999999999999,
+                "reward_upper_bound": 0.9999999999999999,
+                "mean_turns": 7.000000000000001
+              }
+            },
+            "worst_policy_reward_lower_bound": 0.9999999999999999,
+            "mean_policy_reward_lower_bound": 0.9999999999999999
+          },
+          {
+            "action_id": "play:BJ",
+            "immediate": {
+              "finishes_team_game": false,
+              "remaining_hand": [
+                "2",
+                "SJ"
+              ],
+              "minimum_uncontested_plays": 2,
+              "breaks_pair": false,
+              "next_seat": "farmer_after",
+              "active_owner_after_action": "landlord",
+              "returns_free_lead_to_owner": false
+            },
+            "by_continuation_policy": {
+              "cooperative": {
+                "team_win_mass": 0.9999999999999999,
+                "team_loss_mass": 0.0,
+                "truncated_mass": 0.0,
+                "expected_team_reward": 0.9999999999999999,
+                "reward_lower_bound": 0.9999999999999999,
+                "reward_upper_bound": 0.9999999999999999,
+                "mean_turns": 7.000000000000001
+              },
+              "greedy": {
+                "team_win_mass": 0.9999999999999999,
+                "team_loss_mass": 0.0,
+                "truncated_mass": 0.0,
+                "expected_team_reward": 0.9999999999999999,
+                "reward_lower_bound": 0.9999999999999999,
+                "reward_upper_bound": 0.9999999999999999,
+                "mean_turns": 7.000000000000001
+              }
+            },
+            "worst_policy_reward_lower_bound": 0.9999999999999999,
+            "mean_policy_reward_lower_bound": 0.9999999999999999
+          },
+          {
+            "action_id": "play:SJ,BJ",
+            "immediate": {
+              "finishes_team_game": false,
+              "remaining_hand": [
+                "2"
+              ],
+              "minimum_uncontested_plays": 1,
+              "breaks_pair": false,
+              "next_seat": "farmer_after",
+              "active_owner_after_action": "landlord",
+              "returns_free_lead_to_owner": false
+            },
+            "by_continuation_policy": {
+              "cooperative": {
+                "team_win_mass": 0.9999999999999999,
+                "team_loss_mass": 0.0,
+                "truncated_mass": 0.0,
+                "expected_team_reward": 0.9999999999999999,
+                "reward_lower_bound": 0.9999999999999999,
+                "reward_upper_bound": 0.9999999999999999,
+                "mean_turns": 3.9999999999999996
+              },
+              "greedy": {
+                "team_win_mass": 0.9999999999999999,
+                "team_loss_mass": 0.0,
+                "truncated_mass": 0.0,
+                "expected_team_reward": 0.9999999999999999,
+                "reward_lower_bound": 0.9999999999999999,
+                "reward_upper_bound": 0.9999999999999999,
+                "mean_turns": 3.9999999999999996
+              }
+            },
+            "worst_policy_reward_lower_bound": 0.9999999999999999,
+            "mean_policy_reward_lower_bound": 0.9999999999999999
+          },
+          {
+            "action_id": "pass",
+            "immediate": {
+              "finishes_team_game": false,
+              "remaining_hand": [
+                "2",
+                "SJ",
+                "BJ"
+              ],
+              "minimum_uncontested_plays": 2,
+              "breaks_pair": false,
+              "next_seat": "farmer_after",
+              "active_owner_after_action": "farmer_before",
+              "returns_free_lead_to_owner": false
+            },
+            "by_continuation_policy": {
+              "cooperative": {
+                "team_win_mass": 0.9999999999999999,
+                "team_loss_mass": 0.0,
+                "truncated_mass": 0.0,
+                "expected_team_reward": 0.9999999999999999,
+                "reward_lower_bound": 0.9999999999999999,
+                "reward_upper_bound": 0.9999999999999999,
+                "mean_turns": 7.000000000000001
+              },
+              "greedy": {
+                "team_win_mass": 0.9999999999999999,
+                "team_loss_mass": 0.0,
+                "truncated_mass": 0.0,
+                "expected_team_reward": 0.9999999999999999,
+                "reward_lower_bound": 0.9999999999999999,
+                "reward_upper_bound": 0.9999999999999999,
+                "mean_turns": 7.000000000000001
+              }
+            },
+            "worst_policy_reward_lower_bound": 0.9999999999999999,
+            "mean_policy_reward_lower_bound": 0.9999999999999999
+          }
+        ]
+      },
+      "decision": {
+        "action_id": "play:2",
+        "probabilities": {
+          "play:2": 0.59,
+          "play:SJ": 0.01,
+          "play:BJ": 0.01,
+          "play:SJ,BJ": 0.28,
+          "pass": 0.11
+        },
+        "confidence": 0.49,
+        "forced": false,
+        "calls": [
+          {
+            "model": "jev-1.13.0",
+            "usage": {
+              "input_tokens": 4524,
+              "output_tokens": 64
+            }
+          }
+        ]
+      },
+      "decision_seconds": 0.6632889999999918,
+      "public_events": [
+        {
+          "kind": "move",
+          "data": {
+            "player": "landlord",
+            "action_id": "play:2",
+            "cards": [
+              "2"
+            ]
+          }
+        }
+      ],
+      "rewards": {
+        "landlord": 0.0,
+        "farmer_after": 0.0,
+        "farmer_before": 0.0
+      },
+      "cumulative_rewards": {
+        "landlord": 0.0,
+        "farmer_after": 0.0,
+        "farmer_before": 0.0
+      }
+    },
+    {
+      "turn": 2,
+      "player": "farmer_after",
+      "policy": "random",
+      "visible_state": {
+        "rules": {
+          "game": "doudizhu_endgame_v1",
+          "rank_order": [
+            "3",
+            "4",
+            "5",
+            "6",
+            "7",
+            "8",
+            "9",
+            "10",
+            "J",
+            "Q",
+            "K",
+            "A",
+            "2",
+            "SJ",
+            "BJ"
+          ],
+          "turn_order": [
+            "landlord",
+            "farmer_after",
+            "farmer_before"
+          ],
+          "team": {
+            "landlord": "landlord",
+            "farmer_after": "farmers",
+            "farmer_before": "farmers"
+          },
+          "reward": "Landlord wins: landlord +1, each farmer -1; either farmer finishes: both farmers +1, landlord -1. No tactical bonus.",
+          "play": "Beat the active play with the same type and a higher rank, or rocket. Passing allowed only when responding. After two passes the owner leads freely. The first empty hand ends the game immediately.",
+          "scope": "Each remaining hand has at most 4 cards; the remaining pool has at most 2 cards per ordinary rank. Only singles, pairs and rocket can occur. No bidding, multipliers or spring bonuses."
+        },
+        "self": {
+          "seat": "farmer_after",
+          "role": "farmer",
+          "hand": [
+            "5",
+            "9",
+            "K"
+          ],
+          "teammate": "farmer_before",
+          "next_seat": "farmer_before"
+        },
+        "public": {
+          "remaining_counts": {
+            "landlord": 2,
+            "farmer_after": 3,
+            "farmer_before": 2
+          },
+          "active_play": {
+            "cards": [
+              "2"
+            ],
+            "owner": "landlord",
+            "consecutive_passes": 0
+          },
+          "played_counts": {
+            "3": 4,
+            "4": 4,
+            "5": 3,
+            "6": 4,
+            "7": 4,
+            "8": 4,
+            "9": 3,
+            "10": 3,
+            "J": 3,
+            "Q": 4,
+            "K": 3,
+            "A": 4,
+            "2": 4
+          },
+          "history_quality": "Public ordered history since this endgame snapshot; earlier play is aggregate counts only.",
+          "history": [
+            {
+              "kind": "move",
+              "data": {
+                "player": "farmer_before",
+                "action_id": "play:7",
+                "cards": [
+                  "7"
+                ]
+              }
+            },
+            {
+              "kind": "move",
+              "data": {
+                "player": "landlord",
+                "action_id": "play:2",
+                "cards": [
+                  "2"
+                ]
+              }
+            }
+          ]
+        },
+        "belief": {
+          "facts": {
+            "unseen_card_counts": {
+              "10": 1,
+              "J": 1,
+              "SJ": 1,
+              "BJ": 1
+            }
+          },
+          "estimates": {
+            "landlord": {
+              "pair_hand_probability": 0.0,
+              "can_beat_active_play_probability": 0.8333333333333334
+            },
+            "farmer_before": {
+              "pair_hand_probability": 0.0,
+              "can_beat_active_play_probability": 0.8333333333333334
+            }
+          },
+          "assumptions": [
+            "Uniform unseen-card instances conditional on public counts, not a behavioral posterior.",
+            "Past public moves update remaining card counts; passes do not prove absence of a higher card.",
+            "History starts at the supplied endgame snapshot, not at the original deal."
+          ]
+        },
+        "legal_actions": [
+          {
+            "id": "pass",
+            "label": "过牌",
+            "payload": {
+              "cards": [],
+              "kind": "pass",
+              "finishes_own_hand": false,
+              "breaks_pair": false,
+              "remaining_hand": [
+                "5",
+                "9",
+                "K"
+              ],
+              "minimum_uncontested_plays": 3
+            }
+          }
+        ]
+      },
+      "status": "applied",
+      "decision": {
+        "action_id": "pass",
+        "forced": true,
+        "calls": []
+      },
+      "decision_seconds": 0.001620041999998989,
+      "public_events": [
+        {
+          "kind": "move",
+          "data": {
+            "player": "farmer_after",
+            "action_id": "pass",
+            "cards": []
+          }
+        }
+      ],
+      "rewards": {
+        "landlord": 0.0,
+        "farmer_after": 0.0,
+        "farmer_before": 0.0
+      },
+      "cumulative_rewards": {
+        "landlord": 0.0,
+        "farmer_after": 0.0,
+        "farmer_before": 0.0
+      }
+    },
+    {
+      "turn": 3,
+      "player": "farmer_before",
+      "policy": "random",
+      "visible_state": {
+        "rules": {
+          "game": "doudizhu_endgame_v1",
+          "rank_order": [
+            "3",
+            "4",
+            "5",
+            "6",
+            "7",
+            "8",
+            "9",
+            "10",
+            "J",
+            "Q",
+            "K",
+            "A",
+            "2",
+            "SJ",
+            "BJ"
+          ],
+          "turn_order": [
+            "landlord",
+            "farmer_after",
+            "farmer_before"
+          ],
+          "team": {
+            "landlord": "landlord",
+            "farmer_after": "farmers",
+            "farmer_before": "farmers"
+          },
+          "reward": "Landlord wins: landlord +1, each farmer -1; either farmer finishes: both farmers +1, landlord -1. No tactical bonus.",
+          "play": "Beat the active play with the same type and a higher rank, or rocket. Passing allowed only when responding. After two passes the owner leads freely. The first empty hand ends the game immediately.",
+          "scope": "Each remaining hand has at most 4 cards; the remaining pool has at most 2 cards per ordinary rank. Only singles, pairs and rocket can occur. No bidding, multipliers or spring bonuses."
+        },
+        "self": {
+          "seat": "farmer_before",
+          "role": "farmer",
+          "hand": [
+            "10",
+            "J"
+          ],
+          "teammate": "farmer_after",
+          "next_seat": "landlord"
+        },
+        "public": {
+          "remaining_counts": {
+            "landlord": 2,
+            "farmer_after": 3,
+            "farmer_before": 2
+          },
+          "active_play": {
+            "cards": [
+              "2"
+            ],
+            "owner": "landlord",
+            "consecutive_passes": 1
+          },
+          "played_counts": {
+            "3": 4,
+            "4": 4,
+            "5": 3,
+            "6": 4,
+            "7": 4,
+            "8": 4,
+            "9": 3,
+            "10": 3,
+            "J": 3,
+            "Q": 4,
+            "K": 3,
+            "A": 4,
+            "2": 4
+          },
+          "history_quality": "Public ordered history since this endgame snapshot; earlier play is aggregate counts only.",
+          "history": [
+            {
+              "kind": "move",
+              "data": {
+                "player": "farmer_before",
+                "action_id": "play:7",
+                "cards": [
+                  "7"
+                ]
+              }
+            },
+            {
+              "kind": "move",
+              "data": {
+                "player": "landlord",
+                "action_id": "play:2",
+                "cards": [
+                  "2"
+                ]
+              }
+            },
+            {
+              "kind": "move",
+              "data": {
+                "player": "farmer_after",
+                "action_id": "pass",
+                "cards": []
+              }
+            }
+          ]
+        },
+        "belief": {
+          "facts": {
+            "unseen_card_counts": {
+              "5": 1,
+              "9": 1,
+              "K": 1,
+              "SJ": 1,
+              "BJ": 1
+            }
+          },
+          "estimates": {
+            "landlord": {
+              "pair_hand_probability": 0.0,
+              "can_beat_active_play_probability": 0.7
+            },
+            "farmer_after": {
+              "pair_hand_probability": 0.0,
+              "can_beat_active_play_probability": 0.9
+            }
+          },
+          "assumptions": [
+            "Uniform unseen-card instances conditional on public counts, not a behavioral posterior.",
+            "Past public moves update remaining card counts; passes do not prove absence of a higher card.",
+            "History starts at the supplied endgame snapshot, not at the original deal."
+          ]
+        },
+        "legal_actions": [
+          {
+            "id": "pass",
+            "label": "过牌",
+            "payload": {
+              "cards": [],
+              "kind": "pass",
+              "finishes_own_hand": false,
+              "breaks_pair": false,
+              "remaining_hand": [
+                "10",
+                "J"
+              ],
+              "minimum_uncontested_plays": 2
+            }
+          }
+        ]
+      },
+      "status": "applied",
+      "decision": {
+        "action_id": "pass",
+        "forced": true,
+        "calls": []
+      },
+      "decision_seconds": 0.001721250000002783,
+      "public_events": [
+        {
+          "kind": "move",
+          "data": {
+            "player": "farmer_before",
+            "action_id": "pass",
+            "cards": []
+          }
+        },
+        {
+          "kind": "free_lead",
+          "data": {
+            "player": "landlord"
+          }
+        }
+      ],
+      "rewards": {
+        "landlord": 0.0,
+        "farmer_after": 0.0,
+        "farmer_before": 0.0
+      },
+      "cumulative_rewards": {
+        "landlord": 0.0,
+        "farmer_after": 0.0,
+        "farmer_before": 0.0
+      }
+    },
+    {
+      "turn": 4,
+      "player": "landlord",
+      "policy": "simulation_jev",
+      "visible_state": {
+        "rules": {
+          "game": "doudizhu_endgame_v1",
+          "rank_order": [
+            "3",
+            "4",
+            "5",
+            "6",
+            "7",
+            "8",
+            "9",
+            "10",
+            "J",
+            "Q",
+            "K",
+            "A",
+            "2",
+            "SJ",
+            "BJ"
+          ],
+          "turn_order": [
+            "landlord",
+            "farmer_after",
+            "farmer_before"
+          ],
+          "team": {
+            "landlord": "landlord",
+            "farmer_after": "farmers",
+            "farmer_before": "farmers"
+          },
+          "reward": "Landlord wins: landlord +1, each farmer -1; either farmer finishes: both farmers +1, landlord -1. No tactical bonus.",
+          "play": "Beat the active play with the same type and a higher rank, or rocket. Passing allowed only when responding. After two passes the owner leads freely. The first empty hand ends the game immediately.",
+          "scope": "Each remaining hand has at most 4 cards; the remaining pool has at most 2 cards per ordinary rank. Only singles, pairs and rocket can occur. No bidding, multipliers or spring bonuses."
+        },
+        "self": {
+          "seat": "landlord",
+          "role": "landlord",
+          "hand": [
+            "SJ",
+            "BJ"
+          ],
+          "teammate": null,
+          "next_seat": "farmer_after"
+        },
+        "public": {
+          "remaining_counts": {
+            "landlord": 2,
+            "farmer_after": 3,
+            "farmer_before": 2
+          },
+          "active_play": {
+            "cards": [],
+            "owner": null,
+            "consecutive_passes": 0
+          },
+          "played_counts": {
+            "3": 4,
+            "4": 4,
+            "5": 3,
+            "6": 4,
+            "7": 4,
+            "8": 4,
+            "9": 3,
+            "10": 3,
+            "J": 3,
+            "Q": 4,
+            "K": 3,
+            "A": 4,
+            "2": 4
+          },
+          "history_quality": "Public ordered history since this endgame snapshot; earlier play is aggregate counts only.",
+          "history": [
+            {
+              "kind": "move",
+              "data": {
+                "player": "farmer_before",
+                "action_id": "play:7",
+                "cards": [
+                  "7"
+                ]
+              }
+            },
+            {
+              "kind": "move",
+              "data": {
+                "player": "landlord",
+                "action_id": "play:2",
+                "cards": [
+                  "2"
+                ]
+              }
+            },
+            {
+              "kind": "move",
+              "data": {
+                "player": "farmer_after",
+                "action_id": "pass",
+                "cards": []
+              }
+            },
+            {
+              "kind": "move",
+              "data": {
+                "player": "farmer_before",
+                "action_id": "pass",
+                "cards": []
+              }
+            },
+            {
+              "kind": "free_lead",
+              "data": {
+                "player": "landlord"
+              }
+            }
+          ]
+        },
+        "belief": {
+          "facts": {
+            "unseen_card_counts": {
+              "5": 1,
+              "9": 1,
+              "10": 1,
+              "J": 1,
+              "K": 1
+            }
+          },
+          "estimates": {
+            "farmer_after": {
+              "pair_hand_probability": 0.0
+            },
+            "farmer_before": {
+              "pair_hand_probability": 0.0
+            }
+          },
+          "assumptions": [
+            "Uniform unseen-card instances conditional on public counts, not a behavioral posterior.",
+            "Past public moves update remaining card counts; passes do not prove absence of a higher card.",
+            "History starts at the supplied endgame snapshot, not at the original deal."
+          ]
+        },
+        "legal_actions": [
+          {
+            "id": "play:SJ",
+            "label": "出 SJ",
+            "payload": {
+              "cards": [
+                "SJ"
+              ],
+              "kind": "single",
+              "finishes_own_hand": false,
+              "breaks_pair": false,
+              "remaining_hand": [
+                "BJ"
+              ],
+              "minimum_uncontested_plays": 1
+            }
+          },
+          {
+            "id": "play:BJ",
+            "label": "出 BJ",
+            "payload": {
+              "cards": [
+                "BJ"
+              ],
+              "kind": "single",
+              "finishes_own_hand": false,
+              "breaks_pair": false,
+              "remaining_hand": [
+                "SJ"
+              ],
+              "minimum_uncontested_plays": 1
+            }
+          },
+          {
+            "id": "play:SJ,BJ",
+            "label": "出 SJ BJ",
+            "payload": {
+              "cards": [
+                "SJ",
+                "BJ"
+              ],
+              "kind": "rocket",
+              "finishes_own_hand": true,
+              "breaks_pair": false,
+              "remaining_hand": [],
+              "minimum_uncontested_plays": 0
+            }
+          }
+        ]
+      },
+      "status": "applied",
+      "planning_analysis": {
+        "unique_hidden_assignments": 10,
+        "policies": [
+          "cooperative",
+          "greedy"
+        ],
+        "seeds": [
+          0
+        ],
+        "max_turns": 36,
+        "simulated_trajectories": 60,
+        "assumptions": [
+          "Uniform unseen card instances conditional on public counts; no behavioral posterior.",
+          "All continuation players see only their own hands and public information.",
+          "Policy-dependent rollout values, not optimal values or calibrated real-world win probabilities.",
+          "Truncated trajectories retain reward interval [-1,1]; they are not counted as losses."
+        ],
+        "actions": [
+          {
+            "action_id": "play:SJ",
+            "immediate": {
+              "finishes_team_game": false,
+              "remaining_hand": [
+                "BJ"
+              ],
+              "minimum_uncontested_plays": 1,
+              "breaks_pair": false,
+              "next_seat": "farmer_after",
+              "active_owner_after_action": "landlord",
+              "returns_free_lead_to_owner": false
+            },
+            "by_continuation_policy": {
+              "cooperative": {
+                "team_win_mass": 0.9999999999999999,
+                "team_loss_mass": 0.0,
+                "truncated_mass": 0.0,
+                "expected_team_reward": 0.9999999999999999,
+                "reward_lower_bound": 0.9999999999999999,
+                "reward_upper_bound": 0.9999999999999999,
+                "mean_turns": 3.9999999999999996
+              },
+              "greedy": {
+                "team_win_mass": 0.9999999999999999,
+                "team_loss_mass": 0.0,
+                "truncated_mass": 0.0,
+                "expected_team_reward": 0.9999999999999999,
+                "reward_lower_bound": 0.9999999999999999,
+                "reward_upper_bound": 0.9999999999999999,
+                "mean_turns": 3.9999999999999996
+              }
+            },
+            "worst_policy_reward_lower_bound": 0.9999999999999999,
+            "mean_policy_reward_lower_bound": 0.9999999999999999
+          },
+          {
+            "action_id": "play:BJ",
+            "immediate": {
+              "finishes_team_game": false,
+              "remaining_hand": [
+                "SJ"
+              ],
+              "minimum_uncontested_plays": 1,
+              "breaks_pair": false,
+              "next_seat": "farmer_after",
+              "active_owner_after_action": "landlord",
+              "returns_free_lead_to_owner": false
+            },
+            "by_continuation_policy": {
+              "cooperative": {
+                "team_win_mass": 0.9999999999999999,
+                "team_loss_mass": 0.0,
+                "truncated_mass": 0.0,
+                "expected_team_reward": 0.9999999999999999,
+                "reward_lower_bound": 0.9999999999999999,
+                "reward_upper_bound": 0.9999999999999999,
+                "mean_turns": 3.9999999999999996
+              },
+              "greedy": {
+                "team_win_mass": 0.9999999999999999,
+                "team_loss_mass": 0.0,
+                "truncated_mass": 0.0,
+                "expected_team_reward": 0.9999999999999999,
+                "reward_lower_bound": 0.9999999999999999,
+                "reward_upper_bound": 0.9999999999999999,
+                "mean_turns": 3.9999999999999996
+              }
+            },
+            "worst_policy_reward_lower_bound": 0.9999999999999999,
+            "mean_policy_reward_lower_bound": 0.9999999999999999
+          },
+          {
+            "action_id": "play:SJ,BJ",
+            "immediate": {
+              "finishes_team_game": true,
+              "remaining_hand": [],
+              "minimum_uncontested_plays": 0,
+              "breaks_pair": false,
+              "next_seat": null,
+              "active_owner_after_action": "landlord",
+              "returns_free_lead_to_owner": false
+            },
+            "by_continuation_policy": {
+              "cooperative": {
+                "team_win_mass": 0.9999999999999999,
+                "team_loss_mass": 0.0,
+                "truncated_mass": 0.0,
+                "expected_team_reward": 0.9999999999999999,
+                "reward_lower_bound": 0.9999999999999999,
+                "reward_upper_bound": 0.9999999999999999,
+                "mean_turns": 0.9999999999999999
+              },
+              "greedy": {
+                "team_win_mass": 0.9999999999999999,
+                "team_loss_mass": 0.0,
+                "truncated_mass": 0.0,
+                "expected_team_reward": 0.9999999999999999,
+                "reward_lower_bound": 0.9999999999999999,
+                "reward_upper_bound": 0.9999999999999999,
+                "mean_turns": 0.9999999999999999
+              }
+            },
+            "worst_policy_reward_lower_bound": 0.9999999999999999,
+            "mean_policy_reward_lower_bound": 0.9999999999999999
+          }
+        ]
+      },
+      "decision": {
+        "action_id": "play:SJ,BJ",
+        "probabilities": {
+          "play:SJ": 0.02,
+          "play:BJ": 0.0,
+          "play:SJ,BJ": 0.98
+        },
+        "confidence": 0.97,
+        "forced": false,
+        "calls": [
+          {
+            "model": "jev-1.13.0",
+            "usage": {
+              "input_tokens": 3307,
+              "output_tokens": 50
+            }
+          }
+        ]
+      },
+      "decision_seconds": 0.575885332999988,
+      "public_events": [
+        {
+          "kind": "move",
+          "data": {
+            "player": "landlord",
+            "action_id": "play:SJ,BJ",
+            "cards": [
+              "SJ",
+              "BJ"
+            ]
+          }
+        },
+        {
+          "kind": "game_finished",
+          "data": {
+            "winner": "landlord",
+            "rewards": {
+              "landlord": 1.0,
+              "farmer_after": -1.0,
+              "farmer_before": -1.0
+            }
+          }
+        }
+      ],
+      "rewards": {
+        "landlord": 1.0,
+        "farmer_after": -1.0,
+        "farmer_before": -1.0
+      },
+      "cumulative_rewards": {
+        "landlord": 1.0,
+        "farmer_after": -1.0,
+        "farmer_before": -1.0
+      }
+    }
+  ],
+  "api_ledger": [
+    {
+      "questions": [
+        "action"
+      ],
+      "status": "completed",
+      "model": "jev-1.13.0",
+      "usage": {
+        "input_tokens": 4524,
+        "output_tokens": 64
+      },
+      "seconds": 0.5963472910000007
+    },
+    {
+      "questions": [
+        "action"
+      ],
+      "status": "completed",
+      "model": "jev-1.13.0",
+      "usage": {
+        "input_tokens": 3307,
+        "output_tokens": 50
+      },
+      "seconds": 0.5555550420000088
+    }
+  ],
+  "team_reward": 1.0,
+  "rewards": {
+    "landlord": 1.0,
+    "farmer_after": -1.0,
+    "farmer_before": -1.0
+  },
+  "turns": 5,
+  "public_history": [
+    {
+      "kind": "move",
+      "data": {
+        "player": "farmer_before",
+        "action_id": "play:7",
+        "cards": [
+          "7"
+        ]
+      }
+    },
+    {
+      "kind": "move",
+      "data": {
+        "player": "landlord",
+        "action_id": "play:2",
+        "cards": [
+          "2"
+        ]
+      }
+    },
+    {
+      "kind": "move",
+      "data": {
+        "player": "farmer_after",
+        "action_id": "pass",
+        "cards": []
+      }
+    },
+    {
+      "kind": "move",
+      "data": {
+        "player": "farmer_before",
+        "action_id": "pass",
+        "cards": []
+      }
+    },
+    {
+      "kind": "free_lead",
+      "data": {
+        "player": "landlord"
+      }
+    },
+    {
+      "kind": "move",
+      "data": {
+        "player": "landlord",
+        "action_id": "play:SJ,BJ",
+        "cards": [
+          "SJ",
+          "BJ"
+        ]
+      }
+    },
+    {
+      "kind": "game_finished",
+      "data": {
+        "winner": "landlord",
+        "rewards": {
+          "landlord": 1.0,
+          "farmer_after": -1.0,
+          "farmer_before": -1.0
+        }
+      }
+    }
+  ],
+  "elapsed_seconds": 1.2515770830000008,
+  "applied_turns": 5,
+  "profile": "random",
+  "case_id": "generated_020",
+  "repetition": 0,
+  "episode_id": "generated_020-landlord-random-0-simulation_jev"
+}

@@ -1,0 +1,1864 @@
+{
+  "created_at": "2026-10-11T17:23:30.320736+00:00",
+  "suite_version": "doudizhu_endgame_v1",
+  "mode": "jev",
+  "limitations": [
+    "人工构造的策略回归集，不是独立测试集或完整对局胜率。",
+    "preferred 是带假设的战术标注，不能保证所有隐藏牌分配下最优。",
+    "全知穷举知道双方底牌，仅供离线诊断；不代表隐藏信息下的最优策略。",
+    "只覆盖每人最多四张、剩余普通点数不超过两张的小残局。"
+  ],
+  "summary": {
+    "scenarios": 10,
+    "evaluated": 10,
+    "rubric_matches": 9,
+    "full_information_winning_choices": 9,
+    "model_decisions": 9,
+    "forced_decisions": 1,
+    "model_rubric_matches": 8
+  },
+  "scenarios": [
+    {
+      "id": "guard_before_landlord",
+      "topic": "地主上家守门",
+      "preferred": [
+        "play:A"
+      ],
+      "rationale": "地主报单且下一位就是地主；用 A 压住后保留对子出完路线。",
+      "caveat": "未知的 K 不一定在地主手里；标注偏向防止其立即走完的保守策略。",
+      "full_information_winning_actions": [
+        "play:A"
+      ],
+      "visible_state": {
+        "rules": {
+          "game": "doudizhu_endgame_v1",
+          "rank_order": [
+            "3",
+            "4",
+            "5",
+            "6",
+            "7",
+            "8",
+            "9",
+            "10",
+            "J",
+            "Q",
+            "K",
+            "A",
+            "2",
+            "SJ",
+            "BJ"
+          ],
+          "turn_order": [
+            "landlord",
+            "farmer_after",
+            "farmer_before"
+          ],
+          "team": {
+            "landlord": "landlord",
+            "farmer_after": "farmers",
+            "farmer_before": "farmers"
+          },
+          "reward": "Landlord wins: landlord +1, each farmer -1; either farmer finishes: both farmers +1, landlord -1. No tactical bonus.",
+          "play": "Beat the active play with the same type and a higher rank, or rocket. Passing allowed only when responding. After two passes the owner leads freely. The first empty hand ends the game immediately.",
+          "scope": "Each remaining hand has at most 4 cards; the remaining pool has at most 2 cards per ordinary rank. Only singles, pairs and rocket can occur. No bidding, multipliers or spring bonuses."
+        },
+        "self": {
+          "seat": "farmer_before",
+          "role": "farmer",
+          "hand": [
+            "6",
+            "6",
+            "A"
+          ],
+          "teammate": "farmer_after",
+          "next_seat": "landlord"
+        },
+        "public": {
+          "remaining_counts": {
+            "landlord": 1,
+            "farmer_after": 2,
+            "farmer_before": 3
+          },
+          "active_play": {
+            "cards": [
+              "10"
+            ],
+            "owner": "landlord",
+            "consecutive_passes": 1
+          },
+          "played_counts": {
+            "3": 3,
+            "4": 3,
+            "5": 4,
+            "6": 2,
+            "7": 4,
+            "8": 4,
+            "9": 4,
+            "10": 4,
+            "J": 4,
+            "Q": 4,
+            "K": 3,
+            "A": 3,
+            "2": 4,
+            "SJ": 1,
+            "BJ": 1
+          },
+          "history_quality": "Synthetic snapshot with aggregate public card counts including the active play; no complete ordered bidding/play history is provided."
+        },
+        "belief": {
+          "facts": {
+            "unseen_card_counts": {
+              "K": 1,
+              "3": 1,
+              "4": 1
+            }
+          },
+          "estimates": {
+            "landlord": {
+              "pair_hand_probability": 0.0,
+              "can_beat_active_play_probability": 0.3333333333333333
+            },
+            "farmer_after": {
+              "pair_hand_probability": 0.0,
+              "can_beat_active_play_probability": 0.6666666666666666
+            }
+          },
+          "assumptions": [
+            "Unseen ranks are known by counting but their assignment to the two other players is unknown.",
+            "A pass does not prove a player cannot beat the current play.",
+            "Estimates assume uniformly dealt unseen card instances conditional on remaining counts; they ignore strategic past play and are not calibrated posteriors.",
+            "Seat heuristics are conditional, not mandatory rules."
+          ]
+        },
+        "legal_actions": [
+          {
+            "id": "play:A",
+            "label": "出 A",
+            "payload": {
+              "cards": [
+                "A"
+              ],
+              "kind": "single",
+              "finishes_own_hand": false,
+              "breaks_pair": false,
+              "remaining_hand": [
+                "6",
+                "6"
+              ],
+              "minimum_uncontested_plays": 1
+            }
+          },
+          {
+            "id": "pass",
+            "label": "过牌",
+            "payload": {
+              "cards": [],
+              "kind": "pass",
+              "finishes_own_hand": false,
+              "breaks_pair": false,
+              "remaining_hand": [
+                "6",
+                "6",
+                "A"
+              ],
+              "minimum_uncontested_plays": 2
+            }
+          }
+        ]
+      },
+      "decision": {
+        "action_id": "play:A",
+        "tactics": {
+          "must_block": 0.61,
+          "yield_control": 0.34,
+          "feed_teammate": 0.42,
+          "pair_pressure": 0.37
+        },
+        "confidence": 0.7,
+        "probabilities": {
+          "play:A": 0.85,
+          "pass": 0.15
+        },
+        "calls": [
+          {
+            "model": "jev-1.13.0",
+            "usage": {
+              "input_tokens": 1377,
+              "output_tokens": 74
+            }
+          },
+          {
+            "model": "jev-1.13.0",
+            "usage": {
+              "input_tokens": 1540,
+              "output_tokens": 33
+            }
+          }
+        ],
+        "forced": false
+      },
+      "rubric_match": true,
+      "full_information_winning": true
+    },
+    {
+      "id": "yield_to_teammate",
+      "topic": "避免抢队友牌权",
+      "preferred": [
+        "pass"
+      ],
+      "rationale": "剩余未知牌都不能压 K；让队友保持牌权，避免拆散自己的散牌后被地主反抢。",
+      "caveat": "队友具体是否持对子仍不公开；不能假设看见队友的 44。",
+      "full_information_winning_actions": [
+        "pass"
+      ],
+      "visible_state": {
+        "rules": {
+          "game": "doudizhu_endgame_v1",
+          "rank_order": [
+            "3",
+            "4",
+            "5",
+            "6",
+            "7",
+            "8",
+            "9",
+            "10",
+            "J",
+            "Q",
+            "K",
+            "A",
+            "2",
+            "SJ",
+            "BJ"
+          ],
+          "turn_order": [
+            "landlord",
+            "farmer_after",
+            "farmer_before"
+          ],
+          "team": {
+            "landlord": "landlord",
+            "farmer_after": "farmers",
+            "farmer_before": "farmers"
+          },
+          "reward": "Landlord wins: landlord +1, each farmer -1; either farmer finishes: both farmers +1, landlord -1. No tactical bonus.",
+          "play": "Beat the active play with the same type and a higher rank, or rocket. Passing allowed only when responding. After two passes the owner leads freely. The first empty hand ends the game immediately.",
+          "scope": "Each remaining hand has at most 4 cards; the remaining pool has at most 2 cards per ordinary rank. Only singles, pairs and rocket can occur. No bidding, multipliers or spring bonuses."
+        },
+        "self": {
+          "seat": "farmer_before",
+          "role": "farmer",
+          "hand": [
+            "3",
+            "5",
+            "A"
+          ],
+          "teammate": "farmer_after",
+          "next_seat": "landlord"
+        },
+        "public": {
+          "remaining_counts": {
+            "landlord": 1,
+            "farmer_after": 2,
+            "farmer_before": 3
+          },
+          "active_play": {
+            "cards": [
+              "K"
+            ],
+            "owner": "farmer_after",
+            "consecutive_passes": 0
+          },
+          "played_counts": {
+            "3": 3,
+            "4": 2,
+            "5": 3,
+            "6": 4,
+            "7": 4,
+            "8": 4,
+            "9": 4,
+            "10": 4,
+            "J": 4,
+            "Q": 3,
+            "K": 4,
+            "A": 3,
+            "2": 4,
+            "SJ": 1,
+            "BJ": 1
+          },
+          "history_quality": "Synthetic snapshot with aggregate public card counts including the active play; no complete ordered bidding/play history is provided."
+        },
+        "belief": {
+          "facts": {
+            "unseen_card_counts": {
+              "Q": 1,
+              "4": 2
+            }
+          },
+          "estimates": {
+            "landlord": {
+              "pair_hand_probability": 0.0,
+              "can_beat_active_play_probability": 0.0
+            },
+            "farmer_after": {
+              "pair_hand_probability": 0.3333333333333333,
+              "can_beat_active_play_probability": 0.0
+            }
+          },
+          "assumptions": [
+            "Unseen ranks are known by counting but their assignment to the two other players is unknown.",
+            "A pass does not prove a player cannot beat the current play.",
+            "Estimates assume uniformly dealt unseen card instances conditional on remaining counts; they ignore strategic past play and are not calibrated posteriors.",
+            "Seat heuristics are conditional, not mandatory rules."
+          ]
+        },
+        "legal_actions": [
+          {
+            "id": "play:A",
+            "label": "出 A",
+            "payload": {
+              "cards": [
+                "A"
+              ],
+              "kind": "single",
+              "finishes_own_hand": false,
+              "breaks_pair": false,
+              "remaining_hand": [
+                "3",
+                "5"
+              ],
+              "minimum_uncontested_plays": 2
+            }
+          },
+          {
+            "id": "pass",
+            "label": "过牌",
+            "payload": {
+              "cards": [],
+              "kind": "pass",
+              "finishes_own_hand": false,
+              "breaks_pair": false,
+              "remaining_hand": [
+                "3",
+                "5",
+                "A"
+              ],
+              "minimum_uncontested_plays": 3
+            }
+          }
+        ]
+      },
+      "decision": {
+        "action_id": "play:A",
+        "tactics": {
+          "must_block": 0.54,
+          "yield_control": 0.35,
+          "feed_teammate": 0.38,
+          "pair_pressure": 0.23
+        },
+        "confidence": 0.74,
+        "probabilities": {
+          "play:A": 0.87,
+          "pass": 0.13
+        },
+        "calls": [
+          {
+            "model": "jev-1.13.0",
+            "usage": {
+              "input_tokens": 1356,
+              "output_tokens": 74
+            }
+          },
+          {
+            "model": "jev-1.13.0",
+            "usage": {
+              "input_tokens": 1519,
+              "output_tokens": 33
+            }
+          }
+        ],
+        "forced": false
+      },
+      "rubric_match": false,
+      "full_information_winning": false
+    },
+    {
+      "id": "override_yield_to_block",
+      "topic": "有威胁时必须接管队友牌权",
+      "preferred": [
+        "play:2"
+      ],
+      "rationale": "地主报单且未知牌含 A，过牌有立即输局风险；用 2 接管后剩余对子。",
+      "caveat": "与让牌场景相反，但原因是威胁和后续出完路线，而非固定座位口诀。",
+      "full_information_winning_actions": [
+        "play:2"
+      ],
+      "visible_state": {
+        "rules": {
+          "game": "doudizhu_endgame_v1",
+          "rank_order": [
+            "3",
+            "4",
+            "5",
+            "6",
+            "7",
+            "8",
+            "9",
+            "10",
+            "J",
+            "Q",
+            "K",
+            "A",
+            "2",
+            "SJ",
+            "BJ"
+          ],
+          "turn_order": [
+            "landlord",
+            "farmer_after",
+            "farmer_before"
+          ],
+          "team": {
+            "landlord": "landlord",
+            "farmer_after": "farmers",
+            "farmer_before": "farmers"
+          },
+          "reward": "Landlord wins: landlord +1, each farmer -1; either farmer finishes: both farmers +1, landlord -1. No tactical bonus.",
+          "play": "Beat the active play with the same type and a higher rank, or rocket. Passing allowed only when responding. After two passes the owner leads freely. The first empty hand ends the game immediately.",
+          "scope": "Each remaining hand has at most 4 cards; the remaining pool has at most 2 cards per ordinary rank. Only singles, pairs and rocket can occur. No bidding, multipliers or spring bonuses."
+        },
+        "self": {
+          "seat": "farmer_before",
+          "role": "farmer",
+          "hand": [
+            "3",
+            "3",
+            "2"
+          ],
+          "teammate": "farmer_after",
+          "next_seat": "landlord"
+        },
+        "public": {
+          "remaining_counts": {
+            "landlord": 1,
+            "farmer_after": 2,
+            "farmer_before": 3
+          },
+          "active_play": {
+            "cards": [
+              "K"
+            ],
+            "owner": "farmer_after",
+            "consecutive_passes": 0
+          },
+          "played_counts": {
+            "3": 2,
+            "4": 2,
+            "5": 4,
+            "6": 4,
+            "7": 4,
+            "8": 4,
+            "9": 4,
+            "10": 4,
+            "J": 4,
+            "Q": 4,
+            "K": 4,
+            "A": 3,
+            "2": 3,
+            "SJ": 1,
+            "BJ": 1
+          },
+          "history_quality": "Synthetic snapshot with aggregate public card counts including the active play; no complete ordered bidding/play history is provided."
+        },
+        "belief": {
+          "facts": {
+            "unseen_card_counts": {
+              "A": 1,
+              "4": 2
+            }
+          },
+          "estimates": {
+            "landlord": {
+              "pair_hand_probability": 0.0,
+              "can_beat_active_play_probability": 0.3333333333333333
+            },
+            "farmer_after": {
+              "pair_hand_probability": 0.3333333333333333,
+              "can_beat_active_play_probability": 0.6666666666666666
+            }
+          },
+          "assumptions": [
+            "Unseen ranks are known by counting but their assignment to the two other players is unknown.",
+            "A pass does not prove a player cannot beat the current play.",
+            "Estimates assume uniformly dealt unseen card instances conditional on remaining counts; they ignore strategic past play and are not calibrated posteriors.",
+            "Seat heuristics are conditional, not mandatory rules."
+          ]
+        },
+        "legal_actions": [
+          {
+            "id": "play:2",
+            "label": "出 2",
+            "payload": {
+              "cards": [
+                "2"
+              ],
+              "kind": "single",
+              "finishes_own_hand": false,
+              "breaks_pair": false,
+              "remaining_hand": [
+                "3",
+                "3"
+              ],
+              "minimum_uncontested_plays": 1
+            }
+          },
+          {
+            "id": "pass",
+            "label": "过牌",
+            "payload": {
+              "cards": [],
+              "kind": "pass",
+              "finishes_own_hand": false,
+              "breaks_pair": false,
+              "remaining_hand": [
+                "3",
+                "3",
+                "2"
+              ],
+              "minimum_uncontested_plays": 2
+            }
+          }
+        ]
+      },
+      "decision": {
+        "action_id": "play:2",
+        "tactics": {
+          "must_block": 0.59,
+          "yield_control": 0.34,
+          "feed_teammate": 0.36,
+          "pair_pressure": 0.4
+        },
+        "confidence": 0.76,
+        "probabilities": {
+          "play:2": 0.88,
+          "pass": 0.12
+        },
+        "calls": [
+          {
+            "model": "jev-1.13.0",
+            "usage": {
+              "input_tokens": 1388,
+              "output_tokens": 74
+            }
+          },
+          {
+            "model": "jev-1.13.0",
+            "usage": {
+              "input_tokens": 1552,
+              "output_tokens": 35
+            }
+          }
+        ],
+        "forced": false
+      },
+      "rubric_match": true,
+      "full_information_winning": true
+    },
+    {
+      "id": "pairs_against_single",
+      "topic": "地主报单时选择对子路线",
+      "preferred": [
+        "play:3,3",
+        "play:K,K"
+      ],
+      "rationale": "对子让报单地主无法接牌，并保留另一对；领单牌会增加被地主直接走完的风险。",
+      "caveat": "不能推广成永远打对子：自己能直接走完时应优先赢局。",
+      "full_information_winning_actions": [
+        "play:3,3",
+        "play:K,K"
+      ],
+      "visible_state": {
+        "rules": {
+          "game": "doudizhu_endgame_v1",
+          "rank_order": [
+            "3",
+            "4",
+            "5",
+            "6",
+            "7",
+            "8",
+            "9",
+            "10",
+            "J",
+            "Q",
+            "K",
+            "A",
+            "2",
+            "SJ",
+            "BJ"
+          ],
+          "turn_order": [
+            "landlord",
+            "farmer_after",
+            "farmer_before"
+          ],
+          "team": {
+            "landlord": "landlord",
+            "farmer_after": "farmers",
+            "farmer_before": "farmers"
+          },
+          "reward": "Landlord wins: landlord +1, each farmer -1; either farmer finishes: both farmers +1, landlord -1. No tactical bonus.",
+          "play": "Beat the active play with the same type and a higher rank, or rocket. Passing allowed only when responding. After two passes the owner leads freely. The first empty hand ends the game immediately.",
+          "scope": "Each remaining hand has at most 4 cards; the remaining pool has at most 2 cards per ordinary rank. Only singles, pairs and rocket can occur. No bidding, multipliers or spring bonuses."
+        },
+        "self": {
+          "seat": "farmer_before",
+          "role": "farmer",
+          "hand": [
+            "3",
+            "3",
+            "K",
+            "K"
+          ],
+          "teammate": "farmer_after",
+          "next_seat": "landlord"
+        },
+        "public": {
+          "remaining_counts": {
+            "landlord": 1,
+            "farmer_after": 2,
+            "farmer_before": 4
+          },
+          "active_play": {
+            "cards": [],
+            "owner": null,
+            "consecutive_passes": 0
+          },
+          "played_counts": {
+            "3": 2,
+            "4": 3,
+            "5": 3,
+            "6": 4,
+            "7": 4,
+            "8": 4,
+            "9": 4,
+            "10": 4,
+            "J": 4,
+            "Q": 4,
+            "K": 2,
+            "A": 3,
+            "2": 4,
+            "SJ": 1,
+            "BJ": 1
+          },
+          "history_quality": "Synthetic snapshot with aggregate public card counts including the active play; no complete ordered bidding/play history is provided."
+        },
+        "belief": {
+          "facts": {
+            "unseen_card_counts": {
+              "A": 1,
+              "4": 1,
+              "5": 1
+            }
+          },
+          "estimates": {
+            "landlord": {
+              "pair_hand_probability": 0.0
+            },
+            "farmer_after": {
+              "pair_hand_probability": 0.0
+            }
+          },
+          "assumptions": [
+            "Unseen ranks are known by counting but their assignment to the two other players is unknown.",
+            "A pass does not prove a player cannot beat the current play.",
+            "Estimates assume uniformly dealt unseen card instances conditional on remaining counts; they ignore strategic past play and are not calibrated posteriors.",
+            "Seat heuristics are conditional, not mandatory rules."
+          ]
+        },
+        "legal_actions": [
+          {
+            "id": "play:3",
+            "label": "出 3",
+            "payload": {
+              "cards": [
+                "3"
+              ],
+              "kind": "single",
+              "finishes_own_hand": false,
+              "breaks_pair": true,
+              "remaining_hand": [
+                "3",
+                "K",
+                "K"
+              ],
+              "minimum_uncontested_plays": 2
+            }
+          },
+          {
+            "id": "play:K",
+            "label": "出 K",
+            "payload": {
+              "cards": [
+                "K"
+              ],
+              "kind": "single",
+              "finishes_own_hand": false,
+              "breaks_pair": true,
+              "remaining_hand": [
+                "3",
+                "3",
+                "K"
+              ],
+              "minimum_uncontested_plays": 2
+            }
+          },
+          {
+            "id": "play:3,3",
+            "label": "出 3 3",
+            "payload": {
+              "cards": [
+                "3",
+                "3"
+              ],
+              "kind": "pair",
+              "finishes_own_hand": false,
+              "breaks_pair": false,
+              "remaining_hand": [
+                "K",
+                "K"
+              ],
+              "minimum_uncontested_plays": 1
+            }
+          },
+          {
+            "id": "play:K,K",
+            "label": "出 K K",
+            "payload": {
+              "cards": [
+                "K",
+                "K"
+              ],
+              "kind": "pair",
+              "finishes_own_hand": false,
+              "breaks_pair": false,
+              "remaining_hand": [
+                "3",
+                "3"
+              ],
+              "minimum_uncontested_plays": 1
+            }
+          }
+        ]
+      },
+      "decision": {
+        "action_id": "play:3,3",
+        "tactics": {
+          "must_block": 0.48,
+          "yield_control": 0.23,
+          "feed_teammate": 0.44,
+          "pair_pressure": 0.56
+        },
+        "confidence": 0.21,
+        "probabilities": {
+          "play:3": 0.11,
+          "play:K": 0.09,
+          "play:3,3": 0.41000000000000003,
+          "play:K,K": 0.39
+        },
+        "calls": [
+          {
+            "model": "jev-1.13.0",
+            "usage": {
+              "input_tokens": 1526,
+              "output_tokens": 74
+            }
+          },
+          {
+            "model": "jev-1.13.0",
+            "usage": {
+              "input_tokens": 1885,
+              "output_tokens": 60
+            }
+          }
+        ],
+        "forced": false
+      },
+      "rubric_match": true,
+      "full_information_winning": true
+    },
+    {
+      "id": "probe_pair_keep_control",
+      "topic": "地主可能持对子时先用小单试探",
+      "preferred": [
+        "play:3",
+        "play:Q"
+      ],
+      "rationale": "先出 3 或 Q，若地主拆 K 接牌，保留 A 及时接回，再出最后一张；先耗掉 A 会失去接回能力。",
+      "caveat": "报双不等于对子，未知 KK34 的归属不公开；这是该参考底牌下成立的路线。",
+      "full_information_winning_actions": [
+        "play:3",
+        "play:Q"
+      ],
+      "visible_state": {
+        "rules": {
+          "game": "doudizhu_endgame_v1",
+          "rank_order": [
+            "3",
+            "4",
+            "5",
+            "6",
+            "7",
+            "8",
+            "9",
+            "10",
+            "J",
+            "Q",
+            "K",
+            "A",
+            "2",
+            "SJ",
+            "BJ"
+          ],
+          "turn_order": [
+            "landlord",
+            "farmer_after",
+            "farmer_before"
+          ],
+          "team": {
+            "landlord": "landlord",
+            "farmer_after": "farmers",
+            "farmer_before": "farmers"
+          },
+          "reward": "Landlord wins: landlord +1, each farmer -1; either farmer finishes: both farmers +1, landlord -1. No tactical bonus.",
+          "play": "Beat the active play with the same type and a higher rank, or rocket. Passing allowed only when responding. After two passes the owner leads freely. The first empty hand ends the game immediately.",
+          "scope": "Each remaining hand has at most 4 cards; the remaining pool has at most 2 cards per ordinary rank. Only singles, pairs and rocket can occur. No bidding, multipliers or spring bonuses."
+        },
+        "self": {
+          "seat": "farmer_before",
+          "role": "farmer",
+          "hand": [
+            "3",
+            "Q",
+            "A"
+          ],
+          "teammate": "farmer_after",
+          "next_seat": "landlord"
+        },
+        "public": {
+          "remaining_counts": {
+            "landlord": 2,
+            "farmer_after": 2,
+            "farmer_before": 3
+          },
+          "active_play": {
+            "cards": [],
+            "owner": null,
+            "consecutive_passes": 0
+          },
+          "played_counts": {
+            "3": 3,
+            "4": 3,
+            "5": 3,
+            "6": 4,
+            "7": 4,
+            "8": 4,
+            "9": 4,
+            "10": 4,
+            "J": 4,
+            "Q": 3,
+            "K": 2,
+            "A": 3,
+            "2": 4,
+            "SJ": 1,
+            "BJ": 1
+          },
+          "history_quality": "Synthetic snapshot with aggregate public card counts including the active play; no complete ordered bidding/play history is provided."
+        },
+        "belief": {
+          "facts": {
+            "unseen_card_counts": {
+              "K": 2,
+              "4": 1,
+              "5": 1
+            }
+          },
+          "estimates": {
+            "landlord": {
+              "pair_hand_probability": 0.16666666666666666
+            },
+            "farmer_after": {
+              "pair_hand_probability": 0.16666666666666666
+            }
+          },
+          "assumptions": [
+            "Unseen ranks are known by counting but their assignment to the two other players is unknown.",
+            "A pass does not prove a player cannot beat the current play.",
+            "Estimates assume uniformly dealt unseen card instances conditional on remaining counts; they ignore strategic past play and are not calibrated posteriors.",
+            "Seat heuristics are conditional, not mandatory rules."
+          ]
+        },
+        "legal_actions": [
+          {
+            "id": "play:3",
+            "label": "出 3",
+            "payload": {
+              "cards": [
+                "3"
+              ],
+              "kind": "single",
+              "finishes_own_hand": false,
+              "breaks_pair": false,
+              "remaining_hand": [
+                "Q",
+                "A"
+              ],
+              "minimum_uncontested_plays": 2
+            }
+          },
+          {
+            "id": "play:Q",
+            "label": "出 Q",
+            "payload": {
+              "cards": [
+                "Q"
+              ],
+              "kind": "single",
+              "finishes_own_hand": false,
+              "breaks_pair": false,
+              "remaining_hand": [
+                "3",
+                "A"
+              ],
+              "minimum_uncontested_plays": 2
+            }
+          },
+          {
+            "id": "play:A",
+            "label": "出 A",
+            "payload": {
+              "cards": [
+                "A"
+              ],
+              "kind": "single",
+              "finishes_own_hand": false,
+              "breaks_pair": false,
+              "remaining_hand": [
+                "3",
+                "Q"
+              ],
+              "minimum_uncontested_plays": 2
+            }
+          }
+        ]
+      },
+      "decision": {
+        "action_id": "play:3",
+        "tactics": {
+          "must_block": 0.42,
+          "yield_control": 0.18,
+          "feed_teammate": 0.49,
+          "pair_pressure": 0.22
+        },
+        "confidence": 0.3,
+        "probabilities": {
+          "play:3": 0.53,
+          "play:Q": 0.12,
+          "play:A": 0.35
+        },
+        "calls": [
+          {
+            "model": "jev-1.13.0",
+            "usage": {
+              "input_tokens": 1439,
+              "output_tokens": 74
+            }
+          },
+          {
+            "model": "jev-1.13.0",
+            "usage": {
+              "input_tokens": 1689,
+              "output_tokens": 45
+            }
+          }
+        ],
+        "forced": false
+      },
+      "rubric_match": true,
+      "full_information_winning": true
+    },
+    {
+      "id": "single_threat_changes_lead",
+      "topic": "剩 QA 面对报单地主要先控牌",
+      "preferred": [
+        "play:A"
+      ],
+      "rationale": "地主只剩一张时，先试探 Q 可能直接输局；先出 A 后再走 Q。",
+      "caveat": "与试探场景比较时也要考虑自己少一张散牌；并非只凭地主报单/报双就能决定出法。",
+      "full_information_winning_actions": [
+        "play:A"
+      ],
+      "visible_state": {
+        "rules": {
+          "game": "doudizhu_endgame_v1",
+          "rank_order": [
+            "3",
+            "4",
+            "5",
+            "6",
+            "7",
+            "8",
+            "9",
+            "10",
+            "J",
+            "Q",
+            "K",
+            "A",
+            "2",
+            "SJ",
+            "BJ"
+          ],
+          "turn_order": [
+            "landlord",
+            "farmer_after",
+            "farmer_before"
+          ],
+          "team": {
+            "landlord": "landlord",
+            "farmer_after": "farmers",
+            "farmer_before": "farmers"
+          },
+          "reward": "Landlord wins: landlord +1, each farmer -1; either farmer finishes: both farmers +1, landlord -1. No tactical bonus.",
+          "play": "Beat the active play with the same type and a higher rank, or rocket. Passing allowed only when responding. After two passes the owner leads freely. The first empty hand ends the game immediately.",
+          "scope": "Each remaining hand has at most 4 cards; the remaining pool has at most 2 cards per ordinary rank. Only singles, pairs and rocket can occur. No bidding, multipliers or spring bonuses."
+        },
+        "self": {
+          "seat": "farmer_before",
+          "role": "farmer",
+          "hand": [
+            "Q",
+            "A"
+          ],
+          "teammate": "farmer_after",
+          "next_seat": "landlord"
+        },
+        "public": {
+          "remaining_counts": {
+            "landlord": 1,
+            "farmer_after": 3,
+            "farmer_before": 2
+          },
+          "active_play": {
+            "cards": [],
+            "owner": null,
+            "consecutive_passes": 0
+          },
+          "played_counts": {
+            "3": 3,
+            "4": 3,
+            "5": 3,
+            "6": 4,
+            "7": 4,
+            "8": 4,
+            "9": 4,
+            "10": 4,
+            "J": 4,
+            "Q": 3,
+            "K": 3,
+            "A": 3,
+            "2": 4,
+            "SJ": 1,
+            "BJ": 1
+          },
+          "history_quality": "Synthetic snapshot with aggregate public card counts including the active play; no complete ordered bidding/play history is provided."
+        },
+        "belief": {
+          "facts": {
+            "unseen_card_counts": {
+              "K": 1,
+              "3": 1,
+              "4": 1,
+              "5": 1
+            }
+          },
+          "estimates": {
+            "landlord": {
+              "pair_hand_probability": 0.0
+            },
+            "farmer_after": {
+              "pair_hand_probability": 0.0
+            }
+          },
+          "assumptions": [
+            "Unseen ranks are known by counting but their assignment to the two other players is unknown.",
+            "A pass does not prove a player cannot beat the current play.",
+            "Estimates assume uniformly dealt unseen card instances conditional on remaining counts; they ignore strategic past play and are not calibrated posteriors.",
+            "Seat heuristics are conditional, not mandatory rules."
+          ]
+        },
+        "legal_actions": [
+          {
+            "id": "play:Q",
+            "label": "出 Q",
+            "payload": {
+              "cards": [
+                "Q"
+              ],
+              "kind": "single",
+              "finishes_own_hand": false,
+              "breaks_pair": false,
+              "remaining_hand": [
+                "A"
+              ],
+              "minimum_uncontested_plays": 1
+            }
+          },
+          {
+            "id": "play:A",
+            "label": "出 A",
+            "payload": {
+              "cards": [
+                "A"
+              ],
+              "kind": "single",
+              "finishes_own_hand": false,
+              "breaks_pair": false,
+              "remaining_hand": [
+                "Q"
+              ],
+              "minimum_uncontested_plays": 1
+            }
+          }
+        ]
+      },
+      "decision": {
+        "action_id": "play:A",
+        "tactics": {
+          "must_block": 0.51,
+          "yield_control": 0.22,
+          "feed_teammate": 0.45,
+          "pair_pressure": 0.2
+        },
+        "confidence": 0.32,
+        "probabilities": {
+          "play:Q": 0.34,
+          "play:A": 0.66
+        },
+        "calls": [
+          {
+            "model": "jev-1.13.0",
+            "usage": {
+              "input_tokens": 1309,
+              "output_tokens": 74
+            }
+          },
+          {
+            "model": "jev-1.13.0",
+            "usage": {
+              "input_tokens": 1464,
+              "output_tokens": 35
+            }
+          }
+        ],
+        "forced": false
+      },
+      "rubric_match": true,
+      "full_information_winning": true
+    },
+    {
+      "id": "feed_next_teammate",
+      "topic": "地主下家给下一位队友送牌",
+      "preferred": [
+        "play:3",
+        "play:5",
+        "play:7"
+      ],
+      "rationale": "下一位是报单队友，先领出其可能接住的小单，让其在地主行动前走完。",
+      "caveat": "A 和 2 的具体归属不公开；此例强调行动顺序，不声称猜中队友底牌。",
+      "full_information_winning_actions": [
+        "play:3",
+        "play:5",
+        "play:7"
+      ],
+      "visible_state": {
+        "rules": {
+          "game": "doudizhu_endgame_v1",
+          "rank_order": [
+            "3",
+            "4",
+            "5",
+            "6",
+            "7",
+            "8",
+            "9",
+            "10",
+            "J",
+            "Q",
+            "K",
+            "A",
+            "2",
+            "SJ",
+            "BJ"
+          ],
+          "turn_order": [
+            "landlord",
+            "farmer_after",
+            "farmer_before"
+          ],
+          "team": {
+            "landlord": "landlord",
+            "farmer_after": "farmers",
+            "farmer_before": "farmers"
+          },
+          "reward": "Landlord wins: landlord +1, each farmer -1; either farmer finishes: both farmers +1, landlord -1. No tactical bonus.",
+          "play": "Beat the active play with the same type and a higher rank, or rocket. Passing allowed only when responding. After two passes the owner leads freely. The first empty hand ends the game immediately.",
+          "scope": "Each remaining hand has at most 4 cards; the remaining pool has at most 2 cards per ordinary rank. Only singles, pairs and rocket can occur. No bidding, multipliers or spring bonuses."
+        },
+        "self": {
+          "seat": "farmer_after",
+          "role": "farmer",
+          "hand": [
+            "3",
+            "5",
+            "7"
+          ],
+          "teammate": "farmer_before",
+          "next_seat": "farmer_before"
+        },
+        "public": {
+          "remaining_counts": {
+            "landlord": 1,
+            "farmer_after": 3,
+            "farmer_before": 1
+          },
+          "active_play": {
+            "cards": [],
+            "owner": null,
+            "consecutive_passes": 0
+          },
+          "played_counts": {
+            "3": 3,
+            "4": 4,
+            "5": 3,
+            "6": 4,
+            "7": 3,
+            "8": 4,
+            "9": 4,
+            "10": 4,
+            "J": 4,
+            "Q": 4,
+            "K": 4,
+            "A": 3,
+            "2": 3,
+            "SJ": 1,
+            "BJ": 1
+          },
+          "history_quality": "Synthetic snapshot with aggregate public card counts including the active play; no complete ordered bidding/play history is provided."
+        },
+        "belief": {
+          "facts": {
+            "unseen_card_counts": {
+              "2": 1,
+              "A": 1
+            }
+          },
+          "estimates": {
+            "landlord": {
+              "pair_hand_probability": 0.0
+            },
+            "farmer_before": {
+              "pair_hand_probability": 0.0
+            }
+          },
+          "assumptions": [
+            "Unseen ranks are known by counting but their assignment to the two other players is unknown.",
+            "A pass does not prove a player cannot beat the current play.",
+            "Estimates assume uniformly dealt unseen card instances conditional on remaining counts; they ignore strategic past play and are not calibrated posteriors.",
+            "Seat heuristics are conditional, not mandatory rules."
+          ]
+        },
+        "legal_actions": [
+          {
+            "id": "play:3",
+            "label": "出 3",
+            "payload": {
+              "cards": [
+                "3"
+              ],
+              "kind": "single",
+              "finishes_own_hand": false,
+              "breaks_pair": false,
+              "remaining_hand": [
+                "5",
+                "7"
+              ],
+              "minimum_uncontested_plays": 2
+            }
+          },
+          {
+            "id": "play:5",
+            "label": "出 5",
+            "payload": {
+              "cards": [
+                "5"
+              ],
+              "kind": "single",
+              "finishes_own_hand": false,
+              "breaks_pair": false,
+              "remaining_hand": [
+                "3",
+                "7"
+              ],
+              "minimum_uncontested_plays": 2
+            }
+          },
+          {
+            "id": "play:7",
+            "label": "出 7",
+            "payload": {
+              "cards": [
+                "7"
+              ],
+              "kind": "single",
+              "finishes_own_hand": false,
+              "breaks_pair": false,
+              "remaining_hand": [
+                "3",
+                "5"
+              ],
+              "minimum_uncontested_plays": 2
+            }
+          }
+        ]
+      },
+      "decision": {
+        "action_id": "play:3",
+        "tactics": {
+          "must_block": 0.54,
+          "yield_control": 0.23,
+          "feed_teammate": 0.56,
+          "pair_pressure": 0.19
+        },
+        "confidence": 0.2,
+        "probabilities": {
+          "play:3": 0.47,
+          "play:5": 0.15,
+          "play:7": 0.38
+        },
+        "calls": [
+          {
+            "model": "jev-1.13.0",
+            "usage": {
+              "input_tokens": 1405,
+              "output_tokens": 74
+            }
+          },
+          {
+            "model": "jev-1.13.0",
+            "usage": {
+              "input_tokens": 1658,
+              "output_tokens": 46
+            }
+          }
+        ],
+        "forced": false
+      },
+      "rubric_match": true,
+      "full_information_winning": true
+    },
+    {
+      "id": "landlord_stop_farmer",
+      "topic": "地主阻止农民先走",
+      "preferred": [
+        "play:K"
+      ],
+      "rationale": "压住农民的 Q，留下 K；放弃牌权会让其重新领出最后一张。",
+      "caveat": "这里拆对子是为了夺回控制，不能机械地为保持对子而过牌。",
+      "full_information_winning_actions": [
+        "play:K"
+      ],
+      "visible_state": {
+        "rules": {
+          "game": "doudizhu_endgame_v1",
+          "rank_order": [
+            "3",
+            "4",
+            "5",
+            "6",
+            "7",
+            "8",
+            "9",
+            "10",
+            "J",
+            "Q",
+            "K",
+            "A",
+            "2",
+            "SJ",
+            "BJ"
+          ],
+          "turn_order": [
+            "landlord",
+            "farmer_after",
+            "farmer_before"
+          ],
+          "team": {
+            "landlord": "landlord",
+            "farmer_after": "farmers",
+            "farmer_before": "farmers"
+          },
+          "reward": "Landlord wins: landlord +1, each farmer -1; either farmer finishes: both farmers +1, landlord -1. No tactical bonus.",
+          "play": "Beat the active play with the same type and a higher rank, or rocket. Passing allowed only when responding. After two passes the owner leads freely. The first empty hand ends the game immediately.",
+          "scope": "Each remaining hand has at most 4 cards; the remaining pool has at most 2 cards per ordinary rank. Only singles, pairs and rocket can occur. No bidding, multipliers or spring bonuses."
+        },
+        "self": {
+          "seat": "landlord",
+          "role": "landlord",
+          "hand": [
+            "K",
+            "K"
+          ],
+          "teammate": null,
+          "next_seat": "farmer_after"
+        },
+        "public": {
+          "remaining_counts": {
+            "landlord": 2,
+            "farmer_after": 2,
+            "farmer_before": 1
+          },
+          "active_play": {
+            "cards": [
+              "Q"
+            ],
+            "owner": "farmer_before",
+            "consecutive_passes": 0
+          },
+          "played_counts": {
+            "3": 3,
+            "4": 3,
+            "5": 3,
+            "6": 4,
+            "7": 4,
+            "8": 4,
+            "9": 4,
+            "10": 4,
+            "J": 4,
+            "Q": 4,
+            "K": 2,
+            "A": 4,
+            "2": 4,
+            "SJ": 1,
+            "BJ": 1
+          },
+          "history_quality": "Synthetic snapshot with aggregate public card counts including the active play; no complete ordered bidding/play history is provided."
+        },
+        "belief": {
+          "facts": {
+            "unseen_card_counts": {
+              "4": 1,
+              "5": 1,
+              "3": 1
+            }
+          },
+          "estimates": {
+            "farmer_after": {
+              "pair_hand_probability": 0.0,
+              "can_beat_active_play_probability": 0.0
+            },
+            "farmer_before": {
+              "pair_hand_probability": 0.0,
+              "can_beat_active_play_probability": 0.0
+            }
+          },
+          "assumptions": [
+            "Unseen ranks are known by counting but their assignment to the two other players is unknown.",
+            "A pass does not prove a player cannot beat the current play.",
+            "Estimates assume uniformly dealt unseen card instances conditional on remaining counts; they ignore strategic past play and are not calibrated posteriors.",
+            "Seat heuristics are conditional, not mandatory rules."
+          ]
+        },
+        "legal_actions": [
+          {
+            "id": "play:K",
+            "label": "出 K",
+            "payload": {
+              "cards": [
+                "K"
+              ],
+              "kind": "single",
+              "finishes_own_hand": false,
+              "breaks_pair": true,
+              "remaining_hand": [
+                "K"
+              ],
+              "minimum_uncontested_plays": 1
+            }
+          },
+          {
+            "id": "pass",
+            "label": "过牌",
+            "payload": {
+              "cards": [],
+              "kind": "pass",
+              "finishes_own_hand": false,
+              "breaks_pair": false,
+              "remaining_hand": [
+                "K",
+                "K"
+              ],
+              "minimum_uncontested_plays": 1
+            }
+          }
+        ]
+      },
+      "decision": {
+        "action_id": "play:K",
+        "tactics": {
+          "must_block": 0.71,
+          "yield_control": 0.15,
+          "feed_teammate": 0.27,
+          "pair_pressure": 0.34
+        },
+        "confidence": 0.84,
+        "probabilities": {
+          "play:K": 0.92,
+          "pass": 0.08
+        },
+        "calls": [
+          {
+            "model": "jev-1.13.0",
+            "usage": {
+              "input_tokens": 1333,
+              "output_tokens": 74
+            }
+          },
+          {
+            "model": "jev-1.13.0",
+            "usage": {
+              "input_tokens": 1489,
+              "output_tokens": 35
+            }
+          }
+        ],
+        "forced": false
+      },
+      "rubric_match": true,
+      "full_information_winning": true
+    },
+    {
+      "id": "finish_over_seat_duty",
+      "topic": "可以直接获胜时优先走完",
+      "preferred": [
+        "play:8,8"
+      ],
+      "rationale": "直接出完对子就是农民共同胜利，无须为守门保留牌。",
+      "caveat": "终局奖励优先于任何中间战术偏好。",
+      "full_information_winning_actions": [
+        "play:8,8"
+      ],
+      "visible_state": {
+        "rules": {
+          "game": "doudizhu_endgame_v1",
+          "rank_order": [
+            "3",
+            "4",
+            "5",
+            "6",
+            "7",
+            "8",
+            "9",
+            "10",
+            "J",
+            "Q",
+            "K",
+            "A",
+            "2",
+            "SJ",
+            "BJ"
+          ],
+          "turn_order": [
+            "landlord",
+            "farmer_after",
+            "farmer_before"
+          ],
+          "team": {
+            "landlord": "landlord",
+            "farmer_after": "farmers",
+            "farmer_before": "farmers"
+          },
+          "reward": "Landlord wins: landlord +1, each farmer -1; either farmer finishes: both farmers +1, landlord -1. No tactical bonus.",
+          "play": "Beat the active play with the same type and a higher rank, or rocket. Passing allowed only when responding. After two passes the owner leads freely. The first empty hand ends the game immediately.",
+          "scope": "Each remaining hand has at most 4 cards; the remaining pool has at most 2 cards per ordinary rank. Only singles, pairs and rocket can occur. No bidding, multipliers or spring bonuses."
+        },
+        "self": {
+          "seat": "farmer_before",
+          "role": "farmer",
+          "hand": [
+            "8",
+            "8"
+          ],
+          "teammate": "farmer_after",
+          "next_seat": "landlord"
+        },
+        "public": {
+          "remaining_counts": {
+            "landlord": 1,
+            "farmer_after": 2,
+            "farmer_before": 2
+          },
+          "active_play": {
+            "cards": [
+              "5",
+              "5"
+            ],
+            "owner": "landlord",
+            "consecutive_passes": 1
+          },
+          "played_counts": {
+            "3": 3,
+            "4": 3,
+            "5": 4,
+            "6": 4,
+            "7": 4,
+            "8": 2,
+            "9": 4,
+            "10": 4,
+            "J": 4,
+            "Q": 4,
+            "K": 4,
+            "A": 3,
+            "2": 4,
+            "SJ": 1,
+            "BJ": 1
+          },
+          "history_quality": "Synthetic snapshot with aggregate public card counts including the active play; no complete ordered bidding/play history is provided."
+        },
+        "belief": {
+          "facts": {
+            "unseen_card_counts": {
+              "A": 1,
+              "3": 1,
+              "4": 1
+            }
+          },
+          "estimates": {
+            "landlord": {
+              "pair_hand_probability": 0.0,
+              "can_beat_active_play_probability": 0.0
+            },
+            "farmer_after": {
+              "pair_hand_probability": 0.0,
+              "can_beat_active_play_probability": 0.0
+            }
+          },
+          "assumptions": [
+            "Unseen ranks are known by counting but their assignment to the two other players is unknown.",
+            "A pass does not prove a player cannot beat the current play.",
+            "Estimates assume uniformly dealt unseen card instances conditional on remaining counts; they ignore strategic past play and are not calibrated posteriors.",
+            "Seat heuristics are conditional, not mandatory rules."
+          ]
+        },
+        "legal_actions": [
+          {
+            "id": "play:8,8",
+            "label": "出 8 8",
+            "payload": {
+              "cards": [
+                "8",
+                "8"
+              ],
+              "kind": "pair",
+              "finishes_own_hand": true,
+              "breaks_pair": false,
+              "remaining_hand": [],
+              "minimum_uncontested_plays": 0
+            }
+          },
+          {
+            "id": "pass",
+            "label": "过牌",
+            "payload": {
+              "cards": [],
+              "kind": "pass",
+              "finishes_own_hand": false,
+              "breaks_pair": false,
+              "remaining_hand": [
+                "8",
+                "8"
+              ],
+              "minimum_uncontested_plays": 1
+            }
+          }
+        ]
+      },
+      "decision": {
+        "action_id": "play:8,8",
+        "tactics": {
+          "must_block": 0.57,
+          "yield_control": 0.27,
+          "feed_teammate": 0.23,
+          "pair_pressure": 0.7
+        },
+        "confidence": 0.92,
+        "probabilities": {
+          "play:8,8": 0.96,
+          "pass": 0.04
+        },
+        "calls": [
+          {
+            "model": "jev-1.13.0",
+            "usage": {
+              "input_tokens": 1345,
+              "output_tokens": 74
+            }
+          },
+          {
+            "model": "jev-1.13.0",
+            "usage": {
+              "input_tokens": 1506,
+              "output_tokens": 39
+            }
+          }
+        ],
+        "forced": false
+      },
+      "rubric_match": true,
+      "full_information_winning": true
+    },
+    {
+      "id": "single_finish_against_pair",
+      "topic": "地主报双也不妨碍自己单牌走完",
+      "preferred": [
+        "play:A"
+      ],
+      "rationale": "自己仅剩 A，直接走完即胜利；无需先推断地主是否有对子。",
+      "caveat": "报双只是张数事实，不等于确定持有对子。",
+      "full_information_winning_actions": [
+        "play:A"
+      ],
+      "visible_state": {
+        "rules": {
+          "game": "doudizhu_endgame_v1",
+          "rank_order": [
+            "3",
+            "4",
+            "5",
+            "6",
+            "7",
+            "8",
+            "9",
+            "10",
+            "J",
+            "Q",
+            "K",
+            "A",
+            "2",
+            "SJ",
+            "BJ"
+          ],
+          "turn_order": [
+            "landlord",
+            "farmer_after",
+            "farmer_before"
+          ],
+          "team": {
+            "landlord": "landlord",
+            "farmer_after": "farmers",
+            "farmer_before": "farmers"
+          },
+          "reward": "Landlord wins: landlord +1, each farmer -1; either farmer finishes: both farmers +1, landlord -1. No tactical bonus.",
+          "play": "Beat the active play with the same type and a higher rank, or rocket. Passing allowed only when responding. After two passes the owner leads freely. The first empty hand ends the game immediately.",
+          "scope": "Each remaining hand has at most 4 cards; the remaining pool has at most 2 cards per ordinary rank. Only singles, pairs and rocket can occur. No bidding, multipliers or spring bonuses."
+        },
+        "self": {
+          "seat": "farmer_after",
+          "role": "farmer",
+          "hand": [
+            "A"
+          ],
+          "teammate": "farmer_before",
+          "next_seat": "farmer_before"
+        },
+        "public": {
+          "remaining_counts": {
+            "landlord": 2,
+            "farmer_after": 1,
+            "farmer_before": 2
+          },
+          "active_play": {
+            "cards": [],
+            "owner": null,
+            "consecutive_passes": 0
+          },
+          "played_counts": {
+            "3": 3,
+            "4": 3,
+            "5": 4,
+            "6": 4,
+            "7": 4,
+            "8": 4,
+            "9": 4,
+            "10": 4,
+            "J": 4,
+            "Q": 4,
+            "K": 2,
+            "A": 3,
+            "2": 4,
+            "SJ": 1,
+            "BJ": 1
+          },
+          "history_quality": "Synthetic snapshot with aggregate public card counts including the active play; no complete ordered bidding/play history is provided."
+        },
+        "belief": {
+          "facts": {
+            "unseen_card_counts": {
+              "K": 2,
+              "3": 1,
+              "4": 1
+            }
+          },
+          "estimates": {
+            "landlord": {
+              "pair_hand_probability": 0.16666666666666666
+            },
+            "farmer_before": {
+              "pair_hand_probability": 0.16666666666666666
+            }
+          },
+          "assumptions": [
+            "Unseen ranks are known by counting but their assignment to the two other players is unknown.",
+            "A pass does not prove a player cannot beat the current play.",
+            "Estimates assume uniformly dealt unseen card instances conditional on remaining counts; they ignore strategic past play and are not calibrated posteriors.",
+            "Seat heuristics are conditional, not mandatory rules."
+          ]
+        },
+        "legal_actions": [
+          {
+            "id": "play:A",
+            "label": "出 A",
+            "payload": {
+              "cards": [
+                "A"
+              ],
+              "kind": "single",
+              "finishes_own_hand": true,
+              "breaks_pair": false,
+              "remaining_hand": [],
+              "minimum_uncontested_plays": 0
+            }
+          }
+        ]
+      },
+      "decision": {
+        "action_id": "play:A",
+        "tactics": {},
+        "calls": [],
+        "forced": true
+      },
+      "rubric_match": true,
+      "full_information_winning": true
+    }
+  ]
+}

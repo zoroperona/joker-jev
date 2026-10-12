@@ -1,0 +1,4356 @@
+{
+  "started_at": "2026-10-11T17:37:46.932345+00:00",
+  "suite_version": "doudizhu_cooperation_v1",
+  "status": "completed",
+  "requested_model": "jev-1.13.0",
+  "repeats": 3,
+  "schedule_seed": 2026,
+  "planned_trials": 48,
+  "questions": {
+    "must_block": {
+      "type": "noul",
+      "instructions": "Does the visible state indicate an urgent need to stop the opposing team from emptying a hand on its next opportunity? Treat hidden-card estimates as uncertain."
+    },
+    "yield_control": {
+      "type": "noul",
+      "instructions": "Should this player pass to preserve a farmer teammate's active lead? Answer no for the landlord or if no teammate owns the active play. Account for an enemy intervening."
+    },
+    "feed_teammate": {
+      "type": "noul",
+      "instructions": "When leading freely, is playing a small single to let the next farmer teammate finish a useful plan? Answer no if not applicable. Use the actual turn order."
+    },
+    "pair_pressure": {
+      "type": "noul",
+      "instructions": "Can leading a pair keep a one-card enemy from responding while preserving this player's route to finish? Answer no if not applicable."
+    }
+  },
+  "action_instructions": "Which legal action best serves this player's team winning objective? Use turn order, visible information, computed action features and uncertain tactical assessments. Either farmer finishing is equally a farmer victory. Do not treat a seat heuristic as mandatory.",
+  "intervention": "Only add belief.facts.control; no question changes, forced tactical rules or hidden information.",
+  "limitations": [
+    "八个人工回归场景，含点数变体，不是独立泛化测试。",
+    "同场景重复调用相关；匹配率不是胜率，不能据此判断统计显著性。",
+    "preferred 是带假设的战术偏好；全知穷举仅作参考底牌诊断。"
+  ],
+  "cases": {
+    "yield_to_teammate": {
+      "topic": "避免抢队友牌权",
+      "preferred": [
+        "pass"
+      ],
+      "rationale": "剩余未知牌都不能压 K；让队友保持牌权，避免拆散自己的散牌后被地主反抢。",
+      "caveat": "队友具体是否持对子仍不公开；不能假设看见队友的 44。",
+      "full_information_winning_actions": [
+        "pass"
+      ],
+      "states": {
+        "baseline": {
+          "rules": {
+            "game": "doudizhu_endgame_v1",
+            "rank_order": [
+              "3",
+              "4",
+              "5",
+              "6",
+              "7",
+              "8",
+              "9",
+              "10",
+              "J",
+              "Q",
+              "K",
+              "A",
+              "2",
+              "SJ",
+              "BJ"
+            ],
+            "turn_order": [
+              "landlord",
+              "farmer_after",
+              "farmer_before"
+            ],
+            "team": {
+              "landlord": "landlord",
+              "farmer_after": "farmers",
+              "farmer_before": "farmers"
+            },
+            "reward": "Landlord wins: landlord +1, each farmer -1; either farmer finishes: both farmers +1, landlord -1. No tactical bonus.",
+            "play": "Beat the active play with the same type and a higher rank, or rocket. Passing allowed only when responding. After two passes the owner leads freely. The first empty hand ends the game immediately.",
+            "scope": "Each remaining hand has at most 4 cards; the remaining pool has at most 2 cards per ordinary rank. Only singles, pairs and rocket can occur. No bidding, multipliers or spring bonuses."
+          },
+          "self": {
+            "seat": "farmer_before",
+            "role": "farmer",
+            "hand": [
+              "3",
+              "5",
+              "A"
+            ],
+            "teammate": "farmer_after",
+            "next_seat": "landlord"
+          },
+          "public": {
+            "remaining_counts": {
+              "landlord": 1,
+              "farmer_after": 2,
+              "farmer_before": 3
+            },
+            "active_play": {
+              "cards": [
+                "K"
+              ],
+              "owner": "farmer_after",
+              "consecutive_passes": 0
+            },
+            "played_counts": {
+              "3": 3,
+              "4": 2,
+              "5": 3,
+              "6": 4,
+              "7": 4,
+              "8": 4,
+              "9": 4,
+              "10": 4,
+              "J": 4,
+              "Q": 3,
+              "K": 4,
+              "A": 3,
+              "2": 4,
+              "SJ": 1,
+              "BJ": 1
+            },
+            "history_quality": "Synthetic snapshot with aggregate public card counts including the active play; no complete ordered bidding/play history is provided."
+          },
+          "belief": {
+            "facts": {
+              "unseen_card_counts": {
+                "Q": 1,
+                "4": 2
+              }
+            },
+            "estimates": {
+              "landlord": {
+                "pair_hand_probability": 0.0,
+                "can_beat_active_play_probability": 0.0
+              },
+              "farmer_after": {
+                "pair_hand_probability": 0.3333333333333333,
+                "can_beat_active_play_probability": 0.0
+              }
+            },
+            "assumptions": [
+              "Unseen ranks are known by counting but their assignment to the two other players is unknown.",
+              "A pass does not prove a player cannot beat the current play.",
+              "Estimates assume uniformly dealt unseen card instances conditional on remaining counts; they ignore strategic past play and are not calibrated posteriors.",
+              "Seat heuristics are conditional, not mandatory rules."
+            ]
+          },
+          "legal_actions": [
+            {
+              "id": "play:A",
+              "label": "出 A",
+              "payload": {
+                "cards": [
+                  "A"
+                ],
+                "kind": "single",
+                "finishes_own_hand": false,
+                "breaks_pair": false,
+                "remaining_hand": [
+                  "3",
+                  "5"
+                ],
+                "minimum_uncontested_plays": 2
+              }
+            },
+            {
+              "id": "pass",
+              "label": "过牌",
+              "payload": {
+                "cards": [],
+                "kind": "pass",
+                "finishes_own_hand": false,
+                "breaks_pair": false,
+                "remaining_hand": [
+                  "3",
+                  "5",
+                  "A"
+                ],
+                "minimum_uncontested_plays": 3
+              }
+            }
+          ]
+        },
+        "control_facts": {
+          "rules": {
+            "game": "doudizhu_endgame_v1",
+            "rank_order": [
+              "3",
+              "4",
+              "5",
+              "6",
+              "7",
+              "8",
+              "9",
+              "10",
+              "J",
+              "Q",
+              "K",
+              "A",
+              "2",
+              "SJ",
+              "BJ"
+            ],
+            "turn_order": [
+              "landlord",
+              "farmer_after",
+              "farmer_before"
+            ],
+            "team": {
+              "landlord": "landlord",
+              "farmer_after": "farmers",
+              "farmer_before": "farmers"
+            },
+            "reward": "Landlord wins: landlord +1, each farmer -1; either farmer finishes: both farmers +1, landlord -1. No tactical bonus.",
+            "play": "Beat the active play with the same type and a higher rank, or rocket. Passing allowed only when responding. After two passes the owner leads freely. The first empty hand ends the game immediately.",
+            "scope": "Each remaining hand has at most 4 cards; the remaining pool has at most 2 cards per ordinary rank. Only singles, pairs and rocket can occur. No bidding, multipliers or spring bonuses."
+          },
+          "self": {
+            "seat": "farmer_before",
+            "role": "farmer",
+            "hand": [
+              "3",
+              "5",
+              "A"
+            ],
+            "teammate": "farmer_after",
+            "next_seat": "landlord"
+          },
+          "public": {
+            "remaining_counts": {
+              "landlord": 1,
+              "farmer_after": 2,
+              "farmer_before": 3
+            },
+            "active_play": {
+              "cards": [
+                "K"
+              ],
+              "owner": "farmer_after",
+              "consecutive_passes": 0
+            },
+            "played_counts": {
+              "3": 3,
+              "4": 2,
+              "5": 3,
+              "6": 4,
+              "7": 4,
+              "8": 4,
+              "9": 4,
+              "10": 4,
+              "J": 4,
+              "Q": 3,
+              "K": 4,
+              "A": 3,
+              "2": 4,
+              "SJ": 1,
+              "BJ": 1
+            },
+            "history_quality": "Synthetic snapshot with aggregate public card counts including the active play; no complete ordered bidding/play history is provided."
+          },
+          "belief": {
+            "facts": {
+              "unseen_card_counts": {
+                "Q": 1,
+                "4": 2
+              },
+              "control": {
+                "active_play_exists": true,
+                "active_owner_is_teammate": true,
+                "responders_after_self_pass_before_owner_returns": [
+                  "landlord"
+                ],
+                "passing_ends_trick": false,
+                "response_possibilities": {
+                  "landlord": {
+                    "can_possibly_beat_active_play": false,
+                    "can_possibly_finish_by_beating_active_play": false
+                  },
+                  "farmer_after": {
+                    "can_possibly_beat_active_play": false,
+                    "can_possibly_finish_by_beating_active_play": false
+                  },
+                  "farmer_before": {
+                    "can_possibly_beat_active_play": true,
+                    "can_possibly_finish_by_beating_active_play": false
+                  }
+                },
+                "opponent_can_possibly_beat_current_play_after_self_pass": false,
+                "opponent_can_possibly_finish_on_current_play_after_self_pass": false,
+                "semantics": "Possibility over all unseen-card assignments consistent with public counts, not actual holdings or probabilities. False rules out the event; true does not guarantee it. Responders are for the unchanged active play after self passes. A previously passing player may respond again after a new higher play. No field mandates a tactical action."
+              }
+            },
+            "estimates": {
+              "landlord": {
+                "pair_hand_probability": 0.0,
+                "can_beat_active_play_probability": 0.0
+              },
+              "farmer_after": {
+                "pair_hand_probability": 0.3333333333333333,
+                "can_beat_active_play_probability": 0.0
+              }
+            },
+            "assumptions": [
+              "Unseen ranks are known by counting but their assignment to the two other players is unknown.",
+              "A pass does not prove a player cannot beat the current play.",
+              "Estimates assume uniformly dealt unseen card instances conditional on remaining counts; they ignore strategic past play and are not calibrated posteriors.",
+              "Seat heuristics are conditional, not mandatory rules."
+            ]
+          },
+          "legal_actions": [
+            {
+              "id": "play:A",
+              "label": "出 A",
+              "payload": {
+                "cards": [
+                  "A"
+                ],
+                "kind": "single",
+                "finishes_own_hand": false,
+                "breaks_pair": false,
+                "remaining_hand": [
+                  "3",
+                  "5"
+                ],
+                "minimum_uncontested_plays": 2
+              }
+            },
+            {
+              "id": "pass",
+              "label": "过牌",
+              "payload": {
+                "cards": [],
+                "kind": "pass",
+                "finishes_own_hand": false,
+                "breaks_pair": false,
+                "remaining_hand": [
+                  "3",
+                  "5",
+                  "A"
+                ],
+                "minimum_uncontested_plays": 3
+              }
+            }
+          ]
+        }
+      }
+    },
+    "override_yield_to_block": {
+      "topic": "有威胁时必须接管队友牌权",
+      "preferred": [
+        "play:2"
+      ],
+      "rationale": "地主报单且未知牌含 A，过牌有立即输局风险；用 2 接管后剩余对子。",
+      "caveat": "与让牌场景相反，但原因是威胁和后续出完路线，而非固定座位口诀。",
+      "full_information_winning_actions": [
+        "play:2"
+      ],
+      "states": {
+        "baseline": {
+          "rules": {
+            "game": "doudizhu_endgame_v1",
+            "rank_order": [
+              "3",
+              "4",
+              "5",
+              "6",
+              "7",
+              "8",
+              "9",
+              "10",
+              "J",
+              "Q",
+              "K",
+              "A",
+              "2",
+              "SJ",
+              "BJ"
+            ],
+            "turn_order": [
+              "landlord",
+              "farmer_after",
+              "farmer_before"
+            ],
+            "team": {
+              "landlord": "landlord",
+              "farmer_after": "farmers",
+              "farmer_before": "farmers"
+            },
+            "reward": "Landlord wins: landlord +1, each farmer -1; either farmer finishes: both farmers +1, landlord -1. No tactical bonus.",
+            "play": "Beat the active play with the same type and a higher rank, or rocket. Passing allowed only when responding. After two passes the owner leads freely. The first empty hand ends the game immediately.",
+            "scope": "Each remaining hand has at most 4 cards; the remaining pool has at most 2 cards per ordinary rank. Only singles, pairs and rocket can occur. No bidding, multipliers or spring bonuses."
+          },
+          "self": {
+            "seat": "farmer_before",
+            "role": "farmer",
+            "hand": [
+              "3",
+              "3",
+              "2"
+            ],
+            "teammate": "farmer_after",
+            "next_seat": "landlord"
+          },
+          "public": {
+            "remaining_counts": {
+              "landlord": 1,
+              "farmer_after": 2,
+              "farmer_before": 3
+            },
+            "active_play": {
+              "cards": [
+                "K"
+              ],
+              "owner": "farmer_after",
+              "consecutive_passes": 0
+            },
+            "played_counts": {
+              "3": 2,
+              "4": 2,
+              "5": 4,
+              "6": 4,
+              "7": 4,
+              "8": 4,
+              "9": 4,
+              "10": 4,
+              "J": 4,
+              "Q": 4,
+              "K": 4,
+              "A": 3,
+              "2": 3,
+              "SJ": 1,
+              "BJ": 1
+            },
+            "history_quality": "Synthetic snapshot with aggregate public card counts including the active play; no complete ordered bidding/play history is provided."
+          },
+          "belief": {
+            "facts": {
+              "unseen_card_counts": {
+                "A": 1,
+                "4": 2
+              }
+            },
+            "estimates": {
+              "landlord": {
+                "pair_hand_probability": 0.0,
+                "can_beat_active_play_probability": 0.3333333333333333
+              },
+              "farmer_after": {
+                "pair_hand_probability": 0.3333333333333333,
+                "can_beat_active_play_probability": 0.6666666666666666
+              }
+            },
+            "assumptions": [
+              "Unseen ranks are known by counting but their assignment to the two other players is unknown.",
+              "A pass does not prove a player cannot beat the current play.",
+              "Estimates assume uniformly dealt unseen card instances conditional on remaining counts; they ignore strategic past play and are not calibrated posteriors.",
+              "Seat heuristics are conditional, not mandatory rules."
+            ]
+          },
+          "legal_actions": [
+            {
+              "id": "play:2",
+              "label": "出 2",
+              "payload": {
+                "cards": [
+                  "2"
+                ],
+                "kind": "single",
+                "finishes_own_hand": false,
+                "breaks_pair": false,
+                "remaining_hand": [
+                  "3",
+                  "3"
+                ],
+                "minimum_uncontested_plays": 1
+              }
+            },
+            {
+              "id": "pass",
+              "label": "过牌",
+              "payload": {
+                "cards": [],
+                "kind": "pass",
+                "finishes_own_hand": false,
+                "breaks_pair": false,
+                "remaining_hand": [
+                  "3",
+                  "3",
+                  "2"
+                ],
+                "minimum_uncontested_plays": 2
+              }
+            }
+          ]
+        },
+        "control_facts": {
+          "rules": {
+            "game": "doudizhu_endgame_v1",
+            "rank_order": [
+              "3",
+              "4",
+              "5",
+              "6",
+              "7",
+              "8",
+              "9",
+              "10",
+              "J",
+              "Q",
+              "K",
+              "A",
+              "2",
+              "SJ",
+              "BJ"
+            ],
+            "turn_order": [
+              "landlord",
+              "farmer_after",
+              "farmer_before"
+            ],
+            "team": {
+              "landlord": "landlord",
+              "farmer_after": "farmers",
+              "farmer_before": "farmers"
+            },
+            "reward": "Landlord wins: landlord +1, each farmer -1; either farmer finishes: both farmers +1, landlord -1. No tactical bonus.",
+            "play": "Beat the active play with the same type and a higher rank, or rocket. Passing allowed only when responding. After two passes the owner leads freely. The first empty hand ends the game immediately.",
+            "scope": "Each remaining hand has at most 4 cards; the remaining pool has at most 2 cards per ordinary rank. Only singles, pairs and rocket can occur. No bidding, multipliers or spring bonuses."
+          },
+          "self": {
+            "seat": "farmer_before",
+            "role": "farmer",
+            "hand": [
+              "3",
+              "3",
+              "2"
+            ],
+            "teammate": "farmer_after",
+            "next_seat": "landlord"
+          },
+          "public": {
+            "remaining_counts": {
+              "landlord": 1,
+              "farmer_after": 2,
+              "farmer_before": 3
+            },
+            "active_play": {
+              "cards": [
+                "K"
+              ],
+              "owner": "farmer_after",
+              "consecutive_passes": 0
+            },
+            "played_counts": {
+              "3": 2,
+              "4": 2,
+              "5": 4,
+              "6": 4,
+              "7": 4,
+              "8": 4,
+              "9": 4,
+              "10": 4,
+              "J": 4,
+              "Q": 4,
+              "K": 4,
+              "A": 3,
+              "2": 3,
+              "SJ": 1,
+              "BJ": 1
+            },
+            "history_quality": "Synthetic snapshot with aggregate public card counts including the active play; no complete ordered bidding/play history is provided."
+          },
+          "belief": {
+            "facts": {
+              "unseen_card_counts": {
+                "A": 1,
+                "4": 2
+              },
+              "control": {
+                "active_play_exists": true,
+                "active_owner_is_teammate": true,
+                "responders_after_self_pass_before_owner_returns": [
+                  "landlord"
+                ],
+                "passing_ends_trick": false,
+                "response_possibilities": {
+                  "landlord": {
+                    "can_possibly_beat_active_play": true,
+                    "can_possibly_finish_by_beating_active_play": true
+                  },
+                  "farmer_after": {
+                    "can_possibly_beat_active_play": true,
+                    "can_possibly_finish_by_beating_active_play": false
+                  },
+                  "farmer_before": {
+                    "can_possibly_beat_active_play": true,
+                    "can_possibly_finish_by_beating_active_play": false
+                  }
+                },
+                "opponent_can_possibly_beat_current_play_after_self_pass": true,
+                "opponent_can_possibly_finish_on_current_play_after_self_pass": true,
+                "semantics": "Possibility over all unseen-card assignments consistent with public counts, not actual holdings or probabilities. False rules out the event; true does not guarantee it. Responders are for the unchanged active play after self passes. A previously passing player may respond again after a new higher play. No field mandates a tactical action."
+              }
+            },
+            "estimates": {
+              "landlord": {
+                "pair_hand_probability": 0.0,
+                "can_beat_active_play_probability": 0.3333333333333333
+              },
+              "farmer_after": {
+                "pair_hand_probability": 0.3333333333333333,
+                "can_beat_active_play_probability": 0.6666666666666666
+              }
+            },
+            "assumptions": [
+              "Unseen ranks are known by counting but their assignment to the two other players is unknown.",
+              "A pass does not prove a player cannot beat the current play.",
+              "Estimates assume uniformly dealt unseen card instances conditional on remaining counts; they ignore strategic past play and are not calibrated posteriors.",
+              "Seat heuristics are conditional, not mandatory rules."
+            ]
+          },
+          "legal_actions": [
+            {
+              "id": "play:2",
+              "label": "出 2",
+              "payload": {
+                "cards": [
+                  "2"
+                ],
+                "kind": "single",
+                "finishes_own_hand": false,
+                "breaks_pair": false,
+                "remaining_hand": [
+                  "3",
+                  "3"
+                ],
+                "minimum_uncontested_plays": 1
+              }
+            },
+            {
+              "id": "pass",
+              "label": "过牌",
+              "payload": {
+                "cards": [],
+                "kind": "pass",
+                "finishes_own_hand": false,
+                "breaks_pair": false,
+                "remaining_hand": [
+                  "3",
+                  "3",
+                  "2"
+                ],
+                "minimum_uncontested_plays": 2
+              }
+            }
+          ]
+        }
+      }
+    },
+    "yield_lower_ranks": {
+      "topic": "换点数后仍应保留队友牌权",
+      "preferred": [
+        "pass"
+      ],
+      "rationale": "公开未知牌 J44 都压不住队友 Q；自己的 K 需要留作后续控制。",
+      "caveat": "这是原失败场景的保序点数变体，不算独立泛化样本。",
+      "full_information_winning_actions": [
+        "pass"
+      ],
+      "states": {
+        "baseline": {
+          "rules": {
+            "game": "doudizhu_endgame_v1",
+            "rank_order": [
+              "3",
+              "4",
+              "5",
+              "6",
+              "7",
+              "8",
+              "9",
+              "10",
+              "J",
+              "Q",
+              "K",
+              "A",
+              "2",
+              "SJ",
+              "BJ"
+            ],
+            "turn_order": [
+              "landlord",
+              "farmer_after",
+              "farmer_before"
+            ],
+            "team": {
+              "landlord": "landlord",
+              "farmer_after": "farmers",
+              "farmer_before": "farmers"
+            },
+            "reward": "Landlord wins: landlord +1, each farmer -1; either farmer finishes: both farmers +1, landlord -1. No tactical bonus.",
+            "play": "Beat the active play with the same type and a higher rank, or rocket. Passing allowed only when responding. After two passes the owner leads freely. The first empty hand ends the game immediately.",
+            "scope": "Each remaining hand has at most 4 cards; the remaining pool has at most 2 cards per ordinary rank. Only singles, pairs and rocket can occur. No bidding, multipliers or spring bonuses."
+          },
+          "self": {
+            "seat": "farmer_before",
+            "role": "farmer",
+            "hand": [
+              "3",
+              "5",
+              "K"
+            ],
+            "teammate": "farmer_after",
+            "next_seat": "landlord"
+          },
+          "public": {
+            "remaining_counts": {
+              "landlord": 1,
+              "farmer_after": 2,
+              "farmer_before": 3
+            },
+            "active_play": {
+              "cards": [
+                "Q"
+              ],
+              "owner": "farmer_after",
+              "consecutive_passes": 0
+            },
+            "played_counts": {
+              "3": 3,
+              "4": 2,
+              "5": 3,
+              "6": 4,
+              "7": 4,
+              "8": 4,
+              "9": 4,
+              "10": 4,
+              "J": 3,
+              "Q": 4,
+              "K": 3,
+              "A": 4,
+              "2": 4,
+              "SJ": 1,
+              "BJ": 1
+            },
+            "history_quality": "Synthetic snapshot with aggregate public card counts including the active play; no complete ordered bidding/play history is provided."
+          },
+          "belief": {
+            "facts": {
+              "unseen_card_counts": {
+                "J": 1,
+                "4": 2
+              }
+            },
+            "estimates": {
+              "landlord": {
+                "pair_hand_probability": 0.0,
+                "can_beat_active_play_probability": 0.0
+              },
+              "farmer_after": {
+                "pair_hand_probability": 0.3333333333333333,
+                "can_beat_active_play_probability": 0.0
+              }
+            },
+            "assumptions": [
+              "Unseen ranks are known by counting but their assignment to the two other players is unknown.",
+              "A pass does not prove a player cannot beat the current play.",
+              "Estimates assume uniformly dealt unseen card instances conditional on remaining counts; they ignore strategic past play and are not calibrated posteriors.",
+              "Seat heuristics are conditional, not mandatory rules."
+            ]
+          },
+          "legal_actions": [
+            {
+              "id": "play:K",
+              "label": "出 K",
+              "payload": {
+                "cards": [
+                  "K"
+                ],
+                "kind": "single",
+                "finishes_own_hand": false,
+                "breaks_pair": false,
+                "remaining_hand": [
+                  "3",
+                  "5"
+                ],
+                "minimum_uncontested_plays": 2
+              }
+            },
+            {
+              "id": "pass",
+              "label": "过牌",
+              "payload": {
+                "cards": [],
+                "kind": "pass",
+                "finishes_own_hand": false,
+                "breaks_pair": false,
+                "remaining_hand": [
+                  "3",
+                  "5",
+                  "K"
+                ],
+                "minimum_uncontested_plays": 3
+              }
+            }
+          ]
+        },
+        "control_facts": {
+          "rules": {
+            "game": "doudizhu_endgame_v1",
+            "rank_order": [
+              "3",
+              "4",
+              "5",
+              "6",
+              "7",
+              "8",
+              "9",
+              "10",
+              "J",
+              "Q",
+              "K",
+              "A",
+              "2",
+              "SJ",
+              "BJ"
+            ],
+            "turn_order": [
+              "landlord",
+              "farmer_after",
+              "farmer_before"
+            ],
+            "team": {
+              "landlord": "landlord",
+              "farmer_after": "farmers",
+              "farmer_before": "farmers"
+            },
+            "reward": "Landlord wins: landlord +1, each farmer -1; either farmer finishes: both farmers +1, landlord -1. No tactical bonus.",
+            "play": "Beat the active play with the same type and a higher rank, or rocket. Passing allowed only when responding. After two passes the owner leads freely. The first empty hand ends the game immediately.",
+            "scope": "Each remaining hand has at most 4 cards; the remaining pool has at most 2 cards per ordinary rank. Only singles, pairs and rocket can occur. No bidding, multipliers or spring bonuses."
+          },
+          "self": {
+            "seat": "farmer_before",
+            "role": "farmer",
+            "hand": [
+              "3",
+              "5",
+              "K"
+            ],
+            "teammate": "farmer_after",
+            "next_seat": "landlord"
+          },
+          "public": {
+            "remaining_counts": {
+              "landlord": 1,
+              "farmer_after": 2,
+              "farmer_before": 3
+            },
+            "active_play": {
+              "cards": [
+                "Q"
+              ],
+              "owner": "farmer_after",
+              "consecutive_passes": 0
+            },
+            "played_counts": {
+              "3": 3,
+              "4": 2,
+              "5": 3,
+              "6": 4,
+              "7": 4,
+              "8": 4,
+              "9": 4,
+              "10": 4,
+              "J": 3,
+              "Q": 4,
+              "K": 3,
+              "A": 4,
+              "2": 4,
+              "SJ": 1,
+              "BJ": 1
+            },
+            "history_quality": "Synthetic snapshot with aggregate public card counts including the active play; no complete ordered bidding/play history is provided."
+          },
+          "belief": {
+            "facts": {
+              "unseen_card_counts": {
+                "J": 1,
+                "4": 2
+              },
+              "control": {
+                "active_play_exists": true,
+                "active_owner_is_teammate": true,
+                "responders_after_self_pass_before_owner_returns": [
+                  "landlord"
+                ],
+                "passing_ends_trick": false,
+                "response_possibilities": {
+                  "landlord": {
+                    "can_possibly_beat_active_play": false,
+                    "can_possibly_finish_by_beating_active_play": false
+                  },
+                  "farmer_after": {
+                    "can_possibly_beat_active_play": false,
+                    "can_possibly_finish_by_beating_active_play": false
+                  },
+                  "farmer_before": {
+                    "can_possibly_beat_active_play": true,
+                    "can_possibly_finish_by_beating_active_play": false
+                  }
+                },
+                "opponent_can_possibly_beat_current_play_after_self_pass": false,
+                "opponent_can_possibly_finish_on_current_play_after_self_pass": false,
+                "semantics": "Possibility over all unseen-card assignments consistent with public counts, not actual holdings or probabilities. False rules out the event; true does not guarantee it. Responders are for the unchanged active play after self passes. A previously passing player may respond again after a new higher play. No field mandates a tactical action."
+              }
+            },
+            "estimates": {
+              "landlord": {
+                "pair_hand_probability": 0.0,
+                "can_beat_active_play_probability": 0.0
+              },
+              "farmer_after": {
+                "pair_hand_probability": 0.3333333333333333,
+                "can_beat_active_play_probability": 0.0
+              }
+            },
+            "assumptions": [
+              "Unseen ranks are known by counting but their assignment to the two other players is unknown.",
+              "A pass does not prove a player cannot beat the current play.",
+              "Estimates assume uniformly dealt unseen card instances conditional on remaining counts; they ignore strategic past play and are not calibrated posteriors.",
+              "Seat heuristics are conditional, not mandatory rules."
+            ]
+          },
+          "legal_actions": [
+            {
+              "id": "play:K",
+              "label": "出 K",
+              "payload": {
+                "cards": [
+                  "K"
+                ],
+                "kind": "single",
+                "finishes_own_hand": false,
+                "breaks_pair": false,
+                "remaining_hand": [
+                  "3",
+                  "5"
+                ],
+                "minimum_uncontested_plays": 2
+              }
+            },
+            {
+              "id": "pass",
+              "label": "过牌",
+              "payload": {
+                "cards": [],
+                "kind": "pass",
+                "finishes_own_hand": false,
+                "breaks_pair": false,
+                "remaining_hand": [
+                  "3",
+                  "5",
+                  "K"
+                ],
+                "minimum_uncontested_plays": 3
+              }
+            }
+          ]
+        }
+      }
+    },
+    "yield_with_joker_in_own_hand": {
+      "topic": "有大王也不必抢队友牌权",
+      "preferred": [
+        "pass"
+      ],
+      "rationale": "未知 A55 不能压 2；大王是自己的控制资源，不是必须立即使用的牌。",
+      "caveat": "并非有大王就永远不接队友，需要结合是否能直接走完。",
+      "full_information_winning_actions": [
+        "pass"
+      ],
+      "states": {
+        "baseline": {
+          "rules": {
+            "game": "doudizhu_endgame_v1",
+            "rank_order": [
+              "3",
+              "4",
+              "5",
+              "6",
+              "7",
+              "8",
+              "9",
+              "10",
+              "J",
+              "Q",
+              "K",
+              "A",
+              "2",
+              "SJ",
+              "BJ"
+            ],
+            "turn_order": [
+              "landlord",
+              "farmer_after",
+              "farmer_before"
+            ],
+            "team": {
+              "landlord": "landlord",
+              "farmer_after": "farmers",
+              "farmer_before": "farmers"
+            },
+            "reward": "Landlord wins: landlord +1, each farmer -1; either farmer finishes: both farmers +1, landlord -1. No tactical bonus.",
+            "play": "Beat the active play with the same type and a higher rank, or rocket. Passing allowed only when responding. After two passes the owner leads freely. The first empty hand ends the game immediately.",
+            "scope": "Each remaining hand has at most 4 cards; the remaining pool has at most 2 cards per ordinary rank. Only singles, pairs and rocket can occur. No bidding, multipliers or spring bonuses."
+          },
+          "self": {
+            "seat": "farmer_before",
+            "role": "farmer",
+            "hand": [
+              "3",
+              "4",
+              "BJ"
+            ],
+            "teammate": "farmer_after",
+            "next_seat": "landlord"
+          },
+          "public": {
+            "remaining_counts": {
+              "landlord": 1,
+              "farmer_after": 2,
+              "farmer_before": 3
+            },
+            "active_play": {
+              "cards": [
+                "2"
+              ],
+              "owner": "farmer_after",
+              "consecutive_passes": 0
+            },
+            "played_counts": {
+              "3": 3,
+              "4": 3,
+              "5": 2,
+              "6": 4,
+              "7": 4,
+              "8": 4,
+              "9": 4,
+              "10": 4,
+              "J": 4,
+              "Q": 4,
+              "K": 4,
+              "A": 3,
+              "2": 4,
+              "SJ": 1
+            },
+            "history_quality": "Synthetic snapshot with aggregate public card counts including the active play; no complete ordered bidding/play history is provided."
+          },
+          "belief": {
+            "facts": {
+              "unseen_card_counts": {
+                "A": 1,
+                "5": 2
+              }
+            },
+            "estimates": {
+              "landlord": {
+                "pair_hand_probability": 0.0,
+                "can_beat_active_play_probability": 0.0
+              },
+              "farmer_after": {
+                "pair_hand_probability": 0.3333333333333333,
+                "can_beat_active_play_probability": 0.0
+              }
+            },
+            "assumptions": [
+              "Unseen ranks are known by counting but their assignment to the two other players is unknown.",
+              "A pass does not prove a player cannot beat the current play.",
+              "Estimates assume uniformly dealt unseen card instances conditional on remaining counts; they ignore strategic past play and are not calibrated posteriors.",
+              "Seat heuristics are conditional, not mandatory rules."
+            ]
+          },
+          "legal_actions": [
+            {
+              "id": "play:BJ",
+              "label": "出 BJ",
+              "payload": {
+                "cards": [
+                  "BJ"
+                ],
+                "kind": "single",
+                "finishes_own_hand": false,
+                "breaks_pair": false,
+                "remaining_hand": [
+                  "3",
+                  "4"
+                ],
+                "minimum_uncontested_plays": 2
+              }
+            },
+            {
+              "id": "pass",
+              "label": "过牌",
+              "payload": {
+                "cards": [],
+                "kind": "pass",
+                "finishes_own_hand": false,
+                "breaks_pair": false,
+                "remaining_hand": [
+                  "3",
+                  "4",
+                  "BJ"
+                ],
+                "minimum_uncontested_plays": 3
+              }
+            }
+          ]
+        },
+        "control_facts": {
+          "rules": {
+            "game": "doudizhu_endgame_v1",
+            "rank_order": [
+              "3",
+              "4",
+              "5",
+              "6",
+              "7",
+              "8",
+              "9",
+              "10",
+              "J",
+              "Q",
+              "K",
+              "A",
+              "2",
+              "SJ",
+              "BJ"
+            ],
+            "turn_order": [
+              "landlord",
+              "farmer_after",
+              "farmer_before"
+            ],
+            "team": {
+              "landlord": "landlord",
+              "farmer_after": "farmers",
+              "farmer_before": "farmers"
+            },
+            "reward": "Landlord wins: landlord +1, each farmer -1; either farmer finishes: both farmers +1, landlord -1. No tactical bonus.",
+            "play": "Beat the active play with the same type and a higher rank, or rocket. Passing allowed only when responding. After two passes the owner leads freely. The first empty hand ends the game immediately.",
+            "scope": "Each remaining hand has at most 4 cards; the remaining pool has at most 2 cards per ordinary rank. Only singles, pairs and rocket can occur. No bidding, multipliers or spring bonuses."
+          },
+          "self": {
+            "seat": "farmer_before",
+            "role": "farmer",
+            "hand": [
+              "3",
+              "4",
+              "BJ"
+            ],
+            "teammate": "farmer_after",
+            "next_seat": "landlord"
+          },
+          "public": {
+            "remaining_counts": {
+              "landlord": 1,
+              "farmer_after": 2,
+              "farmer_before": 3
+            },
+            "active_play": {
+              "cards": [
+                "2"
+              ],
+              "owner": "farmer_after",
+              "consecutive_passes": 0
+            },
+            "played_counts": {
+              "3": 3,
+              "4": 3,
+              "5": 2,
+              "6": 4,
+              "7": 4,
+              "8": 4,
+              "9": 4,
+              "10": 4,
+              "J": 4,
+              "Q": 4,
+              "K": 4,
+              "A": 3,
+              "2": 4,
+              "SJ": 1
+            },
+            "history_quality": "Synthetic snapshot with aggregate public card counts including the active play; no complete ordered bidding/play history is provided."
+          },
+          "belief": {
+            "facts": {
+              "unseen_card_counts": {
+                "A": 1,
+                "5": 2
+              },
+              "control": {
+                "active_play_exists": true,
+                "active_owner_is_teammate": true,
+                "responders_after_self_pass_before_owner_returns": [
+                  "landlord"
+                ],
+                "passing_ends_trick": false,
+                "response_possibilities": {
+                  "landlord": {
+                    "can_possibly_beat_active_play": false,
+                    "can_possibly_finish_by_beating_active_play": false
+                  },
+                  "farmer_after": {
+                    "can_possibly_beat_active_play": false,
+                    "can_possibly_finish_by_beating_active_play": false
+                  },
+                  "farmer_before": {
+                    "can_possibly_beat_active_play": true,
+                    "can_possibly_finish_by_beating_active_play": false
+                  }
+                },
+                "opponent_can_possibly_beat_current_play_after_self_pass": false,
+                "opponent_can_possibly_finish_on_current_play_after_self_pass": false,
+                "semantics": "Possibility over all unseen-card assignments consistent with public counts, not actual holdings or probabilities. False rules out the event; true does not guarantee it. Responders are for the unchanged active play after self passes. A previously passing player may respond again after a new higher play. No field mandates a tactical action."
+              }
+            },
+            "estimates": {
+              "landlord": {
+                "pair_hand_probability": 0.0,
+                "can_beat_active_play_probability": 0.0
+              },
+              "farmer_after": {
+                "pair_hand_probability": 0.3333333333333333,
+                "can_beat_active_play_probability": 0.0
+              }
+            },
+            "assumptions": [
+              "Unseen ranks are known by counting but their assignment to the two other players is unknown.",
+              "A pass does not prove a player cannot beat the current play.",
+              "Estimates assume uniformly dealt unseen card instances conditional on remaining counts; they ignore strategic past play and are not calibrated posteriors.",
+              "Seat heuristics are conditional, not mandatory rules."
+            ]
+          },
+          "legal_actions": [
+            {
+              "id": "play:BJ",
+              "label": "出 BJ",
+              "payload": {
+                "cards": [
+                  "BJ"
+                ],
+                "kind": "single",
+                "finishes_own_hand": false,
+                "breaks_pair": false,
+                "remaining_hand": [
+                  "3",
+                  "4"
+                ],
+                "minimum_uncontested_plays": 2
+              }
+            },
+            {
+              "id": "pass",
+              "label": "过牌",
+              "payload": {
+                "cards": [],
+                "kind": "pass",
+                "finishes_own_hand": false,
+                "breaks_pair": false,
+                "remaining_hand": [
+                  "3",
+                  "4",
+                  "BJ"
+                ],
+                "minimum_uncontested_plays": 3
+              }
+            }
+          ]
+        }
+      }
+    },
+    "yield_after_landlord_passed": {
+      "topic": "地主已过牌，下家可以还权队友",
+      "preferred": [
+        "pass"
+      ],
+      "rationale": "地主已过，自己再过就由队友自由领出；不要用 A 重开响应。",
+      "caveat": "明确使用地主下家的位置与一次过牌，不沿用上家场景的行动顺序。",
+      "full_information_winning_actions": [
+        "pass"
+      ],
+      "states": {
+        "baseline": {
+          "rules": {
+            "game": "doudizhu_endgame_v1",
+            "rank_order": [
+              "3",
+              "4",
+              "5",
+              "6",
+              "7",
+              "8",
+              "9",
+              "10",
+              "J",
+              "Q",
+              "K",
+              "A",
+              "2",
+              "SJ",
+              "BJ"
+            ],
+            "turn_order": [
+              "landlord",
+              "farmer_after",
+              "farmer_before"
+            ],
+            "team": {
+              "landlord": "landlord",
+              "farmer_after": "farmers",
+              "farmer_before": "farmers"
+            },
+            "reward": "Landlord wins: landlord +1, each farmer -1; either farmer finishes: both farmers +1, landlord -1. No tactical bonus.",
+            "play": "Beat the active play with the same type and a higher rank, or rocket. Passing allowed only when responding. After two passes the owner leads freely. The first empty hand ends the game immediately.",
+            "scope": "Each remaining hand has at most 4 cards; the remaining pool has at most 2 cards per ordinary rank. Only singles, pairs and rocket can occur. No bidding, multipliers or spring bonuses."
+          },
+          "self": {
+            "seat": "farmer_after",
+            "role": "farmer",
+            "hand": [
+              "3",
+              "5",
+              "A"
+            ],
+            "teammate": "farmer_before",
+            "next_seat": "farmer_before"
+          },
+          "public": {
+            "remaining_counts": {
+              "landlord": 1,
+              "farmer_after": 3,
+              "farmer_before": 2
+            },
+            "active_play": {
+              "cards": [
+                "K"
+              ],
+              "owner": "farmer_before",
+              "consecutive_passes": 1
+            },
+            "played_counts": {
+              "3": 3,
+              "4": 2,
+              "5": 3,
+              "6": 4,
+              "7": 4,
+              "8": 4,
+              "9": 4,
+              "10": 4,
+              "J": 4,
+              "Q": 3,
+              "K": 4,
+              "A": 3,
+              "2": 4,
+              "SJ": 1,
+              "BJ": 1
+            },
+            "history_quality": "Synthetic snapshot with aggregate public card counts including the active play; no complete ordered bidding/play history is provided."
+          },
+          "belief": {
+            "facts": {
+              "unseen_card_counts": {
+                "Q": 1,
+                "4": 2
+              }
+            },
+            "estimates": {
+              "landlord": {
+                "pair_hand_probability": 0.0,
+                "can_beat_active_play_probability": 0.0
+              },
+              "farmer_before": {
+                "pair_hand_probability": 0.3333333333333333,
+                "can_beat_active_play_probability": 0.0
+              }
+            },
+            "assumptions": [
+              "Unseen ranks are known by counting but their assignment to the two other players is unknown.",
+              "A pass does not prove a player cannot beat the current play.",
+              "Estimates assume uniformly dealt unseen card instances conditional on remaining counts; they ignore strategic past play and are not calibrated posteriors.",
+              "Seat heuristics are conditional, not mandatory rules."
+            ]
+          },
+          "legal_actions": [
+            {
+              "id": "play:A",
+              "label": "出 A",
+              "payload": {
+                "cards": [
+                  "A"
+                ],
+                "kind": "single",
+                "finishes_own_hand": false,
+                "breaks_pair": false,
+                "remaining_hand": [
+                  "3",
+                  "5"
+                ],
+                "minimum_uncontested_plays": 2
+              }
+            },
+            {
+              "id": "pass",
+              "label": "过牌",
+              "payload": {
+                "cards": [],
+                "kind": "pass",
+                "finishes_own_hand": false,
+                "breaks_pair": false,
+                "remaining_hand": [
+                  "3",
+                  "5",
+                  "A"
+                ],
+                "minimum_uncontested_plays": 3
+              }
+            }
+          ]
+        },
+        "control_facts": {
+          "rules": {
+            "game": "doudizhu_endgame_v1",
+            "rank_order": [
+              "3",
+              "4",
+              "5",
+              "6",
+              "7",
+              "8",
+              "9",
+              "10",
+              "J",
+              "Q",
+              "K",
+              "A",
+              "2",
+              "SJ",
+              "BJ"
+            ],
+            "turn_order": [
+              "landlord",
+              "farmer_after",
+              "farmer_before"
+            ],
+            "team": {
+              "landlord": "landlord",
+              "farmer_after": "farmers",
+              "farmer_before": "farmers"
+            },
+            "reward": "Landlord wins: landlord +1, each farmer -1; either farmer finishes: both farmers +1, landlord -1. No tactical bonus.",
+            "play": "Beat the active play with the same type and a higher rank, or rocket. Passing allowed only when responding. After two passes the owner leads freely. The first empty hand ends the game immediately.",
+            "scope": "Each remaining hand has at most 4 cards; the remaining pool has at most 2 cards per ordinary rank. Only singles, pairs and rocket can occur. No bidding, multipliers or spring bonuses."
+          },
+          "self": {
+            "seat": "farmer_after",
+            "role": "farmer",
+            "hand": [
+              "3",
+              "5",
+              "A"
+            ],
+            "teammate": "farmer_before",
+            "next_seat": "farmer_before"
+          },
+          "public": {
+            "remaining_counts": {
+              "landlord": 1,
+              "farmer_after": 3,
+              "farmer_before": 2
+            },
+            "active_play": {
+              "cards": [
+                "K"
+              ],
+              "owner": "farmer_before",
+              "consecutive_passes": 1
+            },
+            "played_counts": {
+              "3": 3,
+              "4": 2,
+              "5": 3,
+              "6": 4,
+              "7": 4,
+              "8": 4,
+              "9": 4,
+              "10": 4,
+              "J": 4,
+              "Q": 3,
+              "K": 4,
+              "A": 3,
+              "2": 4,
+              "SJ": 1,
+              "BJ": 1
+            },
+            "history_quality": "Synthetic snapshot with aggregate public card counts including the active play; no complete ordered bidding/play history is provided."
+          },
+          "belief": {
+            "facts": {
+              "unseen_card_counts": {
+                "Q": 1,
+                "4": 2
+              },
+              "control": {
+                "active_play_exists": true,
+                "active_owner_is_teammate": true,
+                "responders_after_self_pass_before_owner_returns": [],
+                "passing_ends_trick": true,
+                "response_possibilities": {
+                  "landlord": {
+                    "can_possibly_beat_active_play": false,
+                    "can_possibly_finish_by_beating_active_play": false
+                  },
+                  "farmer_after": {
+                    "can_possibly_beat_active_play": true,
+                    "can_possibly_finish_by_beating_active_play": false
+                  },
+                  "farmer_before": {
+                    "can_possibly_beat_active_play": false,
+                    "can_possibly_finish_by_beating_active_play": false
+                  }
+                },
+                "opponent_can_possibly_beat_current_play_after_self_pass": false,
+                "opponent_can_possibly_finish_on_current_play_after_self_pass": false,
+                "semantics": "Possibility over all unseen-card assignments consistent with public counts, not actual holdings or probabilities. False rules out the event; true does not guarantee it. Responders are for the unchanged active play after self passes. A previously passing player may respond again after a new higher play. No field mandates a tactical action."
+              }
+            },
+            "estimates": {
+              "landlord": {
+                "pair_hand_probability": 0.0,
+                "can_beat_active_play_probability": 0.0
+              },
+              "farmer_before": {
+                "pair_hand_probability": 0.3333333333333333,
+                "can_beat_active_play_probability": 0.0
+              }
+            },
+            "assumptions": [
+              "Unseen ranks are known by counting but their assignment to the two other players is unknown.",
+              "A pass does not prove a player cannot beat the current play.",
+              "Estimates assume uniformly dealt unseen card instances conditional on remaining counts; they ignore strategic past play and are not calibrated posteriors.",
+              "Seat heuristics are conditional, not mandatory rules."
+            ]
+          },
+          "legal_actions": [
+            {
+              "id": "play:A",
+              "label": "出 A",
+              "payload": {
+                "cards": [
+                  "A"
+                ],
+                "kind": "single",
+                "finishes_own_hand": false,
+                "breaks_pair": false,
+                "remaining_hand": [
+                  "3",
+                  "5"
+                ],
+                "minimum_uncontested_plays": 2
+              }
+            },
+            {
+              "id": "pass",
+              "label": "过牌",
+              "payload": {
+                "cards": [],
+                "kind": "pass",
+                "finishes_own_hand": false,
+                "breaks_pair": false,
+                "remaining_hand": [
+                  "3",
+                  "5",
+                  "A"
+                ],
+                "minimum_uncontested_plays": 3
+              }
+            }
+          ]
+        }
+      }
+    },
+    "higher_enemy_card_but_trick_closes": {
+      "topic": "未知大牌仍可能存在，但地主本轮已过",
+      "preferred": [
+        "pass"
+      ],
+      "rationale": "A 可能在地主手里，但地主已经过牌，自己过牌即结束本轮；出 2 反而重开响应。",
+      "caveat": "过牌不证明地主没有 A；这里依赖的是轮转规则，不是错误猜牌。",
+      "full_information_winning_actions": [
+        "pass"
+      ],
+      "states": {
+        "baseline": {
+          "rules": {
+            "game": "doudizhu_endgame_v1",
+            "rank_order": [
+              "3",
+              "4",
+              "5",
+              "6",
+              "7",
+              "8",
+              "9",
+              "10",
+              "J",
+              "Q",
+              "K",
+              "A",
+              "2",
+              "SJ",
+              "BJ"
+            ],
+            "turn_order": [
+              "landlord",
+              "farmer_after",
+              "farmer_before"
+            ],
+            "team": {
+              "landlord": "landlord",
+              "farmer_after": "farmers",
+              "farmer_before": "farmers"
+            },
+            "reward": "Landlord wins: landlord +1, each farmer -1; either farmer finishes: both farmers +1, landlord -1. No tactical bonus.",
+            "play": "Beat the active play with the same type and a higher rank, or rocket. Passing allowed only when responding. After two passes the owner leads freely. The first empty hand ends the game immediately.",
+            "scope": "Each remaining hand has at most 4 cards; the remaining pool has at most 2 cards per ordinary rank. Only singles, pairs and rocket can occur. No bidding, multipliers or spring bonuses."
+          },
+          "self": {
+            "seat": "farmer_after",
+            "role": "farmer",
+            "hand": [
+              "3",
+              "5",
+              "2"
+            ],
+            "teammate": "farmer_before",
+            "next_seat": "farmer_before"
+          },
+          "public": {
+            "remaining_counts": {
+              "landlord": 1,
+              "farmer_after": 3,
+              "farmer_before": 2
+            },
+            "active_play": {
+              "cards": [
+                "K"
+              ],
+              "owner": "farmer_before",
+              "consecutive_passes": 1
+            },
+            "played_counts": {
+              "3": 3,
+              "4": 2,
+              "5": 3,
+              "6": 4,
+              "7": 4,
+              "8": 4,
+              "9": 4,
+              "10": 4,
+              "J": 4,
+              "Q": 4,
+              "K": 4,
+              "A": 3,
+              "2": 3,
+              "SJ": 1,
+              "BJ": 1
+            },
+            "history_quality": "Synthetic snapshot with aggregate public card counts including the active play; no complete ordered bidding/play history is provided."
+          },
+          "belief": {
+            "facts": {
+              "unseen_card_counts": {
+                "A": 1,
+                "4": 2
+              }
+            },
+            "estimates": {
+              "landlord": {
+                "pair_hand_probability": 0.0,
+                "can_beat_active_play_probability": 0.3333333333333333
+              },
+              "farmer_before": {
+                "pair_hand_probability": 0.3333333333333333,
+                "can_beat_active_play_probability": 0.6666666666666666
+              }
+            },
+            "assumptions": [
+              "Unseen ranks are known by counting but their assignment to the two other players is unknown.",
+              "A pass does not prove a player cannot beat the current play.",
+              "Estimates assume uniformly dealt unseen card instances conditional on remaining counts; they ignore strategic past play and are not calibrated posteriors.",
+              "Seat heuristics are conditional, not mandatory rules."
+            ]
+          },
+          "legal_actions": [
+            {
+              "id": "play:2",
+              "label": "出 2",
+              "payload": {
+                "cards": [
+                  "2"
+                ],
+                "kind": "single",
+                "finishes_own_hand": false,
+                "breaks_pair": false,
+                "remaining_hand": [
+                  "3",
+                  "5"
+                ],
+                "minimum_uncontested_plays": 2
+              }
+            },
+            {
+              "id": "pass",
+              "label": "过牌",
+              "payload": {
+                "cards": [],
+                "kind": "pass",
+                "finishes_own_hand": false,
+                "breaks_pair": false,
+                "remaining_hand": [
+                  "3",
+                  "5",
+                  "2"
+                ],
+                "minimum_uncontested_plays": 3
+              }
+            }
+          ]
+        },
+        "control_facts": {
+          "rules": {
+            "game": "doudizhu_endgame_v1",
+            "rank_order": [
+              "3",
+              "4",
+              "5",
+              "6",
+              "7",
+              "8",
+              "9",
+              "10",
+              "J",
+              "Q",
+              "K",
+              "A",
+              "2",
+              "SJ",
+              "BJ"
+            ],
+            "turn_order": [
+              "landlord",
+              "farmer_after",
+              "farmer_before"
+            ],
+            "team": {
+              "landlord": "landlord",
+              "farmer_after": "farmers",
+              "farmer_before": "farmers"
+            },
+            "reward": "Landlord wins: landlord +1, each farmer -1; either farmer finishes: both farmers +1, landlord -1. No tactical bonus.",
+            "play": "Beat the active play with the same type and a higher rank, or rocket. Passing allowed only when responding. After two passes the owner leads freely. The first empty hand ends the game immediately.",
+            "scope": "Each remaining hand has at most 4 cards; the remaining pool has at most 2 cards per ordinary rank. Only singles, pairs and rocket can occur. No bidding, multipliers or spring bonuses."
+          },
+          "self": {
+            "seat": "farmer_after",
+            "role": "farmer",
+            "hand": [
+              "3",
+              "5",
+              "2"
+            ],
+            "teammate": "farmer_before",
+            "next_seat": "farmer_before"
+          },
+          "public": {
+            "remaining_counts": {
+              "landlord": 1,
+              "farmer_after": 3,
+              "farmer_before": 2
+            },
+            "active_play": {
+              "cards": [
+                "K"
+              ],
+              "owner": "farmer_before",
+              "consecutive_passes": 1
+            },
+            "played_counts": {
+              "3": 3,
+              "4": 2,
+              "5": 3,
+              "6": 4,
+              "7": 4,
+              "8": 4,
+              "9": 4,
+              "10": 4,
+              "J": 4,
+              "Q": 4,
+              "K": 4,
+              "A": 3,
+              "2": 3,
+              "SJ": 1,
+              "BJ": 1
+            },
+            "history_quality": "Synthetic snapshot with aggregate public card counts including the active play; no complete ordered bidding/play history is provided."
+          },
+          "belief": {
+            "facts": {
+              "unseen_card_counts": {
+                "A": 1,
+                "4": 2
+              },
+              "control": {
+                "active_play_exists": true,
+                "active_owner_is_teammate": true,
+                "responders_after_self_pass_before_owner_returns": [],
+                "passing_ends_trick": true,
+                "response_possibilities": {
+                  "landlord": {
+                    "can_possibly_beat_active_play": true,
+                    "can_possibly_finish_by_beating_active_play": true
+                  },
+                  "farmer_after": {
+                    "can_possibly_beat_active_play": true,
+                    "can_possibly_finish_by_beating_active_play": false
+                  },
+                  "farmer_before": {
+                    "can_possibly_beat_active_play": true,
+                    "can_possibly_finish_by_beating_active_play": false
+                  }
+                },
+                "opponent_can_possibly_beat_current_play_after_self_pass": false,
+                "opponent_can_possibly_finish_on_current_play_after_self_pass": false,
+                "semantics": "Possibility over all unseen-card assignments consistent with public counts, not actual holdings or probabilities. False rules out the event; true does not guarantee it. Responders are for the unchanged active play after self passes. A previously passing player may respond again after a new higher play. No field mandates a tactical action."
+              }
+            },
+            "estimates": {
+              "landlord": {
+                "pair_hand_probability": 0.0,
+                "can_beat_active_play_probability": 0.3333333333333333
+              },
+              "farmer_before": {
+                "pair_hand_probability": 0.3333333333333333,
+                "can_beat_active_play_probability": 0.6666666666666666
+              }
+            },
+            "assumptions": [
+              "Unseen ranks are known by counting but their assignment to the two other players is unknown.",
+              "A pass does not prove a player cannot beat the current play.",
+              "Estimates assume uniformly dealt unseen card instances conditional on remaining counts; they ignore strategic past play and are not calibrated posteriors.",
+              "Seat heuristics are conditional, not mandatory rules."
+            ]
+          },
+          "legal_actions": [
+            {
+              "id": "play:2",
+              "label": "出 2",
+              "payload": {
+                "cards": [
+                  "2"
+                ],
+                "kind": "single",
+                "finishes_own_hand": false,
+                "breaks_pair": false,
+                "remaining_hand": [
+                  "3",
+                  "5"
+                ],
+                "minimum_uncontested_plays": 2
+              }
+            },
+            {
+              "id": "pass",
+              "label": "过牌",
+              "payload": {
+                "cards": [],
+                "kind": "pass",
+                "finishes_own_hand": false,
+                "breaks_pair": false,
+                "remaining_hand": [
+                  "3",
+                  "5",
+                  "2"
+                ],
+                "minimum_uncontested_plays": 3
+              }
+            }
+          ]
+        }
+      }
+    },
+    "finish_even_when_teammate_safe": {
+      "topic": "队友牌安全但自己能立即走完",
+      "preferred": [
+        "play:A"
+      ],
+      "rationale": "出 A 立即终局，优先锁定共同胜利；安全牌权不意味着必须过牌。",
+      "caveat": "过牌在参考底牌下也能赢，标注明确偏好即时锁定胜利，而非断言过牌必错。",
+      "full_information_winning_actions": [
+        "play:A",
+        "pass"
+      ],
+      "states": {
+        "baseline": {
+          "rules": {
+            "game": "doudizhu_endgame_v1",
+            "rank_order": [
+              "3",
+              "4",
+              "5",
+              "6",
+              "7",
+              "8",
+              "9",
+              "10",
+              "J",
+              "Q",
+              "K",
+              "A",
+              "2",
+              "SJ",
+              "BJ"
+            ],
+            "turn_order": [
+              "landlord",
+              "farmer_after",
+              "farmer_before"
+            ],
+            "team": {
+              "landlord": "landlord",
+              "farmer_after": "farmers",
+              "farmer_before": "farmers"
+            },
+            "reward": "Landlord wins: landlord +1, each farmer -1; either farmer finishes: both farmers +1, landlord -1. No tactical bonus.",
+            "play": "Beat the active play with the same type and a higher rank, or rocket. Passing allowed only when responding. After two passes the owner leads freely. The first empty hand ends the game immediately.",
+            "scope": "Each remaining hand has at most 4 cards; the remaining pool has at most 2 cards per ordinary rank. Only singles, pairs and rocket can occur. No bidding, multipliers or spring bonuses."
+          },
+          "self": {
+            "seat": "farmer_before",
+            "role": "farmer",
+            "hand": [
+              "A"
+            ],
+            "teammate": "farmer_after",
+            "next_seat": "landlord"
+          },
+          "public": {
+            "remaining_counts": {
+              "landlord": 1,
+              "farmer_after": 2,
+              "farmer_before": 1
+            },
+            "active_play": {
+              "cards": [
+                "K"
+              ],
+              "owner": "farmer_after",
+              "consecutive_passes": 0
+            },
+            "played_counts": {
+              "3": 4,
+              "4": 2,
+              "5": 4,
+              "6": 4,
+              "7": 4,
+              "8": 4,
+              "9": 4,
+              "10": 4,
+              "J": 4,
+              "Q": 3,
+              "K": 4,
+              "A": 3,
+              "2": 4,
+              "SJ": 1,
+              "BJ": 1
+            },
+            "history_quality": "Synthetic snapshot with aggregate public card counts including the active play; no complete ordered bidding/play history is provided."
+          },
+          "belief": {
+            "facts": {
+              "unseen_card_counts": {
+                "Q": 1,
+                "4": 2
+              }
+            },
+            "estimates": {
+              "landlord": {
+                "pair_hand_probability": 0.0,
+                "can_beat_active_play_probability": 0.0
+              },
+              "farmer_after": {
+                "pair_hand_probability": 0.3333333333333333,
+                "can_beat_active_play_probability": 0.0
+              }
+            },
+            "assumptions": [
+              "Unseen ranks are known by counting but their assignment to the two other players is unknown.",
+              "A pass does not prove a player cannot beat the current play.",
+              "Estimates assume uniformly dealt unseen card instances conditional on remaining counts; they ignore strategic past play and are not calibrated posteriors.",
+              "Seat heuristics are conditional, not mandatory rules."
+            ]
+          },
+          "legal_actions": [
+            {
+              "id": "play:A",
+              "label": "出 A",
+              "payload": {
+                "cards": [
+                  "A"
+                ],
+                "kind": "single",
+                "finishes_own_hand": true,
+                "breaks_pair": false,
+                "remaining_hand": [],
+                "minimum_uncontested_plays": 0
+              }
+            },
+            {
+              "id": "pass",
+              "label": "过牌",
+              "payload": {
+                "cards": [],
+                "kind": "pass",
+                "finishes_own_hand": false,
+                "breaks_pair": false,
+                "remaining_hand": [
+                  "A"
+                ],
+                "minimum_uncontested_plays": 1
+              }
+            }
+          ]
+        },
+        "control_facts": {
+          "rules": {
+            "game": "doudizhu_endgame_v1",
+            "rank_order": [
+              "3",
+              "4",
+              "5",
+              "6",
+              "7",
+              "8",
+              "9",
+              "10",
+              "J",
+              "Q",
+              "K",
+              "A",
+              "2",
+              "SJ",
+              "BJ"
+            ],
+            "turn_order": [
+              "landlord",
+              "farmer_after",
+              "farmer_before"
+            ],
+            "team": {
+              "landlord": "landlord",
+              "farmer_after": "farmers",
+              "farmer_before": "farmers"
+            },
+            "reward": "Landlord wins: landlord +1, each farmer -1; either farmer finishes: both farmers +1, landlord -1. No tactical bonus.",
+            "play": "Beat the active play with the same type and a higher rank, or rocket. Passing allowed only when responding. After two passes the owner leads freely. The first empty hand ends the game immediately.",
+            "scope": "Each remaining hand has at most 4 cards; the remaining pool has at most 2 cards per ordinary rank. Only singles, pairs and rocket can occur. No bidding, multipliers or spring bonuses."
+          },
+          "self": {
+            "seat": "farmer_before",
+            "role": "farmer",
+            "hand": [
+              "A"
+            ],
+            "teammate": "farmer_after",
+            "next_seat": "landlord"
+          },
+          "public": {
+            "remaining_counts": {
+              "landlord": 1,
+              "farmer_after": 2,
+              "farmer_before": 1
+            },
+            "active_play": {
+              "cards": [
+                "K"
+              ],
+              "owner": "farmer_after",
+              "consecutive_passes": 0
+            },
+            "played_counts": {
+              "3": 4,
+              "4": 2,
+              "5": 4,
+              "6": 4,
+              "7": 4,
+              "8": 4,
+              "9": 4,
+              "10": 4,
+              "J": 4,
+              "Q": 3,
+              "K": 4,
+              "A": 3,
+              "2": 4,
+              "SJ": 1,
+              "BJ": 1
+            },
+            "history_quality": "Synthetic snapshot with aggregate public card counts including the active play; no complete ordered bidding/play history is provided."
+          },
+          "belief": {
+            "facts": {
+              "unseen_card_counts": {
+                "Q": 1,
+                "4": 2
+              },
+              "control": {
+                "active_play_exists": true,
+                "active_owner_is_teammate": true,
+                "responders_after_self_pass_before_owner_returns": [
+                  "landlord"
+                ],
+                "passing_ends_trick": false,
+                "response_possibilities": {
+                  "landlord": {
+                    "can_possibly_beat_active_play": false,
+                    "can_possibly_finish_by_beating_active_play": false
+                  },
+                  "farmer_after": {
+                    "can_possibly_beat_active_play": false,
+                    "can_possibly_finish_by_beating_active_play": false
+                  },
+                  "farmer_before": {
+                    "can_possibly_beat_active_play": true,
+                    "can_possibly_finish_by_beating_active_play": true
+                  }
+                },
+                "opponent_can_possibly_beat_current_play_after_self_pass": false,
+                "opponent_can_possibly_finish_on_current_play_after_self_pass": false,
+                "semantics": "Possibility over all unseen-card assignments consistent with public counts, not actual holdings or probabilities. False rules out the event; true does not guarantee it. Responders are for the unchanged active play after self passes. A previously passing player may respond again after a new higher play. No field mandates a tactical action."
+              }
+            },
+            "estimates": {
+              "landlord": {
+                "pair_hand_probability": 0.0,
+                "can_beat_active_play_probability": 0.0
+              },
+              "farmer_after": {
+                "pair_hand_probability": 0.3333333333333333,
+                "can_beat_active_play_probability": 0.0
+              }
+            },
+            "assumptions": [
+              "Unseen ranks are known by counting but their assignment to the two other players is unknown.",
+              "A pass does not prove a player cannot beat the current play.",
+              "Estimates assume uniformly dealt unseen card instances conditional on remaining counts; they ignore strategic past play and are not calibrated posteriors.",
+              "Seat heuristics are conditional, not mandatory rules."
+            ]
+          },
+          "legal_actions": [
+            {
+              "id": "play:A",
+              "label": "出 A",
+              "payload": {
+                "cards": [
+                  "A"
+                ],
+                "kind": "single",
+                "finishes_own_hand": true,
+                "breaks_pair": false,
+                "remaining_hand": [],
+                "minimum_uncontested_plays": 0
+              }
+            },
+            {
+              "id": "pass",
+              "label": "过牌",
+              "payload": {
+                "cards": [],
+                "kind": "pass",
+                "finishes_own_hand": false,
+                "breaks_pair": false,
+                "remaining_hand": [
+                  "A"
+                ],
+                "minimum_uncontested_plays": 1
+              }
+            }
+          ]
+        }
+      }
+    },
+    "rocket_takeover_against_pair_threat": {
+      "topic": "地主报双可能接对子走完，王炸接管",
+      "preferred": [
+        "play:SJ,BJ"
+      ],
+      "rationale": "地主可能用 AA 一次出完；王炸接管后只剩一张 3。",
+      "caveat": "AA 的具体归属未知，动作针对可能的立即输局风险。",
+      "full_information_winning_actions": [
+        "play:SJ,BJ"
+      ],
+      "states": {
+        "baseline": {
+          "rules": {
+            "game": "doudizhu_endgame_v1",
+            "rank_order": [
+              "3",
+              "4",
+              "5",
+              "6",
+              "7",
+              "8",
+              "9",
+              "10",
+              "J",
+              "Q",
+              "K",
+              "A",
+              "2",
+              "SJ",
+              "BJ"
+            ],
+            "turn_order": [
+              "landlord",
+              "farmer_after",
+              "farmer_before"
+            ],
+            "team": {
+              "landlord": "landlord",
+              "farmer_after": "farmers",
+              "farmer_before": "farmers"
+            },
+            "reward": "Landlord wins: landlord +1, each farmer -1; either farmer finishes: both farmers +1, landlord -1. No tactical bonus.",
+            "play": "Beat the active play with the same type and a higher rank, or rocket. Passing allowed only when responding. After two passes the owner leads freely. The first empty hand ends the game immediately.",
+            "scope": "Each remaining hand has at most 4 cards; the remaining pool has at most 2 cards per ordinary rank. Only singles, pairs and rocket can occur. No bidding, multipliers or spring bonuses."
+          },
+          "self": {
+            "seat": "farmer_before",
+            "role": "farmer",
+            "hand": [
+              "3",
+              "SJ",
+              "BJ"
+            ],
+            "teammate": "farmer_after",
+            "next_seat": "landlord"
+          },
+          "public": {
+            "remaining_counts": {
+              "landlord": 2,
+              "farmer_after": 2,
+              "farmer_before": 3
+            },
+            "active_play": {
+              "cards": [
+                "K",
+                "K"
+              ],
+              "owner": "farmer_after",
+              "consecutive_passes": 0
+            },
+            "played_counts": {
+              "3": 3,
+              "4": 2,
+              "5": 4,
+              "6": 4,
+              "7": 4,
+              "8": 4,
+              "9": 4,
+              "10": 4,
+              "J": 4,
+              "Q": 4,
+              "K": 4,
+              "A": 2,
+              "2": 4
+            },
+            "history_quality": "Synthetic snapshot with aggregate public card counts including the active play; no complete ordered bidding/play history is provided."
+          },
+          "belief": {
+            "facts": {
+              "unseen_card_counts": {
+                "A": 2,
+                "4": 2
+              }
+            },
+            "estimates": {
+              "landlord": {
+                "pair_hand_probability": 0.3333333333333333,
+                "can_beat_active_play_probability": 0.16666666666666666
+              },
+              "farmer_after": {
+                "pair_hand_probability": 0.3333333333333333,
+                "can_beat_active_play_probability": 0.16666666666666666
+              }
+            },
+            "assumptions": [
+              "Unseen ranks are known by counting but their assignment to the two other players is unknown.",
+              "A pass does not prove a player cannot beat the current play.",
+              "Estimates assume uniformly dealt unseen card instances conditional on remaining counts; they ignore strategic past play and are not calibrated posteriors.",
+              "Seat heuristics are conditional, not mandatory rules."
+            ]
+          },
+          "legal_actions": [
+            {
+              "id": "play:SJ,BJ",
+              "label": "出 SJ BJ",
+              "payload": {
+                "cards": [
+                  "SJ",
+                  "BJ"
+                ],
+                "kind": "rocket",
+                "finishes_own_hand": false,
+                "breaks_pair": false,
+                "remaining_hand": [
+                  "3"
+                ],
+                "minimum_uncontested_plays": 1
+              }
+            },
+            {
+              "id": "pass",
+              "label": "过牌",
+              "payload": {
+                "cards": [],
+                "kind": "pass",
+                "finishes_own_hand": false,
+                "breaks_pair": false,
+                "remaining_hand": [
+                  "3",
+                  "SJ",
+                  "BJ"
+                ],
+                "minimum_uncontested_plays": 2
+              }
+            }
+          ]
+        },
+        "control_facts": {
+          "rules": {
+            "game": "doudizhu_endgame_v1",
+            "rank_order": [
+              "3",
+              "4",
+              "5",
+              "6",
+              "7",
+              "8",
+              "9",
+              "10",
+              "J",
+              "Q",
+              "K",
+              "A",
+              "2",
+              "SJ",
+              "BJ"
+            ],
+            "turn_order": [
+              "landlord",
+              "farmer_after",
+              "farmer_before"
+            ],
+            "team": {
+              "landlord": "landlord",
+              "farmer_after": "farmers",
+              "farmer_before": "farmers"
+            },
+            "reward": "Landlord wins: landlord +1, each farmer -1; either farmer finishes: both farmers +1, landlord -1. No tactical bonus.",
+            "play": "Beat the active play with the same type and a higher rank, or rocket. Passing allowed only when responding. After two passes the owner leads freely. The first empty hand ends the game immediately.",
+            "scope": "Each remaining hand has at most 4 cards; the remaining pool has at most 2 cards per ordinary rank. Only singles, pairs and rocket can occur. No bidding, multipliers or spring bonuses."
+          },
+          "self": {
+            "seat": "farmer_before",
+            "role": "farmer",
+            "hand": [
+              "3",
+              "SJ",
+              "BJ"
+            ],
+            "teammate": "farmer_after",
+            "next_seat": "landlord"
+          },
+          "public": {
+            "remaining_counts": {
+              "landlord": 2,
+              "farmer_after": 2,
+              "farmer_before": 3
+            },
+            "active_play": {
+              "cards": [
+                "K",
+                "K"
+              ],
+              "owner": "farmer_after",
+              "consecutive_passes": 0
+            },
+            "played_counts": {
+              "3": 3,
+              "4": 2,
+              "5": 4,
+              "6": 4,
+              "7": 4,
+              "8": 4,
+              "9": 4,
+              "10": 4,
+              "J": 4,
+              "Q": 4,
+              "K": 4,
+              "A": 2,
+              "2": 4
+            },
+            "history_quality": "Synthetic snapshot with aggregate public card counts including the active play; no complete ordered bidding/play history is provided."
+          },
+          "belief": {
+            "facts": {
+              "unseen_card_counts": {
+                "A": 2,
+                "4": 2
+              },
+              "control": {
+                "active_play_exists": true,
+                "active_owner_is_teammate": true,
+                "responders_after_self_pass_before_owner_returns": [
+                  "landlord"
+                ],
+                "passing_ends_trick": false,
+                "response_possibilities": {
+                  "landlord": {
+                    "can_possibly_beat_active_play": true,
+                    "can_possibly_finish_by_beating_active_play": true
+                  },
+                  "farmer_after": {
+                    "can_possibly_beat_active_play": true,
+                    "can_possibly_finish_by_beating_active_play": true
+                  },
+                  "farmer_before": {
+                    "can_possibly_beat_active_play": true,
+                    "can_possibly_finish_by_beating_active_play": false
+                  }
+                },
+                "opponent_can_possibly_beat_current_play_after_self_pass": true,
+                "opponent_can_possibly_finish_on_current_play_after_self_pass": true,
+                "semantics": "Possibility over all unseen-card assignments consistent with public counts, not actual holdings or probabilities. False rules out the event; true does not guarantee it. Responders are for the unchanged active play after self passes. A previously passing player may respond again after a new higher play. No field mandates a tactical action."
+              }
+            },
+            "estimates": {
+              "landlord": {
+                "pair_hand_probability": 0.3333333333333333,
+                "can_beat_active_play_probability": 0.16666666666666666
+              },
+              "farmer_after": {
+                "pair_hand_probability": 0.3333333333333333,
+                "can_beat_active_play_probability": 0.16666666666666666
+              }
+            },
+            "assumptions": [
+              "Unseen ranks are known by counting but their assignment to the two other players is unknown.",
+              "A pass does not prove a player cannot beat the current play.",
+              "Estimates assume uniformly dealt unseen card instances conditional on remaining counts; they ignore strategic past play and are not calibrated posteriors.",
+              "Seat heuristics are conditional, not mandatory rules."
+            ]
+          },
+          "legal_actions": [
+            {
+              "id": "play:SJ,BJ",
+              "label": "出 SJ BJ",
+              "payload": {
+                "cards": [
+                  "SJ",
+                  "BJ"
+                ],
+                "kind": "rocket",
+                "finishes_own_hand": false,
+                "breaks_pair": false,
+                "remaining_hand": [
+                  "3"
+                ],
+                "minimum_uncontested_plays": 1
+              }
+            },
+            {
+              "id": "pass",
+              "label": "过牌",
+              "payload": {
+                "cards": [],
+                "kind": "pass",
+                "finishes_own_hand": false,
+                "breaks_pair": false,
+                "remaining_hand": [
+                  "3",
+                  "SJ",
+                  "BJ"
+                ],
+                "minimum_uncontested_plays": 2
+              }
+            }
+          ]
+        }
+      }
+    }
+  },
+  "trials": [
+    {
+      "case_id": "override_yield_to_block",
+      "repetition": 1,
+      "arm": "baseline",
+      "decision": {
+        "action_id": "play:2",
+        "tactics": {
+          "must_block": 0.59,
+          "yield_control": 0.34,
+          "feed_teammate": 0.37,
+          "pair_pressure": 0.41
+        },
+        "confidence": 0.8,
+        "probabilities": {
+          "play:2": 0.9,
+          "pass": 0.1
+        },
+        "calls": [
+          {
+            "model": "jev-1.13.0",
+            "usage": {
+              "input_tokens": 1388,
+              "output_tokens": 74
+            }
+          },
+          {
+            "model": "jev-1.13.0",
+            "usage": {
+              "input_tokens": 1553,
+              "output_tokens": 35
+            }
+          }
+        ],
+        "forced": false
+      },
+      "rubric_match": true,
+      "full_information_winning": true
+    },
+    {
+      "case_id": "override_yield_to_block",
+      "repetition": 1,
+      "arm": "control_facts",
+      "decision": {
+        "action_id": "play:2",
+        "tactics": {
+          "must_block": 0.65,
+          "yield_control": 0.3,
+          "feed_teammate": 0.32,
+          "pair_pressure": 0.38
+        },
+        "confidence": 0.86,
+        "probabilities": {
+          "play:2": 0.93,
+          "pass": 0.07
+        },
+        "calls": [
+          {
+            "model": "jev-1.13.0",
+            "usage": {
+              "input_tokens": 1671,
+              "output_tokens": 74
+            }
+          },
+          {
+            "model": "jev-1.13.0",
+            "usage": {
+              "input_tokens": 1835,
+              "output_tokens": 35
+            }
+          }
+        ],
+        "forced": false
+      },
+      "rubric_match": true,
+      "full_information_winning": true
+    },
+    {
+      "case_id": "yield_with_joker_in_own_hand",
+      "repetition": 2,
+      "arm": "control_facts",
+      "decision": {
+        "action_id": "play:BJ",
+        "tactics": {
+          "must_block": 0.35,
+          "yield_control": 0.35,
+          "feed_teammate": 0.34,
+          "pair_pressure": 0.26
+        },
+        "confidence": 0.72,
+        "probabilities": {
+          "play:BJ": 0.86,
+          "pass": 0.14
+        },
+        "calls": [
+          {
+            "model": "jev-1.13.0",
+            "usage": {
+              "input_tokens": 1634,
+              "output_tokens": 74
+            }
+          },
+          {
+            "model": "jev-1.13.0",
+            "usage": {
+              "input_tokens": 1798,
+              "output_tokens": 35
+            }
+          }
+        ],
+        "forced": false
+      },
+      "rubric_match": false,
+      "full_information_winning": false
+    },
+    {
+      "case_id": "yield_with_joker_in_own_hand",
+      "repetition": 2,
+      "arm": "baseline",
+      "decision": {
+        "action_id": "play:BJ",
+        "tactics": {
+          "must_block": 0.53,
+          "yield_control": 0.39,
+          "feed_teammate": 0.38,
+          "pair_pressure": 0.25
+        },
+        "confidence": 0.64,
+        "probabilities": {
+          "play:BJ": 0.82,
+          "pass": 0.18
+        },
+        "calls": [
+          {
+            "model": "jev-1.13.0",
+            "usage": {
+              "input_tokens": 1351,
+              "output_tokens": 74
+            }
+          },
+          {
+            "model": "jev-1.13.0",
+            "usage": {
+              "input_tokens": 1515,
+              "output_tokens": 35
+            }
+          }
+        ],
+        "forced": false
+      },
+      "rubric_match": false,
+      "full_information_winning": false
+    },
+    {
+      "case_id": "yield_lower_ranks",
+      "repetition": 0,
+      "arm": "baseline",
+      "decision": {
+        "action_id": "play:K",
+        "tactics": {
+          "must_block": 0.51,
+          "yield_control": 0.35,
+          "feed_teammate": 0.39,
+          "pair_pressure": 0.24
+        },
+        "confidence": 0.6,
+        "probabilities": {
+          "play:K": 0.8,
+          "pass": 0.2
+        },
+        "calls": [
+          {
+            "model": "jev-1.13.0",
+            "usage": {
+              "input_tokens": 1357,
+              "output_tokens": 74
+            }
+          },
+          {
+            "model": "jev-1.13.0",
+            "usage": {
+              "input_tokens": 1521,
+              "output_tokens": 35
+            }
+          }
+        ],
+        "forced": false
+      },
+      "rubric_match": false,
+      "full_information_winning": false
+    },
+    {
+      "case_id": "yield_lower_ranks",
+      "repetition": 0,
+      "arm": "control_facts",
+      "decision": {
+        "action_id": "play:K",
+        "tactics": {
+          "must_block": 0.3,
+          "yield_control": 0.41,
+          "feed_teammate": 0.32,
+          "pair_pressure": 0.27
+        },
+        "confidence": 0.72,
+        "probabilities": {
+          "play:K": 0.86,
+          "pass": 0.14
+        },
+        "calls": [
+          {
+            "model": "jev-1.13.0",
+            "usage": {
+              "input_tokens": 1640,
+              "output_tokens": 74
+            }
+          },
+          {
+            "model": "jev-1.13.0",
+            "usage": {
+              "input_tokens": 1803,
+              "output_tokens": 35
+            }
+          }
+        ],
+        "forced": false
+      },
+      "rubric_match": false,
+      "full_information_winning": false
+    },
+    {
+      "case_id": "override_yield_to_block",
+      "repetition": 2,
+      "arm": "baseline",
+      "decision": {
+        "action_id": "play:2",
+        "tactics": {
+          "must_block": 0.58,
+          "yield_control": 0.34,
+          "feed_teammate": 0.35,
+          "pair_pressure": 0.41
+        },
+        "confidence": 0.8,
+        "probabilities": {
+          "play:2": 0.9,
+          "pass": 0.1
+        },
+        "calls": [
+          {
+            "model": "jev-1.13.0",
+            "usage": {
+              "input_tokens": 1388,
+              "output_tokens": 74
+            }
+          },
+          {
+            "model": "jev-1.13.0",
+            "usage": {
+              "input_tokens": 1553,
+              "output_tokens": 35
+            }
+          }
+        ],
+        "forced": false
+      },
+      "rubric_match": true,
+      "full_information_winning": true
+    },
+    {
+      "case_id": "override_yield_to_block",
+      "repetition": 2,
+      "arm": "control_facts",
+      "decision": {
+        "action_id": "play:2",
+        "tactics": {
+          "must_block": 0.64,
+          "yield_control": 0.26,
+          "feed_teammate": 0.33,
+          "pair_pressure": 0.34
+        },
+        "confidence": 0.88,
+        "probabilities": {
+          "play:2": 0.94,
+          "pass": 0.06
+        },
+        "calls": [
+          {
+            "model": "jev-1.13.0",
+            "usage": {
+              "input_tokens": 1671,
+              "output_tokens": 74
+            }
+          },
+          {
+            "model": "jev-1.13.0",
+            "usage": {
+              "input_tokens": 1836,
+              "output_tokens": 35
+            }
+          }
+        ],
+        "forced": false
+      },
+      "rubric_match": true,
+      "full_information_winning": true
+    },
+    {
+      "case_id": "rocket_takeover_against_pair_threat",
+      "repetition": 1,
+      "arm": "baseline",
+      "decision": {
+        "action_id": "play:SJ,BJ",
+        "tactics": {
+          "must_block": 0.58,
+          "yield_control": 0.36,
+          "feed_teammate": 0.35,
+          "pair_pressure": 0.37
+        },
+        "confidence": 0.82,
+        "probabilities": {
+          "play:SJ,BJ": 0.91,
+          "pass": 0.09
+        },
+        "calls": [
+          {
+            "model": "jev-1.13.0",
+            "usage": {
+              "input_tokens": 1399,
+              "output_tokens": 74
+            }
+          },
+          {
+            "model": "jev-1.13.0",
+            "usage": {
+              "input_tokens": 1566,
+              "output_tokens": 39
+            }
+          }
+        ],
+        "forced": false
+      },
+      "rubric_match": true,
+      "full_information_winning": true
+    },
+    {
+      "case_id": "rocket_takeover_against_pair_threat",
+      "repetition": 1,
+      "arm": "control_facts",
+      "decision": {
+        "action_id": "play:SJ,BJ",
+        "tactics": {
+          "must_block": 0.58,
+          "yield_control": 0.34,
+          "feed_teammate": 0.36,
+          "pair_pressure": 0.34
+        },
+        "confidence": 0.8,
+        "probabilities": {
+          "play:SJ,BJ": 0.9,
+          "pass": 0.1
+        },
+        "calls": [
+          {
+            "model": "jev-1.13.0",
+            "usage": {
+              "input_tokens": 1682,
+              "output_tokens": 74
+            }
+          },
+          {
+            "model": "jev-1.13.0",
+            "usage": {
+              "input_tokens": 1849,
+              "output_tokens": 39
+            }
+          }
+        ],
+        "forced": false
+      },
+      "rubric_match": true,
+      "full_information_winning": true
+    },
+    {
+      "case_id": "finish_even_when_teammate_safe",
+      "repetition": 2,
+      "arm": "baseline",
+      "decision": {
+        "action_id": "play:A",
+        "tactics": {
+          "must_block": 0.56,
+          "yield_control": 0.22,
+          "feed_teammate": 0.26,
+          "pair_pressure": 0.21
+        },
+        "confidence": 0.92,
+        "probabilities": {
+          "play:A": 0.96,
+          "pass": 0.04
+        },
+        "calls": [
+          {
+            "model": "jev-1.13.0",
+            "usage": {
+              "input_tokens": 1333,
+              "output_tokens": 74
+            }
+          },
+          {
+            "model": "jev-1.13.0",
+            "usage": {
+              "input_tokens": 1481,
+              "output_tokens": 33
+            }
+          }
+        ],
+        "forced": false
+      },
+      "rubric_match": true,
+      "full_information_winning": true
+    },
+    {
+      "case_id": "finish_even_when_teammate_safe",
+      "repetition": 2,
+      "arm": "control_facts",
+      "decision": {
+        "action_id": "play:A",
+        "tactics": {
+          "must_block": 0.4,
+          "yield_control": 0.21,
+          "feed_teammate": 0.24,
+          "pair_pressure": 0.23
+        },
+        "confidence": 0.94,
+        "probabilities": {
+          "play:A": 0.97,
+          "pass": 0.03
+        },
+        "calls": [
+          {
+            "model": "jev-1.13.0",
+            "usage": {
+              "input_tokens": 1616,
+              "output_tokens": 74
+            }
+          },
+          {
+            "model": "jev-1.13.0",
+            "usage": {
+              "input_tokens": 1763,
+              "output_tokens": 33
+            }
+          }
+        ],
+        "forced": false
+      },
+      "rubric_match": true,
+      "full_information_winning": true
+    },
+    {
+      "case_id": "yield_to_teammate",
+      "repetition": 2,
+      "arm": "baseline",
+      "decision": {
+        "action_id": "play:A",
+        "tactics": {
+          "must_block": 0.54,
+          "yield_control": 0.34,
+          "feed_teammate": 0.38,
+          "pair_pressure": 0.21
+        },
+        "confidence": 0.76,
+        "probabilities": {
+          "play:A": 0.88,
+          "pass": 0.12
+        },
+        "calls": [
+          {
+            "model": "jev-1.13.0",
+            "usage": {
+              "input_tokens": 1356,
+              "output_tokens": 74
+            }
+          },
+          {
+            "model": "jev-1.13.0",
+            "usage": {
+              "input_tokens": 1519,
+              "output_tokens": 33
+            }
+          }
+        ],
+        "forced": false
+      },
+      "rubric_match": false,
+      "full_information_winning": false
+    },
+    {
+      "case_id": "yield_to_teammate",
+      "repetition": 2,
+      "arm": "control_facts",
+      "decision": {
+        "action_id": "play:A",
+        "tactics": {
+          "must_block": 0.34,
+          "yield_control": 0.32,
+          "feed_teammate": 0.36,
+          "pair_pressure": 0.24
+        },
+        "confidence": 0.76,
+        "probabilities": {
+          "play:A": 0.88,
+          "pass": 0.12
+        },
+        "calls": [
+          {
+            "model": "jev-1.13.0",
+            "usage": {
+              "input_tokens": 1639,
+              "output_tokens": 74
+            }
+          },
+          {
+            "model": "jev-1.13.0",
+            "usage": {
+              "input_tokens": 1802,
+              "output_tokens": 33
+            }
+          }
+        ],
+        "forced": false
+      },
+      "rubric_match": false,
+      "full_information_winning": false
+    },
+    {
+      "case_id": "yield_lower_ranks",
+      "repetition": 2,
+      "arm": "control_facts",
+      "decision": {
+        "action_id": "play:K",
+        "tactics": {
+          "must_block": 0.31,
+          "yield_control": 0.37,
+          "feed_teammate": 0.33,
+          "pair_pressure": 0.25
+        },
+        "confidence": 0.74,
+        "probabilities": {
+          "play:K": 0.87,
+          "pass": 0.13
+        },
+        "calls": [
+          {
+            "model": "jev-1.13.0",
+            "usage": {
+              "input_tokens": 1640,
+              "output_tokens": 74
+            }
+          },
+          {
+            "model": "jev-1.13.0",
+            "usage": {
+              "input_tokens": 1804,
+              "output_tokens": 35
+            }
+          }
+        ],
+        "forced": false
+      },
+      "rubric_match": false,
+      "full_information_winning": false
+    },
+    {
+      "case_id": "yield_lower_ranks",
+      "repetition": 2,
+      "arm": "baseline",
+      "decision": {
+        "action_id": "play:K",
+        "tactics": {
+          "must_block": 0.51,
+          "yield_control": 0.34,
+          "feed_teammate": 0.37,
+          "pair_pressure": 0.24
+        },
+        "confidence": 0.62,
+        "probabilities": {
+          "play:K": 0.81,
+          "pass": 0.19
+        },
+        "calls": [
+          {
+            "model": "jev-1.13.0",
+            "usage": {
+              "input_tokens": 1357,
+              "output_tokens": 74
+            }
+          },
+          {
+            "model": "jev-1.13.0",
+            "usage": {
+              "input_tokens": 1521,
+              "output_tokens": 35
+            }
+          }
+        ],
+        "forced": false
+      },
+      "rubric_match": false,
+      "full_information_winning": false
+    },
+    {
+      "case_id": "yield_to_teammate",
+      "repetition": 1,
+      "arm": "baseline",
+      "decision": {
+        "action_id": "play:A",
+        "tactics": {
+          "must_block": 0.56,
+          "yield_control": 0.34,
+          "feed_teammate": 0.37,
+          "pair_pressure": 0.22
+        },
+        "confidence": 0.82,
+        "probabilities": {
+          "play:A": 0.91,
+          "pass": 0.09
+        },
+        "calls": [
+          {
+            "model": "jev-1.13.0",
+            "usage": {
+              "input_tokens": 1356,
+              "output_tokens": 74
+            }
+          },
+          {
+            "model": "jev-1.13.0",
+            "usage": {
+              "input_tokens": 1519,
+              "output_tokens": 33
+            }
+          }
+        ],
+        "forced": false
+      },
+      "rubric_match": false,
+      "full_information_winning": false
+    },
+    {
+      "case_id": "yield_to_teammate",
+      "repetition": 1,
+      "arm": "control_facts",
+      "decision": {
+        "action_id": "play:A",
+        "tactics": {
+          "must_block": 0.33,
+          "yield_control": 0.37,
+          "feed_teammate": 0.34,
+          "pair_pressure": 0.26
+        },
+        "confidence": 0.76,
+        "probabilities": {
+          "play:A": 0.88,
+          "pass": 0.12
+        },
+        "calls": [
+          {
+            "model": "jev-1.13.0",
+            "usage": {
+              "input_tokens": 1639,
+              "output_tokens": 74
+            }
+          },
+          {
+            "model": "jev-1.13.0",
+            "usage": {
+              "input_tokens": 1802,
+              "output_tokens": 33
+            }
+          }
+        ],
+        "forced": false
+      },
+      "rubric_match": false,
+      "full_information_winning": false
+    },
+    {
+      "case_id": "yield_to_teammate",
+      "repetition": 0,
+      "arm": "control_facts",
+      "decision": {
+        "action_id": "play:A",
+        "tactics": {
+          "must_block": 0.34,
+          "yield_control": 0.35,
+          "feed_teammate": 0.33,
+          "pair_pressure": 0.27
+        },
+        "confidence": 0.76,
+        "probabilities": {
+          "play:A": 0.88,
+          "pass": 0.12
+        },
+        "calls": [
+          {
+            "model": "jev-1.13.0",
+            "usage": {
+              "input_tokens": 1639,
+              "output_tokens": 74
+            }
+          },
+          {
+            "model": "jev-1.13.0",
+            "usage": {
+              "input_tokens": 1802,
+              "output_tokens": 33
+            }
+          }
+        ],
+        "forced": false
+      },
+      "rubric_match": false,
+      "full_information_winning": false
+    },
+    {
+      "case_id": "yield_to_teammate",
+      "repetition": 0,
+      "arm": "baseline",
+      "decision": {
+        "action_id": "play:A",
+        "tactics": {
+          "must_block": 0.53,
+          "yield_control": 0.37,
+          "feed_teammate": 0.38,
+          "pair_pressure": 0.22
+        },
+        "confidence": 0.78,
+        "probabilities": {
+          "play:A": 0.89,
+          "pass": 0.11
+        },
+        "calls": [
+          {
+            "model": "jev-1.13.0",
+            "usage": {
+              "input_tokens": 1356,
+              "output_tokens": 74
+            }
+          },
+          {
+            "model": "jev-1.13.0",
+            "usage": {
+              "input_tokens": 1519,
+              "output_tokens": 33
+            }
+          }
+        ],
+        "forced": false
+      },
+      "rubric_match": false,
+      "full_information_winning": false
+    },
+    {
+      "case_id": "finish_even_when_teammate_safe",
+      "repetition": 1,
+      "arm": "baseline",
+      "decision": {
+        "action_id": "play:A",
+        "tactics": {
+          "must_block": 0.56,
+          "yield_control": 0.24,
+          "feed_teammate": 0.25,
+          "pair_pressure": 0.22
+        },
+        "confidence": 0.9,
+        "probabilities": {
+          "play:A": 0.95,
+          "pass": 0.05
+        },
+        "calls": [
+          {
+            "model": "jev-1.13.0",
+            "usage": {
+              "input_tokens": 1333,
+              "output_tokens": 74
+            }
+          },
+          {
+            "model": "jev-1.13.0",
+            "usage": {
+              "input_tokens": 1481,
+              "output_tokens": 33
+            }
+          }
+        ],
+        "forced": false
+      },
+      "rubric_match": true,
+      "full_information_winning": true
+    },
+    {
+      "case_id": "finish_even_when_teammate_safe",
+      "repetition": 1,
+      "arm": "control_facts",
+      "decision": {
+        "action_id": "play:A",
+        "tactics": {
+          "must_block": 0.42,
+          "yield_control": 0.23,
+          "feed_teammate": 0.24,
+          "pair_pressure": 0.22
+        },
+        "confidence": 0.94,
+        "probabilities": {
+          "play:A": 0.97,
+          "pass": 0.03
+        },
+        "calls": [
+          {
+            "model": "jev-1.13.0",
+            "usage": {
+              "input_tokens": 1616,
+              "output_tokens": 74
+            }
+          },
+          {
+            "model": "jev-1.13.0",
+            "usage": {
+              "input_tokens": 1764,
+              "output_tokens": 33
+            }
+          }
+        ],
+        "forced": false
+      },
+      "rubric_match": true,
+      "full_information_winning": true
+    },
+    {
+      "case_id": "finish_even_when_teammate_safe",
+      "repetition": 0,
+      "arm": "baseline",
+      "decision": {
+        "action_id": "play:A",
+        "tactics": {
+          "must_block": 0.58,
+          "yield_control": 0.24,
+          "feed_teammate": 0.28,
+          "pair_pressure": 0.22
+        },
+        "confidence": 0.9,
+        "probabilities": {
+          "play:A": 0.95,
+          "pass": 0.05
+        },
+        "calls": [
+          {
+            "model": "jev-1.13.0",
+            "usage": {
+              "input_tokens": 1333,
+              "output_tokens": 74
+            }
+          },
+          {
+            "model": "jev-1.13.0",
+            "usage": {
+              "input_tokens": 1481,
+              "output_tokens": 33
+            }
+          }
+        ],
+        "forced": false
+      },
+      "rubric_match": true,
+      "full_information_winning": true
+    },
+    {
+      "case_id": "finish_even_when_teammate_safe",
+      "repetition": 0,
+      "arm": "control_facts",
+      "decision": {
+        "action_id": "play:A",
+        "tactics": {
+          "must_block": 0.42,
+          "yield_control": 0.21,
+          "feed_teammate": 0.25,
+          "pair_pressure": 0.23
+        },
+        "confidence": 0.94,
+        "probabilities": {
+          "play:A": 0.97,
+          "pass": 0.03
+        },
+        "calls": [
+          {
+            "model": "jev-1.13.0",
+            "usage": {
+              "input_tokens": 1616,
+              "output_tokens": 74
+            }
+          },
+          {
+            "model": "jev-1.13.0",
+            "usage": {
+              "input_tokens": 1764,
+              "output_tokens": 33
+            }
+          }
+        ],
+        "forced": false
+      },
+      "rubric_match": true,
+      "full_information_winning": true
+    },
+    {
+      "case_id": "yield_with_joker_in_own_hand",
+      "repetition": 0,
+      "arm": "baseline",
+      "decision": {
+        "action_id": "play:BJ",
+        "tactics": {
+          "must_block": 0.55,
+          "yield_control": 0.4,
+          "feed_teammate": 0.36,
+          "pair_pressure": 0.25
+        },
+        "confidence": 0.64,
+        "probabilities": {
+          "play:BJ": 0.82,
+          "pass": 0.18
+        },
+        "calls": [
+          {
+            "model": "jev-1.13.0",
+            "usage": {
+              "input_tokens": 1351,
+              "output_tokens": 74
+            }
+          },
+          {
+            "model": "jev-1.13.0",
+            "usage": {
+              "input_tokens": 1514,
+              "output_tokens": 35
+            }
+          }
+        ],
+        "forced": false
+      },
+      "rubric_match": false,
+      "full_information_winning": false
+    },
+    {
+      "case_id": "yield_with_joker_in_own_hand",
+      "repetition": 0,
+      "arm": "control_facts",
+      "decision": {
+        "action_id": "play:BJ",
+        "tactics": {
+          "must_block": 0.38,
+          "yield_control": 0.36,
+          "feed_teammate": 0.34,
+          "pair_pressure": 0.28
+        },
+        "confidence": 0.8,
+        "probabilities": {
+          "play:BJ": 0.9,
+          "pass": 0.1
+        },
+        "calls": [
+          {
+            "model": "jev-1.13.0",
+            "usage": {
+              "input_tokens": 1634,
+              "output_tokens": 74
+            }
+          },
+          {
+            "model": "jev-1.13.0",
+            "usage": {
+              "input_tokens": 1798,
+              "output_tokens": 35
+            }
+          }
+        ],
+        "forced": false
+      },
+      "rubric_match": false,
+      "full_information_winning": false
+    },
+    {
+      "case_id": "yield_after_landlord_passed",
+      "repetition": 2,
+      "arm": "control_facts",
+      "decision": {
+        "action_id": "play:A",
+        "tactics": {
+          "must_block": 0.4,
+          "yield_control": 0.38,
+          "feed_teammate": 0.38,
+          "pair_pressure": 0.27
+        },
+        "confidence": 0.62,
+        "probabilities": {
+          "play:A": 0.81,
+          "pass": 0.19
+        },
+        "calls": [
+          {
+            "model": "jev-1.13.0",
+            "usage": {
+              "input_tokens": 1636,
+              "output_tokens": 74
+            }
+          },
+          {
+            "model": "jev-1.13.0",
+            "usage": {
+              "input_tokens": 1798,
+              "output_tokens": 33
+            }
+          }
+        ],
+        "forced": false
+      },
+      "rubric_match": false,
+      "full_information_winning": false
+    },
+    {
+      "case_id": "yield_after_landlord_passed",
+      "repetition": 2,
+      "arm": "baseline",
+      "decision": {
+        "action_id": "play:A",
+        "tactics": {
+          "must_block": 0.6,
+          "yield_control": 0.38,
+          "feed_teammate": 0.4,
+          "pair_pressure": 0.23
+        },
+        "confidence": 0.74,
+        "probabilities": {
+          "play:A": 0.87,
+          "pass": 0.13
+        },
+        "calls": [
+          {
+            "model": "jev-1.13.0",
+            "usage": {
+              "input_tokens": 1357,
+              "output_tokens": 74
+            }
+          },
+          {
+            "model": "jev-1.13.0",
+            "usage": {
+              "input_tokens": 1518,
+              "output_tokens": 33
+            }
+          }
+        ],
+        "forced": false
+      },
+      "rubric_match": false,
+      "full_information_winning": false
+    },
+    {
+      "case_id": "yield_after_landlord_passed",
+      "repetition": 0,
+      "arm": "baseline",
+      "decision": {
+        "action_id": "play:A",
+        "tactics": {
+          "must_block": 0.59,
+          "yield_control": 0.32,
+          "feed_teammate": 0.4,
+          "pair_pressure": 0.22
+        },
+        "confidence": 0.62,
+        "probabilities": {
+          "play:A": 0.81,
+          "pass": 0.19
+        },
+        "calls": [
+          {
+            "model": "jev-1.13.0",
+            "usage": {
+              "input_tokens": 1357,
+              "output_tokens": 74
+            }
+          },
+          {
+            "model": "jev-1.13.0",
+            "usage": {
+              "input_tokens": 1519,
+              "output_tokens": 33
+            }
+          }
+        ],
+        "forced": false
+      },
+      "rubric_match": false,
+      "full_information_winning": false
+    },
+    {
+      "case_id": "yield_after_landlord_passed",
+      "repetition": 0,
+      "arm": "control_facts",
+      "decision": {
+        "action_id": "play:A",
+        "tactics": {
+          "must_block": 0.44,
+          "yield_control": 0.41,
+          "feed_teammate": 0.38,
+          "pair_pressure": 0.25
+        },
+        "confidence": 0.68,
+        "probabilities": {
+          "play:A": 0.84,
+          "pass": 0.16
+        },
+        "calls": [
+          {
+            "model": "jev-1.13.0",
+            "usage": {
+              "input_tokens": 1636,
+              "output_tokens": 74
+            }
+          },
+          {
+            "model": "jev-1.13.0",
+            "usage": {
+              "input_tokens": 1799,
+              "output_tokens": 33
+            }
+          }
+        ],
+        "forced": false
+      },
+      "rubric_match": false,
+      "full_information_winning": false
+    },
+    {
+      "case_id": "higher_enemy_card_but_trick_closes",
+      "repetition": 0,
+      "arm": "control_facts",
+      "decision": {
+        "action_id": "play:2",
+        "tactics": {
+          "must_block": 0.51,
+          "yield_control": 0.44,
+          "feed_teammate": 0.36,
+          "pair_pressure": 0.27
+        },
+        "confidence": 0.68,
+        "probabilities": {
+          "play:2": 0.84,
+          "pass": 0.16
+        },
+        "calls": [
+          {
+            "model": "jev-1.13.0",
+            "usage": {
+              "input_tokens": 1668,
+              "output_tokens": 74
+            }
+          },
+          {
+            "model": "jev-1.13.0",
+            "usage": {
+              "input_tokens": 1833,
+              "output_tokens": 35
+            }
+          }
+        ],
+        "forced": false
+      },
+      "rubric_match": false,
+      "full_information_winning": false
+    },
+    {
+      "case_id": "higher_enemy_card_but_trick_closes",
+      "repetition": 0,
+      "arm": "baseline",
+      "decision": {
+        "action_id": "play:2",
+        "tactics": {
+          "must_block": 0.61,
+          "yield_control": 0.39,
+          "feed_teammate": 0.41,
+          "pair_pressure": 0.23
+        },
+        "confidence": 0.7,
+        "probabilities": {
+          "play:2": 0.85,
+          "pass": 0.15
+        },
+        "calls": [
+          {
+            "model": "jev-1.13.0",
+            "usage": {
+              "input_tokens": 1389,
+              "output_tokens": 74
+            }
+          },
+          {
+            "model": "jev-1.13.0",
+            "usage": {
+              "input_tokens": 1554,
+              "output_tokens": 35
+            }
+          }
+        ],
+        "forced": false
+      },
+      "rubric_match": false,
+      "full_information_winning": false
+    },
+    {
+      "case_id": "yield_after_landlord_passed",
+      "repetition": 1,
+      "arm": "baseline",
+      "decision": {
+        "action_id": "play:A",
+        "tactics": {
+          "must_block": 0.59,
+          "yield_control": 0.36,
+          "feed_teammate": 0.41,
+          "pair_pressure": 0.23
+        },
+        "confidence": 0.68,
+        "probabilities": {
+          "play:A": 0.84,
+          "pass": 0.16
+        },
+        "calls": [
+          {
+            "model": "jev-1.13.0",
+            "usage": {
+              "input_tokens": 1357,
+              "output_tokens": 74
+            }
+          },
+          {
+            "model": "jev-1.13.0",
+            "usage": {
+              "input_tokens": 1520,
+              "output_tokens": 33
+            }
+          }
+        ],
+        "forced": false
+      },
+      "rubric_match": false,
+      "full_information_winning": false
+    },
+    {
+      "case_id": "yield_after_landlord_passed",
+      "repetition": 1,
+      "arm": "control_facts",
+      "decision": {
+        "action_id": "play:A",
+        "tactics": {
+          "must_block": 0.39,
+          "yield_control": 0.46,
+          "feed_teammate": 0.38,
+          "pair_pressure": 0.26
+        },
+        "confidence": 0.54,
+        "probabilities": {
+          "play:A": 0.77,
+          "pass": 0.23
+        },
+        "calls": [
+          {
+            "model": "jev-1.13.0",
+            "usage": {
+              "input_tokens": 1636,
+              "output_tokens": 74
+            }
+          },
+          {
+            "model": "jev-1.13.0",
+            "usage": {
+              "input_tokens": 1799,
+              "output_tokens": 33
+            }
+          }
+        ],
+        "forced": false
+      },
+      "rubric_match": false,
+      "full_information_winning": false
+    },
+    {
+      "case_id": "higher_enemy_card_but_trick_closes",
+      "repetition": 2,
+      "arm": "baseline",
+      "decision": {
+        "action_id": "play:2",
+        "tactics": {
+          "must_block": 0.64,
+          "yield_control": 0.39,
+          "feed_teammate": 0.44,
+          "pair_pressure": 0.23
+        },
+        "confidence": 0.62,
+        "probabilities": {
+          "play:2": 0.81,
+          "pass": 0.19
+        },
+        "calls": [
+          {
+            "model": "jev-1.13.0",
+            "usage": {
+              "input_tokens": 1389,
+              "output_tokens": 74
+            }
+          },
+          {
+            "model": "jev-1.13.0",
+            "usage": {
+              "input_tokens": 1554,
+              "output_tokens": 35
+            }
+          }
+        ],
+        "forced": false
+      },
+      "rubric_match": false,
+      "full_information_winning": false
+    },
+    {
+      "case_id": "higher_enemy_card_but_trick_closes",
+      "repetition": 2,
+      "arm": "control_facts",
+      "decision": {
+        "action_id": "play:2",
+        "tactics": {
+          "must_block": 0.52,
+          "yield_control": 0.46,
+          "feed_teammate": 0.36,
+          "pair_pressure": 0.26
+        },
+        "confidence": 0.58,
+        "probabilities": {
+          "play:2": 0.79,
+          "pass": 0.21
+        },
+        "calls": [
+          {
+            "model": "jev-1.13.0",
+            "usage": {
+              "input_tokens": 1668,
+              "output_tokens": 74
+            }
+          },
+          {
+            "model": "jev-1.13.0",
+            "usage": {
+              "input_tokens": 1833,
+              "output_tokens": 35
+            }
+          }
+        ],
+        "forced": false
+      },
+      "rubric_match": false,
+      "full_information_winning": false
+    },
+    {
+      "case_id": "yield_lower_ranks",
+      "repetition": 1,
+      "arm": "baseline",
+      "decision": {
+        "action_id": "play:K",
+        "tactics": {
+          "must_block": 0.5,
+          "yield_control": 0.35,
+          "feed_teammate": 0.37,
+          "pair_pressure": 0.25
+        },
+        "confidence": 0.62,
+        "probabilities": {
+          "play:K": 0.81,
+          "pass": 0.19
+        },
+        "calls": [
+          {
+            "model": "jev-1.13.0",
+            "usage": {
+              "input_tokens": 1357,
+              "output_tokens": 74
+            }
+          },
+          {
+            "model": "jev-1.13.0",
+            "usage": {
+              "input_tokens": 1520,
+              "output_tokens": 35
+            }
+          }
+        ],
+        "forced": false
+      },
+      "rubric_match": false,
+      "full_information_winning": false
+    },
+    {
+      "case_id": "yield_lower_ranks",
+      "repetition": 1,
+      "arm": "control_facts",
+      "decision": {
+        "action_id": "play:K",
+        "tactics": {
+          "must_block": 0.3,
+          "yield_control": 0.34,
+          "feed_teammate": 0.32,
+          "pair_pressure": 0.27
+        },
+        "confidence": 0.74,
+        "probabilities": {
+          "play:K": 0.87,
+          "pass": 0.13
+        },
+        "calls": [
+          {
+            "model": "jev-1.13.0",
+            "usage": {
+              "input_tokens": 1640,
+              "output_tokens": 74
+            }
+          },
+          {
+            "model": "jev-1.13.0",
+            "usage": {
+              "input_tokens": 1803,
+              "output_tokens": 35
+            }
+          }
+        ],
+        "forced": false
+      },
+      "rubric_match": false,
+      "full_information_winning": false
+    },
+    {
+      "case_id": "rocket_takeover_against_pair_threat",
+      "repetition": 2,
+      "arm": "baseline",
+      "decision": {
+        "action_id": "play:SJ,BJ",
+        "tactics": {
+          "must_block": 0.57,
+          "yield_control": 0.38,
+          "feed_teammate": 0.38,
+          "pair_pressure": 0.39
+        },
+        "confidence": 0.78,
+        "probabilities": {
+          "play:SJ,BJ": 0.89,
+          "pass": 0.11
+        },
+        "calls": [
+          {
+            "model": "jev-1.13.0",
+            "usage": {
+              "input_tokens": 1399,
+              "output_tokens": 74
+            }
+          },
+          {
+            "model": "jev-1.13.0",
+            "usage": {
+              "input_tokens": 1566,
+              "output_tokens": 39
+            }
+          }
+        ],
+        "forced": false
+      },
+      "rubric_match": true,
+      "full_information_winning": true
+    },
+    {
+      "case_id": "rocket_takeover_against_pair_threat",
+      "repetition": 2,
+      "arm": "control_facts",
+      "decision": {
+        "action_id": "play:SJ,BJ",
+        "tactics": {
+          "must_block": 0.59,
+          "yield_control": 0.32,
+          "feed_teammate": 0.33,
+          "pair_pressure": 0.32
+        },
+        "confidence": 0.8,
+        "probabilities": {
+          "play:SJ,BJ": 0.9,
+          "pass": 0.1
+        },
+        "calls": [
+          {
+            "model": "jev-1.13.0",
+            "usage": {
+              "input_tokens": 1682,
+              "output_tokens": 74
+            }
+          },
+          {
+            "model": "jev-1.13.0",
+            "usage": {
+              "input_tokens": 1849,
+              "output_tokens": 39
+            }
+          }
+        ],
+        "forced": false
+      },
+      "rubric_match": true,
+      "full_information_winning": true
+    },
+    {
+      "case_id": "rocket_takeover_against_pair_threat",
+      "repetition": 0,
+      "arm": "control_facts",
+      "decision": {
+        "action_id": "play:SJ,BJ",
+        "tactics": {
+          "must_block": 0.6,
+          "yield_control": 0.33,
+          "feed_teammate": 0.35,
+          "pair_pressure": 0.33
+        },
+        "confidence": 0.74,
+        "probabilities": {
+          "play:SJ,BJ": 0.87,
+          "pass": 0.13
+        },
+        "calls": [
+          {
+            "model": "jev-1.13.0",
+            "usage": {
+              "input_tokens": 1682,
+              "output_tokens": 74
+            }
+          },
+          {
+            "model": "jev-1.13.0",
+            "usage": {
+              "input_tokens": 1848,
+              "output_tokens": 39
+            }
+          }
+        ],
+        "forced": false
+      },
+      "rubric_match": true,
+      "full_information_winning": true
+    },
+    {
+      "case_id": "rocket_takeover_against_pair_threat",
+      "repetition": 0,
+      "arm": "baseline",
+      "decision": {
+        "action_id": "play:SJ,BJ",
+        "tactics": {
+          "must_block": 0.61,
+          "yield_control": 0.33,
+          "feed_teammate": 0.39,
+          "pair_pressure": 0.34
+        },
+        "confidence": 0.8,
+        "probabilities": {
+          "play:SJ,BJ": 0.9,
+          "pass": 0.1
+        },
+        "calls": [
+          {
+            "model": "jev-1.13.0",
+            "usage": {
+              "input_tokens": 1399,
+              "output_tokens": 74
+            }
+          },
+          {
+            "model": "jev-1.13.0",
+            "usage": {
+              "input_tokens": 1566,
+              "output_tokens": 39
+            }
+          }
+        ],
+        "forced": false
+      },
+      "rubric_match": true,
+      "full_information_winning": true
+    },
+    {
+      "case_id": "higher_enemy_card_but_trick_closes",
+      "repetition": 1,
+      "arm": "baseline",
+      "decision": {
+        "action_id": "play:2",
+        "tactics": {
+          "must_block": 0.61,
+          "yield_control": 0.36,
+          "feed_teammate": 0.44,
+          "pair_pressure": 0.25
+        },
+        "confidence": 0.74,
+        "probabilities": {
+          "play:2": 0.87,
+          "pass": 0.13
+        },
+        "calls": [
+          {
+            "model": "jev-1.13.0",
+            "usage": {
+              "input_tokens": 1389,
+              "output_tokens": 74
+            }
+          },
+          {
+            "model": "jev-1.13.0",
+            "usage": {
+              "input_tokens": 1554,
+              "output_tokens": 35
+            }
+          }
+        ],
+        "forced": false
+      },
+      "rubric_match": false,
+      "full_information_winning": false
+    },
+    {
+      "case_id": "higher_enemy_card_but_trick_closes",
+      "repetition": 1,
+      "arm": "control_facts",
+      "decision": {
+        "action_id": "play:2",
+        "tactics": {
+          "must_block": 0.51,
+          "yield_control": 0.46,
+          "feed_teammate": 0.38,
+          "pair_pressure": 0.24
+        },
+        "confidence": 0.68,
+        "probabilities": {
+          "play:2": 0.84,
+          "pass": 0.16
+        },
+        "calls": [
+          {
+            "model": "jev-1.13.0",
+            "usage": {
+              "input_tokens": 1668,
+              "output_tokens": 74
+            }
+          },
+          {
+            "model": "jev-1.13.0",
+            "usage": {
+              "input_tokens": 1833,
+              "output_tokens": 35
+            }
+          }
+        ],
+        "forced": false
+      },
+      "rubric_match": false,
+      "full_information_winning": false
+    },
+    {
+      "case_id": "yield_with_joker_in_own_hand",
+      "repetition": 1,
+      "arm": "baseline",
+      "decision": {
+        "action_id": "play:BJ",
+        "tactics": {
+          "must_block": 0.55,
+          "yield_control": 0.39,
+          "feed_teammate": 0.36,
+          "pair_pressure": 0.27
+        },
+        "confidence": 0.62,
+        "probabilities": {
+          "play:BJ": 0.81,
+          "pass": 0.19
+        },
+        "calls": [
+          {
+            "model": "jev-1.13.0",
+            "usage": {
+              "input_tokens": 1351,
+              "output_tokens": 74
+            }
+          },
+          {
+            "model": "jev-1.13.0",
+            "usage": {
+              "input_tokens": 1515,
+              "output_tokens": 35
+            }
+          }
+        ],
+        "forced": false
+      },
+      "rubric_match": false,
+      "full_information_winning": false
+    },
+    {
+      "case_id": "yield_with_joker_in_own_hand",
+      "repetition": 1,
+      "arm": "control_facts",
+      "decision": {
+        "action_id": "play:BJ",
+        "tactics": {
+          "must_block": 0.37,
+          "yield_control": 0.38,
+          "feed_teammate": 0.34,
+          "pair_pressure": 0.25
+        },
+        "confidence": 0.68,
+        "probabilities": {
+          "play:BJ": 0.84,
+          "pass": 0.16
+        },
+        "calls": [
+          {
+            "model": "jev-1.13.0",
+            "usage": {
+              "input_tokens": 1634,
+              "output_tokens": 74
+            }
+          },
+          {
+            "model": "jev-1.13.0",
+            "usage": {
+              "input_tokens": 1798,
+              "output_tokens": 35
+            }
+          }
+        ],
+        "forced": false
+      },
+      "rubric_match": false,
+      "full_information_winning": false
+    },
+    {
+      "case_id": "override_yield_to_block",
+      "repetition": 0,
+      "arm": "control_facts",
+      "decision": {
+        "action_id": "play:2",
+        "tactics": {
+          "must_block": 0.65,
+          "yield_control": 0.29,
+          "feed_teammate": 0.32,
+          "pair_pressure": 0.36
+        },
+        "confidence": 0.86,
+        "probabilities": {
+          "play:2": 0.93,
+          "pass": 0.07
+        },
+        "calls": [
+          {
+            "model": "jev-1.13.0",
+            "usage": {
+              "input_tokens": 1671,
+              "output_tokens": 74
+            }
+          },
+          {
+            "model": "jev-1.13.0",
+            "usage": {
+              "input_tokens": 1836,
+              "output_tokens": 35
+            }
+          }
+        ],
+        "forced": false
+      },
+      "rubric_match": true,
+      "full_information_winning": true
+    },
+    {
+      "case_id": "override_yield_to_block",
+      "repetition": 0,
+      "arm": "baseline",
+      "decision": {
+        "action_id": "play:2",
+        "tactics": {
+          "must_block": 0.58,
+          "yield_control": 0.36,
+          "feed_teammate": 0.37,
+          "pair_pressure": 0.41
+        },
+        "confidence": 0.84,
+        "probabilities": {
+          "play:2": 0.92,
+          "pass": 0.08
+        },
+        "calls": [
+          {
+            "model": "jev-1.13.0",
+            "usage": {
+              "input_tokens": 1388,
+              "output_tokens": 74
+            }
+          },
+          {
+            "model": "jev-1.13.0",
+            "usage": {
+              "input_tokens": 1553,
+              "output_tokens": 35
+            }
+          }
+        ],
+        "forced": false
+      },
+      "rubric_match": true,
+      "full_information_winning": true
+    }
+  ],
+  "summary": {
+    "baseline": {
+      "attempted": 24,
+      "completed": 24,
+      "errors": 0,
+      "rubric_matches": 9,
+      "full_information_winning_choices": 9,
+      "forced_decisions": 0
+    },
+    "control_facts": {
+      "attempted": 24,
+      "completed": 24,
+      "errors": 0,
+      "rubric_matches": 9,
+      "full_information_winning_choices": 9,
+      "forced_decisions": 0
+    }
+  },
+  "completed_at": "2026-10-11T17:38:41.933457+00:00"
+}
