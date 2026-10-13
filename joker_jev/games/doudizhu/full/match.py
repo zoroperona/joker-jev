@@ -13,7 +13,7 @@ from joker_jev.agents.base import Agent
 from joker_jev.agents.typesafe import TypeSafeBackend, TypeSafeError
 from joker_jev.core.engine import play, TurnLimitError
 from joker_jev.games.doudizhu.episode import MeteredBackend, write_json
-from .agents import FullSimpleAgent, FullJEVAgent, StrategicJEVAgent, CompactStrategicJEVAgent, visible_payload
+from .agents import FullSimpleAgent, JEV_STRATEGIES, visible_payload
 from .game import FullDoudizhuGame, PLAYERS
 
 
@@ -44,7 +44,7 @@ class TracedAgent(Agent):
 
 
 def run_episode(seed, focal, output, backend=None, max_turns=1000, strategy="v1"):
-    if strategy not in ("v1", "v2", "v2_compact"):
+    if strategy not in JEV_STRATEGIES:
         raise ValueError("未知 JEV 策略版本")
     if Path(output).exists():
         raise ValueError('逐局输出路径已存在')
@@ -57,7 +57,7 @@ def run_episode(seed, focal, output, backend=None, max_turns=1000, strategy="v1"
         write_json(output, report)
     save()
     metered = MeteredBackend(backend, report['api_ledger'], save) if backend else None
-    jev_class = {'v1': FullJEVAgent, 'v2': StrategicJEVAgent, 'v2_compact': CompactStrategicJEVAgent}[strategy]
+    jev_class = JEV_STRATEGIES[strategy]
     agents = {p: TracedAgent(jev_class(metered) if metered and p == focal else FullSimpleAgent(), report, save)
               for p in PLAYERS}
     def step(event):
@@ -109,7 +109,7 @@ def summarize(episodes):
 
 
 def run_suite(output, count=10, seed=20261016, backend_factory=None, progress=None, strategy="v1"):
-    if strategy not in ("v1", "v2", "v2_compact"):
+    if strategy not in JEV_STRATEGIES:
         raise ValueError("未知 JEV 策略版本")
     if count <= 0:
         raise ValueError('count 必须为正')
@@ -176,7 +176,7 @@ def render(path, report):
 
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
-    parser.add_argument('--strategy', choices=('v1', 'v2', 'v2_compact'), default='v2_compact')
+    parser.add_argument('--strategy', choices=tuple(JEV_STRATEGIES), default='v3')
     parser.add_argument('--live', action='store_true')
     parser.add_argument('--episodes', type=int, default=10)
     parser.add_argument('--seed', type=int, default=20261016)
