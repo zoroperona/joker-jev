@@ -48,6 +48,24 @@ JEV receives the rules, rewards, its own hand, public state, inferences and lega
 
 **Latest (v3 sampled simulation)**: re-run paired against `v2_compact` on the same 20 deals (`jev-1.13.0`). v3 won 16/20 (80%), v2_compact 5/19. Of the 19 pairs both completed, v3 alone won 11 and v2_compact alone won 0. On the 10 new deals: v3 8/10, v2_compact 0/9. v3 never needed a second call per decision; time per game went 7.9 s → 12.8 s (local simulation). Small sample, and the opponents use the same policy as the simulation — see the [v3 write-up](docs/simulation-strategy.md) and [paired report](reports/doudizhu-strategy-ab-v3.md).
 
+Live paired run (`jev-1.13.0`, 10 development deals + 10 new deals from seed 20270101, each deal played once per version):
+
+| Dataset | v2_compact wins/completed | v3 wins/completed | v2_compact mean score | v3 mean score |
+|---|---:|---:|---:|---:|
+| Development | 5/10 | **8/10** | −0.6 | 3.9 |
+| New deals | 0/9 | **8/10** | −5.6 | 1.5 |
+
+v2_compact had 1 invalid Choice response, kept as incomplete and not counted as a loss; v3 had no failures.
+
+| Speed and usage | v2_compact | v3 |
+|---|---:|---:|
+| API calls per game | 7.8 | 8.4 (immediate finishes skip the call; bidding more often has several options) |
+| Decisions needing two calls | 10/146 | 0/174 |
+| Mean input tokens per call | 4260 | 4121 |
+| Time per game | 7.9 s | 12.8 s |
+
+The extra time is local simulation; the run used 3 threads, so CPU-bound simulations contended for the GIL. Run serially, the overhead is about 0.5 s per decision. JEV chose the top-simulated action in 126 of 149 simulated decisions (85%).
+
 Offline, without the API (600 paired deals vs simple AIs, `full/local_eval.py`):
 
 | Focal seat strategy | Win rate | Mean score |
