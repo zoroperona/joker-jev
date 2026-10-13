@@ -27,8 +27,16 @@ def make_settings(count, fresh_seed=20261201, balanced_fresh=True):
     return settings
 
 
-def run_comparison(output, factory, count=10, workers=3, candidate="v2", fresh_seed=20261101, balanced_fresh=False):
-    if candidate not in ("v2", "v2_compact"):
+VERSION_NOTES = {
+    'v1': 'Original FullJEVAgent, unchanged prompts and choices.',
+    'v2': 'Visible hand partitions (4000 node budget), control and pass consequences, conditional planning instructions. All legal actions retained. JEV still chooses.',
+    'v2_compact': 'v2 consequences with at most 24 final choices and repeated partition lists omitted. JEV still chooses.',
+    'v3': 'v2_compact plus player-view sampled playouts (600 play / 200 bid rollouts, simple policy for all seats), candidates ranked by simulated score, immediate finishes played by code, recent history only. JEV still chooses otherwise.',
+}
+
+
+def run_comparison(output, factory, count=10, workers=3, candidate="v2", fresh_seed=20261101, balanced_fresh=False, baseline="v1"):
+    if candidate not in VERSION_NOTES or baseline not in VERSION_NOTES or candidate == baseline:
         raise ValueError("未知候选版本")
     if count <= 0 or not 1 <= workers <= 4:
         raise ValueError('count/workers 无效')
@@ -37,17 +45,16 @@ def run_comparison(output, factory, count=10, workers=3, candidate="v2", fresh_s
     if path.exists() or traces.exists():
         raise ValueError('报告或对局目录已存在')
     settings = make_settings(count, fresh_seed, balanced_fresh)
-    report = {'protocol': 'paired_strategy_v1_v2', 'status': 'running', 'settings': settings,
+    report = {'protocol': 'paired_strategy_%s_%s' % (baseline, candidate), 'status': 'running', 'settings': settings,
               'sha256': hashlib.sha256(json.dumps(settings, sort_keys=True).encode()).hexdigest(),
-              'versions': {'v1': 'Original FullJEVAgent, unchanged prompts and choices.',
-                           candidate: 'Visible hand partitions (4000 node budget), control and pass consequences, conditional planning instructions. All legal actions retained. JEV still chooses.'},
-              'candidate': candidate, 'balanced_fresh': balanced_fresh,
-              'candidate_config': {'hand_plan_nodes': 4000, 'final_choice_limit': 24 if candidate == 'v2_compact' else 255,
-                                   'repeated_partition_lists_omitted': candidate == 'v2_compact'},
+              'versions': {baseline: VERSION_NOTES[baseline], candidate: VERSION_NOTES[candidate]},
+              'baseline': baseline, 'candidate': candidate, 'balanced_fresh': balanced_fresh,
+              'candidate_config': {'hand_plan_nodes': 4000, 'final_choice_limit': 255 if candidate == 'v2' else 24,
+                                   'repeated_partition_lists_omitted': candidate != 'v2'},
               'started_at': datetime.now(timezone.utc).isoformat(), 'episodes': [],
               'scope': 'Both versions run now with the same model, initial seed and focal seat. Bidding may change roles/deals. No outcome filtering, no hidden hands in agents, no automatic retry. Fresh settings not used to tune v2.'}
     write_json(path, report)
-    jobs = [(s, v) for s in settings for v in ('v1', candidate)]
+    jobs = [(s, v) for s in settings for v in (baseline, candidate)]
     random.Random(417).shuffle(jobs)
     def run(job):
         setting, version = job
@@ -62,7 +69,7 @@ def run_comparison(output, factory, count=10, workers=3, candidate="v2", fresh_s
             episode = future.result()
             done.append(episode)
             report['episodes'].append({k: v for k, v in episode.items() if k not in ('trace', 'public_history')})
-            report['summary'] = summary(done, candidate)
+            report['summary'] = summary(done, candidate, baseline)
             write_json(path, report)
             print('%d/%d %s %d %s %s reward=%s' % (len(done), len(jobs), episode['split'], episode['seed'],
                                                  episode['strategy_version'], episode['status'], episode['team_reward']), flush=True)
@@ -73,7 +80,7 @@ def run_comparison(output, factory, count=10, workers=3, candidate="v2", fresh_s
     return report
 
 
-def summary(episodes, candidate="v2"):
+def summary(episodes, candidate="v2", baseline="v1"):
     out = {}
     for split in ('development', 'fresh'):
         selected = [e for e in episodes if e['split'] == split]
@@ -81,20 +88,22 @@ def summary(episodes, candidate="v2"):
         for e in selected:
             if e['status'] == 'completed':
                 groups.setdefault((e['seed'], e['focal']), {})[e['strategy_version']] = e
-        paired = [g for g in groups.values() if set(g) == {'v1', candidate}]
-        out[split] = {'all_attempts': {v: summarize([e for e in selected if e['strategy_version'] == v]) for v in ('v1', candidate)},
+        paired = [g for g in groups.values() if set(g) == {baseline, candidate}]
+        out[split] = {'all_attempts': {v: summarize([e for e in selected if e['strategy_version'] == v]) for v in (baseline, candidate)},
                       'paired_settings': len(paired),
-                      'paired_complete': {v: summarize([g[v] for g in paired]) for v in ('v1', candidate)},
-                      'v2_win_v1_loss': sum(g[candidate]['team_reward'] == 1 and g['v1']['team_reward'] == -1 for g in paired),
-                      'v1_win_v2_loss': sum(g['v1']['team_reward'] == 1 and g[candidate]['team_reward'] == -1 for g in paired)}
+                      'paired_complete': {v: summarize([g[v] for g in paired]) for v in (baseline, candidate)},
+                      'v2_win_v1_loss': sum(g[candidate]['team_reward'] == 1 and g[baseline]['team_reward'] == -1 for g in paired),
+                      'v1_win_v2_loss': sum(g[baseline]['team_reward'] == 1 and g[candidate]['team_reward'] == -1 for g in paired)}
     return out
 
 
 def render(path, report):
     versions = tuple(report['versions'])
     candidate = report.get('candidate', 'v2')
+    baseline = report.get('baseline', 'v1')
     lines = ['# 完整斗地主策略调整：配对对照', '',
-             'v1 为原始 JEV；候选版本 `%s` 增加玩家可见的拆牌方案、动作后果和有条件的牌权规划提示，最终动作仍由 JEV 选择。未修改简单 AI 对手。' % candidate, '',
+             '基线 `%s`：%s' % (baseline, report['versions'][baseline]), '',
+             '候选 `%s`：%s 未修改简单 AI 对手。' % (candidate, report['versions'][candidate]), '',
              '开发回归集用于复盘；新牌局在评测前冻结且不用于本轮调参。两版本均重新调用同一固定模型，相同初始种子和目标座位；叫分不同可改变最终身份。', '',
              '冻结 SHA-256：`%s`。' % report['sha256'], '',
              '| 数据集 | 版本 | 完成/尝试 | 胜/负 | 胜率 | 平均积分 | API 次数 | 已知输入/输出 token |',
@@ -107,8 +116,8 @@ def render(path, report):
                 split, v, m['completed'], m['attempted'], m['team_wins'], m['team_losses'],
                 '—' if rate is None else '%.1f%%' % (100 * rate), m['mean_completed_score'], m['api_attempts'],
                 usage.get('input_tokens', 0), usage.get('output_tokens', 0)))
-        notes += ['', '%s：两版均完成的配对 %d 个，v2 赢/v1 输 %d 个，v1 赢/v2 输 %d 个。' % (
-            split, data['paired_settings'], data['v2_win_v1_loss'], data['v1_win_v2_loss']), '']
+        notes += ['', '%s：两版均完成的配对 %d 个，%s 赢/%s 输 %d 个，%s 赢/%s 输 %d 个。' % (
+            split, data['paired_settings'], candidate, baseline, data['v2_win_v1_loss'], baseline, candidate, data['v1_win_v2_loss']), '']
     errors = [(e['split'], e['seed'], e['strategy_version'], e.get('error', e['status']))
               for e in report['episodes'] if e['status'] != 'completed']
     if errors:
@@ -116,7 +125,7 @@ def render(path, report):
         notes += ['- %s / %s / %s：%s' % item for item in errors]
         notes += ['']
     lines += notes
-    lines += ['## 逐局结果', '', '| 数据集 | 种子 | v1 结果/身份 | %s 结果/身份 |' % candidate, '|---|---:|---|---|']
+    lines += ['## 逐局结果', '', '| 数据集 | 种子 | %s 结果/身份 | %s 结果/身份 |' % (baseline, candidate), '|---|---:|---|---|']
     groups = {}
     for e in report['episodes']:
         groups.setdefault((e['split'], e['seed']), {})[e['strategy_version']] = e
@@ -133,7 +142,8 @@ def render(path, report):
 
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
-    parser.add_argument('--candidate', choices=('v2', 'v2_compact'), default='v2_compact')
+    parser.add_argument('--candidate', choices=tuple(VERSION_NOTES), default='v3')
+    parser.add_argument('--baseline', choices=tuple(VERSION_NOTES), default='v2_compact')
     parser.add_argument('--fresh-seed', type=int, default=20261201)
     parser.add_argument('--output', required=True)
     parser.add_argument('--cases-per-split', type=int, default=10)
@@ -144,7 +154,7 @@ def main():
     def factory():
         backend = TypeSafeBackend.from_env(args.env_file); backend.model = args.model
         return backend
-    run_comparison(args.output, factory, args.cases_per_split, args.workers, args.candidate, args.fresh_seed, True)
+    run_comparison(args.output, factory, args.cases_per_split, args.workers, args.candidate, args.fresh_seed, True, args.baseline)
 
 
 if __name__ == '__main__':
