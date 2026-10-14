@@ -1,0 +1,3 @@
+models/*.ckpt
+models/*.tmp
+runs/

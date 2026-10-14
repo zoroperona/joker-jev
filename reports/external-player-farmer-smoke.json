@@ -1,0 +1,344 @@
+{
+  "seed": 44,
+  "bid": 0,
+  "ui_policy": "local",
+  "result": {
+    "status": "finished",
+    "plays": 25,
+    "remaining": {
+      "self": 1,
+      "right": 0,
+      "left": 17
+    }
+  },
+  "model_decisions": [
+    {
+      "decision": [],
+      "turn": 2
+    },
+    {
+      "decision": [
+        "8",
+        "9",
+        "10",
+        "J",
+        "Q"
+      ],
+      "turn": 5
+    },
+    {
+      "decision": [],
+      "turn": 8
+    },
+    {
+      "decision": [
+        "2",
+        "2"
+      ],
+      "turn": 11
+    },
+    {
+      "decision": [
+        "6",
+        "6",
+        "6",
+        "SJ"
+      ],
+      "turn": 14
+    },
+    {
+      "decision": [
+        "7",
+        "K",
+        "K",
+        "K"
+      ],
+      "turn": 17
+    },
+    {
+      "decision": [
+        "10"
+      ],
+      "turn": 20
+    },
+    {
+      "decision": [],
+      "turn": 23
+    }
+  ],
+  "confirmed_plays": [
+    {
+      "play": {
+        "sequence": 1,
+        "seat": "right",
+        "cards": [
+          "3",
+          "3",
+          "4",
+          "4",
+          "5",
+          "5"
+        ],
+        "remaining": 14
+      },
+      "count": 6
+    },
+    {
+      "play": {
+        "sequence": 2,
+        "seat": "left",
+        "cards": [],
+        "remaining": 17
+      },
+      "count": 0
+    },
+    {
+      "play": {
+        "sequence": 3,
+        "seat": "self",
+        "cards": [],
+        "remaining": 17
+      },
+      "count": 0
+    },
+    {
+      "play": {
+        "sequence": 4,
+        "seat": "right",
+        "cards": [
+          "7",
+          "8",
+          "9",
+          "10",
+          "J"
+        ],
+        "remaining": 9
+      },
+      "count": 5
+    },
+    {
+      "play": {
+        "sequence": 5,
+        "seat": "left",
+        "cards": [],
+        "remaining": 17
+      },
+      "count": 0
+    },
+    {
+      "play": {
+        "sequence": 6,
+        "seat": "self",
+        "cards": [
+          "8",
+          "9",
+          "10",
+          "J",
+          "Q"
+        ],
+        "remaining": 12
+      },
+      "count": 5
+    },
+    {
+      "play": {
+        "sequence": 7,
+        "seat": "right",
+        "cards": [
+          "10",
+          "J",
+          "Q",
+          "K",
+          "A"
+        ],
+        "remaining": 4
+      },
+      "count": 5
+    },
+    {
+      "play": {
+        "sequence": 8,
+        "seat": "left",
+        "cards": [],
+        "remaining": 17
+      },
+      "count": 0
+    },
+    {
+      "play": {
+        "sequence": 9,
+        "seat": "self",
+        "cards": [],
+        "remaining": 12
+      },
+      "count": 0
+    },
+    {
+      "play": {
+        "sequence": 10,
+        "seat": "right",
+        "cards": [
+          "8",
+          "8"
+        ],
+        "remaining": 2
+      },
+      "count": 2
+    },
+    {
+      "play": {
+        "sequence": 11,
+        "seat": "left",
+        "cards": [],
+        "remaining": 17
+      },
+      "count": 0
+    },
+    {
+      "play": {
+        "sequence": 12,
+        "seat": "self",
+        "cards": [
+          "2",
+          "2"
+        ],
+        "remaining": 10
+      },
+      "count": 2
+    },
+    {
+      "play": {
+        "sequence": 13,
+        "seat": "right",
+        "cards": [],
+        "remaining": 2
+      },
+      "count": 0
+    },
+    {
+      "play": {
+        "sequence": 14,
+        "seat": "left",
+        "cards": [],
+        "remaining": 17
+      },
+      "count": 0
+    },
+    {
+      "play": {
+        "sequence": 15,
+        "seat": "self",
+        "cards": [
+          "6",
+          "6",
+          "6",
+          "SJ"
+        ],
+        "remaining": 6
+      },
+      "count": 4
+    },
+    {
+      "play": {
+        "sequence": 16,
+        "seat": "right",
+        "cards": [],
+        "remaining": 2
+      },
+      "count": 0
+    },
+    {
+      "play": {
+        "sequence": 17,
+        "seat": "left",
+        "cards": [],
+        "remaining": 17
+      },
+      "count": 0
+    },
+    {
+      "play": {
+        "sequence": 18,
+        "seat": "self",
+        "cards": [
+          "7",
+          "K",
+          "K",
+          "K"
+        ],
+        "remaining": 2
+      },
+      "count": 4
+    },
+    {
+      "play": {
+        "sequence": 19,
+        "seat": "right",
+        "cards": [],
+        "remaining": 2
+      },
+      "count": 0
+    },
+    {
+      "play": {
+        "sequence": 20,
+        "seat": "left",
+        "cards": [],
+        "remaining": 17
+      },
+      "count": 0
+    },
+    {
+      "play": {
+        "sequence": 21,
+        "seat": "self",
+        "cards": [
+          "10"
+        ],
+        "remaining": 1
+      },
+      "count": 1
+    },
+    {
+      "play": {
+        "sequence": 22,
+        "seat": "right",
+        "cards": [
+          "BJ"
+        ],
+        "remaining": 1
+      },
+      "count": 1
+    },
+    {
+      "play": {
+        "sequence": 23,
+        "seat": "left",
+        "cards": [],
+        "remaining": 17
+      },
+      "count": 0
+    },
+    {
+      "play": {
+        "sequence": 24,
+        "seat": "self",
+        "cards": [],
+        "remaining": 1
+      },
+      "count": 0
+    },
+    {
+      "play": {
+        "sequence": 25,
+        "seat": "right",
+        "cards": [
+          "2"
+        ],
+        "remaining": 0
+      },
+      "count": 1
+    }
+  ],
+  "note": "Farmer screen-only integration check with explicit local UI mapping; no Jev calls."
+}

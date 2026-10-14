@@ -1,5 +1,7 @@
 # Joker + JEV
 
+> 新开发方向：截图驱动的独立斗地主客户端，DouZero 权重负责策略，Jev 只做 UI 操作映射。见 [外部工具架构与启动](docs/external-player.md)。原有策略实验保留。图片模式的公开模型、自建服务和硬件要求见 [视觉后端部署](docs/vision-backends.md)。
+
 [English](README.md) | 中文
 
 用于测试卡牌游戏与 JEV 决策的可扩展 Python 框架。**当前主游戏支持完整的三人经典斗地主**：从 54 张发牌、叫地主、公开底牌到完整牌型出牌和终局计分。Python 3.9+，仅依赖标准库。

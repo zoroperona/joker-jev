@@ -14,3 +14,9 @@ joker-jev = "joker_jev.__main__:main"
 
 [tool.setuptools.packages.find]
 include = ["joker_jev*"]
+
+[project.optional-dependencies]
+external = ["playwright==1.58.0", "Pillow==11.3.0", "torch==2.6.0", "numpy==2.2.6", "douzero==1.1.0"]
+
+[tool.setuptools.package-data]
+"joker_jev.external" = ["vision.swift"]

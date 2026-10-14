@@ -8,6 +8,7 @@ from typing import Dict, Optional
 from urllib.error import HTTPError, URLError
 from urllib.parse import urlsplit
 from urllib.request import HTTPRedirectHandler, Request, build_opener
+from .images import MAX_REQUEST_BYTES, validate_images
 
 DEFAULT_ENDPOINT = "https://api.typesafe.ai/v1/systemone"
 
@@ -45,15 +46,19 @@ def read_env(path: str) -> Dict[str, str]:
 
 class TypeSafeBackend:
     def __init__(self, api_key: str, endpoint: str = DEFAULT_ENDPOINT,
-                 model: str = "jev-latest", timeout: float = 30.0):
-        if not api_key.strip():
+                 model: str = "jev-latest", timeout: float = 30.0, *,
+                 allow_http: bool = False, auth: str = 'bearer'):
+        if auth not in ('bearer', 'none'):
+            raise ValueError('TYPESAFE_AUTH must be bearer or none')
+        if auth == 'bearer' and not api_key.strip():
             raise ValueError("请在 .env 或环境变量中设置 TYPESAFE_API_KEY")
         url = urlsplit(endpoint)
-        if url.scheme != "https" or not url.hostname or url.username or url.password:
-            raise ValueError("TYPESAFE_API_URL 必须是无内嵌凭据的 HTTPS 地址")
+        if (url.scheme not in (('https', 'http') if allow_http else ('https',))
+                or not url.hostname or url.username or url.password or url.fragment):
+            raise ValueError("TYPESAFE_API_URL 必须是无内嵌凭据的 HTTPS 地址；HTTP 需显式启用")
         if not math.isfinite(timeout) or timeout <= 0:
             raise ValueError("timeout 必须为有限正数")
-        self._api_key = api_key.strip()
+        self._api_key = api_key.strip() if auth == 'bearer' else ''
         self.endpoint = endpoint
         self.model = model
         self.timeout = timeout
@@ -68,6 +73,8 @@ class TypeSafeBackend:
             api_key=config.get("TYPESAFE_API_KEY", ""),
             endpoint=config.get("TYPESAFE_API_URL", DEFAULT_ENDPOINT),
             model=config.get("TYPESAFE_MODEL", "jev-latest"),
+            allow_http=config.get('TYPESAFE_ALLOW_HTTP', '0') == '1',
+            auth=config.get('TYPESAFE_AUTH', 'bearer'),
         )
 
     def __call__(self, request_json: str) -> str:
@@ -113,16 +120,24 @@ class TypeSafeBackend:
         self.last_response = data
         return json.dumps({"action_id": choice})
 
-    def evaluate(self, state: dict, questions: dict) -> dict:
+    def evaluate(self, state: dict, questions: dict, *, images=None) -> dict:
         """发送独立的类型化问题；各调用方继续校验其答案类型和范围。"""
         self.last_response = None
         if not questions:
             raise ValueError("questions 不能为空")
         payload = {"model": self.model, "state": state, "questions": questions}
+        if images is not None:
+            validate_images(images)
+            payload['images'] = images
+        raw = json.dumps(payload, ensure_ascii=False, allow_nan=False).encode('utf-8')
+        if images and len(raw) > MAX_REQUEST_BYTES:
+            raise ValueError('Image request exceeds 13 MiB')
+        headers = {"Content-Type": "application/json", "Accept": "application/json"}
+        if self._api_key:
+            headers['Authorization'] = 'Bearer ' + self._api_key
         request = Request(self.endpoint,
-                          data=json.dumps(payload, ensure_ascii=False, allow_nan=False).encode("utf-8"),
-                          headers={"Authorization": "Bearer " + self._api_key,
-                                   "Content-Type": "application/json", "Accept": "application/json"},
+                          data=raw,
+                          headers=headers,
                           method="POST")
         try:
             with self._opener.open(request, timeout=self.timeout) as response:

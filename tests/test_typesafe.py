@@ -81,6 +81,21 @@ class TypeSafeTests(unittest.TestCase):
             self.backend(json.dumps({"context": context}))
         self.backend._opener.open.assert_not_called()
 
+    def test_explicit_anonymous_http_does_not_send_other_service_key(self):
+        with self.assertRaises(ValueError):
+            TypeSafeBackend('', endpoint='http://127.0.0.1:8000/v1/systemone', auth='none')
+        backend = TypeSafeBackend('unrelated-official-key', endpoint='http://127.0.0.1:8000/v1/systemone',
+                                  auth='none', allow_http=True)
+        backend._opener = Mock()
+        backend._opener.open.return_value = io.BytesIO(b'{"answers":{"q":{}}}')
+        backend.evaluate({}, {'q':{}})
+        request = backend._opener.open.call_args.args[0]
+        self.assertIsNone(request.get_header('Authorization'))
+        self.assertEqual(backend._api_key, '')
+        for endpoint in ('file:///tmp/a', 'http://user:pass@localhost/x', 'https://localhost/#fragment'):
+            with self.assertRaises(ValueError):
+                TypeSafeBackend('', endpoint=endpoint, auth='none', allow_http=True)
+
     def test_environment_precedence_and_missing_key(self):
         with tempfile.TemporaryDirectory() as directory:
             path = Path(directory) / ".env"

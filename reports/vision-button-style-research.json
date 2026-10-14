@@ -1,0 +1,52 @@
+{
+  "scope": "Screen-only player. Model verifies turn, labels and card ranks. Fixed green-table pixel adapter verifies enabled state for button-only actions. Local OCR reads layout and visible history.",
+  "fixture_samples": 16,
+  "fixture_note": "Manually reviewed crops from two development runs; repeated button appearances are not independent samples.",
+  "tests": "118 full-suite tests passed; after adding one integration case, all 3 button tests passed. 7 server tests passed.",
+  "runs": [
+    {
+      "run": "match-46-pixel-buttons",
+      "seed": 46,
+      "phase": "development regression",
+      "vision": "jev",
+      "ui_policy": "jev",
+      "returned_models": [
+        "pplx-decider-v1.1-27b"
+      ],
+      "confirmed_plays": 37,
+      "decisions": 12,
+      "button_style_checks": 4,
+      "status": "finished",
+      "remaining": {
+        "self": 4,
+        "right": 15,
+        "left": 0
+      }
+    },
+    {
+      "run": "match-47-pixel-buttons",
+      "seed": 47,
+      "phase": "held-out seed",
+      "vision": "jev",
+      "ui_policy": "jev",
+      "returned_models": [
+        "pplx-decider-v1.1-27b"
+      ],
+      "confirmed_plays": 21,
+      "decisions": 7,
+      "button_style_checks": 5,
+      "status": "finished",
+      "remaining": {
+        "self": 13,
+        "right": 12,
+        "left": 0
+      }
+    }
+  ],
+  "limitations": [
+    "Only current green-table palette, fixed 1440x1600 CSS and 2x screenshots supported.",
+    "Thresholds are profile-specific pixel rules, not model confidence scores.",
+    "One held-out seed is not a reliability or win-rate estimate.",
+    "Play submit button may be disabled before card selection; enabled-state check here covers button-only actions. Existing fresh-frame and post-action checks remain."
+  ]
+}

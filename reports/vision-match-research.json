@@ -1,0 +1,519 @@
+{
+  "scope": "Screen-only client; image hand recognition and UI verification; layout and visible history still use local OCR.",
+  "confidence_threshold": 0.8,
+  "runs": [
+    {
+      "run": "match-45-v1",
+      "seed": 45,
+      "phase": "development",
+      "vision": "jev",
+      "ui_policy": "jev",
+      "returned_models": [
+        "pplx-decider-v1.1-27b"
+      ],
+      "confirmed_plays": 0,
+      "decisions": 1,
+      "hand_image_requests": 20,
+      "status": "stopped",
+      "message": "TypeSafe 网络请求失败或超时",
+      "error_type": "TypeSafeError",
+      "confirmed_events": []
+    },
+    {
+      "run": "match-45-v2",
+      "seed": 45,
+      "phase": "development",
+      "vision": "jev",
+      "ui_policy": "jev",
+      "returned_models": [
+        "pplx-decider-v1.1-27b"
+      ],
+      "confirmed_plays": 0,
+      "decisions": 1,
+      "hand_image_requests": 20,
+      "status": "stopped",
+      "message": "Invalid or low-confidence Jev UI mapping",
+      "error_type": "ValueError",
+      "last_ui_answers": {
+        "rank_7": {
+          "choice": "7",
+          "confidence": 0.9997406733939399
+        },
+        "rank_9": {
+          "choice": "9",
+          "confidence": 0.9998085966312819
+        },
+        "button": {
+          "choice": "1",
+          "confidence": 0.9998270751009759
+        },
+        "visual_check": {
+          "choice": "match",
+          "confidence": 0.7000595837849255
+        }
+      },
+      "confirmed_events": []
+    },
+    {
+      "run": "match-45-v3",
+      "seed": 45,
+      "phase": "development",
+      "vision": "jev",
+      "ui_policy": "jev",
+      "returned_models": [
+        "pplx-decider-v1.1-27b"
+      ],
+      "confirmed_plays": 12,
+      "decisions": 5,
+      "hand_image_requests": 69,
+      "status": "stopped",
+      "message": "Invalid or low-confidence Jev UI mapping",
+      "error_type": "ValueError",
+      "last_ui_answers": {
+        "button": {
+          "choice": "0",
+          "confidence": 0.9992811694386774
+        },
+        "visual_check": {
+          "choice": "match",
+          "confidence": 0.7830830413904106
+        }
+      },
+      "confirmed_events": [
+        {
+          "sequence": 1,
+          "seat": "self",
+          "cards": [
+            "7",
+            "9",
+            "9",
+            "9"
+          ],
+          "remaining": 16
+        },
+        {
+          "sequence": 2,
+          "seat": "right",
+          "cards": [],
+          "remaining": 17
+        },
+        {
+          "sequence": 3,
+          "seat": "left",
+          "cards": [],
+          "remaining": 17
+        },
+        {
+          "sequence": 4,
+          "seat": "self",
+          "cards": [
+            "8",
+            "J",
+            "J",
+            "J"
+          ],
+          "remaining": 12
+        },
+        {
+          "sequence": 5,
+          "seat": "right",
+          "cards": [],
+          "remaining": 17
+        },
+        {
+          "sequence": 6,
+          "seat": "left",
+          "cards": [],
+          "remaining": 17
+        },
+        {
+          "sequence": 7,
+          "seat": "self",
+          "cards": [
+            "4"
+          ],
+          "remaining": 11
+        },
+        {
+          "sequence": 8,
+          "seat": "right",
+          "cards": [
+            "5"
+          ],
+          "remaining": 16
+        },
+        {
+          "sequence": 9,
+          "seat": "left",
+          "cards": [
+            "K"
+          ],
+          "remaining": 16
+        },
+        {
+          "sequence": 10,
+          "seat": "self",
+          "cards": [
+            "2"
+          ],
+          "remaining": 10
+        },
+        {
+          "sequence": 11,
+          "seat": "right",
+          "cards": [
+            "SJ"
+          ],
+          "remaining": 15
+        },
+        {
+          "sequence": 12,
+          "seat": "left",
+          "cards": [
+            "BJ"
+          ],
+          "remaining": 15
+        }
+      ]
+    },
+    {
+      "run": "match-45-v4",
+      "seed": 45,
+      "phase": "development",
+      "vision": "jev",
+      "ui_policy": "jev",
+      "returned_models": [
+        "pplx-decider-v1.1-27b"
+      ],
+      "confirmed_plays": 27,
+      "decisions": 9,
+      "hand_image_requests": 99,
+      "status": "finished",
+      "remaining": {
+        "self": 5,
+        "right": 10,
+        "left": 0
+      },
+      "confirmed_events": [
+        {
+          "sequence": 1,
+          "seat": "self",
+          "cards": [
+            "7",
+            "9",
+            "9",
+            "9"
+          ],
+          "remaining": 16
+        },
+        {
+          "sequence": 2,
+          "seat": "right",
+          "cards": [],
+          "remaining": 17
+        },
+        {
+          "sequence": 3,
+          "seat": "left",
+          "cards": [],
+          "remaining": 17
+        },
+        {
+          "sequence": 4,
+          "seat": "self",
+          "cards": [
+            "8",
+            "J",
+            "J",
+            "J"
+          ],
+          "remaining": 12
+        },
+        {
+          "sequence": 5,
+          "seat": "right",
+          "cards": [],
+          "remaining": 17
+        },
+        {
+          "sequence": 6,
+          "seat": "left",
+          "cards": [],
+          "remaining": 17
+        },
+        {
+          "sequence": 7,
+          "seat": "self",
+          "cards": [
+            "4"
+          ],
+          "remaining": 11
+        },
+        {
+          "sequence": 8,
+          "seat": "right",
+          "cards": [
+            "5"
+          ],
+          "remaining": 16
+        },
+        {
+          "sequence": 9,
+          "seat": "left",
+          "cards": [
+            "K"
+          ],
+          "remaining": 16
+        },
+        {
+          "sequence": 10,
+          "seat": "self",
+          "cards": [
+            "2"
+          ],
+          "remaining": 10
+        },
+        {
+          "sequence": 11,
+          "seat": "right",
+          "cards": [
+            "SJ"
+          ],
+          "remaining": 15
+        },
+        {
+          "sequence": 12,
+          "seat": "left",
+          "cards": [
+            "BJ"
+          ],
+          "remaining": 15
+        },
+        {
+          "sequence": 13,
+          "seat": "self",
+          "cards": [],
+          "remaining": 10
+        },
+        {
+          "sequence": 14,
+          "seat": "right",
+          "cards": [],
+          "remaining": 15
+        },
+        {
+          "sequence": 15,
+          "seat": "left",
+          "cards": [
+            "3",
+            "3",
+            "3",
+            "4",
+            "4",
+            "4",
+            "8",
+            "10"
+          ],
+          "remaining": 7
+        },
+        {
+          "sequence": 16,
+          "seat": "self",
+          "cards": [],
+          "remaining": 10
+        },
+        {
+          "sequence": 17,
+          "seat": "right",
+          "cards": [],
+          "remaining": 15
+        },
+        {
+          "sequence": 18,
+          "seat": "left",
+          "cards": [
+            "5",
+            "5",
+            "7",
+            "7",
+            "7"
+          ],
+          "remaining": 2
+        },
+        {
+          "sequence": 19,
+          "seat": "self",
+          "cards": [
+            "K",
+            "K",
+            "K",
+            "A",
+            "A"
+          ],
+          "remaining": 5
+        },
+        {
+          "sequence": 20,
+          "seat": "right",
+          "cards": [
+            "Q",
+            "Q",
+            "Q",
+            "Q"
+          ],
+          "remaining": 11
+        },
+        {
+          "sequence": 21,
+          "seat": "left",
+          "cards": [],
+          "remaining": 2
+        },
+        {
+          "sequence": 22,
+          "seat": "self",
+          "cards": [],
+          "remaining": 5
+        },
+        {
+          "sequence": 23,
+          "seat": "right",
+          "cards": [
+            "3"
+          ],
+          "remaining": 10
+        },
+        {
+          "sequence": 24,
+          "seat": "left",
+          "cards": [
+            "A"
+          ],
+          "remaining": 1
+        },
+        {
+          "sequence": 25,
+          "seat": "self",
+          "cards": [],
+          "remaining": 5
+        },
+        {
+          "sequence": 26,
+          "seat": "right",
+          "cards": [],
+          "remaining": 10
+        },
+        {
+          "sequence": 27,
+          "seat": "left",
+          "cards": [
+            "2"
+          ],
+          "remaining": 0
+        }
+      ]
+    },
+    {
+      "run": "match-46-farmer",
+      "seed": 46,
+      "phase": "held_out",
+      "vision": "jev",
+      "ui_policy": "jev",
+      "returned_models": [
+        "pplx-decider-v1.1-27b"
+      ],
+      "confirmed_plays": 1,
+      "decisions": 1,
+      "hand_image_requests": 34,
+      "status": "stopped",
+      "message": "Invalid or low-confidence Jev UI mapping",
+      "error_type": "ValueError",
+      "last_ui_answers": {
+        "rank_7": {
+          "choice": "7",
+          "confidence": 0.9996834417045329
+        },
+        "rank_8": {
+          "choice": "8",
+          "confidence": 0.9997053642147268
+        },
+        "rank_9": {
+          "choice": "9",
+          "confidence": 0.9992989882251587
+        },
+        "rank_10": {
+          "choice": "10",
+          "confidence": 0.9982346249512202
+        },
+        "rank_J": {
+          "choice": "J",
+          "confidence": 0.9997845111246612
+        },
+        "rank_Q": {
+          "choice": "Q",
+          "confidence": 0.999550443660932
+        },
+        "button": {
+          "choice": "1",
+          "confidence": 0.9998160231113433
+        },
+        "visual_check": {
+          "choice": "match",
+          "confidence": 0.7830830413904106
+        }
+      },
+      "confirmed_events": [
+        {
+          "sequence": 1,
+          "seat": "left",
+          "cards": [
+            "4",
+            "5",
+            "6",
+            "7",
+            "8",
+            "9"
+          ],
+          "remaining": 14
+        }
+      ]
+    }
+  ],
+  "ui_controls": [
+    {
+      "case": "valid_pass",
+      "frame": 18,
+      "accepted": true,
+      "seconds": 2.0002605829940876,
+      "returned_model": "pplx-decider-v1.1-27b",
+      "answers": {
+        "button": {
+          "choice": "0",
+          "confidence": 0.9995883578693054
+        },
+        "visual_check": {
+          "choice": "match",
+          "confidence": 0.8620128770322566
+        }
+      }
+    },
+    {
+      "case": "not_our_turn",
+      "frame": 3,
+      "accepted": false,
+      "error": "Invalid or low-confidence Jev UI mapping",
+      "seconds": 2.003714582999237,
+      "returned_model": "pplx-decider-v1.1-27b",
+      "answers": {
+        "button": {
+          "choice": "0",
+          "confidence": 0.9998650313953092
+        },
+        "visual_check": {
+          "choice": "reject",
+          "confidence": 0.4587026399760652
+        }
+      }
+    }
+  ]
+}

@@ -1,0 +1,17 @@
+{
+  "landlord": {
+    "url": "https://raw.githubusercontent.com/Netease-Games-AI-Lab-Guangzhou/PerfectDou/594404922ee3810e2d84b80bb2c2846cb20e5390/perfectdou/model/douzero/douzero_ADP/landlord.ckpt",
+    "sha256": "6f2971813495e9c509cbd4a101213c49587472942fa0f018d04c139a6a647c2d",
+    "size": 5835440
+  },
+  "landlord_up": {
+    "url": "https://raw.githubusercontent.com/Netease-Games-AI-Lab-Guangzhou/PerfectDou/594404922ee3810e2d84b80bb2c2846cb20e5390/perfectdou/model/douzero/douzero_ADP/landlord_up.ckpt",
+    "sha256": "7fb7c495ff095db2ddadd8f9f8fd53cad840211578dabc83bbcc8d75085f843e",
+    "size": 6062768
+  },
+  "landlord_down": {
+    "url": "https://raw.githubusercontent.com/Netease-Games-AI-Lab-Guangzhou/PerfectDou/594404922ee3810e2d84b80bb2c2846cb20e5390/perfectdou/model/douzero/douzero_ADP/landlord_down.ckpt",
+    "sha256": "c173dbe30258f19b6392c30ab1e330b6b3090bbd9ccdc89a9b18123a6ab6e2d9",
+    "size": 6062768
+  }
+}

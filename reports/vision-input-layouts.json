@@ -1,0 +1,1851 @@
+{
+  "scope": "Two fixed real screenshots, 37 manually labelled card occurrences; development benchmark, not a held-out accuracy estimate.",
+  "requested_model": "jev-1.13.0",
+  "returned_models": [
+    "pplx-decider-v1.1-27b"
+  ],
+  "experiments": [
+    {
+      "mode": "original",
+      "correct": 33,
+      "total": 37,
+      "wrong_high_confidence": 3,
+      "below_threshold": 2,
+      "outcomes": [
+        {
+          "fixture": "opening",
+          "index": 0,
+          "expected": "3",
+          "choice": "3",
+          "confidence": 0.9848778473734726,
+          "correct": true
+        },
+        {
+          "fixture": "opening",
+          "index": 1,
+          "expected": "5",
+          "choice": "5",
+          "confidence": 0.994621619849073,
+          "correct": true
+        },
+        {
+          "fixture": "opening",
+          "index": 2,
+          "expected": "5",
+          "choice": "7",
+          "confidence": 0.9917252737134227,
+          "correct": false
+        },
+        {
+          "fixture": "opening",
+          "index": 3,
+          "expected": "7",
+          "choice": "7",
+          "confidence": 0.999091020954887,
+          "correct": true
+        },
+        {
+          "fixture": "opening",
+          "index": 4,
+          "expected": "7",
+          "choice": "7",
+          "confidence": 0.5298784125724939,
+          "correct": true
+        },
+        {
+          "fixture": "opening",
+          "index": 5,
+          "expected": "8",
+          "choice": "8",
+          "confidence": 0.9939563973992599,
+          "correct": true
+        },
+        {
+          "fixture": "opening",
+          "index": 6,
+          "expected": "8",
+          "choice": "8",
+          "confidence": 0.9982912236007148,
+          "correct": true
+        },
+        {
+          "fixture": "opening",
+          "index": 7,
+          "expected": "8",
+          "choice": "8",
+          "confidence": 0.9975899021081421,
+          "correct": true
+        },
+        {
+          "fixture": "opening",
+          "index": 8,
+          "expected": "10",
+          "choice": "10",
+          "confidence": 0.9999026472198845,
+          "correct": true
+        },
+        {
+          "fixture": "opening",
+          "index": 9,
+          "expected": "10",
+          "choice": "10",
+          "confidence": 0.9998824612502253,
+          "correct": true
+        },
+        {
+          "fixture": "opening",
+          "index": 10,
+          "expected": "10",
+          "choice": "10",
+          "confidence": 0.9999354966816506,
+          "correct": true
+        },
+        {
+          "fixture": "opening",
+          "index": 11,
+          "expected": "10",
+          "choice": "10",
+          "confidence": 0.9999306046605886,
+          "correct": true
+        },
+        {
+          "fixture": "opening",
+          "index": 12,
+          "expected": "J",
+          "choice": "J",
+          "confidence": 0.9992575864726924,
+          "correct": true
+        },
+        {
+          "fixture": "opening",
+          "index": 13,
+          "expected": "Q",
+          "choice": "Q",
+          "confidence": 0.9979563183015195,
+          "correct": true
+        },
+        {
+          "fixture": "opening",
+          "index": 14,
+          "expected": "A",
+          "choice": "A",
+          "confidence": 0.9994205804972195,
+          "correct": true
+        },
+        {
+          "fixture": "opening",
+          "index": 15,
+          "expected": "2",
+          "choice": "2",
+          "confidence": 0.9989318058572251,
+          "correct": true
+        },
+        {
+          "fixture": "opening",
+          "index": 16,
+          "expected": "2",
+          "choice": "2",
+          "confidence": 0.9983276302746954,
+          "correct": true
+        },
+        {
+          "fixture": "jokers",
+          "index": 0,
+          "expected": "3",
+          "choice": "3",
+          "confidence": 0.9908333255735092,
+          "correct": true
+        },
+        {
+          "fixture": "jokers",
+          "index": 1,
+          "expected": "3",
+          "choice": "4",
+          "confidence": 0.9476906080075718,
+          "correct": false
+        },
+        {
+          "fixture": "jokers",
+          "index": 2,
+          "expected": "4",
+          "choice": "5",
+          "confidence": 0.9963606101339668,
+          "correct": false
+        },
+        {
+          "fixture": "jokers",
+          "index": 3,
+          "expected": "5",
+          "choice": "5",
+          "confidence": 0.9988547868328548,
+          "correct": true
+        },
+        {
+          "fixture": "jokers",
+          "index": 4,
+          "expected": "6",
+          "choice": "7",
+          "confidence": 0.6383633282767358,
+          "correct": false
+        },
+        {
+          "fixture": "jokers",
+          "index": 5,
+          "expected": "6",
+          "choice": "6",
+          "confidence": 0.9976013742071609,
+          "correct": true
+        },
+        {
+          "fixture": "jokers",
+          "index": 6,
+          "expected": "7",
+          "choice": "7",
+          "confidence": 0.9920984134793157,
+          "correct": true
+        },
+        {
+          "fixture": "jokers",
+          "index": 7,
+          "expected": "7",
+          "choice": "7",
+          "confidence": 0.9985522072129599,
+          "correct": true
+        },
+        {
+          "fixture": "jokers",
+          "index": 8,
+          "expected": "7",
+          "choice": "7",
+          "confidence": 0.9985474074589327,
+          "correct": true
+        },
+        {
+          "fixture": "jokers",
+          "index": 9,
+          "expected": "8",
+          "choice": "8",
+          "confidence": 0.9946260982533333,
+          "correct": true
+        },
+        {
+          "fixture": "jokers",
+          "index": 10,
+          "expected": "8",
+          "choice": "8",
+          "confidence": 0.998388260036757,
+          "correct": true
+        },
+        {
+          "fixture": "jokers",
+          "index": 11,
+          "expected": "9",
+          "choice": "9",
+          "confidence": 0.9977380617055576,
+          "correct": true
+        },
+        {
+          "fixture": "jokers",
+          "index": 12,
+          "expected": "J",
+          "choice": "J",
+          "confidence": 0.9991082394638441,
+          "correct": true
+        },
+        {
+          "fixture": "jokers",
+          "index": 13,
+          "expected": "Q",
+          "choice": "Q",
+          "confidence": 0.997957031312136,
+          "correct": true
+        },
+        {
+          "fixture": "jokers",
+          "index": 14,
+          "expected": "K",
+          "choice": "K",
+          "confidence": 0.9993865449890155,
+          "correct": true
+        },
+        {
+          "fixture": "jokers",
+          "index": 15,
+          "expected": "A",
+          "choice": "A",
+          "confidence": 0.9993937786754329,
+          "correct": true
+        },
+        {
+          "fixture": "jokers",
+          "index": 16,
+          "expected": "A",
+          "choice": "A",
+          "confidence": 0.99928325409771,
+          "correct": true
+        },
+        {
+          "fixture": "jokers",
+          "index": 17,
+          "expected": "2",
+          "choice": "2",
+          "confidence": 0.9982312748566877,
+          "correct": true
+        },
+        {
+          "fixture": "jokers",
+          "index": 18,
+          "expected": "SJ",
+          "choice": "SJ",
+          "confidence": 0.99937588918126,
+          "correct": true
+        },
+        {
+          "fixture": "jokers",
+          "index": 19,
+          "expected": "BJ",
+          "choice": "BJ",
+          "confidence": 0.9990329816666359,
+          "correct": true
+        }
+      ],
+      "requests": 10,
+      "total_seconds": 16.676
+    },
+    {
+      "mode": "multi",
+      "correct": 37,
+      "total": 37,
+      "wrong_high_confidence": 0,
+      "below_threshold": 0,
+      "outcomes": [
+        {
+          "fixture": "opening",
+          "index": 0,
+          "expected": "3",
+          "choice": "3",
+          "confidence": 0.9988334934789954,
+          "correct": true
+        },
+        {
+          "fixture": "opening",
+          "index": 1,
+          "expected": "5",
+          "choice": "5",
+          "confidence": 0.9983899368498307,
+          "correct": true
+        },
+        {
+          "fixture": "opening",
+          "index": 2,
+          "expected": "5",
+          "choice": "5",
+          "confidence": 0.9993418490886846,
+          "correct": true
+        },
+        {
+          "fixture": "opening",
+          "index": 3,
+          "expected": "7",
+          "choice": "7",
+          "confidence": 0.9993029122839575,
+          "correct": true
+        },
+        {
+          "fixture": "opening",
+          "index": 4,
+          "expected": "7",
+          "choice": "7",
+          "confidence": 0.9988780572035642,
+          "correct": true
+        },
+        {
+          "fixture": "opening",
+          "index": 5,
+          "expected": "8",
+          "choice": "8",
+          "confidence": 0.9984228882190731,
+          "correct": true
+        },
+        {
+          "fixture": "opening",
+          "index": 6,
+          "expected": "8",
+          "choice": "8",
+          "confidence": 0.9994637234551305,
+          "correct": true
+        },
+        {
+          "fixture": "opening",
+          "index": 7,
+          "expected": "8",
+          "choice": "8",
+          "confidence": 0.9992314557751992,
+          "correct": true
+        },
+        {
+          "fixture": "opening",
+          "index": 8,
+          "expected": "10",
+          "choice": "10",
+          "confidence": 0.9998815556850313,
+          "correct": true
+        },
+        {
+          "fixture": "opening",
+          "index": 9,
+          "expected": "10",
+          "choice": "10",
+          "confidence": 0.9998379767712638,
+          "correct": true
+        },
+        {
+          "fixture": "opening",
+          "index": 10,
+          "expected": "10",
+          "choice": "10",
+          "confidence": 0.9999114405954292,
+          "correct": true
+        },
+        {
+          "fixture": "opening",
+          "index": 11,
+          "expected": "10",
+          "choice": "10",
+          "confidence": 0.9998863010806268,
+          "correct": true
+        },
+        {
+          "fixture": "opening",
+          "index": 12,
+          "expected": "J",
+          "choice": "J",
+          "confidence": 0.9991911218286079,
+          "correct": true
+        },
+        {
+          "fixture": "opening",
+          "index": 13,
+          "expected": "Q",
+          "choice": "Q",
+          "confidence": 0.9977642136415518,
+          "correct": true
+        },
+        {
+          "fixture": "opening",
+          "index": 14,
+          "expected": "A",
+          "choice": "A",
+          "confidence": 0.9992726028334662,
+          "correct": true
+        },
+        {
+          "fixture": "opening",
+          "index": 15,
+          "expected": "2",
+          "choice": "2",
+          "confidence": 0.9990827246437651,
+          "correct": true
+        },
+        {
+          "fixture": "opening",
+          "index": 16,
+          "expected": "2",
+          "choice": "2",
+          "confidence": 0.9974877727689007,
+          "correct": true
+        },
+        {
+          "fixture": "jokers",
+          "index": 0,
+          "expected": "3",
+          "choice": "3",
+          "confidence": 0.9997589985088963,
+          "correct": true
+        },
+        {
+          "fixture": "jokers",
+          "index": 1,
+          "expected": "3",
+          "choice": "3",
+          "confidence": 0.9996884741765917,
+          "correct": true
+        },
+        {
+          "fixture": "jokers",
+          "index": 2,
+          "expected": "4",
+          "choice": "4",
+          "confidence": 0.9987439622996485,
+          "correct": true
+        },
+        {
+          "fixture": "jokers",
+          "index": 3,
+          "expected": "5",
+          "choice": "5",
+          "confidence": 0.9991403589352058,
+          "correct": true
+        },
+        {
+          "fixture": "jokers",
+          "index": 4,
+          "expected": "6",
+          "choice": "6",
+          "confidence": 0.999112800154151,
+          "correct": true
+        },
+        {
+          "fixture": "jokers",
+          "index": 5,
+          "expected": "6",
+          "choice": "6",
+          "confidence": 0.998171138014478,
+          "correct": true
+        },
+        {
+          "fixture": "jokers",
+          "index": 6,
+          "expected": "7",
+          "choice": "7",
+          "confidence": 0.9989062119367491,
+          "correct": true
+        },
+        {
+          "fixture": "jokers",
+          "index": 7,
+          "expected": "7",
+          "choice": "7",
+          "confidence": 0.9993003929698864,
+          "correct": true
+        },
+        {
+          "fixture": "jokers",
+          "index": 8,
+          "expected": "7",
+          "choice": "7",
+          "confidence": 0.9991079611905729,
+          "correct": true
+        },
+        {
+          "fixture": "jokers",
+          "index": 9,
+          "expected": "8",
+          "choice": "8",
+          "confidence": 0.9981129050800183,
+          "correct": true
+        },
+        {
+          "fixture": "jokers",
+          "index": 10,
+          "expected": "8",
+          "choice": "8",
+          "confidence": 0.9996411717817762,
+          "correct": true
+        },
+        {
+          "fixture": "jokers",
+          "index": 11,
+          "expected": "9",
+          "choice": "9",
+          "confidence": 0.9976837343720691,
+          "correct": true
+        },
+        {
+          "fixture": "jokers",
+          "index": 12,
+          "expected": "J",
+          "choice": "J",
+          "confidence": 0.9989872175545377,
+          "correct": true
+        },
+        {
+          "fixture": "jokers",
+          "index": 13,
+          "expected": "Q",
+          "choice": "Q",
+          "confidence": 0.9980668226410682,
+          "correct": true
+        },
+        {
+          "fixture": "jokers",
+          "index": 14,
+          "expected": "K",
+          "choice": "K",
+          "confidence": 0.99919626086081,
+          "correct": true
+        },
+        {
+          "fixture": "jokers",
+          "index": 15,
+          "expected": "A",
+          "choice": "A",
+          "confidence": 0.9991599729844146,
+          "correct": true
+        },
+        {
+          "fixture": "jokers",
+          "index": 16,
+          "expected": "A",
+          "choice": "A",
+          "confidence": 0.9993412097195141,
+          "correct": true
+        },
+        {
+          "fixture": "jokers",
+          "index": 17,
+          "expected": "2",
+          "choice": "2",
+          "confidence": 0.9970968224978997,
+          "correct": true
+        },
+        {
+          "fixture": "jokers",
+          "index": 18,
+          "expected": "SJ",
+          "choice": "SJ",
+          "confidence": 0.9985749919561933,
+          "correct": true
+        },
+        {
+          "fixture": "jokers",
+          "index": 19,
+          "expected": "BJ",
+          "choice": "BJ",
+          "confidence": 0.9992155036761994,
+          "correct": true
+        }
+      ],
+      "requests": 10,
+      "total_seconds": 16.222
+    },
+    {
+      "mode": "single",
+      "correct": 37,
+      "total": 37,
+      "wrong_high_confidence": 0,
+      "below_threshold": 0,
+      "outcomes": [
+        {
+          "fixture": "opening",
+          "index": 0,
+          "expected": "3",
+          "choice": "3",
+          "confidence": 0.9986549903437727,
+          "correct": true
+        },
+        {
+          "fixture": "opening",
+          "index": 1,
+          "expected": "5",
+          "choice": "5",
+          "confidence": 0.995573645848415,
+          "correct": true
+        },
+        {
+          "fixture": "opening",
+          "index": 2,
+          "expected": "5",
+          "choice": "5",
+          "confidence": 0.9989762183082733,
+          "correct": true
+        },
+        {
+          "fixture": "opening",
+          "index": 3,
+          "expected": "7",
+          "choice": "7",
+          "confidence": 0.9988582685192404,
+          "correct": true
+        },
+        {
+          "fixture": "opening",
+          "index": 4,
+          "expected": "7",
+          "choice": "7",
+          "confidence": 0.998375992322999,
+          "correct": true
+        },
+        {
+          "fixture": "opening",
+          "index": 5,
+          "expected": "8",
+          "choice": "8",
+          "confidence": 0.9977351595762892,
+          "correct": true
+        },
+        {
+          "fixture": "opening",
+          "index": 6,
+          "expected": "8",
+          "choice": "8",
+          "confidence": 0.9974371634920778,
+          "correct": true
+        },
+        {
+          "fixture": "opening",
+          "index": 7,
+          "expected": "8",
+          "choice": "8",
+          "confidence": 0.9977101830393352,
+          "correct": true
+        },
+        {
+          "fixture": "opening",
+          "index": 8,
+          "expected": "10",
+          "choice": "10",
+          "confidence": 0.9995126531115538,
+          "correct": true
+        },
+        {
+          "fixture": "opening",
+          "index": 9,
+          "expected": "10",
+          "choice": "10",
+          "confidence": 0.9982060493267287,
+          "correct": true
+        },
+        {
+          "fixture": "opening",
+          "index": 10,
+          "expected": "10",
+          "choice": "10",
+          "confidence": 0.9996062680850878,
+          "correct": true
+        },
+        {
+          "fixture": "opening",
+          "index": 11,
+          "expected": "10",
+          "choice": "10",
+          "confidence": 0.999023116502222,
+          "correct": true
+        },
+        {
+          "fixture": "opening",
+          "index": 12,
+          "expected": "J",
+          "choice": "J",
+          "confidence": 0.9990840688989052,
+          "correct": true
+        },
+        {
+          "fixture": "opening",
+          "index": 13,
+          "expected": "Q",
+          "choice": "Q",
+          "confidence": 0.9894474103232889,
+          "correct": true
+        },
+        {
+          "fixture": "opening",
+          "index": 14,
+          "expected": "A",
+          "choice": "A",
+          "confidence": 0.9989924204924535,
+          "correct": true
+        },
+        {
+          "fixture": "opening",
+          "index": 15,
+          "expected": "2",
+          "choice": "2",
+          "confidence": 0.9979083907334735,
+          "correct": true
+        },
+        {
+          "fixture": "opening",
+          "index": 16,
+          "expected": "2",
+          "choice": "2",
+          "confidence": 0.998321533251555,
+          "correct": true
+        },
+        {
+          "fixture": "jokers",
+          "index": 0,
+          "expected": "3",
+          "choice": "3",
+          "confidence": 0.9989396904951906,
+          "correct": true
+        },
+        {
+          "fixture": "jokers",
+          "index": 1,
+          "expected": "3",
+          "choice": "3",
+          "confidence": 0.9971773964764135,
+          "correct": true
+        },
+        {
+          "fixture": "jokers",
+          "index": 2,
+          "expected": "4",
+          "choice": "4",
+          "confidence": 0.9992291732497878,
+          "correct": true
+        },
+        {
+          "fixture": "jokers",
+          "index": 3,
+          "expected": "5",
+          "choice": "5",
+          "confidence": 0.9979943723516583,
+          "correct": true
+        },
+        {
+          "fixture": "jokers",
+          "index": 4,
+          "expected": "6",
+          "choice": "6",
+          "confidence": 0.9984834635615745,
+          "correct": true
+        },
+        {
+          "fixture": "jokers",
+          "index": 5,
+          "expected": "6",
+          "choice": "6",
+          "confidence": 0.9978898426418066,
+          "correct": true
+        },
+        {
+          "fixture": "jokers",
+          "index": 6,
+          "expected": "7",
+          "choice": "7",
+          "confidence": 0.9989021979418072,
+          "correct": true
+        },
+        {
+          "fixture": "jokers",
+          "index": 7,
+          "expected": "7",
+          "choice": "7",
+          "confidence": 0.9985459420958354,
+          "correct": true
+        },
+        {
+          "fixture": "jokers",
+          "index": 8,
+          "expected": "7",
+          "choice": "7",
+          "confidence": 0.9987569028994822,
+          "correct": true
+        },
+        {
+          "fixture": "jokers",
+          "index": 9,
+          "expected": "8",
+          "choice": "8",
+          "confidence": 0.9973120234433839,
+          "correct": true
+        },
+        {
+          "fixture": "jokers",
+          "index": 10,
+          "expected": "8",
+          "choice": "8",
+          "confidence": 0.9980622815066778,
+          "correct": true
+        },
+        {
+          "fixture": "jokers",
+          "index": 11,
+          "expected": "9",
+          "choice": "9",
+          "confidence": 0.9942077324630461,
+          "correct": true
+        },
+        {
+          "fixture": "jokers",
+          "index": 12,
+          "expected": "J",
+          "choice": "J",
+          "confidence": 0.9991916527322591,
+          "correct": true
+        },
+        {
+          "fixture": "jokers",
+          "index": 13,
+          "expected": "Q",
+          "choice": "Q",
+          "confidence": 0.9895455992541874,
+          "correct": true
+        },
+        {
+          "fixture": "jokers",
+          "index": 14,
+          "expected": "K",
+          "choice": "K",
+          "confidence": 0.999417818538719,
+          "correct": true
+        },
+        {
+          "fixture": "jokers",
+          "index": 15,
+          "expected": "A",
+          "choice": "A",
+          "confidence": 0.997346080874585,
+          "correct": true
+        },
+        {
+          "fixture": "jokers",
+          "index": 16,
+          "expected": "A",
+          "choice": "A",
+          "confidence": 0.9992662621148197,
+          "correct": true
+        },
+        {
+          "fixture": "jokers",
+          "index": 17,
+          "expected": "2",
+          "choice": "2",
+          "confidence": 0.9962331257253437,
+          "correct": true
+        },
+        {
+          "fixture": "jokers",
+          "index": 18,
+          "expected": "SJ",
+          "choice": "SJ",
+          "confidence": 0.9909426718152552,
+          "correct": true
+        },
+        {
+          "fixture": "jokers",
+          "index": 19,
+          "expected": "BJ",
+          "choice": "BJ",
+          "confidence": 0.9880210834105119,
+          "correct": true
+        }
+      ],
+      "requests": 37,
+      "total_seconds": 10.114
+    },
+    {
+      "mode": "padded",
+      "correct": 37,
+      "total": 37,
+      "wrong_high_confidence": 0,
+      "below_threshold": 0,
+      "outcomes": [
+        {
+          "fixture": "opening",
+          "index": 0,
+          "expected": "3",
+          "choice": "3",
+          "confidence": 0.9985830699940532,
+          "correct": true
+        },
+        {
+          "fixture": "opening",
+          "index": 1,
+          "expected": "5",
+          "choice": "5",
+          "confidence": 0.99741265751878,
+          "correct": true
+        },
+        {
+          "fixture": "opening",
+          "index": 2,
+          "expected": "5",
+          "choice": "5",
+          "confidence": 0.9970763422710577,
+          "correct": true
+        },
+        {
+          "fixture": "opening",
+          "index": 3,
+          "expected": "7",
+          "choice": "7",
+          "confidence": 0.9973626700934661,
+          "correct": true
+        },
+        {
+          "fixture": "opening",
+          "index": 4,
+          "expected": "7",
+          "choice": "7",
+          "confidence": 0.9985858079517853,
+          "correct": true
+        },
+        {
+          "fixture": "opening",
+          "index": 5,
+          "expected": "8",
+          "choice": "8",
+          "confidence": 0.9859413190442639,
+          "correct": true
+        },
+        {
+          "fixture": "opening",
+          "index": 6,
+          "expected": "8",
+          "choice": "8",
+          "confidence": 0.989947189421293,
+          "correct": true
+        },
+        {
+          "fixture": "opening",
+          "index": 7,
+          "expected": "8",
+          "choice": "8",
+          "confidence": 0.9687018092350769,
+          "correct": true
+        },
+        {
+          "fixture": "opening",
+          "index": 8,
+          "expected": "10",
+          "choice": "10",
+          "confidence": 0.9995370540709783,
+          "correct": true
+        },
+        {
+          "fixture": "opening",
+          "index": 9,
+          "expected": "10",
+          "choice": "10",
+          "confidence": 0.9991130578878469,
+          "correct": true
+        },
+        {
+          "fixture": "opening",
+          "index": 10,
+          "expected": "10",
+          "choice": "10",
+          "confidence": 0.9994105582603144,
+          "correct": true
+        },
+        {
+          "fixture": "opening",
+          "index": 11,
+          "expected": "10",
+          "choice": "10",
+          "confidence": 0.9993737480472417,
+          "correct": true
+        },
+        {
+          "fixture": "opening",
+          "index": 12,
+          "expected": "J",
+          "choice": "J",
+          "confidence": 0.9984431871083398,
+          "correct": true
+        },
+        {
+          "fixture": "opening",
+          "index": 13,
+          "expected": "Q",
+          "choice": "Q",
+          "confidence": 0.9848941076606477,
+          "correct": true
+        },
+        {
+          "fixture": "opening",
+          "index": 14,
+          "expected": "A",
+          "choice": "A",
+          "confidence": 0.9932494094793377,
+          "correct": true
+        },
+        {
+          "fixture": "opening",
+          "index": 15,
+          "expected": "2",
+          "choice": "2",
+          "confidence": 0.9977033443968731,
+          "correct": true
+        },
+        {
+          "fixture": "opening",
+          "index": 16,
+          "expected": "2",
+          "choice": "2",
+          "confidence": 0.9984505658325029,
+          "correct": true
+        },
+        {
+          "fixture": "jokers",
+          "index": 0,
+          "expected": "3",
+          "choice": "3",
+          "confidence": 0.9988688148275604,
+          "correct": true
+        },
+        {
+          "fixture": "jokers",
+          "index": 1,
+          "expected": "3",
+          "choice": "3",
+          "confidence": 0.9989652724437476,
+          "correct": true
+        },
+        {
+          "fixture": "jokers",
+          "index": 2,
+          "expected": "4",
+          "choice": "4",
+          "confidence": 0.9985540180634875,
+          "correct": true
+        },
+        {
+          "fixture": "jokers",
+          "index": 3,
+          "expected": "5",
+          "choice": "5",
+          "confidence": 0.9967274285640235,
+          "correct": true
+        },
+        {
+          "fixture": "jokers",
+          "index": 4,
+          "expected": "6",
+          "choice": "6",
+          "confidence": 0.9990291556291806,
+          "correct": true
+        },
+        {
+          "fixture": "jokers",
+          "index": 5,
+          "expected": "6",
+          "choice": "6",
+          "confidence": 0.9990917277991564,
+          "correct": true
+        },
+        {
+          "fixture": "jokers",
+          "index": 6,
+          "expected": "7",
+          "choice": "7",
+          "confidence": 0.9979963520422915,
+          "correct": true
+        },
+        {
+          "fixture": "jokers",
+          "index": 7,
+          "expected": "7",
+          "choice": "7",
+          "confidence": 0.9937871602630238,
+          "correct": true
+        },
+        {
+          "fixture": "jokers",
+          "index": 8,
+          "expected": "7",
+          "choice": "7",
+          "confidence": 0.9987739126914847,
+          "correct": true
+        },
+        {
+          "fixture": "jokers",
+          "index": 9,
+          "expected": "8",
+          "choice": "8",
+          "confidence": 0.9890433274058416,
+          "correct": true
+        },
+        {
+          "fixture": "jokers",
+          "index": 10,
+          "expected": "8",
+          "choice": "8",
+          "confidence": 0.9945734896881958,
+          "correct": true
+        },
+        {
+          "fixture": "jokers",
+          "index": 11,
+          "expected": "9",
+          "choice": "9",
+          "confidence": 0.9964832540995612,
+          "correct": true
+        },
+        {
+          "fixture": "jokers",
+          "index": 12,
+          "expected": "J",
+          "choice": "J",
+          "confidence": 0.9976255213364503,
+          "correct": true
+        },
+        {
+          "fixture": "jokers",
+          "index": 13,
+          "expected": "Q",
+          "choice": "Q",
+          "confidence": 0.9804172859465226,
+          "correct": true
+        },
+        {
+          "fixture": "jokers",
+          "index": 14,
+          "expected": "K",
+          "choice": "K",
+          "confidence": 0.997997463223092,
+          "correct": true
+        },
+        {
+          "fixture": "jokers",
+          "index": 15,
+          "expected": "A",
+          "choice": "A",
+          "confidence": 0.9982658405141992,
+          "correct": true
+        },
+        {
+          "fixture": "jokers",
+          "index": 16,
+          "expected": "A",
+          "choice": "A",
+          "confidence": 0.99873447459864,
+          "correct": true
+        },
+        {
+          "fixture": "jokers",
+          "index": 17,
+          "expected": "2",
+          "choice": "2",
+          "confidence": 0.9983834939058156,
+          "correct": true
+        },
+        {
+          "fixture": "jokers",
+          "index": 18,
+          "expected": "SJ",
+          "choice": "SJ",
+          "confidence": 0.9962973259272978,
+          "correct": true
+        },
+        {
+          "fixture": "jokers",
+          "index": 19,
+          "expected": "BJ",
+          "choice": "BJ",
+          "confidence": 0.9971436817279364,
+          "correct": true
+        }
+      ],
+      "requests": 37,
+      "total_seconds": 10.019
+    },
+    {
+      "mode": "atlas",
+      "correct": 37,
+      "total": 37,
+      "wrong_high_confidence": 0,
+      "below_threshold": 0,
+      "outcomes": [
+        {
+          "fixture": "opening",
+          "index": 0,
+          "expected": "3",
+          "choice": "3",
+          "confidence": 0.9998494203686897,
+          "correct": true
+        },
+        {
+          "fixture": "opening",
+          "index": 1,
+          "expected": "5",
+          "choice": "5",
+          "confidence": 0.9995742090305468,
+          "correct": true
+        },
+        {
+          "fixture": "opening",
+          "index": 2,
+          "expected": "5",
+          "choice": "5",
+          "confidence": 0.99977325878304,
+          "correct": true
+        },
+        {
+          "fixture": "opening",
+          "index": 3,
+          "expected": "7",
+          "choice": "7",
+          "confidence": 0.9995109748013019,
+          "correct": true
+        },
+        {
+          "fixture": "opening",
+          "index": 4,
+          "expected": "7",
+          "choice": "7",
+          "confidence": 0.9994624850505374,
+          "correct": true
+        },
+        {
+          "fixture": "opening",
+          "index": 5,
+          "expected": "8",
+          "choice": "8",
+          "confidence": 0.9995719438441248,
+          "correct": true
+        },
+        {
+          "fixture": "opening",
+          "index": 6,
+          "expected": "8",
+          "choice": "8",
+          "confidence": 0.9997585901321355,
+          "correct": true
+        },
+        {
+          "fixture": "opening",
+          "index": 7,
+          "expected": "8",
+          "choice": "8",
+          "confidence": 0.9997596397324127,
+          "correct": true
+        },
+        {
+          "fixture": "opening",
+          "index": 8,
+          "expected": "10",
+          "choice": "10",
+          "confidence": 0.999905424936209,
+          "correct": true
+        },
+        {
+          "fixture": "opening",
+          "index": 9,
+          "expected": "10",
+          "choice": "10",
+          "confidence": 0.9998828508436871,
+          "correct": true
+        },
+        {
+          "fixture": "opening",
+          "index": 10,
+          "expected": "10",
+          "choice": "10",
+          "confidence": 0.9999310404218599,
+          "correct": true
+        },
+        {
+          "fixture": "opening",
+          "index": 11,
+          "expected": "10",
+          "choice": "10",
+          "confidence": 0.99991392607282,
+          "correct": true
+        },
+        {
+          "fixture": "opening",
+          "index": 12,
+          "expected": "J",
+          "choice": "J",
+          "confidence": 0.9995431644020395,
+          "correct": true
+        },
+        {
+          "fixture": "opening",
+          "index": 13,
+          "expected": "Q",
+          "choice": "Q",
+          "confidence": 0.999546025918113,
+          "correct": true
+        },
+        {
+          "fixture": "opening",
+          "index": 14,
+          "expected": "A",
+          "choice": "A",
+          "confidence": 0.9996759362644141,
+          "correct": true
+        },
+        {
+          "fixture": "opening",
+          "index": 15,
+          "expected": "2",
+          "choice": "2",
+          "confidence": 0.9995905138099102,
+          "correct": true
+        },
+        {
+          "fixture": "opening",
+          "index": 16,
+          "expected": "2",
+          "choice": "2",
+          "confidence": 0.9976057485828062,
+          "correct": true
+        },
+        {
+          "fixture": "jokers",
+          "index": 0,
+          "expected": "3",
+          "choice": "3",
+          "confidence": 0.9998950716975226,
+          "correct": true
+        },
+        {
+          "fixture": "jokers",
+          "index": 1,
+          "expected": "3",
+          "choice": "3",
+          "confidence": 0.9998296666748058,
+          "correct": true
+        },
+        {
+          "fixture": "jokers",
+          "index": 2,
+          "expected": "4",
+          "choice": "4",
+          "confidence": 0.9995749968564617,
+          "correct": true
+        },
+        {
+          "fixture": "jokers",
+          "index": 3,
+          "expected": "5",
+          "choice": "5",
+          "confidence": 0.9997205953266459,
+          "correct": true
+        },
+        {
+          "fixture": "jokers",
+          "index": 4,
+          "expected": "6",
+          "choice": "6",
+          "confidence": 0.9996173947885344,
+          "correct": true
+        },
+        {
+          "fixture": "jokers",
+          "index": 5,
+          "expected": "6",
+          "choice": "6",
+          "confidence": 0.9995470906265138,
+          "correct": true
+        },
+        {
+          "fixture": "jokers",
+          "index": 6,
+          "expected": "7",
+          "choice": "7",
+          "confidence": 0.9997192067176108,
+          "correct": true
+        },
+        {
+          "fixture": "jokers",
+          "index": 7,
+          "expected": "7",
+          "choice": "7",
+          "confidence": 0.9996592340937368,
+          "correct": true
+        },
+        {
+          "fixture": "jokers",
+          "index": 8,
+          "expected": "7",
+          "choice": "7",
+          "confidence": 0.9996960612593399,
+          "correct": true
+        },
+        {
+          "fixture": "jokers",
+          "index": 9,
+          "expected": "8",
+          "choice": "8",
+          "confidence": 0.9994160924086951,
+          "correct": true
+        },
+        {
+          "fixture": "jokers",
+          "index": 10,
+          "expected": "8",
+          "choice": "8",
+          "confidence": 0.9998014023603282,
+          "correct": true
+        },
+        {
+          "fixture": "jokers",
+          "index": 11,
+          "expected": "9",
+          "choice": "9",
+          "confidence": 0.9991342199504458,
+          "correct": true
+        },
+        {
+          "fixture": "jokers",
+          "index": 12,
+          "expected": "J",
+          "choice": "J",
+          "confidence": 0.9996138748694059,
+          "correct": true
+        },
+        {
+          "fixture": "jokers",
+          "index": 13,
+          "expected": "Q",
+          "choice": "Q",
+          "confidence": 0.9993529990906495,
+          "correct": true
+        },
+        {
+          "fixture": "jokers",
+          "index": 14,
+          "expected": "K",
+          "choice": "K",
+          "confidence": 0.9996610208774368,
+          "correct": true
+        },
+        {
+          "fixture": "jokers",
+          "index": 15,
+          "expected": "A",
+          "choice": "A",
+          "confidence": 0.9996042959114259,
+          "correct": true
+        },
+        {
+          "fixture": "jokers",
+          "index": 16,
+          "expected": "A",
+          "choice": "A",
+          "confidence": 0.9996483650975213,
+          "correct": true
+        },
+        {
+          "fixture": "jokers",
+          "index": 17,
+          "expected": "2",
+          "choice": "2",
+          "confidence": 0.9994287983723003,
+          "correct": true
+        },
+        {
+          "fixture": "jokers",
+          "index": 18,
+          "expected": "SJ",
+          "choice": "SJ",
+          "confidence": 0.9992144987017026,
+          "correct": true
+        },
+        {
+          "fixture": "jokers",
+          "index": 19,
+          "expected": "BJ",
+          "choice": "BJ",
+          "confidence": 0.9996949739958668,
+          "correct": true
+        }
+      ],
+      "requests": 10,
+      "total_seconds": 17.441
+    },
+    {
+      "mode": "no_order",
+      "correct": 37,
+      "total": 37,
+      "wrong_high_confidence": 0,
+      "below_threshold": 0,
+      "outcomes": [
+        {
+          "fixture": "opening",
+          "index": 0,
+          "expected": "3",
+          "choice": "3",
+          "confidence": 0.9994134400047486,
+          "correct": true
+        },
+        {
+          "fixture": "opening",
+          "index": 1,
+          "expected": "5",
+          "choice": "5",
+          "confidence": 0.9989204239338729,
+          "correct": true
+        },
+        {
+          "fixture": "opening",
+          "index": 2,
+          "expected": "5",
+          "choice": "5",
+          "confidence": 0.9994544591060927,
+          "correct": true
+        },
+        {
+          "fixture": "opening",
+          "index": 3,
+          "expected": "7",
+          "choice": "7",
+          "confidence": 0.999220857620156,
+          "correct": true
+        },
+        {
+          "fixture": "opening",
+          "index": 4,
+          "expected": "7",
+          "choice": "7",
+          "confidence": 0.9991542802428744,
+          "correct": true
+        },
+        {
+          "fixture": "opening",
+          "index": 5,
+          "expected": "8",
+          "choice": "8",
+          "confidence": 0.9989507641094485,
+          "correct": true
+        },
+        {
+          "fixture": "opening",
+          "index": 6,
+          "expected": "8",
+          "choice": "8",
+          "confidence": 0.999644936174707,
+          "correct": true
+        },
+        {
+          "fixture": "opening",
+          "index": 7,
+          "expected": "8",
+          "choice": "8",
+          "confidence": 0.9993471914585521,
+          "correct": true
+        },
+        {
+          "fixture": "opening",
+          "index": 8,
+          "expected": "10",
+          "choice": "10",
+          "confidence": 0.9998571645345588,
+          "correct": true
+        },
+        {
+          "fixture": "opening",
+          "index": 9,
+          "expected": "10",
+          "choice": "10",
+          "confidence": 0.99989245109582,
+          "correct": true
+        },
+        {
+          "fixture": "opening",
+          "index": 10,
+          "expected": "10",
+          "choice": "10",
+          "confidence": 0.9998928829362348,
+          "correct": true
+        },
+        {
+          "fixture": "opening",
+          "index": 11,
+          "expected": "10",
+          "choice": "10",
+          "confidence": 0.9998953790102733,
+          "correct": true
+        },
+        {
+          "fixture": "opening",
+          "index": 12,
+          "expected": "J",
+          "choice": "J",
+          "confidence": 0.9992693571120146,
+          "correct": true
+        },
+        {
+          "fixture": "opening",
+          "index": 13,
+          "expected": "Q",
+          "choice": "Q",
+          "confidence": 0.9983116675758688,
+          "correct": true
+        },
+        {
+          "fixture": "opening",
+          "index": 14,
+          "expected": "A",
+          "choice": "A",
+          "confidence": 0.9992838400937482,
+          "correct": true
+        },
+        {
+          "fixture": "opening",
+          "index": 15,
+          "expected": "2",
+          "choice": "2",
+          "confidence": 0.9990017528590318,
+          "correct": true
+        },
+        {
+          "fixture": "opening",
+          "index": 16,
+          "expected": "2",
+          "choice": "2",
+          "confidence": 0.9982582126114538,
+          "correct": true
+        },
+        {
+          "fixture": "jokers",
+          "index": 0,
+          "expected": "3",
+          "choice": "3",
+          "confidence": 0.9998345759098858,
+          "correct": true
+        },
+        {
+          "fixture": "jokers",
+          "index": 1,
+          "expected": "3",
+          "choice": "3",
+          "confidence": 0.9997498293725943,
+          "correct": true
+        },
+        {
+          "fixture": "jokers",
+          "index": 2,
+          "expected": "4",
+          "choice": "4",
+          "confidence": 0.9988627902095817,
+          "correct": true
+        },
+        {
+          "fixture": "jokers",
+          "index": 3,
+          "expected": "5",
+          "choice": "5",
+          "confidence": 0.9994854554464598,
+          "correct": true
+        },
+        {
+          "fixture": "jokers",
+          "index": 4,
+          "expected": "6",
+          "choice": "6",
+          "confidence": 0.9992023405142586,
+          "correct": true
+        },
+        {
+          "fixture": "jokers",
+          "index": 5,
+          "expected": "6",
+          "choice": "6",
+          "confidence": 0.9991834576213733,
+          "correct": true
+        },
+        {
+          "fixture": "jokers",
+          "index": 6,
+          "expected": "7",
+          "choice": "7",
+          "confidence": 0.9991953582992557,
+          "correct": true
+        },
+        {
+          "fixture": "jokers",
+          "index": 7,
+          "expected": "7",
+          "choice": "7",
+          "confidence": 0.9994538158960399,
+          "correct": true
+        },
+        {
+          "fixture": "jokers",
+          "index": 8,
+          "expected": "7",
+          "choice": "7",
+          "confidence": 0.9994365227963141,
+          "correct": true
+        },
+        {
+          "fixture": "jokers",
+          "index": 9,
+          "expected": "8",
+          "choice": "8",
+          "confidence": 0.9989960329609525,
+          "correct": true
+        },
+        {
+          "fixture": "jokers",
+          "index": 10,
+          "expected": "8",
+          "choice": "8",
+          "confidence": 0.9995496776868666,
+          "correct": true
+        },
+        {
+          "fixture": "jokers",
+          "index": 11,
+          "expected": "9",
+          "choice": "9",
+          "confidence": 0.9982026706750429,
+          "correct": true
+        },
+        {
+          "fixture": "jokers",
+          "index": 12,
+          "expected": "J",
+          "choice": "J",
+          "confidence": 0.9994187601536703,
+          "correct": true
+        },
+        {
+          "fixture": "jokers",
+          "index": 13,
+          "expected": "Q",
+          "choice": "Q",
+          "confidence": 0.9979960140385267,
+          "correct": true
+        },
+        {
+          "fixture": "jokers",
+          "index": 14,
+          "expected": "K",
+          "choice": "K",
+          "confidence": 0.9993435513477753,
+          "correct": true
+        },
+        {
+          "fixture": "jokers",
+          "index": 15,
+          "expected": "A",
+          "choice": "A",
+          "confidence": 0.9995479519116245,
+          "correct": true
+        },
+        {
+          "fixture": "jokers",
+          "index": 16,
+          "expected": "A",
+          "choice": "A",
+          "confidence": 0.9993935218816558,
+          "correct": true
+        },
+        {
+          "fixture": "jokers",
+          "index": 17,
+          "expected": "2",
+          "choice": "2",
+          "confidence": 0.9973221700529816,
+          "correct": true
+        },
+        {
+          "fixture": "jokers",
+          "index": 18,
+          "expected": "SJ",
+          "choice": "SJ",
+          "confidence": 0.9990647344923976,
+          "correct": true
+        },
+        {
+          "fixture": "jokers",
+          "index": 19,
+          "expected": "BJ",
+          "choice": "BJ",
+          "confidence": 0.9985070521317431,
+          "correct": true
+        }
+      ],
+      "requests": 10,
+      "total_seconds": 16.268
+    }
+  ]
+}

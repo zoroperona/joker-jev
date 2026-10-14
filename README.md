@@ -1,5 +1,7 @@
 # Joker + JEV
 
+> New development: a screenshot-only external player, with DouZero weights for strategy and Jev for UI target mapping. See [architecture and setup](docs/external-player.md). Existing strategy experiments remain available. See [public vision backends and self-hosting](docs/vision-backends.md) for reproducible deployment options.
+
 English | [中文](README_ZH.md)
 
 An extensible Python framework for testing card games and JEV decision-making. **The main game is full three-player classic Dou Dizhu (斗地主)**: 54-card deal, bidding, revealed bottom cards, every standard play type, and final scoring. Python 3.9+, standard library only.

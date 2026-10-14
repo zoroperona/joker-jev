@@ -1,0 +1,33 @@
+<!doctype html>
+<!-- Design assumption: an intimate green felt card room; native cards and typography, no external assets. -->
+<html lang="zh-CN">
+<head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>三人局 · 斗地主</title><link rel="stylesheet" href="/style.css"></head>
+<body>
+<header><a class="brand" href="/">三人局<span>THE CARD ROOM</span></a><div class="header-right"><span id="connection">正在连接牌桌</span><button id="rules-open" class="quiet">玩法说明 ↗</button></div></header>
+<main>
+<div class="intro"><div><span class="eyebrow">一副好牌，一段闲暇</span><h1>坐下来，斗一局。</h1></div><div class="table-meta"><span>经典斗地主 · 三人桌</span><strong id="round">第 01 局</strong></div></div>
+<section class="table" aria-label="斗地主牌桌">
+<div class="table-top"><div><span class="eyebrow">本局底牌</span><div id="bottom" class="bottom"></div></div><div class="stakes"><span>底分 <b id="bid-score">—</b></span><span>倍数 <b id="multiplier">×1</b></span></div></div>
+<div class="opponents"><article id="p2" class="player"><div class="avatar">西</div><div><h2>西窗 <span class="role"></span></h2><p class="count"></p><div class="backs"></div><p class="last"></p></div></article><article id="p1" class="player right"><div class="avatar">东</div><div><h2>东篱 <span class="role"></span></h2><p class="count"></p><div class="backs"></div><p class="last"></p></div></article></div>
+<div class="center"><div class="table-mark">三 人 局<span>好牌慢慢打 · 好友慢慢聚</span></div><div id="trick-caption" class="trick-caption"></div><div id="trick" class="trick"></div><div id="result" hidden></div></div>
+<div class="your-zone"><div class="your-heading"><div id="p0" class="self"><span class="self-dot"></span><strong>你</strong><span class="role"></span><span id="hand-count"></span></div><span id="status" role="status" aria-live="polite"></span></div><div class="hand-wrap"><div id="hand" class="hand" aria-label="你的手牌"></div></div><div class="controls"><span id="selection">点击手牌选中，再出牌</span><div id="actions"></div></div></div>
+</section>
+<section class="ai-settings" aria-label="对局设置">
+<div><h2>固定对手 <strong id="opponent-name">DouZero ADP</strong></h2><p>对手使用预训练出牌模型；叫分采用固定本地策略。</p></div>
+<form id="ai-config">
+<label>你的座位<select id="controller"><option value="human">手动出牌</option><option value="douzero">DouZero 托管</option><option value="jev">JEV 决策</option></select></label>
+<label>JEV 输入<select id="jev-mode"><option value="minimal">精简信息</option><option value="assisted">辅助信息</option></select></label>
+<button type="submit" class="config-start">应用并开始新局</button>
+</form>
+<p id="mode-description">精简信息：规则、身份、可见局面、完整历史与合法动作。</p>
+<p id="jev-note">JEV 通过已配置的 API 决策，会产生接口调用；切换配置会重开牌局并清零累计积分。</p>
+<div id="ai-error" role="alert" hidden><span></span><button id="retry" type="button">重试决策</button></div>
+</section>
+<section class="under-table"><div class="autoplay"><div><h2>让好牌自己上场</h2><p id="auto-description">开启托管，按当前配置自动对局</p></div><button id="auto" class="toggle" aria-pressed="false"><span></span><b>自动对局</b></button><label class="speed">节奏 <select id="speed"><option value="1.5">悠闲</option><option value="0.9" selected>标准</option><option value="0.25">快速</option></select></label></div><button id="new" class="quiet">重新发牌 ↻</button></section>
+<section class="record"><div class="record-title"><h2>牌桌手记 <span>TABLE NOTES</span></h2><span id="scores"></span></div><ol id="history"></ol></section>
+<footer><span>三个人，一副牌，刚刚好。</span><span>本地牌桌 · JEV 需 API 配置</span></footer>
+</main>
+<div id="toast" role="alert" hidden></div>
+<dialog id="rules"><button id="rules-close" class="quiet close">关闭 ×</button><span class="eyebrow">HOW TO PLAY</span><h2>三人一桌，先出完者胜。</h2><p>你与两位固定对手对局。轮流叫 0–3 分，最高叫分者成为地主，获得 3 张底牌并先出。三家都不叫则重新发牌。</p><p>点击手牌选择，点击「出牌」确认；「提示」会选出建议牌。可以不出，但获得自由出牌权时不能不出。</p><p>支持单张、对子、三张、三带一／对、顺子、连对、飞机带翅膀、四带二、炸弹与王炸。顺子不包含 2 或王。两家连续不出后，上一位出牌者重新领出。</p><p>任一农民先出完，农民共同获胜；地主先出完则地主获胜。炸弹、王炸、春天使倍数翻倍。无额外抢地主或加倍环节。</p><p>开启自动对局后，你的座位交给所选 AI（手动模式默认由固定对手模型托管），结算后自动开启下一局。关闭后从下一次你的回合接手。所有浏览器窗口共享这张本地牌桌。</p></dialog>
+<script src="/app.js" defer></script>
+</body></html>

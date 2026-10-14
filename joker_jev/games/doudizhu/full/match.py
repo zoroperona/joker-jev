@@ -31,6 +31,8 @@ class TracedAgent(Agent):
             decision = self.agent.decide(context)
         finally:
             record['selection'] = getattr(self.agent, 'last_selection', [])
+            if hasattr(self.agent, 'last_requests'):
+                record['sent_requests'] = self.agent.last_requests
             if getattr(self.agent, 'last_features', None) is not None:
                 record['strategy_features'] = self.agent.last_features
             self.save()
@@ -43,7 +45,12 @@ class TracedAgent(Agent):
         return decision
 
 
-def run_episode(seed, focal, output, backend=None, max_turns=1000, strategy="v1"):
+def run_episode(seed, focal, output, backend=None, max_turns=1000, strategy="v1",
+                opponent_agent=None, input_mode=None):
+    if input_mode is not None:
+        from .input_modes import InputModeJEVAgent, MODES
+        if input_mode not in MODES:
+            raise ValueError('未知 JEV 信息模式')
     if strategy not in JEV_STRATEGIES:
         raise ValueError("未知 JEV 策略版本")
     if Path(output).exists():
@@ -52,13 +59,16 @@ def run_episode(seed, focal, output, backend=None, max_turns=1000, strategy="v1"
         raise ValueError('未知目标座位')
     report = {'seed': seed, 'focal': focal, 'strategy': 'jev' if backend else 'simple_selfplay',
               'strategy_version': strategy if backend else 'full_simple_v1',
-              'status': 'running', 'team_reward': None, 'rewards': None, 'trace': [], 'api_ledger': []}
+              'opponent': 'douzero_ADP' if opponent_agent is not None else 'full_simple_v1',
+              'input_mode': input_mode, 'status': 'running', 'team_reward': None, 'rewards': None, 'trace': [], 'api_ledger': []}
     def save():
         write_json(output, report)
     save()
     metered = MeteredBackend(backend, report['api_ledger'], save) if backend else None
-    jev_class = JEV_STRATEGIES[strategy]
-    agents = {p: TracedAgent(jev_class(metered) if metered and p == focal else FullSimpleAgent(), report, save)
+    jev_class = (lambda b: InputModeJEVAgent(b, input_mode)) if input_mode else JEV_STRATEGIES[strategy]
+    if input_mode and backend:
+        report['strategy_version'] = 'matched_input_' + input_mode
+    agents = {p: TracedAgent(jev_class(metered) if metered and p == focal else (opponent_agent or FullSimpleAgent()), report, save)
               for p in PLAYERS}
     def step(event):
         row = report['trace'][-1]

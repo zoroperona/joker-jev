@@ -1,0 +1,5 @@
+# CPU inference; use native Python 3.11 on Apple Silicon.
+torch==2.6.0
+numpy==2.2.6
+douzero==1.1.0
+GitPython==3.1.45

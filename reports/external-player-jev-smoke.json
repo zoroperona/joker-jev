@@ -1,0 +1,544 @@
+{
+  "seed": 43,
+  "bid": 3,
+  "ui_policy": "jev",
+  "viewport": [
+    1440,
+    1600
+  ],
+  "device_scale_factor": 2,
+  "opponent_delay_seconds": 1.5,
+  "result": {
+    "status": "finished",
+    "plays": 42,
+    "remaining": {
+      "self": 5,
+      "right": 10,
+      "left": 0
+    }
+  },
+  "model_decisions": [
+    {
+      "decision": [
+        "3",
+        "3"
+      ],
+      "turn": 0
+    },
+    {
+      "decision": [],
+      "turn": 3
+    },
+    {
+      "decision": [
+        "A"
+      ],
+      "turn": 6
+    },
+    {
+      "decision": [],
+      "turn": 9
+    },
+    {
+      "decision": [
+        "Q"
+      ],
+      "turn": 12
+    },
+    {
+      "decision": [
+        "A"
+      ],
+      "turn": 15
+    },
+    {
+      "decision": [],
+      "turn": 18
+    },
+    {
+      "decision": [
+        "4"
+      ],
+      "turn": 21
+    },
+    {
+      "decision": [
+        "J"
+      ],
+      "turn": 24
+    },
+    {
+      "decision": [],
+      "turn": 27
+    },
+    {
+      "decision": [],
+      "turn": 30
+    },
+    {
+      "decision": [
+        "SJ",
+        "BJ"
+      ],
+      "turn": 33
+    },
+    {
+      "decision": [
+        "6",
+        "6",
+        "7",
+        "7",
+        "8",
+        "8"
+      ],
+      "turn": 36
+    },
+    {
+      "decision": [],
+      "turn": 39
+    }
+  ],
+  "confirmed_plays": [
+    {
+      "play": {
+        "sequence": 1,
+        "seat": "self",
+        "cards": [
+          "3",
+          "3"
+        ],
+        "remaining": 18
+      },
+      "count": 2
+    },
+    {
+      "play": {
+        "sequence": 2,
+        "seat": "right",
+        "cards": [],
+        "remaining": 17
+      },
+      "count": 0
+    },
+    {
+      "play": {
+        "sequence": 3,
+        "seat": "left",
+        "cards": [
+          "10",
+          "10"
+        ],
+        "remaining": 15
+      },
+      "count": 2
+    },
+    {
+      "play": {
+        "sequence": 4,
+        "seat": "self",
+        "cards": [],
+        "remaining": 18
+      },
+      "count": 0
+    },
+    {
+      "play": {
+        "sequence": 5,
+        "seat": "right",
+        "cards": [],
+        "remaining": 17
+      },
+      "count": 0
+    },
+    {
+      "play": {
+        "sequence": 6,
+        "seat": "left",
+        "cards": [
+          "8"
+        ],
+        "remaining": 14
+      },
+      "count": 1
+    },
+    {
+      "play": {
+        "sequence": 7,
+        "seat": "self",
+        "cards": [
+          "A"
+        ],
+        "remaining": 17
+      },
+      "count": 1
+    },
+    {
+      "play": {
+        "sequence": 8,
+        "seat": "right",
+        "cards": [],
+        "remaining": 17
+      },
+      "count": 0
+    },
+    {
+      "play": {
+        "sequence": 9,
+        "seat": "left",
+        "cards": [
+          "2"
+        ],
+        "remaining": 13
+      },
+      "count": 1
+    },
+    {
+      "play": {
+        "sequence": 10,
+        "seat": "self",
+        "cards": [],
+        "remaining": 17
+      },
+      "count": 0
+    },
+    {
+      "play": {
+        "sequence": 11,
+        "seat": "right",
+        "cards": [],
+        "remaining": 17
+      },
+      "count": 0
+    },
+    {
+      "play": {
+        "sequence": 12,
+        "seat": "left",
+        "cards": [
+          "J"
+        ],
+        "remaining": 12
+      },
+      "count": 1
+    },
+    {
+      "play": {
+        "sequence": 13,
+        "seat": "self",
+        "cards": [
+          "Q"
+        ],
+        "remaining": 16
+      },
+      "count": 1
+    },
+    {
+      "play": {
+        "sequence": 14,
+        "seat": "right",
+        "cards": [],
+        "remaining": 17
+      },
+      "count": 0
+    },
+    {
+      "play": {
+        "sequence": 15,
+        "seat": "left",
+        "cards": [
+          "K"
+        ],
+        "remaining": 11
+      },
+      "count": 1
+    },
+    {
+      "play": {
+        "sequence": 16,
+        "seat": "self",
+        "cards": [
+          "A"
+        ],
+        "remaining": 15
+      },
+      "count": 1
+    },
+    {
+      "play": {
+        "sequence": 17,
+        "seat": "right",
+        "cards": [],
+        "remaining": 17
+      },
+      "count": 0
+    },
+    {
+      "play": {
+        "sequence": 18,
+        "seat": "left",
+        "cards": [
+          "2"
+        ],
+        "remaining": 10
+      },
+      "count": 1
+    },
+    {
+      "play": {
+        "sequence": 19,
+        "seat": "self",
+        "cards": [],
+        "remaining": 15
+      },
+      "count": 0
+    },
+    {
+      "play": {
+        "sequence": 20,
+        "seat": "right",
+        "cards": [],
+        "remaining": 17
+      },
+      "count": 0
+    },
+    {
+      "play": {
+        "sequence": 21,
+        "seat": "left",
+        "cards": [
+          "3"
+        ],
+        "remaining": 9
+      },
+      "count": 1
+    },
+    {
+      "play": {
+        "sequence": 22,
+        "seat": "self",
+        "cards": [
+          "4"
+        ],
+        "remaining": 14
+      },
+      "count": 1
+    },
+    {
+      "play": {
+        "sequence": 23,
+        "seat": "right",
+        "cards": [],
+        "remaining": 17
+      },
+      "count": 0
+    },
+    {
+      "play": {
+        "sequence": 24,
+        "seat": "left",
+        "cards": [
+          "9"
+        ],
+        "remaining": 8
+      },
+      "count": 1
+    },
+    {
+      "play": {
+        "sequence": 25,
+        "seat": "self",
+        "cards": [
+          "J"
+        ],
+        "remaining": 13
+      },
+      "count": 1
+    },
+    {
+      "play": {
+        "sequence": 26,
+        "seat": "right",
+        "cards": [],
+        "remaining": 17
+      },
+      "count": 0
+    },
+    {
+      "play": {
+        "sequence": 27,
+        "seat": "left",
+        "cards": [
+          "2"
+        ],
+        "remaining": 7
+      },
+      "count": 1
+    },
+    {
+      "play": {
+        "sequence": 28,
+        "seat": "self",
+        "cards": [],
+        "remaining": 13
+      },
+      "count": 0
+    },
+    {
+      "play": {
+        "sequence": 29,
+        "seat": "right",
+        "cards": [],
+        "remaining": 17
+      },
+      "count": 0
+    },
+    {
+      "play": {
+        "sequence": 30,
+        "seat": "left",
+        "cards": [
+          "4",
+          "Q",
+          "Q",
+          "Q"
+        ],
+        "remaining": 3
+      },
+      "count": 4
+    },
+    {
+      "play": {
+        "sequence": 31,
+        "seat": "self",
+        "cards": [],
+        "remaining": 13
+      },
+      "count": 0
+    },
+    {
+      "play": {
+        "sequence": 32,
+        "seat": "right",
+        "cards": [],
+        "remaining": 17
+      },
+      "count": 0
+    },
+    {
+      "play": {
+        "sequence": 33,
+        "seat": "left",
+        "cards": [
+          "A",
+          "A"
+        ],
+        "remaining": 1
+      },
+      "count": 2
+    },
+    {
+      "play": {
+        "sequence": 34,
+        "seat": "self",
+        "cards": [
+          "SJ",
+          "BJ"
+        ],
+        "remaining": 11
+      },
+      "count": 2
+    },
+    {
+      "play": {
+        "sequence": 35,
+        "seat": "right",
+        "cards": [],
+        "remaining": 17
+      },
+      "count": 0
+    },
+    {
+      "play": {
+        "sequence": 36,
+        "seat": "left",
+        "cards": [],
+        "remaining": 1
+      },
+      "count": 0
+    },
+    {
+      "play": {
+        "sequence": 37,
+        "seat": "self",
+        "cards": [
+          "6",
+          "6",
+          "7",
+          "7",
+          "8",
+          "8"
+        ],
+        "remaining": 5
+      },
+      "count": 6
+    },
+    {
+      "play": {
+        "sequence": 38,
+        "seat": "right",
+        "cards": [
+          "9",
+          "9",
+          "10",
+          "10",
+          "J",
+          "J"
+        ],
+        "remaining": 11
+      },
+      "count": 6
+    },
+    {
+      "play": {
+        "sequence": 39,
+        "seat": "left",
+        "cards": [],
+        "remaining": 1
+      },
+      "count": 0
+    },
+    {
+      "play": {
+        "sequence": 40,
+        "seat": "self",
+        "cards": [],
+        "remaining": 5
+      },
+      "count": 0
+    },
+    {
+      "play": {
+        "sequence": 41,
+        "seat": "right",
+        "cards": [
+          "3"
+        ],
+        "remaining": 10
+      },
+      "count": 1
+    },
+    {
+      "play": {
+        "sequence": 42,
+        "seat": "left",
+        "cards": [
+          "5"
+        ],
+        "remaining": 0
+      },
+      "count": 1
+    }
+  ],
+  "ui_mapping_calls": 14,
+  "note": "End-to-end screen-only integration check; not a playing strength evaluation."
+}

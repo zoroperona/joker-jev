@@ -1,0 +1,50 @@
+[
+  {
+    "case": "image_data_url",
+    "model": "jev-1.13.0",
+    "endpoint": "https://api.typesafe.ai/v1/systemone",
+    "status": "error",
+    "error_type": "TypeSafeError",
+    "message": "TypeSafe 请求失败，HTTP 400"
+  },
+  {
+    "case": "image_object",
+    "model": "jev-1.13.0",
+    "endpoint": "https://api.typesafe.ai/v1/systemone",
+    "status": "error",
+    "error_type": "TypeSafeError",
+    "message": "TypeSafe 请求失败，HTTP 400"
+  },
+  {
+    "case": "text_control",
+    "model": "jev-1.13.0",
+    "endpoint": "https://api.typesafe.ai/v1/systemone",
+    "status": "success",
+    "answers": {
+      "rank": {
+        "type": "choice",
+        "choice": "3",
+        "confidence": 1.0,
+        "probabilities": {
+          "3": 1.0,
+          "4": 0.0,
+          "5": 0.0,
+          "6": 0.0,
+          "7": 0.0,
+          "8": 0.0,
+          "9": 0.0,
+          "10": 0.0,
+          "J": 0.0,
+          "Q": 0.0,
+          "K": 0.0,
+          "A": 0.0,
+          "2": 0.0,
+          "SJ": 0.0,
+          "BJ": 0.0,
+          "unknown": 0.0
+        }
+      }
+    },
+    "returned_model": "jev-1.13.0"
+  }
+]

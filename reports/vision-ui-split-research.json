@@ -1,0 +1,310 @@
+{
+  "scope": "Independent pixel checks: turn, button label, enabled state, each selected card. No expected rank is sent in card questions. Confidence threshold remains 0.8.",
+  "runs": [
+    {
+      "run": "match-46-split",
+      "seed": 46,
+      "phase": "development regression",
+      "confirmed_plays": 0,
+      "decisions": 0,
+      "status": "stopped",
+      "message": "Invalid or low-confidence Jev UI mapping",
+      "last_ui_answers": {
+        "turn": {
+          "type": "choice",
+          "probabilities": {
+            "self": 0.9968494901724967,
+            "other": 0.0027691887583793087,
+            "unknown": 0.00038132106912399624
+          },
+          "choice": "self",
+          "confidence": 0.995274235258745
+        },
+        "button": {
+          "type": "choice",
+          "probabilities": {
+            "出牌": 4.9432823005464645e-05,
+            "不出": 0.0014029975201568952,
+            "不叫": 0.998444849487265,
+            "1分": 1.6205714835282257e-05,
+            "2分": 1.1888498124823923e-05,
+            "3分": 7.242054793400915e-06,
+            "unknown": 6.738390181918549e-05
+          },
+          "choice": "不叫",
+          "confidence": 0.9981856577351423
+        },
+        "enabled": {
+          "type": "choice",
+          "probabilities": {
+            "enabled": 0.8184521977257475,
+            "disabled": 0.09358509839143823,
+            "unknown": 0.08796270388281428
+          },
+          "choice": "enabled",
+          "confidence": 0.7276782965886213
+        }
+      }
+    },
+    {
+      "run": "match-46-split-v2",
+      "seed": 46,
+      "phase": "development regression",
+      "confirmed_plays": 22,
+      "decisions": 8,
+      "status": "stopped",
+      "message": "Invalid or low-confidence Jev UI mapping",
+      "last_ui_answers": {
+        "turn": {
+          "type": "choice",
+          "probabilities": {
+            "self": 0.9972936287256485,
+            "other": 0.0023004961615171477,
+            "unknown": 0.0004058751128343367
+          },
+          "choice": "self",
+          "confidence": 0.9959404430884726
+        },
+        "button": {
+          "type": "choice",
+          "probabilities": {
+            "出牌": 0.00020565096672007127,
+            "不出": 0.9989678734775159,
+            "不叫": 0.0006273037791961048,
+            "叫1分": 2.661710790015436e-05,
+            "叫2分": 2.661710790015436e-05,
+            "叫3分": 1.2655013802924173e-05,
+            "unknown": 0.00013328254696464838
+          },
+          "choice": "不出",
+          "confidence": 0.9987958523904351
+        },
+        "enabled": {
+          "type": "choice",
+          "probabilities": {
+            "enabled": 0.6747108214952003,
+            "disabled": 0.30151662735948276,
+            "unknown": 0.02377255114531696
+          },
+          "choice": "enabled",
+          "confidence": 0.5120662322428005
+        }
+      }
+    }
+  ],
+  "initial_controls": [
+    {
+      "case": "valid_seed46_straight",
+      "accepted": true,
+      "minimum_confidence_rounded": 0.99
+    },
+    {
+      "case": "wrong_card_coordinate",
+      "accepted": false,
+      "recognized": "3",
+      "expected": "7"
+    },
+    {
+      "case": "wrong_button_coordinate",
+      "accepted": false,
+      "recognized": "不出",
+      "expected": "出牌"
+    }
+  ],
+  "button_controls": [
+    {
+      "case": "valid_pass",
+      "frame": 18,
+      "accepted": false,
+      "error": "Invalid or low-confidence Jev UI mapping",
+      "seconds": 1.8514122079941444,
+      "response": {
+        "answers": {
+          "turn": {
+            "type": "choice",
+            "probabilities": {
+              "self": 0.9978831667722111,
+              "other": 0.0019114057560656657,
+              "unknown": 0.0002054274717231962
+            },
+            "choice": "self",
+            "confidence": 0.9968247501583165
+          },
+          "button": {
+            "type": "choice",
+            "probabilities": {
+              "出牌": 0.00020565096672007127,
+              "不出": 0.9989678734775159,
+              "不叫": 0.0006273037791961048,
+              "叫1分": 2.661710790015436e-05,
+              "叫2分": 2.661710790015436e-05,
+              "叫3分": 1.2655013802924173e-05,
+              "unknown": 0.00013328254696464838
+            },
+            "choice": "不出",
+            "confidence": 0.9987958523904351
+          },
+          "enabled": {
+            "type": "choice",
+            "probabilities": {
+              "enabled": 0.4147362894446979,
+              "disabled": 0.5653445377354862,
+              "unknown": 0.01991917281981585
+            },
+            "choice": "disabled",
+            "confidence": 0.3480168066032293
+          }
+        },
+        "checks": [
+          {
+            "model": "pplx-decider-v1.1-27b",
+            "answers": {
+              "turn": {
+                "type": "choice",
+                "probabilities": {
+                  "self": 0.9978831667722111,
+                  "other": 0.0019114057560656657,
+                  "unknown": 0.0002054274717231962
+                },
+                "choice": "self",
+                "confidence": 0.9968247501583165
+              }
+            },
+            "usage": {
+              "input_tokens": 835,
+              "output_tokens": 0
+            }
+          },
+          {
+            "model": "pplx-decider-v1.1-27b",
+            "answers": {
+              "button": {
+                "type": "choice",
+                "probabilities": {
+                  "出牌": 0.00020565096672007127,
+                  "不出": 0.9989678734775159,
+                  "不叫": 0.0006273037791961048,
+                  "叫1分": 2.661710790015436e-05,
+                  "叫2分": 2.661710790015436e-05,
+                  "叫3分": 1.2655013802924173e-05,
+                  "unknown": 0.00013328254696464838
+                },
+                "choice": "不出",
+                "confidence": 0.9987958523904351
+              }
+            },
+            "usage": {
+              "input_tokens": 246,
+              "output_tokens": 0
+            }
+          },
+          {
+            "model": "pplx-decider-v1.1-27b",
+            "answers": {
+              "enabled": {
+                "type": "choice",
+                "probabilities": {
+                  "enabled": 0.4147362894446979,
+                  "disabled": 0.5653445377354862,
+                  "unknown": 0.01991917281981585
+                },
+                "choice": "disabled",
+                "confidence": 0.3480168066032293
+              }
+            },
+            "usage": {
+              "input_tokens": 837,
+              "output_tokens": 0
+            }
+          }
+        ]
+      }
+    },
+    {
+      "case": "not_our_turn",
+      "frame": 3,
+      "accepted": false,
+      "error": "Invalid or low-confidence Jev UI mapping",
+      "seconds": 0.7798129160073586,
+      "response": {
+        "answers": {
+          "turn": {
+            "type": "choice",
+            "probabilities": {
+              "self": 0.13933825363090024,
+              "other": 0.8402482788986687,
+              "unknown": 0.020413467470431074
+            },
+            "choice": "other",
+            "confidence": 0.7603724183480031
+          }
+        },
+        "checks": [
+          {
+            "model": "pplx-decider-v1.1-27b",
+            "answers": {
+              "turn": {
+                "type": "choice",
+                "probabilities": {
+                  "self": 0.13933825363090024,
+                  "other": 0.8402482788986687,
+                  "unknown": 0.020413467470431074
+                },
+                "choice": "other",
+                "confidence": 0.7603724183480031
+              }
+            },
+            "usage": {
+              "input_tokens": 835,
+              "output_tokens": 0
+            }
+          }
+        ]
+      }
+    }
+  ],
+  "subsequent_controls": [
+    {
+      "case": "positive",
+      "accepted": false,
+      "error": "TypeSafe 请求失败，HTTP 529",
+      "response": {
+        "answers": {},
+        "checks": []
+      }
+    },
+    {
+      "case": "wrong_card",
+      "accepted": false,
+      "error": "TypeSafe 请求失败，HTTP 529",
+      "response": {
+        "answers": {},
+        "checks": []
+      }
+    },
+    {
+      "case": "wrong_button",
+      "accepted": false,
+      "error": "TypeSafe 请求失败，HTTP 529",
+      "response": {
+        "answers": {},
+        "checks": []
+      }
+    },
+    {
+      "case": "obscured",
+      "accepted": false,
+      "error": "TypeSafe 请求失败，HTTP 529",
+      "response": {
+        "answers": {},
+        "checks": []
+      }
+    }
+  ],
+  "limitations": [
+    "Known enabled pass button rejected at low confidence.",
+    "Occlusion control could not be assessed because the endpoint returned HTTP 529; this is not a successful visual rejection.",
+    "No new unseen-seed completion claim.",
+    "Existing executor checks fresh screenshot before clicks; stale-image control not newly tested."
+  ]
+}

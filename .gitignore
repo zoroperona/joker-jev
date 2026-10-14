@@ -7,3 +7,9 @@ dist/
 .env
 .env.*
 !.env.example
+
+# Optional self-hosted vision model environments and checkpoints
+.venv-decider/
+.venv-decider-mlx/
+.models/
+.DS_Store
