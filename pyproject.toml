@@ -1,11 +1,14 @@
 [build-system]
-requires = ["setuptools>=61"]
+requires = ["setuptools>=77.0.3"]
 build-backend = "setuptools.build_meta"
 
 [project]
 name = "joker-jev"
 version = "0.1.0"
-description = "可扩展的卡牌游戏环境与 JEV 决策接口"
+description = "Screenshot-driven Dou Dizhu player with DouZero strategy and Jev-compatible UI recognition"
+readme = "README.md"
+license = "Apache-2.0"
+license-files = ["LICENSE", "NOTICE", "THIRD_PARTY_NOTICES.md"]
 requires-python = ">=3.9"
 dependencies = []
 
